@@ -13,6 +13,11 @@ const Header = () => {
       <nav className=" flex items-center justify-between p-4">
         <img src={logo} />
 
+        <input
+          type="text"
+          className="p-2 w-full border-black outline-none border-1"
+        />
+
         <button onClick={handleToggle} className="grid gap-2 w-10">
           <span
             style={{
