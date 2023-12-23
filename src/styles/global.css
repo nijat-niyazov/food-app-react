@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* @font-face {
+  font-family: "Poppins";
+  src: url(/public/font-poppins/Poppins-Black.ttf);
+} */
+/* font-family: "Poppins", sans-serif; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease-in-out;
+
+    --primary: #fc8a06;
+    --secondary: #028643;
+    --text: #03081f;
+    --bej: #e9e9e9;
+  }
+
+  .discount-linear {
+    background: linear-gradient(
+      246deg,
+      rgba(255, 255, 255, 0) 0.94%,
+      rgba(3, 8, 31, 0.19) 51.68%,
+      rgba(3, 8, 31, 0.89) 87.9%
+    );
+  }
+
+  @import url("./dark.css");
+}
