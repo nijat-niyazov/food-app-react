@@ -1,15 +1,18 @@
 import { ArrowDown } from "@//assets/icons";
-import { menu_book } from "@//assets/images";
+import { close, menu_book } from "@//assets/images";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
 const CustomModal = ({
   isOpen,
   closeModal,
+  // children,
+  closeBtn = true,
 }: {
   isOpen: boolean;
-
+  closeBtn?: boolean;
   closeModal: () => void;
+  // children?: React.ReactNode;
 }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -27,7 +30,7 @@ const CustomModal = ({
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full items-center justify-center p-4 text-center ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -37,7 +40,15 @@ const CustomModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white  text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full relative  max-w-md transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all">
+                {closeBtn && (
+                  <button
+                    onClick={closeModal}
+                    className="bg-primary p-4 absolute rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/3"
+                  >
+                    <img src={close} alt="menu" className="w-8 h-8" />
+                  </button>
+                )}
                 <Dialog.Title
                   as="h3"
                   className="leading-6  flex gap-2 items-center p-8"
@@ -54,19 +65,19 @@ const CustomModal = ({
 
                 <ul className="mt-2 font-bold text-xl p-8 flex-col flex gap-5">
                   <li className="flex items-center justify-between">
-                    Meal{" "}
+                    Meal
                     <span className="-rotate-90">
                       <ArrowDown />
                     </span>
                   </li>
                   <li className="flex items-center justify-between">
-                    Drinks{" "}
+                    Drinks
                     <span className="-rotate-90">
                       <ArrowDown />
                     </span>
                   </li>
                   <li className="flex items-center justify-between">
-                    Coffee{" "}
+                    Coffee
                     <span className="-rotate-90">
                       <ArrowDown />
                     </span>

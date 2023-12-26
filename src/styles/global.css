@@ -10,15 +10,69 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    font-family: "Poppins", sans-serif;
-    transition: all 0.3s ease-in-out;
+@layer components {
+  .container {
+    @apply mx-auto md:p-0 p-4 md:w-[90%];
+  }
+}
 
+:root {
+  font-family: "Poppins", sans-serif;
+  /* transition: all 1s ease-in-out; */
+}
+
+html {
+  --primary: #fc8a06;
+  --secondary: #028643;
+  --text: #03081f;
+  --bej: #e9e9e9;
+  --grey: #fafafa;
+}
+
+html[data-theme="dark"] {
+  --header: #03081f;
+  --primary: #03081f;
+  --secondary: #fc8a06;
+  --text: #e9e9e9;
+}
+
+.slow-spin {
+  animation: spin 10s linear infinite;
+}
+
+.offer-shadow {
+  box-shadow: 5px 5px 34px 0px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.discount-linear {
+  background: linear-gradient(
+    246deg,
+    rgba(255, 255, 255, 0) 0.94%,
+    rgba(3, 8, 31, 0.19) 51.68%,
+    rgba(3, 8, 31, 0.89) 87.9%
+  );
+}
+
+/* @layer base {
+  html {
     --primary: #fc8a06;
     --secondary: #028643;
     --text: #03081f;
     --bej: #e9e9e9;
+  }
+
+  .very-slow {
+    animation-duration: 10s !important;
   }
 
   .discount-linear {
@@ -31,4 +85,4 @@
   }
 
   @import url("./dark.css");
-}
+} */

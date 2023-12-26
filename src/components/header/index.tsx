@@ -1,50 +1,125 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { basket, girl, logo } from "../../assets/images";
-import CustomModal from "../c-modal";
+import { Shopping, User } from "@//assets/icons";
+import { basket, girl, logo } from "@//assets/images";
+import { ChangeEvent, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import Theme from "./theme";
 
 const Header = () => {
-  const [toggle, setToggle] = useState(false);
-
-  const handleToggle = () => setToggle(!toggle);
+  const [search, setSearch] = useState("");
 
   return (
-    <header>
-      <nav className=" flex items-center justify-between p-4">
-        <img src={logo} />
+    <header className="container mb-10">
+      <div className="hidden md:flex justify-between mb-10 items-center rounded-b-xl pl-5 bg-grey border-1 border-black/10">
+        <p className="text-[15px] font-medium text-text">
+          🌟 Get 5% Off your first order,{" "}
+          <span className="font-bold text-primary border-b-1 border-primary">
+            Promo: ORDER5
+          </span>
+        </p>
 
-        <input
-          type="text"
-          className="p-2 w-full border-black outline-none border-1"
-        />
+        <Theme />
 
-        <button onClick={handleToggle} className="grid gap-2 w-10">
-          <span
-            style={{
-              rotate: toggle ? "45deg" : "0deg",
-              transform: toggle ? `translate(10px,6px)` : "",
-            }}
-            className="w-full h-1 rounded-full text-text bg-text transition-all duration-200 "
-          ></span>
-          <span
-            style={{
-              opacity: toggle ? "0" : "1",
-            }}
-            className="w-full h-1 rounded-full text-text bg-text transition-all duration-200"
-          ></span>
-          <span
-            style={{
-              rotate: toggle ? "-45deg" : "0deg",
-              transform: toggle ? `translate(10px,-6px)` : "",
-            }}
-            className="w-full h-1 rounded-full text-text bg-text transition-all duration-200"
-          ></span>
+        <ul className="flex  bg-secondary rounded-b-xl text-base font-semibold text-white">
+          <li className="border-r-1 border-white px-6 py-3 border-opacity-30">
+            <Shopping />
+          </li>
+          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">
+            23 Items
+          </li>
+          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">
+            AZN 32.33
+          </li>
+        </ul>
+      </div>
+
+      <div className=" flex items-center justify-between">
+        <Link to={"/"}>
+          <img src={logo} />
+        </Link>
+
+        <div className="p-2 rounded-full w-40 border-1 border-text outline-none relative">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            value={search}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setSearch(e.target.value)
+            }
+            className="bg-transparent w-3/4 outline-none"
+          />
+
+          <div className="w-1/4 absolute border-primary right-0 top-0 h-full bg-primary rounded-full"></div>
+        </div>
+
+        <nav className="hidden md:flex items-center gap-5">
+          <NavLink
+            onClick={() => console.log()}
+            to="/"
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-primary text-white" : "",
+
+                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+              ].join(" ")
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            onClick={() => console.log()}
+            to="/menu"
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-primary text-white" : "",
+
+                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+              ].join(" ")
+            }
+          >
+            Browse Menu
+          </NavLink>
+          <NavLink
+            onClick={() => console.log()}
+            to="/branches"
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-primary text-white" : "",
+
+                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+              ].join(" ")
+            }
+          >
+            Special Offers
+          </NavLink>
+          <NavLink
+            onClick={() => console.log()}
+            to="/branches"
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-primary text-white" : "",
+
+                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+              ].join(" ")
+            }
+          >
+            Branches
+          </NavLink>
+        </nav>
+
+        <button
+          // onClick={handleOpen}
+          className="px-7 md:flex hidden py-4 items-center gap-1 bg-text text-white rounded-full"
+        >
+          <User />
+
+          <span className="text-lg font-medium">Login/Signup</span>
         </button>
-      </nav>
 
-      <CustomModal isOpen={toggle} closeModal={handleToggle} />
+        {/* <CustomModal isOpen={true} closeModal={() => console.log()} /> */}
+      </div>
 
-      <div className="border-t-2 flex  w-full">
+      <div className="border-t-2 flex  w-full md:hidden">
         <div className="w-1/2 p-4  bg-bej flex items-center justify-center gap-4">
           <img src={girl} className="w-11 h-11 rounded-full object-cover" />
           <div>

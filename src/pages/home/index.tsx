@@ -1,10 +1,16 @@
-import { DiscountMenu } from "@//components";
+import { MotionDiv } from "@//components";
+import { DiscountMenu, MealCategories } from "@//sections/home";
 
 const HomePage = () => {
   return (
-    <div className="p-3 ">
+    <MotionDiv
+      // initial={{ x: "100%" }}
+      // animate={{ x: 0, transitionDelay: "250ms" }}
+      className="container mb-10"
+    >
       <DiscountMenu />
-    </div>
+      <MealCategories />
+    </MotionDiv>
   );
 };
 
