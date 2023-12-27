@@ -111,6 +111,8 @@ const Header = () => {
           </NavLink>
         </nav>
 
+        <Theme />
+
         <MenuToggler />
 
         <button
