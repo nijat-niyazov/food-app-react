@@ -5,7 +5,7 @@ import { MotionDiv } from "@//components";
 const DiscountMenu = () => {
   return (
     <>
-      <div className="flex text-black  items-center justify-between mb-10">
+      <div className="flex text-black  items-center justify-between ">
         <span className="text-[16px] md:text-3xl font-bold">
           Up to -40% Discount Offers
         </span>
@@ -17,7 +17,7 @@ const DiscountMenu = () => {
         </div>
       </div>
 
-      <ul className="flex items-center gap-4 overflow-x-auto mb-10">
+      <ul className="flex items-center gap-4 overflow-x-auto">
         <MotionDiv
         // initial={{ x: "100%" }}
         // animate={{
@@ -26,7 +26,7 @@ const DiscountMenu = () => {
         >
           <li className="relative min-w-[150px] min-h-[150px]">
             <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-            <span className="bg-black text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
+            <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
               -17%
             </span>
             <img src={burger} alt="burger" className="object-cover" />
@@ -38,7 +38,7 @@ const DiscountMenu = () => {
         </MotionDiv>
         <li className="relative min-w-[150px] min-h-[150px]">
           <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-          <span className="bg-black text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
+          <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
             -17%
           </span>
           <img src={burger} alt="burger" className="object-cover" />
@@ -60,7 +60,7 @@ const DiscountMenu = () => {
         </li>
         <li className="relative min-w-[150px] min-h-[150px]">
           <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-          <span className="bg-black text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
+          <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
             -17%
           </span>
           <img src={burger} alt="burger" className="object-cover" />

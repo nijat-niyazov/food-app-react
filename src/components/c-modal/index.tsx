@@ -44,7 +44,7 @@ const CustomModal = ({
                 {closeBtn && (
                   <button
                     onClick={closeModal}
-                    className="bg-primary p-4 absolute rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/3"
+                    className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
                   >
                     <img src={close} alt="menu" className="w-8 h-8" />
                   </button>
@@ -54,7 +54,7 @@ const CustomModal = ({
                   className="leading-6  flex gap-2 items-center p-8"
                 >
                   <img src={menu_book} alt="menu" />
-                  <span className="font-semibold text-black text-[32px]">
+                  <span className="font-semibold text-text text-[32px]">
                     Menu
                   </span>
                 </Dialog.Title>

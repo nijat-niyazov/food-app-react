@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 const GoToUp = () => {
   const [visible, setVisible] = useState(false);
 
-  const handleScroll = () => setVisible(window.scrollY > 700 ? true : false);
+  const handleScroll = () =>
+    setVisible(
+      window.scrollY > (window.innerWidth > 640 ? 700 : 300) ? true : false
+    );
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -21,7 +24,7 @@ const GoToUp = () => {
       style={{
         transform: visible ? "scale(1)" : "scale(0)",
       }}
-      className="bg-primary rounded-xl fixed bottom-7 right-6 px-5 py-3 text-lg z-50 text-white transition-all duration-200"
+      className="bg-primary rounded-md fixed bottom-7 right-6 px-5 py-3 text-lg z-50 text-white transition-all duration-200"
     >
       ⬆
     </button>

@@ -13,7 +13,7 @@ const meals = [
 const MealCategories = () => {
   return (
     <>
-      <h4 className="text-black text-[16px] md:text-3xl font-bold mb-10">
+      <h4 className="text-text text-[16px] md:text-3xl font-bold ">
         Order.uk Popular Categories 🤩
       </h4>
       <ul className="grid gap-4 grid-cols-2 md:grid-cols-6 ">
@@ -24,7 +24,7 @@ const MealCategories = () => {
                 <img
                   src={meal.img}
                   alt="meal"
-                  className="w-[190px] h-[160px] md:w-[240px] md:h-[200px] object-cover slow-spin "
+                  className="w-[190px] h-[160px] md:w-[240px] md:h-[200px] object-cover slow-spin  "
                   style={{
                     animationDelay: `${i * 0.5}s`,
                   }}

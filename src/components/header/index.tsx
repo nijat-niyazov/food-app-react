@@ -2,14 +2,17 @@ import { Shopping, User } from "@//assets/icons";
 import { basket, girl, logo } from "@//assets/images";
 import { ChangeEvent, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import MenuToggler from "./menu";
 import Theme from "./theme";
 
 const Header = () => {
   const [search, setSearch] = useState("");
 
+  const authorized = false;
+
   return (
-    <header className="container mb-10">
-      <div className="hidden md:flex justify-between mb-10 items-center rounded-b-xl pl-5 bg-grey border-1 border-black/10">
+    <header className=" mb-10">
+      <div className="hidden md:flex container justify-between mb-10 items-center rounded-b-xl pl-5 bg-grey border-1 border-black/10">
         <p className="text-[15px] font-medium text-text">
           🌟 Get 5% Off your first order,{" "}
           <span className="font-bold text-primary border-b-1 border-primary">
@@ -32,15 +35,16 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className=" flex items-center justify-between">
+      <div className="container flex items-center justify-between">
         <Link to={"/"}>
           <img src={logo} />
         </Link>
 
-        <div className="p-2 rounded-full w-40 border-1 border-text outline-none relative">
+        <div className="p-2 rounded-full w-40 border-1 border-text outline-none relative hidden md:block">
           <input
             type="text"
             name="search"
+            placeholder="Burger"
             id="search"
             value={search}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -107,13 +111,15 @@ const Header = () => {
           </NavLink>
         </nav>
 
+        <MenuToggler />
+
         <button
           // onClick={handleOpen}
           className="px-7 md:flex hidden py-4 items-center gap-1 bg-text text-white rounded-full"
         >
           <User />
 
-          <span className="text-lg font-medium">Login/Signup</span>
+          <span className="text-lg font-medium ">Login/Signup</span>
         </button>
 
         {/* <CustomModal isOpen={true} closeModal={() => console.log()} /> */}
@@ -121,16 +127,22 @@ const Header = () => {
 
       <div className="border-t-2 flex  w-full md:hidden">
         <div className="w-1/2 p-4  bg-bej flex items-center justify-center gap-4">
-          <img src={girl} className="w-11 h-11 rounded-full object-cover" />
-          <div>
-            <h3 className="text-primary text-sm font-semibold">Aycan</h3>
-            <Link
-              className="text-text text-xs border-b-2 border-text font-normal"
-              to={"/"}
-            >
-              My Account
-            </Link>
-          </div>
+          {authorized ? (
+            <>
+              <img src={girl} className="w-11 h-11 rounded-full object-cover" />
+              <div>
+                <h3 className="text-primary text-sm font-semibold">Aycan</h3>
+                <Link
+                  className="text-text text-xs border-b-2 border-text font-normal"
+                  to={"/"}
+                >
+                  My Account
+                </Link>
+              </div>
+            </>
+          ) : (
+            <button className="text-lg font-medium">Login/Signup</button>
+          )}
         </div>
 
         <div className="w-1/2 p-4  bg-secondary flex items-center justify-center gap-4">

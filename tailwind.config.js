@@ -6,6 +6,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      borderRadius: {
+        s: "4px",
+      },
       borderWidth: {
         1: "1px",
       },
@@ -16,6 +19,7 @@ export default {
         bej: "var(--bej)",
         header: "var(--header)",
         grey: "var(--grey)",
+        faq: "var(--faq)",
       },
 
       fontFamily: {
