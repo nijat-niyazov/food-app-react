@@ -10,7 +10,9 @@ import { Branches, HomePage, MenuPage } from "./pages";
 const routes = (
   <Route path="/" element={<MainLayout />}>
     <Route index element={<HomePage />} />
-    <Route path="/menu" element={<MenuPage />} />
+    <Route path="/menu">
+      <Route path=":category" element={<MenuPage />} />
+    </Route>
     <Route path="/branches" element={<Branches />} />
   </Route>
 );

@@ -1,11 +1,21 @@
-import { useState } from "react";
-import { CustomModal } from "../..";
+import useModalStore, { openModal } from "@//stores/modal";
+import { useEffect, useState } from "react";
+import MenuModal from "../../c-modal/modal-contents";
 
 const MenuToggler = () => {
+  const modalIsOpened = useModalStore((state) => state.opened);
   const [toggle, setToggle] = useState(false);
 
-  const handleOpen = () => setToggle(true);
-  const handleClose = () => setToggle(false);
+  const handleOpen = () => {
+    setToggle(true);
+    openModal(<MenuModal />);
+  };
+
+  useEffect(() => {
+    if (!modalIsOpened) {
+      setToggle(false);
+    }
+  }, [modalIsOpened]);
 
   return (
     <>
@@ -31,7 +41,6 @@ const MenuToggler = () => {
           className="w-full h-1 rounded-full text-text bg-text transition-all duration-200"
         ></span>
       </button>
-      <CustomModal isOpen={toggle} closeModal={handleClose} />
     </>
   );
 };

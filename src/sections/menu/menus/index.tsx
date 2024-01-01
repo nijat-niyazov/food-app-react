@@ -17,7 +17,7 @@ const Menus = () => {
     >
       <div className="container">
         <NavLink
-          to={"/menu"}
+          to={"/menu/menu"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -28,7 +28,7 @@ const Menus = () => {
           Offers
         </NavLink>
         <NavLink
-          to={"/c"}
+          to={"/menu/c"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -39,7 +39,7 @@ const Menus = () => {
           Fast&Food
         </NavLink>
         <NavLink
-          to={"/f"}
+          to={"/menu/f"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -50,7 +50,7 @@ const Menus = () => {
           Pasta
         </NavLink>
         <NavLink
-          to={"/e"}
+          to={"/menu/e"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -61,7 +61,7 @@ const Menus = () => {
           Vegetarian
         </NavLink>
         <NavLink
-          to={"/k"}
+          to={"/menu/k"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -72,7 +72,7 @@ const Menus = () => {
           Drinks
         </NavLink>
         <NavLink
-          to={"/e"}
+          to={"/menu/e"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
@@ -83,7 +83,7 @@ const Menus = () => {
           Salads
         </NavLink>
         <NavLink
-          to={"/q"}
+          to={"/menu/q"}
           className={({ isActive }) =>
             [
               isActive ? "bg-text text-white" : "text-text ",
