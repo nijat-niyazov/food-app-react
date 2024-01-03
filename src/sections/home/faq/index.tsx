@@ -1,4 +1,4 @@
-import { order_food } from "@//assets/images";
+import { order_food } from "@/assets/images";
 
 const questions = [
   { id: 1, question: "How does Order.UK work?" },

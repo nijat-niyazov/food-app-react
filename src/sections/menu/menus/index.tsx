@@ -1,4 +1,4 @@
-import { MotionDiv } from "@//components";
+import { MotionDiv } from "@/components";
 import { NavLink } from "react-router-dom";
 
 const Menus = () => {

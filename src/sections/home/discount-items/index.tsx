@@ -1,6 +1,6 @@
-import { burger } from "@//assets/content";
-import { ArrowDown } from "@//assets/icons";
-import { MotionDiv } from "@//components";
+import { burger } from "@/assets/content";
+import { ArrowDown } from "@/assets/icons";
+import { MotionDiv } from "@/components";
 
 const DiscountMenu = () => {
   return (

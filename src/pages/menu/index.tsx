@@ -1,4 +1,4 @@
-import { LandingMenu, Meals, Menus } from "@//sections/menu";
+import { LandingMenu, Meals, Menus } from "@/sections/menu";
 
 const MenuPage = () => {
   return (

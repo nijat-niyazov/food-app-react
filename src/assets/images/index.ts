@@ -4,6 +4,7 @@ import delivery from "./delivery.gif";
 import fast_food from "./fast_food.png";
 import girl from "./girl.jpg";
 import hire from "./hire.png";
+import lil_pizza from "./lil_pizza.jpg";
 import logo from "./logo.png";
 import menu_book from "./menu-book.png";
 import offer from "./offer.png";
@@ -18,6 +19,7 @@ export {
   fast_food,
   girl,
   hire,
+  lil_pizza,
   logo,
   menu_book,
   offer,

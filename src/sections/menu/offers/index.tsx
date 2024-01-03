@@ -1,4 +1,4 @@
-import { offer, plus } from "@//assets/images";
+import { offer, plus } from "@/assets/images";
 
 const offers = [
   {

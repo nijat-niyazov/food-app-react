@@ -1,5 +1,5 @@
-import { Shopping, User } from "@//assets/icons";
-import { basket, girl, logo } from "@//assets/images";
+import { Shopping, User } from "@/assets/icons";
+import { basket, girl, logo } from "@/assets/images";
 import { ChangeEvent, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import MenuToggler from "./menu";

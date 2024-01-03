@@ -1,5 +1,5 @@
-import { close } from "@//assets/images";
-import { useModalStore } from "@//stores/";
+import { close } from "@/assets/images";
+import { useModalStore } from "@/stores/";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 

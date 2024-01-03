@@ -1,5 +1,5 @@
-import { MotionDiv } from "@//components";
-import { DiscountMenu, FAQ, Hire, MealCategories } from "@//sections/home";
+import { MotionDiv } from "@/components";
+import { DiscountMenu, FAQ, Hire, MealCategories } from "@/sections/home";
 
 const HomePage = () => {
   return (

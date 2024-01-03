@@ -1,5 +1,5 @@
-import { ArrowDown } from "@//assets/icons";
-import { menu_book } from "@//assets/images";
+import { ArrowDown } from "@/assets/icons";
+import { menu_book } from "@/assets/images";
 
 const MenuModal = () => {
   return (

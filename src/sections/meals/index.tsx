@@ -1,5 +1,5 @@
-import { menu_book, offer } from "@//assets/images";
-import { useScrollDirection } from "@//useHooks";
+import { menu_book, offer } from "@/assets/images";
+import { useScrollDirection } from "@/useHooks";
 import AddToOrderBtn from "./add-to-order";
 import Options from "./optiions";
 

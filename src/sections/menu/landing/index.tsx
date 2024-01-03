@@ -1,6 +1,6 @@
-import { Clock } from "@//assets/icons";
-import { fast_food } from "@//assets/images";
-import { MotionDiv } from "@//components";
+import { Clock } from "@/assets/icons";
+import { fast_food } from "@/assets/images";
+import { MotionDiv } from "@/components";
 
 const LandingMenu = () => {
   return (

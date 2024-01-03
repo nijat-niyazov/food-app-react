@@ -1,4 +1,4 @@
-import { soup } from "@//assets/images";
+import { soup } from "@/assets/images";
 import { Link } from "react-router-dom";
 
 const meals = [

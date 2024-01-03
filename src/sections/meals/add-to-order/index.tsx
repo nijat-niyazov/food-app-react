@@ -1,5 +1,6 @@
-import MenuModal from "@//components/c-modal/modal-contents";
-import { openModal } from "@//stores/modal";
+import { Basket } from "@/components";
+import MenuModal from "@/components/c-modal/modal-contents";
+import { openModal } from "@/stores/modal";
 
 const AddToOrderBtn = ({
   selected,
@@ -12,6 +13,7 @@ const AddToOrderBtn = ({
     <>
       <div className="flex items-center justify-center gap-3 overflow-hidden w-full mt-4">
         <button
+          onClick={() => openModal(<Basket />)}
           style={{
             height: selected ? "40px" : "0px",
           }}

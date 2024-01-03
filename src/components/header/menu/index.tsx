@@ -1,4 +1,4 @@
-import useModalStore, { openModal } from "@//stores/modal";
+import useModalStore, { openModal } from "@/stores/modal";
 import { useEffect, useState } from "react";
 import MenuModal from "../../c-modal/modal-contents";
 

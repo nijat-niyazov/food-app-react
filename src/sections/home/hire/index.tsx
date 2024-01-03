@@ -1,4 +1,4 @@
-import { hire } from "@//assets/images";
+import { hire } from "@/assets/images";
 
 const Hire = () => {
   return (

@@ -1,3 +1,4 @@
+import useBasketStore from "./basket";
 import useModalStore from "./modal";
 
-export { useModalStore };
+export { useBasketStore, useModalStore };
