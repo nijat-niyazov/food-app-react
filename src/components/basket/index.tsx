@@ -1,8 +1,7 @@
-import { useBasketStore } from "@/stores";
 import BasketItem from "./item";
 
 const Basket = () => {
-  const basketItems = useBasketStore((state) => state.elements);
+  // const basketItems = useBasketStore((state) => state.elements);
 
   return (
     <div className="bg-white rounded-xl  offer-shadow p-4">
