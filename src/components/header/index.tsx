@@ -12,7 +12,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
 
   const authorized = false;
-  const totalItemsInBasket = useBasketStore((state) => state.totalItems);
+  const totalItemsOfBasket = useBasketStore((state) => state.totalItems);
 
   return (
     <header className=" mb-10">
@@ -34,7 +34,7 @@ const Header = () => {
             >
               <Shopping />
               <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">
-                {totalItemsInBasket}
+                {totalItemsOfBasket}
               </span>
             </button>
           </li>
