@@ -1,32 +1,42 @@
 import { Basket } from "@/components";
 import MenuModal from "@/components/c-modal/modal-contents";
+import { MealType } from "@/constants/types";
+import { addToBasket } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 
 const AddToOrderBtn = ({
   selected,
   notable = true,
+  meal,
 }: {
   selected: number | boolean;
   notable?: boolean;
+  meal: MealType;
 }) => {
+  const handleAddBasket = () => {
+    addToBasket(meal);
+    openModal(<Basket />);
+  };
+
   return (
     <>
       <div className="flex items-center justify-center gap-3 overflow-hidden w-full mt-4">
         <button
-          onClick={() => openModal(<Basket />)}
-          style={{
-            height: selected ? "40px" : "0px",
-          }}
-          className="bg-primary rounded-s  w-full  text-white font-semibold transition-all duration-200 ease-in-out offer-shadow"
+          onClick={handleAddBasket}
+          // style={{
+          //   height: selected ? "40px" : "0px",
+          // }}
+          disabled={!selected}
+          className="bg-primary rounded-s  w-full p-2  text-white font-semibold transition-all duration-200 ease-in-out offer-shadow disabled:opacity-60"
         >
           Add To Order
         </button>
         {notable && (
           <button
             onClick={() => openModal(<MenuModal />)}
-            style={{
-              height: selected ? "40px" : "0px",
-            }}
+            // style={{
+            //   height: selected ? "40px" : "0px",
+            // }}
             className="bg-secondary rounded-s px-3 py-2   text-white font-semibold transition-all duration-200 ease-in-out offer-shadow"
           >
             <svg

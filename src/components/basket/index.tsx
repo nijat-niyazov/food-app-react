@@ -1,15 +1,18 @@
+import { useBasketStore } from "@/stores";
+import { clearBasket } from "@/stores/basket";
 import BasketItem from "./item";
 
 const Basket = () => {
-  // const basketItems = useBasketStore((state) => state.elements);
+  const basketItems = useBasketStore((state) => state.elements);
+  const totalPrice = useBasketStore((state) => state.totalPrice);
 
   return (
     <div className="bg-white rounded-xl  offer-shadow p-4">
       <h3 className="text-text font-bold text-4xl mb-5">Basket</h3>
 
       <ul className="grid gap-3">
-        {[...new Array(5)].map((_, i) => (
-          <BasketItem key={i} />
+        {basketItems?.map((item, i) => (
+          <BasketItem quantity={item.quantity} id={item.id} key={i} />
         ))}
       </ul>
 
@@ -18,9 +21,15 @@ const Basket = () => {
           Total to pay
         </span>
         <span className="text-white font-semibold text-4xl px-4 py-5">
-          $127,90
+          ${totalPrice.toFixed(2)}
         </span>
       </p>
+      <button
+        onClick={clearBasket}
+        className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 "
+      >
+        Clear Basket
+      </button>
     </div>
   );
 };

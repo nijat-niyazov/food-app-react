@@ -1,4 +1,3 @@
-import { burger } from "@/assets/content";
 import { ArrowDown } from "@/assets/icons";
 import { MotionDiv } from "@/components";
 
@@ -29,7 +28,7 @@ const DiscountMenu = () => {
             <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
               -17%
             </span>
-            <img src={burger} alt="burger" className="object-cover" />
+            {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
             <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex items-center justify-center">
               Burger
@@ -41,7 +40,7 @@ const DiscountMenu = () => {
           <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
             -17%
           </span>
-          <img src={burger} alt="burger" className="object-cover" />
+          {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
           {/* <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex items-center justify-center">
             Burger
@@ -52,7 +51,7 @@ const DiscountMenu = () => {
           <span className="bg-black text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
             -17%
           </span>
-          <img src={burger} alt="burger" className="object-cover" />
+          {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
           {/* <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex items-center justify-center">
             Burger
@@ -63,7 +62,7 @@ const DiscountMenu = () => {
           <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">
             -17%
           </span>
-          <img src={burger} alt="burger" className="object-cover" />
+          {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
           {/* <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex items-center justify-center">
             Burger

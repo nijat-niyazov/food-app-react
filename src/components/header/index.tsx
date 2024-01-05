@@ -1,7 +1,10 @@
 import { Shopping, User } from "@/assets/icons";
 import { basket, girl, logo } from "@/assets/images";
+import { useBasketStore } from "@/stores";
+import { openModal } from "@/stores/modal";
 import { ChangeEvent, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Basket } from "..";
 import MenuToggler from "./menu";
 import Theme from "./theme";
 
@@ -9,6 +12,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
 
   const authorized = false;
+  const totalItems = useBasketStore((state) => state.totalItems);
 
   return (
     <header className=" mb-10">
@@ -23,8 +27,16 @@ const Header = () => {
         <Theme />
 
         <ul className="flex  bg-secondary rounded-b-xl text-base font-semibold text-white">
-          <li className="border-r-1 border-white px-6 py-3 border-opacity-30">
-            <Shopping />
+          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 relative">
+            <button
+              onClick={() => openModal(<Basket />)}
+              className="w-full h-full"
+            >
+              <Shopping />
+              <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">
+                {totalItems}
+              </span>
+            </button>
           </li>
           <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">
             23 Items
@@ -40,7 +52,7 @@ const Header = () => {
           <img src={logo} />
         </Link>
 
-        <div className="p-2 rounded-full w-40 border-1 border-text outline-none relative hidden md:block">
+        <div className="p-2 rounded-full w-40 border-1 border-black/40 outline-none relative hidden md:block">
           <input
             type="text"
             name="search"
@@ -111,7 +123,9 @@ const Header = () => {
           </NavLink>
         </nav>
 
-        <Theme />
+        <div className="md:hidden">
+          <Theme />
+        </div>
 
         <MenuToggler />
 

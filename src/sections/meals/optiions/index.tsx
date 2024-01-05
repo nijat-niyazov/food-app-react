@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AddToOrderBtn from "../add-to-order";
 
 const Options = ({
   options,
@@ -31,7 +30,7 @@ const Options = ({
         </button>
       ))}
 
-      <AddToOrderBtn selected={selected} />
+      {/* <AddToOrderBtn selected={selected} /> */}
     </div>
   );
 };

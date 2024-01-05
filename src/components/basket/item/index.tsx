@@ -1,8 +1,15 @@
 import { lil_pizza } from "@/assets/images";
+import { removeBasketItem, updateBasketItem } from "@/stores/basket";
 import { useState } from "react";
 
-const BasketItem = () => {
-  const [basket, setBasket] = useState(1);
+const BasketItem = ({ id, quantity }: { id: number; quantity: number }) => {
+  const [basket, setBasket] = useState(quantity || 1);
+
+  const handleBasketItem = (action: "inc" | "dec") => {
+    setBasket((p) => p + (action === "inc" ? 1 : -1));
+    updateBasketItem(id, action);
+  };
+
   return (
     <li className="flex items-center justify-between p-2 rounded-xl bg-[#d9d9d9] bg-opacity-60">
       <img
@@ -17,17 +24,24 @@ const BasketItem = () => {
         <button
           disabled={basket === 1}
           className="bg-black rounded-full w-9 h-9 text-white disabled:bg-opacity-20 transition-colors duration-200"
-          onClick={() => setBasket((p) => p - 1)}
+          onClick={() => handleBasketItem("dec")}
         >
           -
         </button>
         <span className="text-text rounded bg-white px-3 py-1">{basket}</span>
         <button
           disabled={basket === 10}
-          onClick={() => setBasket((p) => p + 1)}
+          onClick={() => handleBasketItem("inc")}
           className="bg-black rounded-full w-9 h-9 text-white disabled:bg-opacity-20 transition-colors duration-200"
         >
           +
+        </button>
+
+        <button
+          onClick={() => removeBasketItem(id)}
+          className="bg-red-500 p-2 rounded-md"
+        >
+          X
         </button>
       </div>
     </li>

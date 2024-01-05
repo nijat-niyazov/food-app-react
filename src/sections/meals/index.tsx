@@ -1,9 +1,10 @@
 import { menu_book, offer } from "@/assets/images";
+import { MealType } from "@/constants/types";
 import { useScrollDirection } from "@/useHooks";
 import AddToOrderBtn from "./add-to-order";
 import Options from "./optiions";
 
-const meals = [
+const meals: MealType[] = [
   {
     id: 1,
     title: "Farm House Xtreme Pizza",
@@ -20,6 +21,7 @@ const meals = [
   {
     id: 3,
     title: "Fryday Burger",
+    price: 21.9,
     img: offer,
     description:
       "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
@@ -88,7 +90,7 @@ const Meals = () => {
             {meal.options ? (
               <Options options={meal.options} />
             ) : (
-              <AddToOrderBtn selected />
+              <AddToOrderBtn meal={meal} selected />
             )}
           </li>
         ))}
