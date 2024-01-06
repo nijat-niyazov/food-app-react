@@ -13,6 +13,7 @@ const Header = () => {
 
   const authorized = false;
   const totalItemsOfBasket = useBasketStore((state) => state.totalItems);
+  const totalPrice = useBasketStore((state) => state.totalPrice);
 
   return (
     <header className=" mb-10">
@@ -33,16 +34,16 @@ const Header = () => {
               className="w-full h-full"
             >
               <Shopping />
-              <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">
+              {/* <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">
                 {totalItemsOfBasket}
-              </span>
+              </span> */}
             </button>
           </li>
           <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">
-            23 Items
+            {totalItemsOfBasket} Items
           </li>
           <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">
-            AZN 32.33
+            AZN {totalPrice}
           </li>
         </ul>
       </div>

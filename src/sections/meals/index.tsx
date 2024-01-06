@@ -1,4 +1,4 @@
-import { menu_book, offer } from "@/assets/images";
+import { offer } from "@/assets/images";
 import { MealType } from "@/constants/types";
 import { useScrollDirection } from "@/useHooks";
 import AddToOrderBtn from "./add-to-order";
@@ -46,7 +46,7 @@ const Meals = () => {
 
   return (
     <div className="container">
-      <div
+      {/* <div
         style={{
           top: scrollDirection === "down" ? "-100%" : "10px",
         }}
@@ -58,7 +58,7 @@ const Meals = () => {
         </div>
 
         <p>Pizzas</p>
-      </div>
+      </div> */}
 
       <div className="flex items-center justify-between mb-6">
         <h4 className="text-3xl font-semibold">Pizzas</h4>

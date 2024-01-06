@@ -3,6 +3,7 @@ import MenuModal from "@/components/c-modal/modal-contents";
 import { MealType } from "@/constants/types";
 import { addToBasket } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
+import { useMediaMatch } from "@/useHooks";
 
 const AddToOrderBtn = ({
   selected,
@@ -13,9 +14,11 @@ const AddToOrderBtn = ({
   notable?: boolean;
   meal: MealType;
 }) => {
+  const sm = useMediaMatch();
+
   const handleAddBasket = () => {
     addToBasket(meal);
-    openModal(<Basket />);
+    sm && openModal(<Basket />);
   };
 
   return (
