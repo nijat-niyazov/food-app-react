@@ -7,6 +7,8 @@ import { useMediaMatch } from "@/useHooks";
 const BasketDev = () => {
   const basketItems = useBasketStore((state) => state.elements);
   const totalPrice = useBasketStore((state) => state.totalPrice);
+  const discount = +((totalPrice * 5) / 100).toFixed(2);
+  const totalPay = (totalPrice - discount).toFixed(2);
 
   const sm = useMediaMatch();
 
@@ -43,6 +45,14 @@ const BasketDev = () => {
             >
               <Remove />
             </button>
+            {item.size && (
+              <p className="font-semibold text-sm">
+                Option:{" "}
+                <span className="bg-text text-white rounded-s px-2 py-1">
+                  {item.size}
+                </span>
+              </p>
+            )}
           </li>
         ))}
       </ul>
@@ -56,7 +66,7 @@ const BasketDev = () => {
         {basketItems.length !== 0 && (
           <li className="text-text text-xl font-semibold flex items-center justify-between">
             Discounts:
-            <span className="text-2xl font-normal">-3.00</span>
+            <span className="text-2xl font-normal">-{discount}</span>
           </li>
         )}
 
@@ -79,7 +89,7 @@ const BasketDev = () => {
             Total to pay:
           </span>
           <span className="text-white font-semibold text-4xl px-4 py-5">
-            ${totalPrice.toFixed(2)}
+            ${totalPay}
           </span>
         </p>
         <button

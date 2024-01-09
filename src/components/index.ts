@@ -5,5 +5,15 @@ import Footer from "./footer";
 import GoToUp from "./go-to-up";
 import Header from "./header";
 import MotionDiv from "./motion-div";
+import Option from "./option";
 
-export { Basket, BasketDev, CustomModal, Footer, GoToUp, Header, MotionDiv };
+export {
+  Basket,
+  BasketDev,
+  CustomModal,
+  Footer,
+  GoToUp,
+  Header,
+  MotionDiv,
+  Option,
+};

@@ -1,8 +1,8 @@
 import { offer } from "@/assets/images";
-import { MealType } from "@/constants/types";
+import { MealType } from "@/constants/types/meal";
 import { useScrollDirection } from "@/useHooks";
 import AddToOrderBtn from "./add-to-order";
-import Options from "./optiions";
+import Options from "./options";
 
 const meals: MealType[] = [
   {
@@ -12,19 +12,32 @@ const meals: MealType[] = [
     description:
       "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
     options: [
-      { id: 1, price: 21.9, size: "Small" },
-      { id: 2, price: 25.9, size: "Medium" },
-      { id: 3, price: 27.9, size: "Large" },
-      { id: 4, price: 32.9, size: "XL Large with Sauces" },
+      { id: 11, price: 21.9, size: "Small" },
+      { id: 12, price: 25.9, size: "Medium" },
+      { id: 13, price: 27.9, size: "Large" },
+      { id: 14, price: 32.9, size: "XL Large with Sauces" },
     ],
   },
   {
     id: 3,
     title: "Fryday Burger",
-    price: 21.9,
+    // price: 21.9,
     img: offer,
+    options: [{ id: 31, price: 21.9 }],
     description:
       "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
+  },
+  {
+    id: 4,
+    title: "Coca Cola",
+    // price: 3.9,
+    img: offer,
+    options: [
+      { id: 41, price: 21.9, size: "Small" },
+      { id: 42, price: 25.9, size: "Medium" },
+      { id: 43, price: 27.9, size: "Large" },
+    ],
+    description: "Cold drink ",
   },
   {
     id: 2,
@@ -33,10 +46,10 @@ const meals: MealType[] = [
     description:
       "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
     options: [
-      { id: 1, price: 21.9, size: "Small" },
-      { id: 2, price: 25.9, size: "Medium" },
-      { id: 3, price: 27.9, size: "Large" },
-      { id: 4, price: 32.9, size: "XL Large with Sauces" },
+      { id: 21, price: 21.9, size: "Small" },
+      { id: 22, price: 25.9, size: "Medium" },
+      { id: 23, price: 27.9, size: "Large" },
+      { id: 24, price: 32.9, size: "XL Large with Sauces" },
     ],
   },
 ];
@@ -73,24 +86,20 @@ const Meals = () => {
             key={meal.id}
             className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow"
           >
-            <div className="px-4">
-              <div className="flex gap-3 mb-5 items-start justify-between">
-                <h4 className="text-xl font-semibold text-text">
-                  {meal.title}
-                </h4>
-
-                <img
-                  src={meal.img}
-                  alt={meal.title}
-                  className="w-28 h-28 object-cover rounded-full"
-                />
-              </div>
+            <div className="grid grid-cols-[1fr_auto] gap-3 mb-5 items-start justify-between px-4">
+              <h4 className="text-xl font-semibold text-text">{meal.title}</h4>
+              <img
+                src={meal.img}
+                alt={meal.title}
+                className="w-28 h-28 object-cover rounded-full row-span-2"
+              />
               <p className="text-sm mb-5">{meal.description}</p>
             </div>
-            {meal.options ? (
-              <Options options={meal.options} />
+
+            {meal?.options?.length > 1 ? (
+              <Options meal={meal} options={meal.options} />
             ) : (
-              <AddToOrderBtn meal={meal} selected />
+              <AddToOrderBtn meal={meal} selected={meal.options[0]} />
             )}
           </li>
         ))}

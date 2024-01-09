@@ -1,7 +1,8 @@
-import { OrderType as OrderWithoutQ } from "@/constants/types";
+import { OrderType as OrderWithoutQ } from "@/constants/types/meal";
 import { create } from "zustand";
 
-type OrderType = OrderWithoutQ & { quantity: number };
+type OrderType = OrderWithoutQ & { quantity: number } & { note?: string };
+
 interface BasketState {
   elements: OrderType[];
   totalPrice: number;
@@ -13,11 +14,10 @@ interface BasketState {
 }
 
 const findTotalPrice = (elements: OrderType[]) =>
-  elements.reduce(
-    (acc, order) =>
-      acc + (order.price ?? order.option?.price!) * order.quantity,
-    0
-  );
+  elements
+    .reduce((acc, order) => acc + order.price * order.quantity, 0)
+    .toFixed(2);
+
 const findTotalItems = (elements: OrderType[]) =>
   elements.reduce((acc, order) => acc + order.quantity, 0);
 
@@ -42,7 +42,7 @@ const useBasketStore = create<BasketState>()((set) => ({
         ? (existingOrder.quantity += 1)
         : (elements = [...state.elements, newOrder]);
 
-      totalPrice = findTotalPrice(elements);
+      totalPrice = +findTotalPrice(elements);
       totalItems = findTotalItems(elements);
 
       return {
@@ -59,7 +59,7 @@ const useBasketStore = create<BasketState>()((set) => ({
       ) as OrderType;
 
       findedOrder.quantity += action === "inc" ? 1 : -1;
-      totalPrice = findTotalPrice(elements);
+      totalPrice = +findTotalPrice(elements);
       totalItems = findTotalItems(elements);
 
       return {
@@ -72,7 +72,7 @@ const useBasketStore = create<BasketState>()((set) => ({
   removeBasketItem: (id: number) =>
     set((state) => {
       elements = state.elements.filter((meal) => meal.id !== id);
-      totalPrice = findTotalPrice(elements);
+      totalPrice = +findTotalPrice(elements);
       totalItems = findTotalItems(elements);
 
       return {

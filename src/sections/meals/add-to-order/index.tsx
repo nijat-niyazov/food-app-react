@@ -1,6 +1,7 @@
 import { Basket } from "@/components";
-import MenuModal from "@/components/c-modal/modal-contents";
-import { MealType } from "@/constants/types";
+import { MealNote } from "@/components/c-modal/modal-contents";
+
+import { MealType, OptionType } from "@/constants/types/meal";
 import { addToBasket } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { useMediaMatch } from "@/useHooks";
@@ -10,14 +11,18 @@ const AddToOrderBtn = ({
   notable = true,
   meal,
 }: {
-  selected: number | boolean;
+  selected: OptionType;
+  // | boolean | undefined;
   notable?: boolean;
   meal: MealType;
 }) => {
   const sm = useMediaMatch();
 
   const handleAddBasket = () => {
-    addToBasket(meal);
+    let { options, ...mymeal } = meal;
+    let newOrder = { ...mymeal, ...selected };
+
+    addToBasket(newOrder);
     sm && openModal(<Basket />);
   };
 
@@ -36,7 +41,7 @@ const AddToOrderBtn = ({
         </button>
         {notable && (
           <button
-            onClick={() => openModal(<MenuModal />)}
+            onClick={() => openModal(<MealNote />)}
             // style={{
             //   height: selected ? "40px" : "0px",
             // }}

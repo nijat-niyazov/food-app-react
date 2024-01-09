@@ -3,14 +3,16 @@ type MealType = {
   title: string;
   img: string;
   description: string;
-  options?: OptionType[];
-  price?: number;
+  options: OptionType[];
+  // option?: OptionType;
+
+  // price?: number;
 };
 
 type OptionType = {
   id: number;
   price: number;
-  size: string;
+  size?: string;
 };
 
 type OrderType = {
@@ -18,8 +20,8 @@ type OrderType = {
   title: string;
   img: string;
   description: string;
-  option?: OptionType;
-  price?: number;
+  size?: string;
+  price: number;
 };
 
 type BasketItemType = {
