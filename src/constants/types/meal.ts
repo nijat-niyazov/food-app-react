@@ -22,6 +22,7 @@ type OrderType = {
   description: string;
   size?: string;
   price: number;
+  note?: string;
 };
 
 type BasketItemType = {

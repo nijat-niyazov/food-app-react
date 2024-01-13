@@ -2,8 +2,8 @@ import { closeModal } from "@/stores/modal";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
-const MealNote = () => {
-  const [value, setValue] = useState("");
+const MealNote = ({ note }: { note: string }) => {
+  const [value, setValue] = useState(note);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -15,7 +15,7 @@ const MealNote = () => {
     const { success } = await delay();
 
     if (success) {
-      toast.success("Your note has been sent successfully");
+      toast.success("Your note is updated successfully");
       closeModal();
     } else {
       toast.error("Something went wrong \n Pease try again!");
@@ -32,19 +32,21 @@ const MealNote = () => {
         placeholder="Your note"
         name=""
         id="note"
+        rows={7}
+        cols={30}
         value={value}
-        maxLength={30}
+        // maxLength={30}
         className="border-1 bg-faq border-black/30 rounded-s p-4 outline-none"
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setValue(e.target.value)
         }
       />
       <button
-        disabled={value.length === 0 || isSubmitting}
+        disabled={value.length === 0 || isSubmitting || value === note}
         className="bg-secondary p-2 text-xl font-bold text-white rounded-s disabled:opacity-50 transition-opacity duration-200"
       >
         {!isSubmitting ? (
-          <span> Send</span>
+          <span> Edit</span>
         ) : (
           <div className="w-7 mx-auto h-7 rounded-full border-2 border-white border-t-black/20 animate-spin"></div>
         )}

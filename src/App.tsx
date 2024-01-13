@@ -5,10 +5,11 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { MainLayout } from "./layouts";
-import { Branches, HomePage, MenuPage } from "./pages";
+import { Branches, HomePage, MenuPage, NotFoundPage } from "./pages";
 
 const routes = (
   <Route path="/" element={<MainLayout />}>
+    <Route path="*" element={<NotFoundPage />} />
     <Route index element={<HomePage />} />
     <Route path="/menu">
       <Route path=":category" element={<MenuPage />} />

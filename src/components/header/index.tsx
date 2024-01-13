@@ -3,13 +3,16 @@ import { basket, girl, logo } from "@/assets/images";
 import { useBasketStore } from "@/stores";
 import { openModal } from "@/stores/modal";
 import { ChangeEvent, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 import { Basket } from "..";
+import { LoginModal } from "../c-modal/modal-contents";
 import MenuToggler from "./menu";
 import Theme from "./theme";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const [search, setSearch] = useState(searchParams.get("query") ?? "");
 
   const authorized = false;
   const totalItemsOfBasket = useBasketStore((state) => state.totalItems);
@@ -131,7 +134,7 @@ const Header = () => {
         <MenuToggler />
 
         <button
-          // onClick={handleOpen}
+          onClick={() => openModal(<LoginModal />)}
           className="px-7 md:flex hidden py-4 items-center gap-1 bg-text text-white rounded-full"
         >
           <User />

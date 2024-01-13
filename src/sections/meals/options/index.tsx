@@ -10,10 +10,10 @@ const Options = ({
   meal: MealType;
   options: OptionType[];
 }) => {
-  const [selected, setSelected] = useState<OptionType | undefined>(undefined);
+  const [selected, setSelected] = useState<OptionType | null>(null);
 
   const handleSelect = (id: number) =>
-    setSelected(options.find((option) => option.id === id));
+    setSelected(options.find((option) => option.id === id) as OptionType);
 
   return (
     <div className="flex flex-wrap justify-between gap-2">

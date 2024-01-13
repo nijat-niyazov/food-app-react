@@ -1,6 +1,7 @@
 import { offer } from "@/assets/images";
 import { MealType } from "@/constants/types/meal";
 import { useScrollDirection } from "@/useHooks";
+import { useLocation, useNavigate } from "react-router-dom";
 import AddToOrderBtn from "./add-to-order";
 import Options from "./options";
 
@@ -52,10 +53,60 @@ const meals: MealType[] = [
       { id: 24, price: 32.9, size: "XL Large with Sauces" },
     ],
   },
+  {
+    id: 51,
+    title: "Farm House Xtreme Pizza",
+    img: offer,
+    description:
+      "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+    options: [
+      { id: 511, price: 21.9, size: "Small" },
+      { id: 512, price: 25.9, size: "Medium" },
+      { id: 513, price: 27.9, size: "Large" },
+      { id: 514, price: 32.9, size: "XL Large with Sauces" },
+    ],
+  },
+  {
+    id: 53,
+    title: "Fryday Burger",
+    // price: 21.9,
+    img: offer,
+    options: [{ id: 531, price: 21.9 }],
+    description:
+      "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
+  },
+  {
+    id: 54,
+    title: "Coca Cola",
+    // price: 3.9,
+    img: offer,
+    options: [
+      { id: 541, price: 21.9, size: "Small" },
+      { id: 542, price: 25.9, size: "Medium" },
+      { id: 543, price: 27.9, size: "Large" },
+    ],
+    description: "Cold drink ",
+  },
+  {
+    id: 52,
+    title: "Farm House Xtreme Pizza",
+    img: offer,
+    description:
+      "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+    options: [
+      { id: 521, price: 21.9, size: "Small" },
+      { id: 522, price: 25.9, size: "Medium" },
+      { id: 523, price: 27.9, size: "Large" },
+      { id: 524, price: 32.9, size: "XL Large with Sauces" },
+    ],
+  },
 ];
 
 const Meals = () => {
   const scrollDirection = useScrollDirection();
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className="container">
@@ -75,7 +126,14 @@ const Meals = () => {
 
       <div className="flex items-center justify-between mb-6">
         <h4 className="text-3xl font-semibold">Pizzas</h4>
-        <button className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10">
+        <button
+          onClick={() => {
+            console.log("sort");
+
+            navigate(`${pathname}?sort=priceHigh`);
+          }}
+          className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10"
+        >
           Sort by Price
         </button>
       </div>

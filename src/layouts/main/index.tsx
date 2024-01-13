@@ -12,28 +12,21 @@ const MainLayout = () => {
       <CustomModal />
 
       <Outlet />
-      {/* </div> */}
-      {/* </div> */}
+
       <GoToUp />
       <Footer />
       <Toaster
         position="top-center"
         reverseOrder={false}
         gutter={8}
-        containerClassName=""
-        containerStyle={{}}
         toastOptions={{
-          // Define default options
-          className: "",
+          className: "w-full whitespace-nowrap bg-primary  ",
           duration: 5000,
           style: {
             background: "#363636",
             color: "#fff",
-          },
-
-          // Default options for specific types
-          success: {
-            duration: 3000,
+            width: "100%",
+            height: "10%",
           },
         }}
       />
