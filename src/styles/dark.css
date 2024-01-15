@@ -1,0 +1,5 @@
+html[data-theme="dark"] {
+  --primary: #028643;
+  --secondary: #fc8a06;
+  --text: #fc8a06;
+}
