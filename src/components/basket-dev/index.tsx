@@ -10,8 +10,6 @@ const BasketDev = () => {
   const discount = +((totalPrice * 5) / 100).toFixed(2);
   const totalPay = (totalPrice - discount).toFixed(2);
 
-  console.log("basketItems", basketItems);
-
   const sm = useMediaMatch();
 
   return (

@@ -1,6 +1,6 @@
+import { MenuModal } from "@/components/c-modal/modal-contents";
 import useModalStore, { openModal } from "@/stores/modal";
 import { useEffect, useState } from "react";
-import MenuModal from "../../c-modal/modal-contents/meal-note";
 
 const MenuToggler = () => {
   const modalIsOpened = useModalStore((state) => state.opened);

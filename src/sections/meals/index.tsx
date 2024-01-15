@@ -1,7 +1,8 @@
 import { offer } from "@/assets/images";
 import { MealType } from "@/constants/types/meal";
 import { useScrollDirection } from "@/useHooks";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import AddToOrderBtn from "./add-to-order";
 import Options from "./options";
 
@@ -104,8 +105,10 @@ const meals: MealType[] = [
 
 const Meals = () => {
   const scrollDirection = useScrollDirection();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selected, setSelected] = useState(0);
 
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
 
   return (
@@ -130,7 +133,7 @@ const Meals = () => {
           onClick={() => {
             console.log("sort");
 
-            navigate(`${pathname}?sort=priceHigh`);
+            // navigate(`${pathname + search}?sort=priceHigh`);
           }}
           className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10"
         >
