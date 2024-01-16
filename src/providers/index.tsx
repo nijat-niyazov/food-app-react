@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ElementType } from "react";
+import { ElementType, ReactNode } from "react";
 
 type ProviderType = [ElementType, Record<string, unknown>];
 
@@ -7,7 +7,7 @@ const providers: ProviderType[] = [
   [QueryClientProvider, { client: new QueryClient() }],
 ];
 
-const initialComponent = ({ children }: { children: ElementType[] }) => (
+const initialComponent = ({ children }: { children: ReactNode[] }) => (
   <>{children}</>
 );
 
@@ -16,13 +16,15 @@ const buildProvidersTree = (allProviders: ProviderType[]) =>
     (
       AccumulatedComponents: ElementType,
       [Provider, props = {}]: ProviderType
-    ) => {
-      return ({ children }) => (
-        <AccumulatedComponents>
-          <Provider {...props}>{children}</Provider>
-        </AccumulatedComponents>
-      );
-    },
+    ) =>
+      // props is defaultly an empty object if props  are not provided
+      {
+        return ({ children }) => (
+          <AccumulatedComponents>
+            <Provider {...props}>{children}</Provider>
+          </AccumulatedComponents>
+        );
+      },
     initialComponent
   );
 
