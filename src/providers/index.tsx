@@ -1,34 +1,31 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ElementType } from "react";
 
-const queryClient = new QueryClient();
+type ProviderType = [ElementType, Record<string, unknown>];
 
-type ProvidersType = [ElementType, Record<string, unknown>];
+const providers: ProviderType[] = [
+  [QueryClientProvider, { client: new QueryClient() }],
+];
 
-const buildProvidersTree = (componentsWithProps: ProvidersType[]) => {
-  const initialComponent = ({ children }: { children: ElementType[] }) => (
-    <>{children}</>
-  );
+const initialComponent = ({ children }: { children: ElementType[] }) => (
+  <>{children}</>
+);
 
-  return componentsWithProps.reduce(
+const buildProvidersTree = (allProviders: ProviderType[]) =>
+  allProviders.reduce(
     (
       AccumulatedComponents: ElementType,
-      [Provider, props = {}]: ProvidersType
+      [Provider, props = {}]: ProviderType
     ) => {
-      return ({ children }) => {
-        return (
-          <AccumulatedComponents>
-            <Provider {...props}>{children}</Provider>
-          </AccumulatedComponents>
-        );
-      };
+      return ({ children }) => (
+        <AccumulatedComponents>
+          <Provider {...props}>{children}</Provider>
+        </AccumulatedComponents>
+      );
     },
     initialComponent
   );
-};
 
-const ProvidersTree = buildProvidersTree([
-  [QueryClientProvider, { client: queryClient }],
-]);
+const ProvidersTree = buildProvidersTree(providers);
 
 export default ProvidersTree;

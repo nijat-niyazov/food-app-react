@@ -4,9 +4,9 @@ import ProvidersTree from "./providers/index.tsx";
 import "./styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <React.StrictMode>
   <ProvidersTree>
     <App />
   </ProvidersTree>
-  // </React.StrictMode>
 );
+// <React.StrictMode>
+// </React.StrictMode>
