@@ -4,15 +4,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { MainLayout } from "./layouts";
-import { Branches, HomePage, MenuPage, NotFoundPage } from "./pages";
+import { MainLayout, MenuLayout } from "./layouts";
+import { Branches, HomePage, Meals, NotFoundPage, SpecialMeal } from "./pages";
 
 const routes = (
   <Route path="/" element={<MainLayout />}>
     <Route path="*" element={<NotFoundPage />} />
     <Route index element={<HomePage />} />
-    <Route path="/menu">
-      <Route path=":category" element={<MenuPage />} />
+    <Route path="/menu" element={<MenuLayout />}>
+      <Route path=":category" element={<Meals />} />
+      <Route path="special" element={<SpecialMeal />} />
     </Route>
     <Route path="/branches" element={<Branches />} />
   </Route>

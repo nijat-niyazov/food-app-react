@@ -1,10 +1,10 @@
 import { Shopping, User } from "@/assets/icons";
 import { basket, girl, logo } from "@/assets/images";
+import { LoginModal } from "@/components/modal-contents";
 import { useBasketStore } from "@/stores";
 import { openModal } from "@/stores/modal";
 import { Link, NavLink } from "react-router-dom";
 import { Basket } from "..";
-import { LoginModal } from "../c-modal/modal-contents";
 import { HeaderSearch, MenuToggler, Theme } from "./components";
 
 const Header = () => {
@@ -27,7 +27,7 @@ const Header = () => {
         <ul className="flex  bg-secondary rounded-b-xl text-base font-semibold text-white">
           <li className="border-r-1 border-white px-6 py-3 border-opacity-30 relative">
             <button
-              onClick={() => openModal(<Basket />)}
+              onClick={() => openModal(<Basket />, 90)}
               className="w-full h-full"
             >
               <Shopping />
@@ -68,7 +68,7 @@ const Header = () => {
           </NavLink>
           <NavLink
             onClick={() => console.log()}
-            to="/menu"
+            to="/menu/fast-food"
             className={({ isActive }) =>
               [
                 isActive ? "bg-primary text-white" : "",

@@ -19,7 +19,7 @@ const BasketDev = () => {
         My Basket
       </h3>
 
-      <div className="md:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
+      <div className="md:hover:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
         <div className="grid gap-3 ">
           {basketItems?.map((item, i) => (
             <BasketDevItem key={i} item={item} />

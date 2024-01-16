@@ -1,4 +1,4 @@
-import { ConfirmationOrder } from "@/components/c-modal/modal-contents";
+import { ConfirmationOrder } from "@/components/modal-contents";
 
 import { MealType, OptionType } from "@/constants/types/meal";
 import { openModal } from "@/stores/modal";

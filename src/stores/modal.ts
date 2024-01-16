@@ -5,8 +5,9 @@ type contentType = JSX.Element | ReactNode | null;
 interface ModalState {
   content: contentType;
   opened: boolean;
+  modalWidth: number | undefined;
   closeBtn?: boolean;
-  openModal: (content: contentType) => void;
+  openModal: (content: contentType, modalWidth?: number) => void;
   closeModal: () => void;
   hideCloseBtn: () => void;
 }
@@ -14,8 +15,10 @@ interface ModalState {
 const useModalStore = create<ModalState>()((set) => ({
   content: null,
   opened: false,
+  modalWidth: undefined,
   closeBtn: true,
-  openModal: (content: contentType) => set({ content, opened: true }),
+  openModal: (content: contentType, modalWidth?: number) =>
+    set({ content, modalWidth, opened: true }),
   closeModal: () => set({ opened: false }),
   hideCloseBtn: () => set({ closeBtn: false }),
 }));

@@ -1,10 +1,10 @@
 import { NoteICon, Remove } from "@/assets/icons";
+import { MealNote } from "@/components/modal-contents";
 import { BasketItemType } from "@/constants/types/meal";
 import { removeBasketItem } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
 import { MotionDiv } from "..";
-import { MealNote } from "../c-modal/modal-contents";
 
 function BasketDevItem({ item }: { item: BasketItemType }) {
   return (

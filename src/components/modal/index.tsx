@@ -1,16 +1,18 @@
 import { close } from "@/assets/images";
 import { useModalStore } from "@/stores/";
 import { Dialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { Fragment } from "react";
 
 const CustomModal = () => {
-  const contentofModal = useModalStore((state) => state.content);
-  const isOpen = useModalStore((state) => state.opened);
-  const closeModal = useModalStore((state) => state.closeModal);
-  const closeBtn = useModalStore((state) => state.closeBtn);
+  const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore(
+    (state) => state
+  );
+
+  const width = (modalWidth ?? 30) + "%";
 
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <Transition appear show={opened} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
@@ -35,7 +37,14 @@ const CustomModal = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full relative  max-w-md transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel
+                style={{
+                  width,
+                }}
+                className={clsx(
+                  "relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all"
+                )}
+              >
                 {closeBtn && (
                   <button
                     onClick={closeModal}
@@ -45,7 +54,7 @@ const CustomModal = () => {
                   </button>
                 )}
 
-                {contentofModal}
+                {content}
               </Dialog.Panel>
             </Transition.Child>
           </div>

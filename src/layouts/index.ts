@@ -1,3 +1,4 @@
 import MainLayout from "./main";
+import MenuLayout from "./menu";
 
-export { MainLayout };
+export { MainLayout, MenuLayout };
