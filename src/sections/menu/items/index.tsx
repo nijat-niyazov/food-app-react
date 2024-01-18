@@ -1,4 +1,15 @@
-import { menu_book } from "@/assets/images";
+import {
+  alkoqolsuz,
+  breakfast,
+  burger,
+  cheese,
+  desert,
+  georgian,
+  main,
+  menu_book,
+  salad,
+  soup,
+} from "@/assets/images";
 import { MotionDiv } from "@/components";
 import { NavLink } from "react-router-dom";
 
@@ -22,90 +33,123 @@ const MenuItems = () => {
           <p className="text-black font-semibold text-3xl">Menu</p>
         </div>
 
-        <div className="grid gap-5 md:max-h-[84vh] hover:overflow-y-scroll">
+        <div className="grid gap-5 md:max-h-[84vh] overflow-hidden hover:overflow-y-scroll">
           <NavLink
             to={"/menu/menu"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2  ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
-            Offers
+            <img src={georgian} alt="" className="w-12 h-12" /> Offers
           </NavLink>
           <NavLink
             to={"/menu/fast-food"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 ",
+                " font-bold text-text text-xl px-8 py-2  flex gap-3 items-center",
               ].join(" ")
             }
           >
-            Fast&Food
+            <img src={burger} alt="" className="w-12 h-12" /> Fast&Food
           </NavLink>
           <NavLink
             to={"/menu/f"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 hover:bg-text/50 ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
-            Pasta
+            <img src={georgian} alt="" className="w-12 h-12" /> Pasta
           </NavLink>
           <NavLink
             to={"/menu/e"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 hover:bg-text/50 ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
-            Vegetarian
+            <img src={main} alt="" className="w-12 h-12" /> Main
+          </NavLink>
+          <NavLink
+            to={"/menu/e"}
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-text text-white" : "text-text ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+              ].join(" ")
+            }
+          >
+            <img src={soup} alt="" className="w-12 h-12" /> Soup
+          </NavLink>
+          <NavLink
+            to={"/menu/e"}
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-text text-white" : "text-text ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+              ].join(" ")
+            }
+          >
+            <img src={cheese} alt="" className="w-12 h-12" /> Vegetarian
           </NavLink>
           <NavLink
             to={"/menu/drinks"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 hover:bg-text/50 ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
-            Drinks
+            <img src={alkoqolsuz} alt="" className="w-12 h-12" /> Drinks
           </NavLink>
           <NavLink
             to={"/menu/salads"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 hover:bg-text/50 ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
-            Salads
+            <img src={salad} alt="" className="w-12 h-12" /> Salads
           </NavLink>
           <NavLink
             to={"/menu/q"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 hover:bg-text/50 ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
-            Desserts
+            <img src={desert} alt="" className="w-12 h-12" /> Desserts
+          </NavLink>
+          <NavLink
+            to={"/menu/q"}
+            className={({ isActive }) =>
+              [
+                isActive ? "bg-text text-white" : "text-text ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+              ].join(" ")
+            }
+          >
+            <img src={breakfast} alt="" className="w-12 h-12" /> Breakfast
           </NavLink>
           <NavLink
             to={"/menu/special"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2  ",
+                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
