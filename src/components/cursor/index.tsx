@@ -6,7 +6,7 @@ const Console = () => {
         <li>H</li>
         <li>H</li>
         <li className="bg-primary absolute top-0 translate-y-1/2 rounded-full p-4">
-          H
+          T
         </li>
         <li>H</li>
         <li>H</li>
