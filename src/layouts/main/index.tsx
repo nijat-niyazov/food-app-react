@@ -15,6 +15,7 @@ const MainLayout = () => {
 
       <GoToUp />
       <Footer />
+
       {/* <Console /> */}
       <Toaster
         position="top-center"
