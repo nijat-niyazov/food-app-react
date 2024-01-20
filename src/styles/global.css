@@ -60,7 +60,7 @@ html[data-theme="dark"] {
 }
 
 .slow-spin {
-  animation: spin 10s linear infinite;
+  animation: spin 40s linear infinite;
 }
 
 .offer-shadow {

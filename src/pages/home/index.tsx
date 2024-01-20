@@ -1,5 +1,5 @@
 import { MotionDiv } from "@/components";
-import { DiscountMenu, FAQ, Hire, MealCategories } from "@/sections/home";
+import { FAQ, Hire, MealCategories } from "@/sections/home";
 
 const HomePage = () => {
   return (
@@ -8,7 +8,7 @@ const HomePage = () => {
       // animate={{ x: 0, transitionDelay: "250ms" }}
       className="container mb-20 grid gap-10"
     >
-      <DiscountMenu />
+      {/* <DiscountMenu /> */}
       <MealCategories />
       <Hire />
       <FAQ />

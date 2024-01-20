@@ -4,10 +4,12 @@ import {
   burger,
   cheese,
   desert,
+  fast_food,
   georgian,
   main,
   menu_book,
   salad,
+  snacks,
   soup,
 } from "@/assets/images";
 import { MotionDiv } from "@/components";
@@ -39,18 +41,19 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center  ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
-            <img src={georgian} alt="" className="w-12 h-12" /> Offers
+            <img src={fast_food} alt="" className="w-12 h-12 object-cover" />{" "}
+            Offers
           </NavLink>
           <NavLink
             to={"/menu/fast-food"}
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2  flex gap-3 items-center",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2  flex gap-3 items-center",
               ].join(" ")
             }
           >
@@ -61,7 +64,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -72,7 +75,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -83,7 +86,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -94,7 +97,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -105,7 +108,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -116,7 +119,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -127,7 +130,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -138,7 +141,7 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
               ].join(" ")
             }
           >
@@ -149,11 +152,11 @@ const MenuItems = () => {
             className={({ isActive }) =>
               [
                 isActive ? "bg-text text-white" : "text-text ",
-                " font-bold text-text text-xl px-8 py-2 flex gap-3 items-center  ",
+                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
-            Special Request
+            <img src={snacks} alt="" className="w-12 h-12" /> Special Request
           </NavLink>
         </div>
       </div>
