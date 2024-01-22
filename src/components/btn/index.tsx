@@ -6,7 +6,7 @@ type CustomButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 let defaultClasses =
-  "hover:opacity-80 duration-200 transition-all text-white rounded-md text-2xl px-8 py-2 font-bold disabled:opacity-50";
+  "hover:opacity-80 duration-200 transition-all text-white rounded-md text-2xl px-8 py-2 font-bold disabled:opacity-0 disabled:pointer-events-none";
 
 const CustomButton = ({
   variant,

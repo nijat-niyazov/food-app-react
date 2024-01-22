@@ -11,8 +11,8 @@ import {
 export const options = {
   pizza: [
     {
-      category: "Size",
-      sizes: [
+      categoryName: "Size",
+      choices: [
         {
           img: lil_pizza,
           name: "Small",
@@ -37,13 +37,13 @@ export const options = {
       ],
     },
     {
-      category: "Ingredients",
-      ingredients: [
+      categoryName: "Ingredients",
+      options: [
         {
           heading: "Meat Toppings",
           imgHeading: hamburger,
           type: "radio",
-          options: [
+          choices: [
             {
               name: "Beef",
               id: "beef",
@@ -70,7 +70,7 @@ export const options = {
           heading: "Cheese Toppings",
           imgHeading: cheese,
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Cheader",
               id: "cheader",
@@ -96,7 +96,7 @@ export const options = {
         {
           heading: "Vegitable Toppings",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Peppers",
               id: "peppers",
@@ -118,12 +118,12 @@ export const options = {
       ],
     }, // Ingredients
     {
-      category: "Condiments & Extras",
-      condiments: [
+      categoryName: "Condiments & Extras",
+      options: [
         {
           heading: "Condiments",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Ketchup",
               id: "ketchup",
@@ -149,7 +149,7 @@ export const options = {
         {
           heading: "Extras",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Garlic Butter Drizzle",
               id: "garlic_butter_drizzle",
@@ -165,8 +165,8 @@ export const options = {
 
   burger: [
     {
-      category: "Size",
-      sizes: [
+      categoryName: "Size",
+      choices: [
         {
           img: burger,
           name: "Regular",
@@ -180,13 +180,13 @@ export const options = {
       ],
     }, // SIZE
     {
-      category: "Ingredients",
-      ingredients: [
+      categoryName: "Ingredients",
+      options: [
         {
           heading: "Meat Toppings",
           imgHeading: hamburger,
           type: "radio",
-          options: [
+          choices: [
             {
               name: "Beef",
               id: "beef",
@@ -213,7 +213,7 @@ export const options = {
           heading: "Cheese Toppings",
           imgHeading: cheese,
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Cheader",
               id: "cheader",
@@ -239,7 +239,7 @@ export const options = {
         {
           heading: "Vegitable Toppings",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Peppers",
               id: "peppers",
@@ -261,12 +261,12 @@ export const options = {
       ],
     }, // Ingredients
     {
-      category: "Condiments & Extras",
-      condiments: [
+      categoryName: "Condiments & Extras",
+      options: [
         {
           heading: "Condiments",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Ketchup",
               id: "ketchup",
@@ -292,7 +292,7 @@ export const options = {
         {
           heading: "Extras",
           type: "checkbox",
-          options: [
+          choices: [
             {
               name: "Garlic Butter Drizzle",
               id: "garlic_butter_drizzle",
