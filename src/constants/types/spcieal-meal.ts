@@ -1,8 +1,9 @@
 type Choices = {
   name: string;
   id: string;
+  des?: string;
   img?: string; // Assuming img is a URL or path
-  price?: number; // Price is choicesal for some choices
+  price: number; // Price is choicesal for some choices
 };
 
 type SizeType = {

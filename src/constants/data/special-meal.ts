@@ -40,78 +40,90 @@ export const options = {
       categoryName: "Ingredients",
       options: [
         {
-          heading: "Meat Toppings",
+          heading: "Meat",
           imgHeading: hamburger,
           type: "radio",
           choices: [
             {
+              img: meat,
               name: "Beef",
               id: "beef",
-              img: meat,
+              price: 22.99,
             },
             {
               name: "Chicken",
               id: "chicken",
               img: chicken,
+              price: 22.99,
             },
             {
               name: "Tuna",
               id: "tuna",
               img: tuna,
+              price: 22.99,
             },
-            {
-              name: "Goki",
-              id: "goki",
-              img: tuna,
-            },
+            // {
+            //   name: "Goki",
+            //   id: "goki",
+            //   img: tuna,
+            // },
           ],
         },
         {
-          heading: "Cheese Toppings",
+          heading: "Cheese",
           imgHeading: cheese,
           type: "checkbox",
           choices: [
             {
               name: "Cheader",
               id: "cheader",
+              price: 1.5,
             },
             {
               name: "Mozarella",
               id: "mozarella",
+              price: 1.5,
             },
             {
               name: "American",
               id: "american",
+              price: 1.5,
             },
             {
               name: "Blue Cheese",
               id: "blue_cheese",
+              price: 1.5,
             },
             {
               name: "Pepper Jack",
               id: "pepper_jack",
+              price: 1.5,
             },
           ],
         },
         {
-          heading: "Vegitable Toppings",
+          heading: "Vegitable",
           type: "checkbox",
           choices: [
             {
               name: "Peppers",
               id: "peppers",
+              price: 1.5,
             },
             {
               name: "Mushrooms",
               id: "mushrooms",
+              price: 1.5,
             },
             {
-              name: "Onion",
-              id: "onion",
+              name: "Onions",
+              id: "onions",
+              price: 1.5,
             },
             {
               name: "Tomato",
               id: "tomato",
+              price: 1.5,
             },
           ],
         },
@@ -127,22 +139,27 @@ export const options = {
             {
               name: "Ketchup",
               id: "ketchup",
+              price: 1.5,
             },
             {
               name: "Mayonnaise",
               id: "mayonnaise",
+              price: 1.5,
             },
             {
               name: "Mustard",
               id: "mustard",
+              price: 1.5,
             },
             {
               name: "BBQ",
               id: "bbq",
+              price: 1.5,
             },
             {
               name: "Garlic",
               id: "garlic",
+              price: 1.5,
             },
           ],
         },
@@ -183,7 +200,7 @@ export const options = {
       categoryName: "Ingredients",
       options: [
         {
-          heading: "Meat Toppings",
+          heading: "Meat",
           imgHeading: hamburger,
           type: "radio",
           choices: [
@@ -202,15 +219,15 @@ export const options = {
               id: "tuna",
               img: tuna,
             },
-            {
-              name: "Goki",
-              id: "goki",
-              img: tuna,
-            },
+            // {
+            //   name: "Goki",
+            //   id: "goki",
+            //   img: tuna,
+            // },
           ],
         },
         {
-          heading: "Cheese Toppings",
+          heading: "Cheese",
           imgHeading: cheese,
           type: "checkbox",
           choices: [
@@ -237,7 +254,7 @@ export const options = {
           ],
         },
         {
-          heading: "Vegitable Toppings",
+          heading: "Vegitable",
           type: "checkbox",
           choices: [
             {
@@ -249,8 +266,8 @@ export const options = {
               id: "mushrooms",
             },
             {
-              name: "Onion",
-              id: "onion",
+              name: "Onions",
+              id: "onions",
             },
             {
               name: "Tomato",

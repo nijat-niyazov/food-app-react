@@ -1,24 +1,25 @@
 import { CustomButton } from "@/components";
-import { Dispatch, SetStateAction } from "react";
 
 type FormButtonProps = {
   currentStep: number;
-  setCurrentStep: Dispatch<SetStateAction<number>>;
+  handleStep: (route?: "forward") => void;
   lastStep: boolean;
   isValid: boolean;
+  disabled?: any;
 };
 
 const Buttons = ({
   currentStep,
-  setCurrentStep,
+  handleStep,
   lastStep,
   isValid,
+  disabled,
 }: FormButtonProps) => {
   return (
     <div className="flex gap-2 items-center justify-end">
       <CustomButton
         disabled={currentStep === 0}
-        onClick={() => setCurrentStep((p) => p - 1)}
+        onClick={() => handleStep()}
         type="button"
         variant="primary"
       >
@@ -27,9 +28,9 @@ const Buttons = ({
 
       <CustomButton
         variant="success"
-        disabled={!isValid}
+        disabled={!isValid || !disabled}
         className="disabled:opacity-50"
-        onClick={() => setCurrentStep((p) => p + 1)}
+        onClick={() => handleStep("forward")}
         type={lastStep ? "submit" : "button"}
       >
         {lastStep ? "Finish " : "Next"}
