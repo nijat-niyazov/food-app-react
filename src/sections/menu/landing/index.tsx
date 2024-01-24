@@ -1,5 +1,3 @@
-import { Clock } from "@/assets/icons";
-import { fast_food } from "@/assets/images";
 import { MotionDiv } from "@/components";
 
 const LandingMenu = () => {
@@ -16,7 +14,7 @@ const LandingMenu = () => {
       }}
       className="relative mb-20 container"
     >
-      <img
+      {/* <img
         src={fast_food}
         alt="fast_food"
         className=" brightness-50 opacity-30"
@@ -27,7 +25,7 @@ const LandingMenu = () => {
         <span className="text-white text-lg font-semibold">
           Open until 3:00 AM
         </span>
-      </p>
+      </p> */}
     </MotionDiv>
   );
 };
