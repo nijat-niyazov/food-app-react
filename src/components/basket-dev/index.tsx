@@ -1,4 +1,4 @@
-import useBasketStore, { clearBasket } from "@/stores/basket";
+import { clearBasket, useBasketStore } from "@/stores/basket";
 
 import { ArrowDown } from "@/assets/icons";
 import { useMediaMatch } from "@/useHooks";
@@ -15,9 +15,7 @@ const BasketDev = () => {
 
   return (
     <div className="bg-faq rounded-xl border-1 border-black/20 sticky top-5 ">
-      <h3 className="text-white rounded-t-xl bg-secondary font-semibold text-3xl py-5 px-12 w-full ">
-        My Basket
-      </h3>
+      <h3 className="text-white rounded-t-xl bg-secondary font-semibold text-3xl py-5 px-12 w-full ">My Basket</h3>
 
       <div className="md:hover:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
         <div className="grid gap-3 ">
@@ -29,9 +27,7 @@ const BasketDev = () => {
         <ul className="grid gap-5 px-5 py-8 border-b-1 border-black/20">
           <li className="text-text text-xl font-semibold flex items-center justify-between">
             Sub Total:
-            <span className="text-2xl font-normal">
-              ${totalPrice.toFixed(2)}
-            </span>
+            <span className="text-2xl font-normal">${totalPrice.toFixed(2)}</span>
           </li>
 
           {basketItems.length !== 0 && (
@@ -48,20 +44,13 @@ const BasketDev = () => {
         </ul>
 
         <div className="px-3 pb-3">
-          <button
-            onClick={clearBasket}
-            className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 my-4"
-          >
+          <button onClick={clearBasket} className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 my-4">
             Remove All
           </button>
 
           <p className="bg-primary rounded-lg border-1 border-black/10 flex items-center justify-between mb-4">
-            <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">
-              Total to pay:
-            </span>
-            <span className="text-white font-semibold text-4xl px-4 py-5">
-              ${totalPay}
-            </span>
+            <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay:</span>
+            <span className="text-white font-semibold text-4xl px-4 py-5">${totalPay}</span>
           </p>
           <button
             disabled={basketItems.length < 1}

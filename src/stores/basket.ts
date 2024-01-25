@@ -13,19 +13,15 @@ interface BasketState {
   clearBasket: () => void;
 }
 
-const findTotalPrice = (elements: OrderType[]) =>
-  elements
-    .reduce((acc, order) => acc + order.price * order.quantity, 0)
-    .toFixed(2);
+const findTotalPrice = (elements: OrderType[]) => elements.reduce((acc, order) => acc + order.price * order.quantity, 0).toFixed(2);
 
-const findTotalItems = (elements: OrderType[]) =>
-  elements.reduce((acc, order) => acc + order.quantity, 0);
+const findTotalItems = (elements: OrderType[]) => elements.reduce((acc, order) => acc + order.quantity, 0);
 
 let elements: OrderType[] = [];
 let totalPrice: number = 0;
 let totalItems: number = 0;
 
-const useBasketStore = create<BasketState>()((set) => ({
+export const useBasketStore = create<BasketState>()((set) => ({
   elements,
   totalPrice,
   totalItems,
@@ -34,13 +30,9 @@ const useBasketStore = create<BasketState>()((set) => ({
     set((state) => {
       const newOrder = { ...order, quantity: 1 };
 
-      let existingOrder = state.elements.find(
-        (meal) => meal.id === newOrder.id
-      );
+      let existingOrder = state.elements.find((meal) => meal.id === newOrder.id);
 
-      existingOrder
-        ? (existingOrder.quantity += 1)
-        : (elements = [...state.elements, newOrder]);
+      existingOrder ? (existingOrder.quantity += 1) : (elements = [...state.elements, newOrder]);
 
       totalPrice = +findTotalPrice(elements);
       totalItems = findTotalItems(elements);
@@ -54,9 +46,7 @@ const useBasketStore = create<BasketState>()((set) => ({
 
   updateBasketItem: (id: number, action: "inc" | "dec") =>
     set((state) => {
-      const findedOrder = state.elements.find(
-        (meal) => meal.id === id
-      ) as OrderType;
+      const findedOrder = state.elements.find((meal) => meal.id === id) as OrderType;
 
       findedOrder.quantity += action === "inc" ? 1 : -1;
       totalPrice = +findTotalPrice(elements);
@@ -90,4 +80,4 @@ export const updateBasketItem = useBasketStore.getState().updateBasketItem;
 export const removeBasketItem = useBasketStore.getState().removeBasketItem;
 export const clearBasket = useBasketStore.getState().clearBasket;
 
-export default useBasketStore;
+// export default useBasketStore;

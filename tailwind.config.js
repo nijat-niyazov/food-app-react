@@ -23,6 +23,7 @@ module.exports = {
 
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        sans: ["Sans-serif", "sans-serif"],
       },
     },
     container: {

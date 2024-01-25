@@ -28,11 +28,7 @@ const CustomButton = ({
   }
 
   return (
-    <button
-      {...otherProps}
-      type={type}
-      className={cn(defaultClasses, cls, className)}
-    >
+    <button {...otherProps} type={type} className={cn(defaultClasses, cls, className)}>
       {children}
     </button>
   );

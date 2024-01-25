@@ -1,5 +1,4 @@
-import { useBasketStore } from "@/stores";
-import { clearBasket } from "@/stores/basket";
+import { clearBasket, useBasketStore } from "@/stores/basket";
 import BasketItem from "./item";
 
 const Basket = () => {
@@ -17,17 +16,10 @@ const Basket = () => {
       </ul>
 
       <p className="bg-primary rounded-lg border-1 border-black/10 mx-2 my-5 flex items-center justify-between ">
-        <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">
-          Total to pay
-        </span>
-        <span className="text-white font-semibold text-4xl px-4 py-5">
-          ${totalPrice.toFixed(2)}
-        </span>
+        <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay</span>
+        <span className="text-white font-semibold text-4xl px-4 py-5">${totalPrice.toFixed(2)}</span>
       </p>
-      <button
-        onClick={clearBasket}
-        className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 "
-      >
+      <button onClick={clearBasket} className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 ">
         Clear Basket
       </button>
     </div>

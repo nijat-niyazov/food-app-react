@@ -12,13 +12,12 @@ interface ModalState {
   hideCloseBtn: () => void;
 }
 
-const useModalStore = create<ModalState>()((set) => ({
+export const useModalStore = create<ModalState>()((set) => ({
   content: null,
   opened: false,
   modalWidth: undefined,
   closeBtn: true,
-  openModal: (content: contentType, modalWidth?: number) =>
-    set({ content, modalWidth, opened: true }),
+  openModal: (content: contentType, modalWidth?: number) => set({ content, modalWidth, opened: true }),
   closeModal: () => set({ opened: false }),
   hideCloseBtn: () => set({ closeBtn: false }),
 }));
@@ -26,5 +25,3 @@ const useModalStore = create<ModalState>()((set) => ({
 export const openModal = useModalStore.getState().openModal;
 export const closeModal = useModalStore.getState().closeModal;
 export const hideCloseBtn = useModalStore.getState().closeModal;
-
-export default useModalStore;

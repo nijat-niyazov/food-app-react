@@ -1,9 +1,4 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { MainLayout, MenuLayout } from "./layouts";
 import { Branches, HomePage, Meals, NotFoundPage, SpecialMeal } from "./pages";
 

@@ -1,5 +1,5 @@
 import { MenuModal } from "@/components/modal-contents";
-import useModalStore, { openModal } from "@/stores/modal";
+import { openModal, useModalStore } from "@/stores/modal";
 import { useEffect, useState } from "react";
 
 const MenuToggler = () => {

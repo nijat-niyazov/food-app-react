@@ -1,13 +1,11 @@
 import { close } from "@/assets/images";
-import { useModalStore } from "@/stores/";
+import { useModalStore } from "@/stores/modal";
 import { Dialog, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment } from "react";
 
 const CustomModal = () => {
-  const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore(
-    (state) => state
-  );
+  const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore((state) => state);
 
   const width = (modalWidth ?? 30) + "%";
 
@@ -41,15 +39,10 @@ const CustomModal = () => {
                 style={{
                   width,
                 }}
-                className={clsx(
-                  "relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all"
-                )}
+                className={clsx("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
               >
                 {closeBtn && (
-                  <button
-                    onClick={closeModal}
-                    className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
-                  >
+                  <button onClick={closeModal} className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3">
                     <img src={close} alt="menu" className="w-8 h-8" />
                   </button>
                 )}

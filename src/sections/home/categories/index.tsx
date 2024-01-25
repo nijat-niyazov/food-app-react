@@ -13,9 +13,7 @@ const meals = [
 const MealCategories = () => {
   return (
     <>
-      <h4 className="text-text text-[16px] md:text-3xl font-bold ">
-        Order.uk Popular Categories 🤩
-      </h4>
+      <h4 className="text-text text-[16px] md:text-3xl font-bold ">Order.uk Popular Categories 🤩</h4>
       <ul className="grid gap-4 grid-cols-2 md:grid-cols-6 ">
         {meals.map((meal, i) => (
           <li key={meal.id} className="grid rounded-xl overflow-hidden">
@@ -31,9 +29,7 @@ const MealCategories = () => {
                 />
               </div>
               <ul className="grid py-2 px-4  bg-text text-white text-sm">
-                <li className="text-primary font-bold md:text-lg">
-                  {meal.category}
-                </li>
+                <li className="text-primary font-bold md:text-lg">{meal.category}</li>
                 <li>{meal.count} Options</li>
               </ul>
             </Link>
