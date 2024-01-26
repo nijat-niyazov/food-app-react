@@ -19,7 +19,7 @@ const LandingMenu = () => {
         alt="fast_food"
         className=" brightness-50 opacity-30"
       />
-      <p className="bg-primary flex items-center justify-center rounded-r-xl absolute bottom-0 left-0 translate-y-1/2 py-4 px-16 gap-4 ">
+      <p className="bg-primary flex-centered rounded-r-xl absolute bottom-0 left-0 translate-y-1/2 py-4 px-16 gap-4 ">
         <Clock />
 
         <span className="text-white text-lg font-semibold">

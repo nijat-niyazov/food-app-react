@@ -1,17 +1,4 @@
-import {
-  alkoqolsuz,
-  breakfast,
-  burger,
-  cheese,
-  desert,
-  fast_food,
-  georgian,
-  main,
-  menu_book,
-  salad,
-  snacks,
-  soup,
-} from "@/assets/images";
+import { alkoqolsuz, breakfast, burger, cheese, desert, fast_food, georgian, main, menu_book, salad, snacks, soup } from "@/assets/images";
 import { MotionDiv } from "@/components";
 import { NavLink } from "react-router-dom";
 
@@ -40,20 +27,19 @@ const MenuItems = () => {
             to={"/menu/menu"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center  ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                "  font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center   ",
               ].join(" ")
             }
           >
-            <img src={fast_food} alt="" className="w-12 h-12 object-cover" />{" "}
-            Offers
+            <img src={fast_food} alt="" className="w-12 h-12 object-cover" /> Offers
           </NavLink>
           <NavLink
             to={"/menu/fast-food"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2  flex gap-3 items-center",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                "  font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -63,8 +49,8 @@ const MenuItems = () => {
             to={"/menu/f"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -74,8 +60,8 @@ const MenuItems = () => {
             to={"/menu/e"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -85,8 +71,8 @@ const MenuItems = () => {
             to={"/menu/e"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -96,8 +82,8 @@ const MenuItems = () => {
             to={"/menu/e"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -107,8 +93,8 @@ const MenuItems = () => {
             to={"/menu/drinks"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -118,8 +104,8 @@ const MenuItems = () => {
             to={"/menu/salads"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -129,8 +115,8 @@ const MenuItems = () => {
             to={"/menu/q"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -140,8 +126,8 @@ const MenuItems = () => {
             to={"/menu/q"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center hover:bg-text/50 ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center  ",
               ].join(" ")
             }
           >
@@ -151,8 +137,8 @@ const MenuItems = () => {
             to={"/menu/special"}
             className={({ isActive }) =>
               [
-                isActive ? "bg-text text-white" : "text-text ",
-                " font-bold hover:bg-text hover:text-white text-text text-xl px-8 py-2 flex gap-3 items-center  ",
+                isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
+                " font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center   ",
               ].join(" ")
             }
           >

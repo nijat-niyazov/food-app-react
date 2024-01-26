@@ -24,7 +24,9 @@ const Counts = (props: Props) => {
             {({ countUpRef }) => {
               return (
                 <>
-                  <span className="text-[64px] font-light" ref={countUpRef} />
+                  <p className="flex-centered text-[64px] font-light">
+                    <span ref={countUpRef} /> <span>+</span>
+                  </p>
                   <p className="text-2xl font-bold">{title}</p>
                 </>
               );

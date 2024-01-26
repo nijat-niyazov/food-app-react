@@ -25,7 +25,7 @@ const CustomModal = () => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center ">
+          <div className=" min-h-full flex-centered p-4 text-center ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -42,7 +42,10 @@ const CustomModal = () => {
                 className={clsx("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
               >
                 {closeBtn && (
-                  <button onClick={closeModal} className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3">
+                  <button
+                    onClick={closeModal}
+                    className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
+                  >
                     <img src={close} alt="menu" className="w-8 h-8" />
                   </button>
                 )}

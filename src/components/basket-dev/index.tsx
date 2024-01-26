@@ -1,7 +1,9 @@
 import { clearBasket, useBasketStore } from "@/stores/basket";
 
 import { ArrowDown } from "@/assets/icons";
-import { useMediaMatch } from "@/useHooks";
+import { useMediaMatch } from "@/hooks";
+import { cn } from "@/utils";
+import { CustomButton } from "..";
 import BasketDevItem from "./basketitem";
 
 const BasketDev = () => {
@@ -44,29 +46,36 @@ const BasketDev = () => {
         </ul>
 
         <div className="px-3 pb-3">
-          <button onClick={clearBasket} className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 my-4">
+          <CustomButton
+            onClick={clearBasket}
+            variant="black"
+            size="sm"
+            borderRadius="md"
+            className={cn("w-full mt-4", {
+              hidden: basketItems.length < 1,
+            })}
+          >
             Remove All
-          </button>
+          </CustomButton>
 
-          <p className="bg-primary rounded-lg border-1 border-black/10 flex items-center justify-between mb-4">
+          <p className="bg-primary rounded-lg border-1 border-black/10 flex items-center justify-between mt-4">
             <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay:</span>
             <span className="text-white font-semibold text-4xl px-4 py-5">${totalPay}</span>
           </p>
-          <button
+
+          <CustomButton
             disabled={basketItems.length < 1}
             onClick={clearBasket}
-            className="bg-secondary transition-colors ease-in-out duration-200 text-white w-full rounded-lg border-1 text-2xl font-semibold p-2 disabled:bg-[#FFB1B1] flex items-center"
+            variant={basketItems.length < 1 ? "danger" : "secondary"}
+            size="xl2"
+            borderRadius="md"
+            className="flex items-center mt-4"
           >
-            <span
-              style={{
-                transform: "rotate(90deg)",
-                opacity: basketItems.length < 10 ? 0 : 1,
-              }}
-            >
+            <span className={cn("rotate-90", { "opacity-0": basketItems.length < 10 ? 0 : 1 })}>
               <ArrowDown />
             </span>
             <span className="grow text-center">Checkout!</span>
-          </button>
+          </CustomButton>
         </div>
       </div>
     </div>

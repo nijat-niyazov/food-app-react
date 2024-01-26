@@ -1,5 +1,5 @@
 import { SearchIcon } from "@/assets/icons";
-import { useDebounced } from "@/useHooks";
+import { useDebounced } from "@/hooks";
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SearchHistory from "./SearchHistory";
@@ -62,24 +62,29 @@ const HeaderSearch = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  // const currentNumber = usePlaceHolder();
+
   return (
-    <div ref={divRef} className="p-2 rounded-full w-96 border-1 border-black/40 outline-none relative hidden md:block">
-      <SearchHistory {...{ showHistory, searchHistory, removeSearchHistory }} />
+    <>
+      {/* <span>{currentNumber}</span> */}
+      <div ref={divRef} className="p-2 rounded-full w-auto border-1 border-black/40 outline-none relative hidden md:block">
+        <SearchHistory {...{ showHistory, searchHistory, removeSearchHistory }} />
 
-      <input
-        type="text"
-        name="search"
-        placeholder="Burger"
-        className="bg-transparent outline-none px-1 w-[calc(100%-20px)]"
-        value={search}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-        onFocus={() => setIsFocused(true)}
-      />
+        <input
+          type="text"
+          name="search"
+          placeholder="Burger"
+          className="bg-transparent outline-none px-1 w-[calc(100%-20px)]"
+          value={search}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+        />
 
-      <div className="p-2 absolute border-primary right-0 top-0 h-full bg-primary rounded-full flex items-center justify-center">
-        <SearchIcon />
+        <div className="p-2 absolute border-primary right-0 top-0 h-full bg-primary rounded-full flex-centered">
+          <SearchIcon />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

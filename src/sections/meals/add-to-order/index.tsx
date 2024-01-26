@@ -1,16 +1,18 @@
+import { CustomButton } from "@/components";
 import { ConfirmationOrder } from "@/components/modal-contents";
 
 import { MealType, OptionType } from "@/constants/types/meal";
+import { useMediaMatch } from "@/hooks";
 import { openModal } from "@/stores/modal";
-import { useMediaMatch } from "@/useHooks";
 
 const AddToOrderBtn = ({
   selected,
   notable = true,
   meal,
+  handleSelect,
 }: {
   selected: OptionType;
-  // | boolean | undefined;
+  handleSelect: (id: null) => void;
   notable?: boolean;
   meal: MealType;
 }) => {
@@ -39,22 +41,16 @@ const AddToOrderBtn = ({
   // };
 
   return (
-    <>
-      <div className="flex items-center justify-center gap-3 overflow-hidden w-full mt-4">
-        <button
-          onClick={() =>
-            openModal(<ConfirmationOrder meal={meal} selected={selected} />)
-          }
-          // style={{
-          //   height: selected ? "40px" : "0px",
-          // }}
-          // disabled={!selected}
-          className="bg-primary rounded-s  w-full p-2  text-white font-semibold transition-all duration-200 ease-in-out offer-shadow disabled:opacity-60"
-        >
-          Add To Order
-        </button>
-      </div>
-    </>
+    <CustomButton
+      onClick={() => openModal(<ConfirmationOrder handleSelect={handleSelect} meal={meal} selected={selected} />, 50)}
+      size="sm"
+    >
+      Add To Order
+    </CustomButton>
+    // <>
+    //   <div className="flex-centered gap-3 overflow-hidden w-full mt-4">
+    //   </div>
+    // </>
   );
 };
 

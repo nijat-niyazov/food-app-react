@@ -2,12 +2,12 @@ import { lil_pizza } from "@/assets/images";
 import { Link } from "react-router-dom";
 
 const meals = [
-  { id: 1, img: lil_pizza, category: "Soups", count: 20 },
-  { id: 2, img: lil_pizza, category: "Soups", count: 20 },
-  { id: 3, img: lil_pizza, category: "Soups", count: 20 },
-  { id: 4, img: lil_pizza, category: "Soups", count: 20 },
-  { id: 5, img: lil_pizza, category: "Soups", count: 20 },
-  { id: 6, img: lil_pizza, category: "Soups", count: 20 },
+  { id: 1, img: lil_pizza, url: "fast-food", category: "Fast Food", count: 20 },
+  { id: 2, img: lil_pizza, url: "drinks", category: "Drinks", count: 20 },
+  { id: 3, img: lil_pizza, url: "pasta", category: "Pasta", count: 20 },
+  { id: 4, img: lil_pizza, url: "main", category: "Main", count: 20 },
+  { id: 5, img: lil_pizza, url: "special-request", category: "Offer", count: 20 },
+  { id: 6, img: lil_pizza, url: "fast_food", category: "Soups", count: 20 },
 ];
 
 const MealCategories = () => {
@@ -17,7 +17,7 @@ const MealCategories = () => {
       <ul className="grid gap-4 grid-cols-2 md:grid-cols-6 ">
         {meals.map((meal, i) => (
           <li key={meal.id} className="grid rounded-xl overflow-hidden">
-            <Link className="w-full" to={"/"}>
+            <Link className="w-full" to={`/menu/${meal.url}`}>
               <div className=" overflow-hidden">
                 <img
                   src={meal.img}

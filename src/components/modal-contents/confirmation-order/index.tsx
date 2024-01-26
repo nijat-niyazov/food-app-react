@@ -1,4 +1,7 @@
+import { MySpinner } from "@/assets/icons";
+import { CustomButton } from "@/components";
 import { MealType, OptionType } from "@/constants/types/meal";
+import { delay } from "@/libs/delay";
 import { addToBasket } from "@/stores/basket";
 import { closeModal } from "@/stores/modal";
 import { ChangeEvent, useState } from "react";
@@ -7,9 +10,11 @@ import toast from "react-hot-toast";
 const ConfirmationOrder = ({
   selected,
   meal,
+  handleSelect,
 }: {
   selected: OptionType;
   meal: MealType;
+  handleSelect: (id: null) => void;
 }) => {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,13 +25,14 @@ const ConfirmationOrder = ({
 
     let newOrder = { ...mymeal, ...selected, note };
 
-    // const { success } = await delay();
-    const { success } = { success: true };
+    const { success } = await delay();
+    // const { success } = { success: true };
 
     if (success) {
       toast.success("Your note has been sent successfully");
       addToBasket(newOrder);
       closeModal();
+      handleSelect(null);
     } else {
       toast.error("Something went wrong \n Pease try again!");
     }
@@ -44,13 +50,11 @@ const ConfirmationOrder = ({
 
   return (
     <div className="p-4">
-      <h4 className="font-semibold text-2xl mb-4 text-center">
-        You can take your note
-      </h4>
+      {/* <h4 className="font-semibold text-2xl mb-4 text-center">You can take your note</h4> */}
 
       <form onSubmit={handleSubmit} className=" p-4 grid gap-4">
-        <label className="text-primary text-5xl font-bold" htmlFor="note">
-          Add your special request
+        <label className="text-primary text-4xl font-bold" htmlFor="note">
+          You can add your special request
         </label>
 
         <textarea
@@ -59,23 +63,14 @@ const ConfirmationOrder = ({
           id="note"
           rows={7}
           cols={30}
-          value={value}
-          // maxLength={30}
+          value={value} // maxLength={30}
           className="border-1 bg-faq border-black/30 rounded-s p-4 outline-none"
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-            setValue(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setValue(e.target.value)}
         />
-        <button
-          disabled={isSubmitting}
-          className="bg-secondary p-2 text-xl font-bold text-white rounded-s disabled:opacity-50 transition-opacity duration-200"
-        >
-          {!isSubmitting ? (
-            <span> Order {value ? "with" : "without"} Note</span>
-          ) : (
-            <div className="w-7 mx-auto h-7 rounded-full border-2 border-white border-t-black/20 animate-spin"></div>
-          )}
-        </button>
+
+        <CustomButton type="submit" disabled={isSubmitting} variant="secondary" size="xl" font="bold">
+          {!isSubmitting ? <span> Order {value ? "with" : "without"} a note</span> : <MySpinner />}
+        </CustomButton>
       </form>
     </div>
   );

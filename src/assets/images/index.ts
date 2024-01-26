@@ -5,12 +5,9 @@ import fast_food from "./fast_food.png";
 import girl from "./girl.jpg";
 import hire from "./hire.png";
 import lil_pizza from "./lil_pizza.png";
+import login from "./login.png";
 import logo from "./logo.png";
 import menu_book from "./menu-book.png";
-import offer from "./offer.png";
-import order_food from "./order_food.png";
-import plus from "./plus.png";
-// import soup from "./soup.png";
 import alkaqolik from "./menu/alkaqolik.png";
 import alkoqolsuz from "./menu/alkoqolsuz.png";
 import breakfast from "./menu/breakfast.png";
@@ -29,6 +26,10 @@ import salad from "./menu/salad.png";
 import snacks from "./menu/snacks.png";
 import soup from "./menu/soup.png";
 import tuna from "./menu/tuna.png";
+import offer from "./offer.png";
+import order_food from "./order_food.png";
+import plus from "./plus.png";
+import pp from "./pp.png";
 
 export {
   alkaqolik,
@@ -49,6 +50,7 @@ export {
   hamburger,
   hire,
   lil_pizza,
+  login,
   logo,
   main,
   meat,
@@ -56,6 +58,7 @@ export {
   offer,
   order_food,
   plus,
+  pp,
   qarnir,
   salad,
   snacks,

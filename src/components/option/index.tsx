@@ -1,3 +1,6 @@
+import { cn } from "@/utils";
+import { CustomButton } from "..";
+
 type OptionComProps = {
   disabled?: boolean;
   onClick: (id: number) => void;
@@ -5,33 +8,22 @@ type OptionComProps = {
   selected: number | undefined;
 };
 
-const Option = ({
-  disabled = false,
-  onClick,
-  option,
-  selected,
-}: OptionComProps) => {
+const Option = ({ disabled = false, onClick, option, selected }: OptionComProps) => {
+  const handeClick = () => onClick(option.id);
+
   return (
-    <button
-      onClick={() => onClick(option.id)}
+    <CustomButton
+      onClick={handeClick}
       disabled={disabled}
-      className={`${
-        selected === option.id ? "bg-text text-white" : ""
-      } rounded-lg  font-bold text-sm flex items-center py-2 px-3 border-1 border-black/10`}
+      size="xs"
+      variant="transparent"
+      className={cn("border-1 border-white hover:border-black/90   w-auto py-2 px-3 flex items-center", {
+        "bg-text text-white": selected === option.id,
+      })}
     >
-      <span
-        className={`${
-          option.id === selected ? "text-white" : "text-text"
-        } mr-2`}
-      >
-        {option.size}
-      </span>
-      {option.price && (
-        <span className="bg-secondary py-2 px-4 rounded-s text-white">
-          £{option.price}
-        </span>
-      )}
-    </button>
+      <span className={`${option.id === selected ? "text-white" : "text-text"} mr-2`}>{option.size}</span>
+      {option.price && <span className="bg-secondary py-2 px-4 rounded-s text-white">£{option.price}</span>}
+    </CustomButton>
   );
 };
 

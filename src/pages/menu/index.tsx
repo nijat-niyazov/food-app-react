@@ -1,16 +1,11 @@
 import { MealSkeleton } from "@/components/skeletons";
 import { MealType } from "@/constants/types/meal";
+import { useScrollDirection } from "@/hooks";
 import { getMenuItems } from "@/libs/menu";
 import { AddToOrderBtn, Options } from "@/sections/menu";
-import { useScrollDirection } from "@/useHooks";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 type QueryType = {
   data: MealType[];
@@ -76,19 +71,10 @@ const Meals = () => {
         {isPending
           ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />)
           : meals[category as string].map((meal: MealType) => (
-              <li
-                key={meal.id}
-                className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow"
-              >
+              <li key={meal.id} className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow">
                 <div className="grid grid-cols-[1fr_auto] gap-3 mb-5 items-start justify-between px-4">
-                  <h4 className="text-xl font-semibold text-text">
-                    {meal.title}
-                  </h4>
-                  <img
-                    src={meal.img}
-                    alt={meal.title}
-                    className="w-28 h-28 object-cover rounded-full row-span-2"
-                  />
+                  <h4 className="text-xl font-semibold text-text">{meal.title}</h4>
+                  <img src={meal.img} alt={meal.title} className="w-28 h-28 object-cover rounded-full row-span-2" />
                   <p className="text-sm mb-5">{meal.description}</p>
                 </div>
 

@@ -25,41 +25,30 @@ function BasketDevItem({ item }: { item: BasketItemType }) {
         transition={{ ease: "easeOut", duration: 0.3 }}
         className="grid grid-cols-[1fr_auto] place-items-start px-3 items-center gap-3 py-2 border-b-1 border-black/10 "
       >
-        <span className="rounded-full text-2xl font-bold bg-primary text-white  w-11 h-11 grid place-content-center">
-          {item.quantity}x
-        </span>
+        <span className="rounded-full text-2xl font-bold bg-primary text-white  w-11 h-11 grid place-content-center">{item.quantity}x</span>
 
-        <span className="text-secondary text-xl font-semibold">
-          $ {item.price}
-        </span>
+        <span className="text-secondary text-xl font-semibold">$ {item.price}</span>
 
-        <ul className="grid gap-1.5 ">
+        <ul className="grid gap-1.5 grow">
           <li className="text-text text-base font-semibold">{item.title}</li>
           <li className="text-black text-sm ">{item.description}</li>
         </ul>
 
-        <button
-          className="place-self-end self-center"
-          onClick={() => removeBasketItem(item.id)}
-        >
-          <Remove />
-        </button>
+        <div className="grid place-self-center ml-auto w-auto">
+          <button className="" onClick={() => removeBasketItem(item.id)}>
+            <Remove />
+          </button>
+          {item.note && (
+            <button onClick={() => openModal(<MealNote note={item.note as string} />, 50)} className=" outline-none">
+              <NoteICon />
+            </button>
+          )}
+        </div>
 
         {item.size && (
-          <p className="font-semibold text-sm whitespace-nowrap ">
-            Option:{" "}
-            <span className="bg-text text-white rounded-s px-2 py-1">
-              {item.size}
-            </span>
+          <p className="col-span-2 w-full flex items-center justify-between">
+            Option: <span className="bg-text text-white rounded-s px-2 py-1">{item.size}</span>
           </p>
-        )}
-        {item.note && (
-          <button
-            onClick={() => openModal(<MealNote note={item.note as string} />)}
-            className="place-self-end"
-          >
-            <NoteICon />
-          </button>
         )}
       </MotionDiv>
     </AnimatePresence>

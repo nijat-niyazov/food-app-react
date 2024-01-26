@@ -1,14 +1,25 @@
-import { User } from "@/assets/icons";
-import { LoginForm } from "@/components/forms";
-import { openModal } from "@/stores/modal";
+import { login, pp } from "@/assets/images";
+import { CustomButton } from "@/components";
+import { useNavigate } from "react-router-dom";
 
-const Auth = () => {
+const Auth = ({ authorized }: { authorized: boolean }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => (authorized ? navigate("menu/fast-food") : navigate("login"));
+
+  const variant = authorized ? "primary" : "black";
+
   return (
-    <button onClick={() => openModal(<LoginForm />)} className="px-7 md:flex hidden py-4 items-center gap-1 bg-text text-white rounded-full">
-      <User />
+    <CustomButton
+      onClick={handleClick}
+      variant={variant}
+      borderRadius="full"
+      className="pr-4 pl-2 group hidden py-2 md:flex items-center gap-4 w-auto"
+    >
+      <img src={authorized ? pp : login} alt="pp" className="w-11 h-11 object-cover" />
 
-      <span className="text-lg font-medium ">Login/Signup</span>
-    </button>
+      <span className="text-lg font-medium  group-hover:underline">{authorized ? "Nijat Niyazov" : "Login/Signup"} </span>
+    </CustomButton>
   );
 };
 

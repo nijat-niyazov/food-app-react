@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Basket } from "..";
 import { Auth, HeaderSearch, MenuToggler, NavigationOfHeader, Theme } from "./components";
 
-let authorized = false;
+let authorized = true;
 
 const Header = () => {
   const totalItemsOfBasket = useBasketStore((state) => state.totalItems);
@@ -21,17 +21,15 @@ const Header = () => {
 
         <Theme />
 
-        <ul className="flex  bg-secondary rounded-b-xl text-base font-semibold text-white">
-          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 relative">
-            <button onClick={() => openModal(<Basket />, 90)} className="w-full h-full">
+        <ul className="flex items-strech bg-secondary rounded-b-xl text-base font-semibold text-white ">
+          <li className="border-r-1  border-white px-6   border-opacity-30 relative">
+            <button onClick={() => openModal(<Basket />, 90)}>
               <Shopping />
-              {/* <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">
-                {totalItemsOfBasket}
-              </span> */}
+              <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">{totalItemsOfBasket}</span>
             </button>
           </li>
-          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">{totalItemsOfBasket} Items</li>
-          <li className="border-r-1 border-white px-6 py-3 border-opacity-30 ">AZN {totalPrice}</li>
+          <li className="border-r-1  border-white px-6  border-opacity-30 ">{totalItemsOfBasket} Items</li>
+          <li className="border-r-1  border-white px-6  border-opacity-30 ">AZN {totalPrice}</li>
         </ul>
       </div>
 
@@ -50,7 +48,7 @@ const Header = () => {
 
         <MenuToggler />
 
-        <Auth />
+        <Auth authorized={authorized} />
       </div>
 
       {/* <div className="w-1/3 mx-auto">
@@ -58,7 +56,7 @@ const Header = () => {
       </div> */}
 
       <div className="border-t-2 flex  w-full md:hidden">
-        <div className="w-1/2 p-4  bg-bej flex items-center justify-center gap-4">
+        <div className="w-1/2 p-4  bg-bej flex-centered gap-4">
           {authorized ? (
             <>
               <img src={girl} className="w-11 h-11 rounded-full object-cover" />
@@ -74,7 +72,7 @@ const Header = () => {
           )}
         </div>
 
-        <div className="w-1/2 p-4  bg-secondary flex items-center justify-center gap-4">
+        <div className="w-1/2 p-4  bg-secondary flex-centered gap-4">
           <img src={basket} className="w-11 h-11 object-cover" />
           <p className="text-white text-base  font-semibold font-poppins">GBP 79.89</p>
         </div>

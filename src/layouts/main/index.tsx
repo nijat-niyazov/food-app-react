@@ -1,8 +1,16 @@
 import { CustomModal, Footer, GoToUp, Header } from "@/components";
 import { Toaster } from "react-hot-toast";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const MainLayout = () => {
+  const { pathname } = useLocation();
+
+  if (pathname.includes("/admin")) {
+    console.log("yes");
+
+    return;
+  }
+
   return (
     <div className="min-h-screen">
       {/* <div className="bg-text ">
