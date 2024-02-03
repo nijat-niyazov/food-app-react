@@ -22,7 +22,7 @@ function createBtnClasses(
     black: "bg-text ",
 
     danger: "bg-red-500 ",
-    transparent: "bg-transparent",
+    transparent: "bg-transparent text-black",
 
     success: "bg-success ",
     warning: "bg-warning ",
@@ -40,7 +40,7 @@ function createBtnClasses(
     xl5: "text-5xl ",
   };
 
-  const borderRadiusess = {
+  const borderRadiuses = {
     sm: "rounded-sm ",
     md: "rounded-md ",
     lg: "rounded-lg ",
@@ -55,13 +55,13 @@ function createBtnClasses(
     bold: "font-bold ",
   };
 
-  cls += variants[variant] + sizes[size] + borderRadiusess[borderRadius] + fonts[font];
+  cls += variants[variant] + sizes[size] + borderRadiuses[borderRadius] + fonts[font];
 
   return cls;
 }
 
 const defaultClasses =
-  "hover:bg-opacity-90 active:bg-opacity-100  transition-all duration-200  text-white rounded-md px-8 py-2   disabled:opacity-50 disabled:pointer-events-none outline-none ease-in-out w-full text-white";
+  "hover:bg-opacity-90 active:bg-opacity-100  transition-all duration-200  text-white rounded-md md:px-8 py-2   disabled:opacity-50 disabled:pointer-events-none outline-none ease-in-out w-full text-white";
 
 const CustomButton = ({ variant, borderRadius, size, children, className = "", ...rest }: CustomButtonProps) => {
   const cls = createBtnClasses(variant, size, borderRadius);

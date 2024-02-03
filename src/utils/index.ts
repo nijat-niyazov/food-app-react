@@ -1,3 +1,4 @@
 import cn from "./className";
+import kebabToString from "./kebabToString";
 
-export { cn };
+export { cn, kebabToString };

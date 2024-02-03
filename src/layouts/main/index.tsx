@@ -5,11 +5,15 @@ import { Outlet, useLocation } from "react-router-dom";
 const MainLayout = () => {
   const { pathname } = useLocation();
 
-  if (pathname.includes("/admin")) {
-    console.log("yes");
-
-    return;
-  }
+  // useEffect(() => {
+  //   if (!pathname.includes("admin") || !pathname.includes("editor")) {
+  //     if (sessionStorage.getItem("activeTab")) {
+  //       sessionStorage.removeItem("activeTab");
+  //     } else if (sessionStorage.getItem("activeCategoryTab")) {
+  //       sessionStorage.removeItem("activeCategoryTab");
+  //     }
+  //   }
+  // }, [pathname]);
 
   return (
     <div className="min-h-screen">

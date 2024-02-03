@@ -39,32 +39,29 @@ const NavigationOfHeader = () => {
       >
         Branches
       </NavLink>
+
       {/* <NavLink
-            // onClick={() => console.log()}
-            to="/branches"
-            className={({ isActive }) =>
-              [
-                isActive ? "bg-primary text-white" : "",
-
-                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
-              ].join(" ")
-            }
-          >
-            Special Offers
-          </NavLink>
-          <NavLink
-            // onClick={() => console.log()}
-            to="/branches"
-            className={({ isActive }) =>
-              [
-                isActive ? "bg-primary text-white" : "",
-
-                " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
-              ].join(" ")
-            }
-          >
-            Branches
-          </NavLink> */}
+        to="/admin"
+        className={({ isActive }) =>
+          [
+            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+          ].join(" ")
+        }
+      >
+        Admin
+      </NavLink>
+      <NavLink
+        to="/editor"
+        className={({ isActive }) =>
+          [
+            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
+          ].join(" ")
+        }
+      >
+        Editor
+      </NavLink> */}
     </nav>
   );
 };

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Basket } from "..";
 import { Auth, HeaderSearch, MenuToggler, NavigationOfHeader, Theme } from "./components";
 
-let authorized = true;
+let authorized = false;
 
 const Header = () => {
   const totalItemsOfBasket = useBasketStore((state) => state.totalItems);

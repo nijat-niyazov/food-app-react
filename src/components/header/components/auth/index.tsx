@@ -1,11 +1,16 @@
 import { login, pp } from "@/assets/images";
 import { CustomButton } from "@/components";
+import { LoginForm } from "@/components/forms";
+import { openModal } from "@/stores/modal";
 import { useNavigate } from "react-router-dom";
 
 const Auth = ({ authorized }: { authorized: boolean }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => (authorized ? navigate("menu/fast-food") : navigate("login"));
+  const handleClick = () => {
+    if (!authorized) openModal(<LoginForm />);
+    else null;
+  };
 
   const variant = authorized ? "primary" : "black";
 
