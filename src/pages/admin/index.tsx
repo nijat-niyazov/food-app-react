@@ -1,7 +1,7 @@
 import { CustomButton } from "@/components";
-import { CreateMealForm } from "@/components/forms";
 import { getMenuItems } from "@/libs/menu";
 import { AllMeals } from "@/sections/admin";
+import CreateNewMeal from "@/sections/admin/create";
 import { cn } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -55,7 +55,7 @@ const AdminPage = () => {
 
         {activeTab === 1 && <AllMeals isPending={isPending} data={meals} />}
 
-        {activeTab === 2 && <CreateMealForm />}
+        {activeTab === 2 && <CreateNewMeal />}
       </>
     </div>
   );

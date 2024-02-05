@@ -22,7 +22,9 @@ const HeaderSearch = () => {
       const inHistory = searchHistory.findIndex(({ word }) => word === debounced);
 
       if (inHistory === -1) {
-        const searchedWords = [...searchHistory, { word: debounced, id: Date.now().toString() }];
+        if (searchHistory.length >= 4) searchHistory.pop();
+
+        const searchedWords = [{ word: debounced, id: Date.now().toString() }, ...searchHistory];
 
         setSearchHistory(searchedWords);
 
@@ -61,8 +63,6 @@ const HeaderSearch = () => {
 
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-
-  // const currentNumber = usePlaceHolder();
 
   return (
     <>

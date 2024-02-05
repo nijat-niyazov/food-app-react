@@ -63,11 +63,11 @@ function createBtnClasses(
 const defaultClasses =
   "hover:bg-opacity-90 active:bg-opacity-100  transition-all duration-200  text-white rounded-md md:px-8 py-2   disabled:opacity-50 disabled:pointer-events-none outline-none ease-in-out w-full text-white";
 
-const CustomButton = ({ variant, borderRadius, size, children, className = "", ...rest }: CustomButtonProps) => {
+const CustomButton = ({ variant, type = "button", borderRadius, size, children, className = "", ...rest }: CustomButtonProps) => {
   const cls = createBtnClasses(variant, size, borderRadius);
 
   return (
-    <button className={cn(defaultClasses, cls, className)} {...rest}>
+    <button type={type} className={cn(defaultClasses, cls, className)} {...rest}>
       {children}
     </button>
   );

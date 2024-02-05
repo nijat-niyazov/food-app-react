@@ -67,7 +67,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
           {kebabToString(category)}
         </CustomButton>
       ))}
-      <CustomButton
+      {/* <CustomButton
         className={cn(" z-10", {
           "text-white": activeTab === 3,
         })}
@@ -106,7 +106,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         variant="transparent"
       >
         Soup
-      </CustomButton>
+      </CustomButton> */}
     </>
   );
 };
