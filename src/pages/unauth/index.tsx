@@ -1,5 +1,5 @@
 import { CustomButton } from "@/components";
-import { LoginForm } from "@/components/forms";
+import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
 
 const UnAuthPage = () => {

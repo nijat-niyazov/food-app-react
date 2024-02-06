@@ -2,7 +2,7 @@ import { options } from "@/constants/data/special-meal";
 import { closeModal } from "@/stores/modal";
 import { useCallback, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Checkbox, Radio } from "../elements";
+import { Radio } from "../elements";
 import { Buttons, CategoryName, Step, TotalPrice } from "./form-parts";
 
 export type Inputs = {
@@ -60,11 +60,7 @@ const SpecialMealForm = () => {
   const maxSteps = selectedMeal.length + 1; // additional one for note
   const lastStep = currentStep + 1 === maxSteps;
 
-  const handleStep = useCallback(
-    (route?: "forward") =>
-      setCurrentStep((prev) => prev + (route === "forward" ? 1 : -1)),
-    []
-  );
+  const handleStep = useCallback((route?: "forward") => setCurrentStep((prev) => prev + (route === "forward" ? 1 : -1)), []);
 
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -132,7 +128,7 @@ const SpecialMealForm = () => {
           </ul>
         )} */}
 
-        {currentStep === 1 && (
+        {/* {currentStep === 1 && (
           <Checkbox
             fieldName="ingredients"
             register={register}
@@ -156,7 +152,7 @@ const SpecialMealForm = () => {
             className="border-1 w-full border-black/30 rounded-md p-4 outline-none"
             {...register("note")}
           />
-        )}
+        )} */}
 
         {/* <CustomButton
           variant="primary"

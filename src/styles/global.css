@@ -45,6 +45,10 @@
   /* transition: all 1s ease-in-out; */
 }
 
+label {
+  user-select: none;
+}
+
 @layer base {
   html {
     /* --primary: #fc8a06;

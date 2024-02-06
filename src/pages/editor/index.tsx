@@ -1,83 +1,47 @@
 import { CustomButton } from "@/components";
+import { CreateMealForm } from "@/forms";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Remove } from "@/assets/icons";
-import { useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-
 const meal = {
-  description: "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
   id: 3,
-  img: "../src/assets/images/offer.png",
-
+  file: "../src/assets/images/offer.png",
+  category: "Fast Food",
   title: "Fryday Burger",
-};
+  description: "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
+  options: [
+    {
+      name: "Small",
+      price: 10,
+    },
 
-type Option = {
-  name: string;
-  price: number;
-};
-
-type Inputs = {
-  file: any;
-  title: string;
-  description: string;
-  options: {
-    option1: Option;
-    option2: Option;
-    option3: Option;
-    option4: Option;
-    option5: Option;
-  };
+    {
+      name: "Medium",
+      price: 15,
+    },
+    {
+      name: "Large",
+      price: 20,
+    },
+  ],
 };
 
 const EditorPage = () => {
   const { id } = useParams();
 
-  console.log(id);
+  // console.log(id);
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   function handleBeforeUnload(e: BeforeUnloadEvent) {
-  //     e.preventDefault();
-  //     e.returnValue = "";
-  //   }
-
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
-
-  //   return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  // }, []);
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isValid, isSubmitting },
-    setError,
-    getValues,
-  } = useForm<Inputs>({
-    defaultValues: {
-      title: meal.title,
-      description: meal.description,
-    },
-  });
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [hasOptions, setHasOptions] = useState<boolean>(false);
-  const [options, setOptions] = useState<number[]>([0]);
-
   return (
     <div className="container ">
-      <div className=" md:w-1/2 mx-auto grid gap-10 border-1 place-items-start  ">
-        <CustomButton variant="transparent" className="underline font-medium w-auto p-1" onClick={() => navigate(-1)}>
-          Go Back
-        </CustomButton>
+      <CustomButton variant="transparent" className="underline font-medium w-auto p-1" onClick={() => navigate(-1)}>
+        Go Back
+      </CustomButton>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3 w-full">
-          {/* <input className="hidden" type="file" ref={fileRef} /> */}
+      <CreateMealForm defaultValues={meal} />
+
+      {/* <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3 w-full">
+          
 
           <div
             onClick={() => fileRef.current?.click()}
@@ -112,7 +76,7 @@ const EditorPage = () => {
             {hasOptions ? "Remove" : "Set"} options of meal
           </CustomButton>
 
-          {/* --------------------------------- Options -------------------------------- */}
+
 
           {hasOptions && (
             <>
@@ -163,8 +127,7 @@ const EditorPage = () => {
           <CustomButton disabled={!isValid} variant="secondary" type="submit">
             Submit Edit
           </CustomButton>
-        </form>
-      </div>
+        </form> */}
     </div>
   );
 };

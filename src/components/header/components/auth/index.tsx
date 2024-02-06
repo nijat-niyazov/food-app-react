@@ -1,6 +1,6 @@
 import { login, pp } from "@/assets/images";
 import { CustomButton } from "@/components";
-import { LoginForm } from "@/components/forms";
+import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,6 @@ const Auth = ({ authorized }: { authorized: boolean }) => {
 
   const handleClick = () => {
     if (!authorized) openModal(<LoginForm />);
-    else null;
   };
 
   const variant = authorized ? "primary" : "black";
@@ -19,7 +18,7 @@ const Auth = ({ authorized }: { authorized: boolean }) => {
       onClick={handleClick}
       variant={variant}
       borderRadius="full"
-      className="pr-4 pl-2 group hidden py-2 md:flex items-center gap-4 w-auto"
+      className="!pr-4 !pl-2 group hidden !py-2 md:flex items-center gap-4 w-auto"
     >
       <img src={authorized ? pp : login} alt="pp" className="w-11 h-11 object-cover" />
 

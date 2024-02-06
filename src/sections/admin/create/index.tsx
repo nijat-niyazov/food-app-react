@@ -1,4 +1,4 @@
-import { CreateMealForm } from "@/components/forms";
+import { CreateMealForm } from "@/forms";
 
 const CreateNewMeal = () => {
   return <CreateMealForm />;

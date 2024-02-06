@@ -1,8 +1,3 @@
-import { CustomButton } from "@/components";
-import { SpecialMealForm } from "@/components/forms";
-import { PreperaringSpecialMeal } from "@/components/modal-contents";
-import { openModal } from "@/stores/modal";
-
 const options = [
   {
     id: 1,
@@ -17,25 +12,16 @@ const options = [
 const SpecialMeal = () => {
   return (
     <div className="flex flex-wrap gap-4">
-      {options.map((option) => (
+      {/* {options.map((option) => (
         <CustomButton
           variant="success"
           key={option.id}
-          onClick={() =>
-            openModal(
-              option.id === 2 ? (
-                <PreperaringSpecialMeal mealId={2} />
-              ) : (
-                <SpecialMealForm />
-              ),
-              80
-            )
-          }
+          onClick={() => openModal(option.id === 2 ? <PreperaringSpecialMeal mealId={2} /> : <SpecialMealForm />, 80)}
           className={`rounded-lg text3  font-bold text-xl flex items-center py-2 px-3 border-2 border-black/10`}
         >
           <span className={`mr-2`}>{option.name}</span>
         </CustomButton>
-      ))}
+      ))} */}
     </div>
   );
 };
