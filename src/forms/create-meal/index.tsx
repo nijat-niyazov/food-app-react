@@ -30,7 +30,7 @@ type Props = {
 
 const defaultOptions = { options: [{ name: "", price: 0 }] };
 const CreateMealForm: FC<Props> = ({ defaultValues }) => {
-  /* ------------------------------ Form State ----------------------------- */
+  /* ------------------------------ RH Form State ----------------------------- */
   const {
     register,
     handleSubmit,
