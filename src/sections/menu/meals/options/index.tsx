@@ -9,7 +9,7 @@ const Options = ({ options, meal }: { meal: MealType; options: OptionType[] }) =
     setSelected(typeof id === "number" ? (options.find((option) => option.id === id) as OptionType) : null);
 
   return (
-    <div className="flex flex-wrap justify-between gap-2">
+    <div className="flex flex-wrap justify-between gap-y-3">
       {options.map((option) => (
         <Option key={option.id} option={option} onClick={handleSelect} selected={selected?.id} />
       ))}

@@ -53,8 +53,6 @@ const Meals = () => {
     queryFn: getMenuItems,
   });
 
-  console.log("menu rendered");
-
   return (
     <div className="container">
       {/* <div
