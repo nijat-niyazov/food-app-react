@@ -71,7 +71,7 @@ const BasketDev = () => {
             borderRadius="md"
             className="flex items-center mt-4"
           >
-            <span className={cn("rotate-90", { "opacity-0": basketItems.length < 10 ? 0 : 1 })}>
+            <span className={cn("-rotate-90", { "opacity-0": basketItems.length < 10 ? 0 : 1 })}>
               <ArrowDown />
             </span>
             <span className="grow text-center">Checkout!</span>

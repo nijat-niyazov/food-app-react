@@ -1,5 +1,5 @@
 import { BasketDev } from "@/components/";
-import { LandingMenu, MenuItems } from "@/sections/menu";
+import { Categories, LandingMenu } from "@/sections/menu";
 import { Outlet } from "react-router-dom";
 
 const MenuLayout = () => {
@@ -8,7 +8,7 @@ const MenuLayout = () => {
       <LandingMenu />
 
       <div className="grid grid-cols-[1fr_2fr_1fr] items-start justify-start container gap-5">
-        <MenuItems />
+        <Categories />
         <Outlet />
         <BasketDev />
       </div>

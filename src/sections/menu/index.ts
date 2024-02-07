@@ -1,9 +1,9 @@
 import Meals from "../../pages/menu";
 import AddToOrderBtn from "../meals/add-to-order";
 import Options from "../meals/options";
-import MenuItems from "./items";
+import Categories from "./categories";
 import LandingMenu from "./landing";
 
 import Offers from "./offers";
 
-export { AddToOrderBtn, LandingMenu, Meals, MenuItems, Offers, Options };
+export { AddToOrderBtn, Categories, LandingMenu, Meals, Offers, Options };

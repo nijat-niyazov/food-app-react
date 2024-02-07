@@ -1,8 +1,8 @@
-import { options } from "@/constants/data/special-meal";
+import { meals } from "@/constants/data/special-meal";
 import { useState } from "react";
 
 const PreperaringSpecialMeal = ({ mealId }: { mealId: number }) => {
-  let key: keyof typeof options;
+  let key: keyof typeof meals;
 
   switch (mealId) {
     case 1:
@@ -16,7 +16,7 @@ const PreperaringSpecialMeal = ({ mealId }: { mealId: number }) => {
       key = "burger";
   }
 
-  const selectedMeal = options[key];
+  const selectedMeal = meals[key];
   const maxSteps = selectedMeal.length + 1; // additional one for note
 
   // const [myOrder, setMyOrder] = useState<{
@@ -48,7 +48,7 @@ const PreperaringSpecialMeal = ({ mealId }: { mealId: number }) => {
   //     section = null;
   // }
 
-  return;
+  return null;
   // (
   //   <form className="scale-75">
   //     <h3 className="font-bold text-2xl text-end ">

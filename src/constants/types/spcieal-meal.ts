@@ -1,9 +1,9 @@
-type Choices = {
-  name: string;
-  id: string;
-  des?: string;
+type Option = {
   img?: string; // Assuming img is a URL or path
-  price: number; // Price is choicesal for some choices
+  name: string;
+  des?: string;
+  id: string;
+  price: number; // Price is optional for some option
 };
 
 type SizeType = {
@@ -16,9 +16,9 @@ type SizeType = {
 
 type StepType = {
   heading: string;
-  imgHeading?: string; // Assuming imgHeading is a URL or path
+  imgHeading: string; // Assuming imgHeading is a URL or path
   type: "radio" | "checkbox";
-  choices: Choices[];
+  options: Option[];
 };
 
-export type { Choices, SizeType, StepType };
+export type { Option, SizeType, StepType };
