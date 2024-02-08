@@ -1,9 +1,9 @@
-import { StepType } from "@/constants/types/spcieal-meal";
+import { Option } from "@/constants/types/spcieal-meal";
 import { FC, InputHTMLAttributes, memo } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 type SizeProps = {
-  options: StepType["options"];
+  options: Option[];
   register: UseFormRegister<any>;
   fieldName: string;
 } & InputHTMLAttributes<HTMLInputElement>;

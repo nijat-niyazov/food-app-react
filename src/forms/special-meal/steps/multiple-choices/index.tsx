@@ -1,4 +1,4 @@
-import { StepType } from "@/constants/types/spcieal-meal";
+import { ChoicesType } from "@/constants/types/spcieal-meal";
 import { cn } from "@/utils";
 import { FC, InputHTMLAttributes, memo } from "react";
 import { UseFormRegister } from "react-hook-form";
@@ -6,7 +6,7 @@ import CategoryHeader from "./CategoryHeader";
 
 type MultipleChoicesProps = {
   fieldName: string;
-  options: StepType[];
+  options: ChoicesType[];
   register: UseFormRegister<any>;
 } & InputHTMLAttributes<HTMLInputElement>;
 

@@ -14,17 +14,17 @@ type SizeType = {
   price: number;
 };
 
-type StepType = {
+type ChoicesType = {
   title: string;
   imgTitle: string; // Assuming imgTitle is a URL or path
   type: "radio" | "checkbox";
   options: Option[];
 };
 
-type MealType = {
+type SpecialMealType = {
   categoryName: string;
   options?: Option[];
-  sub_categories?: StepType[];
+  sub_categories?: ChoicesType[];
 };
 
-export type { MealType, Option, SizeType, StepType };
+export type { ChoicesType, Option, SizeType, SpecialMealType };

@@ -1,3 +1,4 @@
+import { SpecialMealType } from "@/constants/types/spcieal-meal";
 import { FC, useCallback, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Buttons, CategoryName, StepInfo, TotalPrice } from "./form-parts";
@@ -16,11 +17,12 @@ type Inputs = {
 
 type Props = {
   mealId: "burger" | "pizza";
-  meals: any;
+  meals: { burger: SpecialMealType[]; pizza: SpecialMealType[] };
 };
 
 const SpecialMealForm: FC<Props> = ({ mealId, meals }) => {
   const stepsOfSelectedMeal = meals[mealId];
+
   const {
     register,
     handleSubmit,
