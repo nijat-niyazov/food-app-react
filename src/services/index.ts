@@ -4,7 +4,8 @@ const mainUrl = "http://localhost:3500";
 export type ParamsType = { [key: string]: string | undefined };
 
 const fetchData = async (endpoint: string, params?: ParamsType, delayed = false) => {
-  const url = new URL(`${mainUrl}/${endpoint}`);
+  // const url = new URL(`${mainUrl}/${endpoint}`);
+  const url = new URL(`../../data/data.json`);
 
   url.toString();
 
