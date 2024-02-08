@@ -1,10 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import Cookies from "universal-cookie";
 import { MainLayout, MenuLayout } from "./layouts";
-import { Branches, HomePage, Meals, NotFoundPage, SpecialMeal } from "./pages";
-import AdminPage from "./pages/admin";
-import EditorPage from "./pages/editor";
-import NotAdmin from "./pages/not-admin";
-import UnAuthPage from "./pages/unauth";
+import { AdminPage, Branches, EditorPage, HomePage, Meals, NotAdmin, NotFoundPage, SpecialMeal, UnAuthPage } from "./pages";
 
 const routes = (
   <Route path="/" element={<MainLayout />}>
@@ -30,6 +27,10 @@ const routes = (
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(routes));
+
+  const cookies = new Cookies(null, { path: "/" });
+
+  cookies.set("user", "admin");
 
   return <RouterProvider router={router} />;
 }

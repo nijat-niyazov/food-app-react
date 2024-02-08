@@ -1,10 +1,7 @@
-import { meals } from "@/constants/data/special-meal";
-import { StepType } from "@/constants/types/spcieal-meal";
-import { closeModal } from "@/stores/modal";
-import { useCallback, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Buttons, CategoryName, Step, TotalPrice } from "./form-parts";
-import { Step1, Step2 } from "./steps";
+import { Buttons, CategoryName, StepInfo, TotalPrice } from "./form-parts";
+import { MultipleChoices, Note, Size } from "./steps";
 
 type Inputs = {
   size: string;
@@ -17,7 +14,13 @@ type Inputs = {
   note: string;
 };
 
-const SpecialMealForm = () => {
+type Props = {
+  mealId: "burger" | "pizza";
+  meals: any;
+};
+
+const SpecialMealForm: FC<Props> = ({ mealId, meals }) => {
+  const stepsOfSelectedMeal = meals[mealId];
   const {
     register,
     handleSubmit,
@@ -52,80 +55,77 @@ const SpecialMealForm = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-    closeModal();
+    // closeModal();
   };
-
-  console.log(watch("size"));
 
   /* ------------------------------- Step State ------------------------------- */
   const [currentStep, setCurrentStep] = useState<number>(0);
-
-  const selectedMeal = meals["pizza"];
-  const maxSteps = selectedMeal.length + 1; // additional one for note
+  const maxSteps = stepsOfSelectedMeal.length + 1; // additional one for note
   const lastStep = currentStep + 1 === maxSteps;
 
-  const handleStep = useCallback((route?: "next") => setCurrentStep((prev) => prev + (route === "next" ? 1 : -1)), []);
+  const handleStep = useCallback((route?: "next") => setCurrentStep((prev) => (route === "next" ? prev + 1 : prev - 1)), []);
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  const steps = useMemo(
+    () =>
+      stepsOfSelectedMeal.map((step: any) => {
+        const fieldName = step.categoryName.toLowerCase();
+
+        switch (fieldName) {
+          case "size":
+            return {
+              component: Size,
+              options: step.options,
+              fieldName,
+            };
+          default:
+            return {
+              component: MultipleChoices,
+              options: step.sub_catagories,
+              fieldName,
+            };
+        }
+      }),
+    [stepsOfSelectedMeal]
+  );
+
+  /* ------------------------------- Price State ------------------------------ */
+  // const [totalPrice, setTotalPrice] = useState(0);
 
   return (
-    <div className="p-4   scale-75">
-      <Step currentStep={currentStep} maxSteps={maxSteps} />
+    <div className="p-10">
+      <header>
+        <StepInfo currentStep={currentStep} maxSteps={maxSteps} />
 
-      <CategoryName
-        name={
-          currentStep < maxSteps - 1 // removing one for note
-            ? selectedMeal[currentStep].categoryName
-            : "Special Note"
-        }
-      />
+        <CategoryName
+          name={
+            currentStep < maxSteps - 1 // removing one for note
+              ? stepsOfSelectedMeal[currentStep].categoryName
+              : "Special Note"
+          }
+        />
+      </header>
 
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2">
-        {currentStep === 0 && (
-          <Step1
-            register={register}
-            options={selectedMeal[0].options as StepType["options"]}
-            // getTotalPrice={getTotalPrice}
-          />
+        {steps.map(
+          ({ component: Component, options, fieldName }, i) =>
+            i === currentStep && <Component key={i} options={options} register={register} fieldName={fieldName} />
         )}
 
-        {currentStep === 1 && <Step2 categories={selectedMeal[1].sub_catagories as StepType[]} register={register} />}
+        {currentStep + 1 === maxSteps && <Note register={register} />}
 
-        {/* {currentStep === 2 && (
-          <Checkbox
-            fieldName="condiments"
-            register={register}
-            // // getTotalPrice={getTotalPrice}
-            options={selectedMeal[currentStep].sub_catagories as StepType[]}
+        <footer className="flex items-center justify-between">
+          <TotalPrice totalPrice={0} />
+
+          <Buttons
+            {...{
+              currentStep,
+              handleStep,
+              lastStep,
+              isValid,
+              disabled: watch("size"),
+            }}
           />
-        )} */}
-
-        {currentStep === maxSteps + 1 && (
-          <textarea
-            placeholder="Write your special instructions here..."
-            className="border-1 w-full border-black/30 rounded-md p-4 outline-none"
-            {...register("note")}
-          />
-        )}
-
-        {/* <CustomButton
-          variant="primary"
-          // onClick={() => getTotalPrice(watch("size"))}
-        >
-          Get
-        </CustomButton> */}
-
-        <TotalPrice totalPrice={totalPrice} />
-
-        <Buttons
-          {...{
-            currentStep,
-            handleStep,
-            lastStep,
-            isValid,
-            disabled: watch("size"),
-          }}
-        />
+        </footer>
       </form>
     </div>
   );

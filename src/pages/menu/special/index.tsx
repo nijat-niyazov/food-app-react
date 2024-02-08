@@ -1,6 +1,8 @@
 import { CustomButton } from "@/components";
 import { SpecialMealForm } from "@/forms";
+import { getSpecialMealData } from "@/services";
 import { openModal } from "@/stores/modal";
+import { useQuery } from "@tanstack/react-query";
 
 const options = [
   { id: 1, name: "Pizza" },
@@ -8,14 +10,21 @@ const options = [
 ];
 
 const SpecialMeal = () => {
-  return (
+  const { isPending, error, data } = useQuery({
+    queryKey: ["specialMealData"],
+    queryFn: getSpecialMealData,
+  });
+
+  const handleFormOfMeal = (mealId: "pizza" | "burger") => openModal(<SpecialMealForm meals={data} mealId={mealId} />, 70);
+  return isPending ? (
+    <p>Loading...</p>
+  ) : (
     <div className="flex flex-wrap gap-4">
       {options.map(({ name, id }) => (
         <CustomButton
           variant="secondary"
           key={id}
-          // onClick={() => openModal(id === 2 ? <PreperaringSpecialMeal mealId={2} /> : <SpecialMealForm />, 80)}
-          onClick={() => openModal(<SpecialMealForm />, 80)}
+          onClick={() => handleFormOfMeal(name.toLowerCase() as "pizza" | "burger")}
           className="w-auto"
         >
           {name}

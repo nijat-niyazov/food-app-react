@@ -4,7 +4,7 @@ import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
 import { useNavigate } from "react-router-dom";
 
-const Auth = ({ authorized }: { authorized: boolean }) => {
+const Auth = ({ authorized }: { authorized: string | null }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {

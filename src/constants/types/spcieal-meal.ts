@@ -15,10 +15,16 @@ type SizeType = {
 };
 
 type StepType = {
-  heading: string;
-  imgHeading: string; // Assuming imgHeading is a URL or path
+  title: string;
+  imgTitle: string; // Assuming imgTitle is a URL or path
   type: "radio" | "checkbox";
   options: Option[];
 };
 
-export type { Option, SizeType, StepType };
+type MealType = {
+  categoryName: string;
+  options?: Option[];
+  sub_categories?: StepType[];
+};
+
+export type { MealType, Option, SizeType, StepType };

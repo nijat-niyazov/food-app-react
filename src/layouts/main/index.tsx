@@ -1,4 +1,4 @@
-import { CustomModal, Footer, GoToUp, Header } from "@/components";
+import { CustomModal, Footer, Header } from "@/components";
 import { Toaster } from "react-hot-toast";
 import { Outlet, useLocation } from "react-router-dom";
 
@@ -25,7 +25,7 @@ const MainLayout = () => {
 
       <Outlet />
 
-      <GoToUp />
+      {/* <GoToUp /> */}
       <Footer />
 
       {/* <Console /> */}

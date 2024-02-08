@@ -1,4 +1,5 @@
 import { CustomButton } from "@/components";
+import { memo } from "react";
 
 type FormButtonProps = {
   currentStep: number;
@@ -10,23 +11,22 @@ type FormButtonProps = {
 
 const Buttons = ({ currentStep, handleStep, lastStep, isValid, disabled }: FormButtonProps) => {
   return (
-    <div className="flex gap-2 items-center justify-end">
-      <CustomButton disabled={currentStep === 0} onClick={() => handleStep()} type="button" variant="primary" className="w-auto" size="xl">
+    <div className="flex gap-2 items-center">
+      <CustomButton disabled={currentStep === 0} onClick={() => handleStep()} type="button" variant="primary" className="w-auto" size="md">
         Go back
       </CustomButton>
 
-      <CustomButton
-        variant="secondary"
-        size="xl"
-        disabled={!isValid || !disabled}
-        className="disabled:opacity-50 w-auto"
-        onClick={() => handleStep("next")}
-        type={lastStep ? "submit" : "button"}
-      >
-        {lastStep ? "Finish " : "Next"}
-      </CustomButton>
+      {!lastStep ? (
+        <CustomButton variant="secondary" size="md" disabled={!isValid || !disabled} className="w-auto" onClick={() => handleStep("next")}>
+          Next
+        </CustomButton>
+      ) : (
+        <CustomButton variant="secondary" size="md" disabled={!isValid || !disabled} className="w-auto" type="submit">
+          Finish
+        </CustomButton>
+      )}
     </div>
   );
 };
 
-export default Buttons;
+export default memo(Buttons);

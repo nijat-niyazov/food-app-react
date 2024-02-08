@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { Inputs } from "..";
 
 const TotalPrice = ({ totalPrice }: { totalPrice: number | undefined }) => {
   const {
@@ -32,7 +31,7 @@ const TotalPrice = ({ totalPrice }: { totalPrice: number | undefined }) => {
     unregister,
     setError,
     setFocus,
-  } = useForm<Inputs>();
+  } = useForm();
 
   // const totalToPay = watch("size");
 
@@ -43,10 +42,9 @@ const TotalPrice = ({ totalPrice }: { totalPrice: number | undefined }) => {
   // );
 
   return (
-    <div className="bg-primary text-white rounded-lg font-semibold p-4 flex gap-4 items-center w-1/3 mt-4">
-      <span className="text-xl">Total to pay</span>
-      <span className="text-4xl">${totalPrice ?? 0}</span>
-    </div>
+    <p className="bg-primary text-white rounded-lg font-medium px-5 py-2 mt-4 flex items-center gap-3">
+      Total to pay :<span className="text-xl font-semibold">${totalPrice ?? 0}</span>
+    </p>
   );
 };
 

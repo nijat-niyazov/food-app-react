@@ -7,10 +7,12 @@ const MenuLayout = () => {
     <div className=" mb-10">
       <LandingMenu />
 
-      <div className="grid grid-cols-[1fr_2fr_1fr] items-start justify-start container gap-5">
+      <div className="grid md:grid-cols-[1fr_2fr_1fr] items-start justify-start container gap-5">
         <Categories />
         <Outlet />
-        <BasketDev />
+        <div className="hidden md:block">
+          <BasketDev />
+        </div>
       </div>
 
       {/* <Offers /> */}
