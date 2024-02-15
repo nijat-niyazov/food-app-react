@@ -1,27 +1,50 @@
+import { meals } from "@/constants/data/special-meal";
 import { SpecialMealType } from "@/constants/types/spcieal-meal";
-import { FC, useCallback, useMemo, useState } from "react";
+import { delay } from "@/libs/delay";
+import { CustomOrderType, addToDraft } from "@/stores/custom-order";
+import { closeModal } from "@/stores/modal";
+import { useCallback, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Buttons, CategoryName, StepInfo, TotalPrice } from "./form-parts";
+import toast from "react-hot-toast";
+import { Buttons, ConfirmList, StepInfo, TotalPrice } from "./form-parts";
 import { MultipleChoices, Note, Size } from "./steps";
+import { FormInputValues, InputValue, Price } from "./types";
 
-type Inputs = {
-  size: string;
-  ingredients: {
-    meat: string;
-    cheese: string[] | false;
-    vegitable: false | string[];
-  };
-  condiments: { condiments: string[] | false; extras: false | string[] };
-  note: string;
-};
+import { v4 as uuidv4 } from "uuid";
+
+// const steps = useMemo(
+//   () =>
+//     stepsOfSelectedMeal.map((step: any) => {
+//       const fieldName = step.categoryName.toLowerCase();
+
+//       switch (fieldName) {
+//         case "size":
+//           return {
+//             component: Size,
+//             options: step.options,
+//             fieldName,
+//           };
+//         default:
+//           return {
+//             component: MultipleChoices,
+//             options: step.sub_catagories,
+//             fieldName,
+//           };
+//       }
+//     }),
+//   [stepsOfSelectedMeal]
+// );
 
 type Props = {
   mealId: "burger" | "pizza";
   meals: { burger: SpecialMealType[]; pizza: SpecialMealType[] };
+  defaultValues?: CustomOrderType;
 };
 
-const SpecialMealForm: FC<Props> = ({ mealId, meals }) => {
-  const stepsOfSelectedMeal = meals[mealId];
+const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
+  /* ------------------------------- Form State ------------------------------- */
+
+  console.log(defaultValues?.totalPrice);
 
   const {
     register,
@@ -40,91 +63,106 @@ const SpecialMealForm: FC<Props> = ({ mealId, meals }) => {
       isSubmitted,
       submitCount,
       touchedFields,
-      defaultValues,
+      // defaultValues,
     },
     getValues,
     setValue,
     control,
-    // clearErrors,
-    // getFieldState,
-    // reset,
-    // resetField,
-    // trigger,
-    // unregister,
-    // setError,
-    // setFocus,
-  } = useForm<Inputs>();
+    reset,
+  } = useForm<FormInputValues>({
+    defaultValues: defaultValues?.order,
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    // closeModal();
+  const onSubmit: SubmitHandler<FormInputValues> = async (order) => {
+    const id = uuidv4();
+
+    const { success } = await delay(3000);
+    if (success) {
+      const data = {
+        meal: mealId,
+        order,
+        totalPrice,
+        price,
+        id: defaultValues?.id ?? id,
+      };
+
+      addToDraft(data);
+      toast.success("Your order has been added to the draft");
+      closeModal();
+      reset();
+    } else {
+      toast.error("Something went wrong");
+    }
   };
 
+  const stepsOfSelectedMeal = meals[mealId];
+
   /* ------------------------------- Step State ------------------------------- */
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const maxSteps = stepsOfSelectedMeal.length + 1; // additional one for note
-  const lastStep = currentStep + 1 === maxSteps;
-
-  const handleStep = useCallback((route?: "next") => setCurrentStep((prev) => (route === "next" ? prev + 1 : prev - 1)), []);
-
-  const steps = useMemo(
-    () =>
-      stepsOfSelectedMeal.map((step: any) => {
-        const fieldName = step.categoryName.toLowerCase();
-
-        switch (fieldName) {
-          case "size":
-            return {
-              component: Size,
-              options: step.options,
-              fieldName,
-            };
-          default:
-            return {
-              component: MultipleChoices,
-              options: step.sub_catagories,
-              fieldName,
-            };
-        }
-      }),
-    [stepsOfSelectedMeal]
-  );
+  const [currentStep, setCurrentStep] = useState(0);
+  const maxSteps = stepsOfSelectedMeal.length + 2; // additionals for note and confirm list
+  const noteStep = currentStep === maxSteps - 2;
+  const lastStep = currentStep === maxSteps - 1;
+  const handleStep = useCallback((route?: "next") => setCurrentStep((prev) => prev + (route === "next" ? 1 : -1)), []);
 
   /* ------------------------------- Price State ------------------------------ */
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState<Price[]>(defaultValues?.totalPrice ?? []);
+
+  function handleTotalPrice(values: Price, checked: boolean | null) {
+    const { fieldName, id, price, name } = values;
+    const exists = totalPrice.some((el) => el.fieldName === fieldName);
+
+    let fields = [...totalPrice, values];
+    if (typeof checked === "boolean") {
+      fields = checked ? fields : totalPrice.filter((element) => element.id !== id);
+    } else {
+      fields = !exists ? fields : totalPrice.map((element) => (element.fieldName === fieldName ? { ...element, price, id } : element));
+    }
+    setTotalPrice(fields);
+  }
+
+  function handleChange(fieldName: keyof FormInputValues, value: InputValue, checked?: boolean) {
+    handleTotalPrice({ fieldName, ...value }, checked ?? null);
+  }
+
+  const price = parseFloat(useMemo(() => totalPrice.reduce((acc, { price }) => acc + price, 0), [totalPrice]).toFixed(2));
 
   return (
     <div className="p-10">
-      <header>
-        <StepInfo currentStep={currentStep} maxSteps={maxSteps} />
-
-        <CategoryName
-          name={
-            currentStep < maxSteps - 1 // removing one for note
-              ? stepsOfSelectedMeal[currentStep].categoryName
-              : "Special Note"
-          }
-        />
-      </header>
+      <StepInfo
+        currentStep={currentStep}
+        maxSteps={maxSteps}
+        name={!noteStep && !lastStep ? stepsOfSelectedMeal[currentStep].categoryName : noteStep ? "Special Note" : "Confirm List"}
+      />
 
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2">
-        {steps.map(
-          ({ component: Component, options, fieldName }, i) =>
-            i === currentStep && <Component key={i} options={options} register={register} fieldName={fieldName} />
-        )}
+        {/* ---------------------------------- Size ---------------------------------- */}
 
-        {currentStep + 1 === maxSteps && <Note register={register} />}
+        {stepsOfSelectedMeal.map((step, i) => {
+          const field = step.categoryName.toLowerCase() as keyof FormInputValues;
+
+          return i === 0 && currentStep === 0 ? (
+            <div style={{ display: currentStep === i ? "block" : "none" }} key={i}>
+              <Size fieldName={field} handleChange={handleChange} register={register} options={step.options!} />
+            </div>
+          ) : (
+            <div style={{ display: currentStep === i ? "block" : "none" }} key={i}>
+              <MultipleChoices fieldName={field} handleChange={handleChange} options={step.sub_categories!} register={register} />
+            </div>
+          );
+        })}
+
+        {noteStep && <Note register={register} />}
+        {lastStep && <ConfirmList note={watch("note")} values={totalPrice} />}
 
         <footer className="flex items-center justify-between">
-          <TotalPrice totalPrice={0} />
+          <TotalPrice price={price} />
 
           <Buttons
             {...{
+              isSubmitting,
               currentStep,
               handleStep,
               lastStep,
-              isValid,
-              disabled: watch("size"),
             }}
           />
         </footer>

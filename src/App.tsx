@@ -18,10 +18,10 @@ const routes = (
     <Route path="/not-admin" element={<NotAdmin />} />
 
     {/* protected routes */}
-    {/* <Route element={<AuthLayout />}> */}
+
     <Route path="/admin" element={<AdminPage />} />
     <Route path="/editor/:id" element={<EditorPage />} />
-    {/* </Route> */}
+    {/* <Route path="/customize/:id" element={<CustomizeSpecialMealPage />} /> */}
   </Route>
 );
 
@@ -33,6 +33,11 @@ function App() {
   cookies.set("user", "admin");
 
   return <RouterProvider router={router} />;
+  // return (
+  //   <div className="p-10 border-1 m-4">
+  //     <Prev />
+  //   </div>
+  // );
 }
 
 export default App;

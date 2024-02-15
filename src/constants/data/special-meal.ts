@@ -1,6 +1,7 @@
 import { burger, cheese, chicken, condiment, fries, hamburger, lil_pizza, meat, salad, tuna } from "@/assets/images";
+import { SpecialMealType } from "../types/spcieal-meal";
 
-export const meals = {
+export const meals: { [key: string]: SpecialMealType[] } = {
   pizza: [
     // /* ---------------------------------- Size ---------------------------------- */
     {
@@ -32,7 +33,7 @@ export const meals = {
     // /* ------------------------------- Ingredients ------------------------------ */
     {
       categoryName: "Ingredients",
-      sub_catagories: [
+      sub_categories: [
         {
           title: "Meat",
           imgTitle: hamburger,
@@ -42,13 +43,13 @@ export const meals = {
               img: meat,
               name: "Beef",
               id: "beef",
-              price: 22.99,
+              price: 18.99,
             },
             {
               name: "Chicken",
               id: "chicken",
               img: chicken,
-              price: 22.99,
+              price: 14.99,
             },
             {
               name: "Tuna",
@@ -66,7 +67,7 @@ export const meals = {
             {
               name: "Cheader",
               id: "cheader",
-              price: 1.5,
+              price: 0.5,
             },
             {
               name: "Mozarella",
@@ -76,17 +77,17 @@ export const meals = {
             {
               name: "American",
               id: "american",
-              price: 1.5,
+              price: 2.5,
             },
             {
               name: "Blue Cheese",
               id: "blue_cheese",
-              price: 1.5,
+              price: 3.5,
             },
             {
               name: "Pepper Jack",
               id: "pepper_jack",
-              price: 1.5,
+              price: 4.5,
             },
           ],
         },
@@ -98,22 +99,22 @@ export const meals = {
             {
               name: "Peppers",
               id: "peppers",
-              price: 1.5,
+              price: 5.5,
             },
             {
               name: "Mushrooms",
               id: "mushrooms",
-              price: 1.5,
+              price: 6.5,
             },
             {
               name: "Onions",
               id: "onions",
-              price: 1.5,
+              price: 7.5,
             },
             {
               name: "Tomato",
               id: "tomato",
-              price: 1.5,
+              price: 8.5,
             },
           ],
         },
@@ -121,8 +122,8 @@ export const meals = {
     },
     //  /* ------------------------- Condiments and Extrass ------------------------- */
     {
-      categoryName: "Condiments & Extras",
-      sub_catagories: [
+      categoryName: "Extras",
+      sub_categories: [
         {
           title: "Condiments",
           imgTitle: condiment,
@@ -158,6 +159,31 @@ export const meals = {
         {
           title: "Extras",
           imgTitle: fries,
+          type: "radio",
+          options: [
+            {
+              img: fries,
+              name: "Small",
+              id: "small",
+              price: 7.99,
+            },
+            {
+              name: "Medium",
+              id: "medium",
+              img: fries,
+              price: 10.99,
+            },
+            {
+              name: "Large",
+              id: "large",
+              img: fries,
+              price: 12.99,
+            },
+          ],
+        },
+        {
+          title: "Souce",
+          imgTitle: condiment,
           type: "checkbox",
           options: [
             {
@@ -186,7 +212,7 @@ export const meals = {
     },
     {
       categoryName: "Ingredients",
-      sub_catagories: [
+      sub_categories: [
         {
           title: "Meat",
           imgTitle: hamburger,
@@ -276,7 +302,7 @@ export const meals = {
     //  /* ------------------------- Condiments and Extrass ------------------------- */
     // {
     //   categoryName: "Condiments & Extras",
-    //   sub_catagories: [
+    //   sub_categories: [
     //     {
     //       title: "Condiments",
     //       imgTitle: condiment,

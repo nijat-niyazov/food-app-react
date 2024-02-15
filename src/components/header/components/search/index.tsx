@@ -74,7 +74,7 @@ const HeaderSearch = () => {
           type="text"
           name="search"
           placeholder="Burger"
-          className="bg-transparent outline-none px-1 w-[calc(100%-20px)]"
+          className="bg-outlined outline-none px-1 w-[calc(100%-20px)]"
           value={search}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
           onFocus={() => setIsFocused(true)}

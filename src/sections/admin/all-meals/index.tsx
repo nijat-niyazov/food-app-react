@@ -3,7 +3,6 @@ import { getMenuItems } from "@/libs/menu";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import AdminMeals from "./meal";
 import CategoriesTabs from "./tabs";
 
 /* -------------------------------- Skeletons ------------------------------- */
@@ -70,7 +69,7 @@ const AllMeals = () =>
 
     return (
       <div className="border-1 rounded-md border-black/30 container mt-5">
-        <header className="flex items-center gap-5 ">
+        <header className="flex items-center gap-20 ">
           {isPending ? (
             <CategoriesSkeletons length={7} />
           ) : (
@@ -78,9 +77,9 @@ const AllMeals = () =>
           )}
         </header>
 
-        <ul className="grid gap-3 md:w-[78%] mx-auto mt-10 md:grid-cols-3">
+        {/* <ul className="grid gap-3 md:w-[78%] mx-auto mt-10 md:grid-cols-3">
           {isPending ? <MealSkeletons length={6} /> : <AdminMeals meals={meals} />}
-        </ul>
+        </ul> */}
       </div>
     );
   };

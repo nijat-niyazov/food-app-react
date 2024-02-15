@@ -21,7 +21,7 @@ const CustomInput = ({ placeholder, type = "text", className, register, field, e
         <input
           placeholder={placeholder}
           type={type === "password" ? (showPassword ? "text" : type) : type}
-          className={cn("bg-transparent outline-none w-full", className)}
+          className={cn("bg-outlined outline-none w-full", className)}
           {...register(field, { required: true })}
         />
 

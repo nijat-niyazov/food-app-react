@@ -1,57 +1,66 @@
 import { ChoicesType } from "@/constants/types/spcieal-meal";
 import { cn } from "@/utils";
-import { FC, InputHTMLAttributes, memo } from "react";
+import { InputHTMLAttributes, memo } from "react";
 import { UseFormRegister } from "react-hook-form";
-import CategoryHeader from "./CategoryHeader";
+
+import { FormInputValues, InputValue } from "../../types";
+import CategoryTitle from "./CategoryTitle";
 
 type MultipleChoicesProps = {
-  fieldName: string;
+  fieldName: keyof FormInputValues;
   options: ChoicesType[];
+  handleChange: (registerName: keyof FormInputValues, values: InputValue, checked?: boolean) => void;
   register: UseFormRegister<any>;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const MultipleChoices: FC<MultipleChoicesProps> = ({ fieldName, options: categories, register, ...rest }) => {
+const MultipleChoices = ({ fieldName, options: categories, register, handleChange, ...rest }: MultipleChoicesProps) => {
   return (
-    <div className="grid gap-14 mt-10">
-      {categories.map((category, i) => (
-        <div key={i} className="relative  border-1 border-black/30 p-10 rounded-md">
-          <CategoryHeader img={category.imgTitle} title={category.title} />
+    categories && (
+      <div className="grid gap-14 mt-10">
+        {categories.map((category, i) => (
+          <div key={i} className="relative  border-1 border-black/30 p-10 rounded-md">
+            <CategoryTitle img={category.imgTitle} title={category.title} />
 
-          <ul className="grid grid-cols-3 gap-x-20">
-            {category.options.map((option) => {
-              const registerName = `${fieldName}.${category.title.toLowerCase()}`;
+            <ul className="grid grid-cols-3 gap-x-20">
+              {category.options.map((values) => {
+                const registerName = `${fieldName}.${category.title.toLowerCase()}` as keyof FormInputValues;
+                const { id, price, name } = values;
+                return (
+                  <li key={id} className="flex gap-2 items-center font-bold text-text text-xl">
+                    {category.type === "radio" ? (
+                      <input
+                        id={id}
+                        value={id}
+                        type={category.type === "radio" ? "radio" : "checkbox"}
+                        className="w-4 h-4"
+                        {...register(registerName)}
+                        onChange={() => handleChange(registerName, values)}
+                      />
+                    ) : (
+                      <input
+                        id={id}
+                        value={id}
+                        type="checkbox"
+                        className="w-4 h-4"
+                        {...register(registerName)}
+                        onChange={({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) =>
+                          handleChange(registerName, values, checked)
+                        }
+                      />
+                    )}
 
-              return (
-                <li key={option.id} className="flex gap-2 items-center font-bold text-text text-xl">
-                  <input
-                    {...rest}
-                    id={option.id}
-                    value={option.id}
-                    type={category.type}
-                    className="w-5 h-5"
-                    {...register(registerName, {
-                      required: category.type === "radio",
-                    })}
-                  />
-
-                  <label htmlFor={option.id} className="select-none flex items-center gap-3 grow">
-                    {option.img && <img src={option.img} alt={option.id} className="w-10 h-6 " />}
-                    {option.name}
-                    <span
-                      className={cn("text-lg font-medium italic", {
-                        "ml-auto": category.type === "checkbox",
-                      })}
-                    >
-                      {option.price}$
-                    </span>
-                  </label>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
-    </div>
+                    <label htmlFor={id} className="select-none flex items-center gap-3 grow">
+                      {name}
+                      <span className={cn("text-lg font-medium italic")}>{price}$</span>
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )
   );
 };
 

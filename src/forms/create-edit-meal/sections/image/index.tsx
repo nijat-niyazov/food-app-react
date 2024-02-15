@@ -49,7 +49,7 @@ const MealImage: FC<MealImageProps> = ({ defImg, register, setValue }) => {
               Change Image
             </span>
           </div>
-          <CustomButton onClick={() => fileRef.current?.click()} variant="transparent" className="border-1 border-black/30 md:hidden">
+          <CustomButton onClick={() => fileRef.current?.click()} variant="outlined" className="border-1 border-black/30 md:hidden">
             Change Image
           </CustomButton>
         </>

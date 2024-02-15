@@ -1,16 +1,18 @@
 import { CustomButton } from "@/components";
+import { ConfirmationOrder } from "@/components/modal-contents";
 
 import { MealType, OptionType } from "@/constants/types/meal";
 import { useMediaMatch } from "@/hooks";
+import { openModal } from "@/stores/modal";
 
 const AddToOrderBtn = ({
   selected,
   notable = true,
   meal,
-}: // handleSelect,
-{
+  handleSelect,
+}: {
   selected: OptionType;
-  // handleSelect: (id: null) => void;
+  handleSelect: (id: null) => void;
   notable?: boolean;
   meal: MealType;
 }) => {
@@ -40,7 +42,7 @@ const AddToOrderBtn = ({
 
   return (
     <CustomButton
-      // onClick={() => openModal(<ConfirmationOrder handleSelect={handleSelect} meal={meal} selected={selected} />, 50)}
+      onClick={() => openModal(<ConfirmationOrder handleSelect={handleSelect} meal={meal} selected={selected} />, 50)}
       size="sm"
     >
       Add To Order

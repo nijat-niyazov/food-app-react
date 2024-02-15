@@ -9,7 +9,7 @@ interface BasketState {
   totalItems: number;
   addToBasket: (order: OrderWithoutQ) => void;
   updateBasketItem: (id: number, action: "inc" | "dec") => void;
-  removeBasketItem: (id: number) => void;
+  removeBasketItem: (id: number | string) => void;
   clearBasket: () => void;
 }
 
@@ -30,11 +30,11 @@ export const useBasketStore = create<BasketState>()((set) => ({
     set((state) => {
       const newOrder = { ...order, quantity: 1 };
 
-      let existingOrder = state.elements.find((meal) => meal.id === newOrder.id);
+      let doesExists = state.elements.find((meal) => meal.id === newOrder.id);
 
-      existingOrder ? (existingOrder.quantity += 1) : (elements = [...state.elements, newOrder]);
+      doesExists ? (doesExists.quantity += 1) : (elements = [...state.elements, newOrder]);
 
-      totalPrice = +findTotalPrice(elements);
+      totalPrice = parseInt(findTotalPrice(elements));
       totalItems = findTotalItems(elements);
 
       return {
@@ -49,7 +49,7 @@ export const useBasketStore = create<BasketState>()((set) => ({
       const findedOrder = state.elements.find((meal) => meal.id === id) as OrderType;
 
       findedOrder.quantity += action === "inc" ? 1 : -1;
-      totalPrice = +findTotalPrice(elements);
+      totalPrice = parseInt(findTotalPrice(elements));
       totalItems = findTotalItems(elements);
 
       return {
@@ -59,10 +59,10 @@ export const useBasketStore = create<BasketState>()((set) => ({
       };
     }),
 
-  removeBasketItem: (id: number) =>
+  removeBasketItem: (id: number | string) =>
     set((state) => {
       elements = state.elements.filter((meal) => meal.id !== id);
-      totalPrice = +findTotalPrice(elements);
+      totalPrice = parseInt(findTotalPrice(elements));
       totalItems = findTotalItems(elements);
 
       return {

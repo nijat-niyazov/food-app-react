@@ -23,7 +23,9 @@ type ChoicesType = {
 
 type SpecialMealType = {
   categoryName: string;
+
   options?: Option[];
+
   sub_categories?: ChoicesType[];
 };
 

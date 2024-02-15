@@ -28,7 +28,7 @@
     },
     {
       "categoryName": "Ingredients",
-      "sub_catagories": [
+      "sub_categories": [
         {
           "title": "Meat",
           "imgTitle": "hamburger",
@@ -117,7 +117,7 @@
     },
     {
       "categoryName": "Condiments & Extras",
-      "sub_catagories": [
+      "sub_categories": [
         {
           "title": "Condiments",
           "imgTitle": "condiment",
@@ -211,7 +211,7 @@
     },
     {
       "categoryName": "Ingredients",
-      "sub_catagories": [
+      "sub_categories": [
         {
           "title": "Meat",
           "imgTitle": "hamburger",

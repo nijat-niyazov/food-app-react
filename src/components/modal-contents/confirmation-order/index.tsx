@@ -29,7 +29,7 @@ const ConfirmationOrder = ({
     // const { success } = { success: true };
 
     if (success) {
-      toast.success("Your note has been sent successfully");
+      toast.success(`Your order ${note && "and note"} has been sent successfully`);
       addToBasket(newOrder);
       closeModal();
       handleSelect(null);

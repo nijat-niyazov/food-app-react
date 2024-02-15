@@ -45,7 +45,7 @@ const CreateMealForm: FC<Props> = ({ defaultValues }) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { category, ...rest } = data;
     const findedCategory = statCategories.find((cat) => cat.name === category)?.id;
-    const values = Object.assign(rest, { category: findedCategory });
+    const values = { ...rest, category: findedCategory };
 
     console.log(values);
   };
@@ -88,7 +88,7 @@ const CreateMealForm: FC<Props> = ({ defaultValues }) => {
               onFocus={() => setShow(true)}
               type="text"
               id="category"
-              className="bg-transparent w-full  p-2 outline-none text-sm md:text-base"
+              className="bg-outlined w-full  p-2 outline-none text-sm md:text-base"
               placeholder="Fast-Food"
               {...register("category", { required: true })}
             />

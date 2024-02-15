@@ -4,9 +4,9 @@ import { BasketItemType } from "@/constants/types/meal";
 import { removeBasketItem } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
-import { MotionDiv } from "..";
+import { MotionDiv } from "../..";
 
-function BasketDevItem({ item }: { item: BasketItemType }) {
+function BasketMenuItem({ item }: { item: BasketItemType }) {
   return (
     <AnimatePresence>
       <MotionDiv
@@ -55,4 +55,4 @@ function BasketDevItem({ item }: { item: BasketItemType }) {
   );
 }
 
-export default BasketDevItem;
+export default BasketMenuItem;
