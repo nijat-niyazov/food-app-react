@@ -1,6 +1,6 @@
 import { useMediaMatch } from "@/hooks";
-import { useBasketStore } from "@/stores/basket";
-import { useCustomOrderState } from "@/stores/custom-order";
+import { totalPrice, useBasketStore } from "@/stores/basket";
+import { totalPriceOfCustomOrders, useCustomOrderState } from "@/stores/custom-order";
 import BasketFooter from "./basket-footer";
 import CustomItems from "./custom";
 import MenuItems from "./menu";
@@ -8,13 +8,13 @@ import MenuItems from "./menu";
 const BasketDev = () => {
   /* ------------------------------- Menu Orders ------------------------------ */
   const basketItems = useBasketStore((state) => state.elements);
-  const totalPrice = useBasketStore((state) => state.totalPrice);
-  const discount = (totalPrice * 5) / 100;
+
+  const discount = 0;
 
   /* ------------------------------ Custom Orders ----------------------------- */
   const customOrders = useCustomOrderState((state) => state.orders);
-  const priceOfCustomORders = useCustomOrderState((state) => state.totalPriceOfCustomOrders);
-  const totalPay = totalPrice + priceOfCustomORders - discount;
+  // const priceOfCustomORders = useCustomOrderState((state) => state.totalPriceOfCustomOrders);
+  const totalPay = totalPrice + totalPriceOfCustomOrders - discount;
 
   /* ------------------------------ Media Screen ------------------------------ */
   const sm = useMediaMatch();
