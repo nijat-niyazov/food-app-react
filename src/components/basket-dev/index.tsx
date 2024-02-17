@@ -1,82 +1,49 @@
-import { clearBasket, useBasketStore } from "@/stores/basket";
-
-import { ArrowDown } from "@/assets/icons";
 import { useMediaMatch } from "@/hooks";
-import { cn } from "@/utils";
-import { CustomButton } from "..";
-import BasketDevItem from "./basketitem";
+import { useBasketStore } from "@/stores/basket";
+import { useCustomOrderState } from "@/stores/custom-order";
+import { convertToTwoDecimalFloat } from "@/utils";
+import BasketFooter from "./basket-footer";
+import CustomItems from "./custom";
+import MenuItems from "./menu";
 
 const BasketDev = () => {
-  const basketItems = useBasketStore((state) => state.elements);
-  const totalPrice = useBasketStore((state) => state.totalPrice);
+  /* ------------------------------- Menu Orders ------------------------------ */
+  const { orders: menuOrders, totalPrice } = useBasketStore((state) => state);
 
-  const discount = +((totalPrice * 5) / 100).toFixed(2);
-  const totalPay = (totalPrice - discount).toFixed(2);
+  /* ------------------------------ Custom Orders ----------------------------- */
+  const { orders: customOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
 
+  /* ------------------------------ Media Screen ------------------------------ */
   const sm = useMediaMatch();
+
+  /* ------------------------------- Price State ------------------------------ */
+  const subTotal = totalPrice + totalPriceOfCustomOrders;
+  const discount = convertToTwoDecimalFloat((subTotal * 5) / 100);
+  const totalPay = convertToTwoDecimalFloat(subTotal - discount);
 
   return (
     <div className="bg-faq rounded-xl border-1 border-black/20 sticky top-5 ">
       <h3 className="text-white rounded-t-xl bg-secondary font-semibold text-3xl py-5 px-12 w-full ">My Basket</h3>
 
-      <div className="md:hover:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
-        <div className="grid gap-3 ">
-          {basketItems?.map((item, i) => (
-            <BasketDevItem key={i} item={item} />
-          ))}
-        </div>
+      <MenuItems items={menuOrders} />
+      <CustomItems items={customOrders} />
 
+      <div className="md:hover:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
         <ul className="grid gap-5 px-5 py-8 border-b-1 border-black/20">
           <li className="text-text text-xl font-semibold flex items-center justify-between">
             Sub Total:
-            <span className="text-2xl font-normal">${totalPrice.toFixed(2)}</span>
+            <span className="text-2xl font-normal">${subTotal}</span>
           </li>
 
-          {basketItems.length !== 0 && (
+          {menuOrders.length !== 0 && (
             <li className="text-text text-xl font-semibold flex items-center justify-between">
               Discounts:
-              <span className="text-2xl font-normal">-{discount}</span>
+              <span className="text-2xl font-normal">${discount}</span>
             </li>
           )}
-
-          {/* <li className="text-text text-xl font-semibold flex items-center justify-between">
-            Sub Total:
-            <span className="text-2xl font-normal">${totalPrice.toFixed(2)}</span>
-          </li> */}
         </ul>
 
-        <div className="px-3 pb-3">
-          <CustomButton
-            onClick={clearBasket}
-            variant="black"
-            size="sm"
-            borderRadius="md"
-            className={cn("w-full mt-4", {
-              hidden: basketItems.length < 1,
-            })}
-          >
-            Remove All
-          </CustomButton>
-
-          <p className="bg-primary rounded-lg border-1 border-black/10 flex items-center justify-between mt-4">
-            <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay:</span>
-            <span className="text-white font-semibold text-4xl px-4 py-5">${totalPay}</span>
-          </p>
-
-          <CustomButton
-            disabled={basketItems.length < 1}
-            onClick={clearBasket}
-            variant={basketItems.length < 1 ? "danger" : "secondary"}
-            size="xl2"
-            borderRadius="md"
-            className="flex items-center mt-4"
-          >
-            <span className={cn("rotate-90", { "opacity-0": basketItems.length < 10 ? 0 : 1 })}>
-              <ArrowDown />
-            </span>
-            <span className="grow text-center">Checkout!</span>
-          </CustomButton>
-        </div>
+        <BasketFooter customOrdersCount={customOrders.length} basketItemsCount={menuOrders.length} totalPay={totalPay} />
       </div>
     </div>
   );

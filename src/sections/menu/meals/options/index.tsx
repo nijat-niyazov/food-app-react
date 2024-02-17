@@ -1,6 +1,7 @@
 import { Option } from "@/components";
 import { MealType, OptionType } from "@/constants/types/meal";
 import { useState } from "react";
+import AddToOrderBtn from "../add-to-order";
 
 const Options = ({ options, meal }: { meal: MealType; options: OptionType[] }) => {
   const [selected, setSelected] = useState<OptionType | null>(null);
@@ -13,7 +14,7 @@ const Options = ({ options, meal }: { meal: MealType; options: OptionType[] }) =
       {options.map((option) => (
         <Option key={option.id} option={option} onClick={handleSelect} selected={selected?.id} />
       ))}
-      {/* {selected && <AddToOrderBtn meal={meal} selected={selected} handleSelect={handleSelect} />} */}
+      {selected && <AddToOrderBtn meal={meal} selected={selected} handleSelect={handleSelect.bind(null, null)} />}
     </div>
   );
 };

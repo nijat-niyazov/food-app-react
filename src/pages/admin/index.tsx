@@ -1,5 +1,5 @@
-import { AllMeals, MainTabs } from "@/sections/admin";
-import CreateNewMeal from "@/sections/admin/create";
+import { AllMeals, CreateNewMeal, CreateSpecialMeal, MainTabs } from "@/sections/admin";
+
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -15,21 +15,21 @@ const AdminPage = () => {
     sessionStorage.setItem("activeTab", tab.toString());
   }, []);
 
+  const components = [<AllMeals />, <CreateNewMeal />, <CreateSpecialMeal />];
+
   return (
     <div className="">
-      <>
-        {/* ---------------------------------- Tabs ---------------------------------- */}
+      {/* ---------------------------------- Tabs ---------------------------------- */}
 
-        <MainTabs activeTab={activeTab} handleActiveTab={handleActiveTab} />
+      <MainTabs activeTab={activeTab} handleActiveTab={handleActiveTab} />
 
-        {activeTab === 1 && (
-          <AllMeals
-          //  isPending={isPending} data={meals}
-          />
-        )}
+      {/* ------------------------------- Components -------------------------------- */}
 
-        {activeTab === 2 && <CreateNewMeal />}
-      </>
+      {components.map((component, i) => (
+        <div key={i} className={activeTab === i + 1 ? "block" : "hidden"}>
+          {component}
+        </div>
+      ))}
     </div>
   );
 };

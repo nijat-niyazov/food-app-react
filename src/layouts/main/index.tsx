@@ -1,5 +1,5 @@
-import { CustomModal, Footer, GoToUp, Header } from "@/components";
-import { Toaster } from "react-hot-toast";
+import { CustomModal, Footer, Header } from "@/components";
+import toast, { ToastBar, Toaster } from "react-hot-toast";
 import { Outlet, useLocation } from "react-router-dom";
 
 const MainLayout = () => {
@@ -22,28 +22,30 @@ const MainLayout = () => {
       <Header />
       {/* <AlertDialogDemo /> */}
       <CustomModal />
-
       <Outlet />
-
-      <GoToUp />
+      {/* <GoToUp /> */}
       <Footer />
-
       {/* <Console /> */}
+
       <Toaster
-        position="top-center"
-        reverseOrder={false}
-        gutter={8}
         toastOptions={{
-          className: "w-full whitespace-nowrap bg-primary  ",
-          duration: 5000,
-          style: {
-            background: "#363636",
-            color: "#fff",
-            width: "100%",
-            height: "10%",
+          success: {
+            duration: 2000,
+            className: "text-white whitespace-nowrap bg-secondary max-w-[700px]",
           },
         }}
-      />
+      >
+        {(t) => (
+          <ToastBar toast={t}>
+            {({ icon, message }) => (
+              <button className="flex items-center" onClick={() => toast.dismiss(t.id)}>
+                {icon}
+                {message}
+              </button>
+            )}
+          </ToastBar>
+        )}
+      </Toaster>
     </div>
   );
 };

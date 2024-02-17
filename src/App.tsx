@@ -1,10 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import Cookies from "universal-cookie";
 import { MainLayout, MenuLayout } from "./layouts";
-import { Branches, HomePage, Meals, NotFoundPage, SpecialMeal } from "./pages";
-import AdminPage from "./pages/admin";
-import EditorPage from "./pages/editor";
-import NotAdmin from "./pages/not-admin";
-import UnAuthPage from "./pages/unauth";
+import { AdminPage, Branches, EditorPage, HomePage, Meals, NotAdmin, NotFoundPage, SpecialMeal, UnAuthPage } from "./pages";
 
 const routes = (
   <Route path="/" element={<MainLayout />}>
@@ -21,17 +18,26 @@ const routes = (
     <Route path="/not-admin" element={<NotAdmin />} />
 
     {/* protected routes */}
-    {/* <Route element={<AuthLayout />}> */}
+
     <Route path="/admin" element={<AdminPage />} />
     <Route path="/editor/:id" element={<EditorPage />} />
-    {/* </Route> */}
+    {/* <Route path="/customize/:id" element={<CustomizeSpecialMealPage />} /> */}
   </Route>
 );
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(routes));
 
+  const cookies = new Cookies(null, { path: "/" });
+
+  cookies.set("user", "admin");
+
   return <RouterProvider router={router} />;
+  // return (
+  //   <div className="p-10 border-1 m-4">
+  //     <NewTodo />
+  //   </div>
+  // );
 }
 
 export default App;

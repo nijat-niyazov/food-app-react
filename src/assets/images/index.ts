@@ -14,9 +14,11 @@ import breakfast from "./menu/breakfast.png";
 import burger from "./menu/burger.png";
 import cheese from "./menu/cheese.png";
 import chicken from "./menu/chicken.png";
+import condiment from "./menu/condiment.png";
 import desert from "./menu/desert.png";
 import energetic from "./menu/energetic.png";
 import fish from "./menu/fish.png";
+import fries from "./menu/fries.png";
 import georgian from "./menu/georgian.png";
 import hamburger from "./menu/hamburger.png";
 import main from "./menu/main.png";
@@ -40,11 +42,13 @@ export {
   cheese,
   chicken,
   close,
+  condiment,
   delivery,
   desert,
   energetic,
   fast_food,
   fish,
+  fries,
   georgian,
   girl,
   hamburger,

@@ -1,7 +1,7 @@
 import { close } from "@/assets/images";
 import { useModalStore } from "@/stores/modal";
+import { cn } from "@/utils";
 import { Dialog, Transition } from "@headlessui/react";
-import clsx from "clsx";
 import { Fragment } from "react";
 
 const CustomModal = () => {
@@ -39,7 +39,7 @@ const CustomModal = () => {
                 style={{
                   width,
                 }}
-                className={clsx("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
+                className={cn("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
               >
                 {closeBtn && (
                   <button

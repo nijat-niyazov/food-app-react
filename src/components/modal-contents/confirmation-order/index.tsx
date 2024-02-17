@@ -7,51 +7,40 @@ import { closeModal } from "@/stores/modal";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 
-const ConfirmationOrder = ({
-  selected,
-  meal,
-  handleSelect,
-}: {
+type ConfirmationOrderProps = {
   selected: OptionType;
   meal: MealType;
-  handleSelect: (id: null) => void;
-}) => {
+  handleSelect?: (id: null) => void;
+};
+
+const ConfirmationOrder = ({ selected, meal }: ConfirmationOrderProps) => {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleAddBasket = async (note: string) => {
+  async function handleAddBasket(note: string) {
     setIsSubmitting(true);
     let { options, ...mymeal } = meal;
 
     let newOrder = { ...mymeal, ...selected, note };
 
     const { success } = await delay();
-    // const { success } = { success: true };
 
     if (success) {
-      toast.success("Your note has been sent successfully");
+      toast.success(`Your order ${note && "and note"} has been sent successfully`);
       addToBasket(newOrder);
       closeModal();
-      handleSelect(null);
-    } else {
-      toast.error("Something went wrong \n Pease try again!");
-    }
+    } else toast.error("Something went wrong \n Pease try again!");
 
     setIsSubmitting(false);
+  }
 
-    // sm && openModal(<Basket />);
-  };
-
-  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-
     handleAddBasket(value);
-  };
+  }
 
   return (
     <div className="p-4">
-      {/* <h4 className="font-semibold text-2xl mb-4 text-center">You can take your note</h4> */}
-
       <form onSubmit={handleSubmit} className=" p-4 grid gap-4">
         <label className="text-primary text-4xl font-bold" htmlFor="note">
           You can add your special request

@@ -16,8 +16,8 @@ const Option = ({ disabled = false, onClick, option, selected }: OptionComProps)
       onClick={handeClick}
       disabled={disabled}
       size="xs"
-      variant="transparent"
-      className={cn("border-1 border-text/30  w-auto md:px-3 flex items-center", {
+      variant="outlined"
+      className={cn("border-1 border-white hover:border-black/90   w-auto py-2 px-3 flex items-center", {
         "bg-text text-white": selected === option.id,
         "hover:bg-text/50 hover:text-white": selected !== option.id,
       })}

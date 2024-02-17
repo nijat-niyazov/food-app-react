@@ -50,7 +50,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         })}
         borderRadius="full"
         onClick={(e) => getPositions(e, 0)}
-        variant="transparent"
+        variant="outlined"
       >
         All
       </CustomButton>
@@ -62,7 +62,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
           })}
           borderRadius="full"
           onClick={(e) => getPositions(e, i + 1)}
-          variant="transparent"
+          variant="outlined"
         >
           {kebabToString(category)}
         </CustomButton>
@@ -73,7 +73,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         })}
         borderRadius="full"
         onClick={(e) => getPositions(e, 3)}
-        variant="transparent"
+        variant="outlined"
       >
         Pasta
       </CustomButton>
@@ -83,7 +83,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         })}
         borderRadius="full"
         onClick={(e) => getPositions(e, 4)}
-        variant="transparent"
+        variant="outlined"
       >
         Main
       </CustomButton>
@@ -93,7 +93,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         })}
         borderRadius="full"
         onClick={(e) => getPositions(e, 5)}
-        variant="transparent"
+        variant="outlined"
       >
         Vegetarian
       </CustomButton>
@@ -103,7 +103,7 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
         })}
         borderRadius="full"
         onClick={(e) => getPositions(e, 6)}
-        variant="transparent"
+        variant="outlined"
       >
         Soup
       </CustomButton> */}

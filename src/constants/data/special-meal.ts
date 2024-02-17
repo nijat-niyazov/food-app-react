@@ -1,18 +1,12 @@
-import {
-  burger,
-  cheese,
-  chicken,
-  hamburger,
-  lil_pizza,
-  meat,
-  tuna,
-} from "@/assets/images";
+import { burger, cheese, chicken, condiment, fries, hamburger, lil_pizza, meat, salad, tuna } from "@/assets/images";
+import { SpecialMealType } from "../types/spcieal-meal";
 
-export const options = {
+export const meals: { [key: string]: SpecialMealType[] } = {
   pizza: [
+    // /* ---------------------------------- Size ---------------------------------- */
     {
       categoryName: "Size",
-      choices: [
+      options: [
         {
           img: lil_pizza,
           name: "Small",
@@ -36,25 +30,26 @@ export const options = {
         },
       ],
     },
+    // /* ------------------------------- Ingredients ------------------------------ */
     {
       categoryName: "Ingredients",
-      options: [
+      sub_categories: [
         {
-          heading: "Meat",
-          imgHeading: hamburger,
+          title: "Meat",
+          imgTitle: hamburger,
           type: "radio",
-          choices: [
+          options: [
             {
               img: meat,
               name: "Beef",
               id: "beef",
-              price: 22.99,
+              price: 18.99,
             },
             {
               name: "Chicken",
               id: "chicken",
               img: chicken,
-              price: 22.99,
+              price: 14.99,
             },
             {
               name: "Tuna",
@@ -62,22 +57,17 @@ export const options = {
               img: tuna,
               price: 22.99,
             },
-            // {
-            //   name: "Goki",
-            //   id: "goki",
-            //   img: tuna,
-            // },
           ],
         },
         {
-          heading: "Cheese",
-          imgHeading: cheese,
+          title: "Cheese",
+          imgTitle: cheese,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Cheader",
               id: "cheader",
-              price: 1.5,
+              price: 0.5,
             },
             {
               name: "Mozarella",
@@ -87,55 +77,58 @@ export const options = {
             {
               name: "American",
               id: "american",
-              price: 1.5,
+              price: 2.5,
             },
             {
               name: "Blue Cheese",
               id: "blue_cheese",
-              price: 1.5,
+              price: 3.5,
             },
             {
               name: "Pepper Jack",
               id: "pepper_jack",
-              price: 1.5,
+              price: 4.5,
             },
           ],
         },
         {
-          heading: "Vegitable",
+          title: "Vegetable",
+          imgTitle: salad,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Peppers",
               id: "peppers",
-              price: 1.5,
+              price: 5.5,
             },
             {
               name: "Mushrooms",
               id: "mushrooms",
-              price: 1.5,
+              price: 6.5,
             },
             {
               name: "Onions",
               id: "onions",
-              price: 1.5,
+              price: 7.5,
             },
             {
               name: "Tomato",
               id: "tomato",
-              price: 1.5,
+              price: 8.5,
             },
           ],
         },
       ],
-    }, // Ingredients
+    },
+    //  /* ------------------------- Condiments and Extrass ------------------------- */
     {
-      categoryName: "Condiments & Extras",
-      options: [
+      categoryName: "Extras",
+      sub_categories: [
         {
-          heading: "Condiments",
+          title: "Condiments",
+          imgTitle: condiment,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Ketchup",
               id: "ketchup",
@@ -164,9 +157,35 @@ export const options = {
           ],
         },
         {
-          heading: "Extras",
+          title: "Extras",
+          imgTitle: fries,
+          type: "radio",
+          options: [
+            {
+              img: fries,
+              name: "Small",
+              id: "small",
+              price: 7.99,
+            },
+            {
+              name: "Medium",
+              id: "medium",
+              img: fries,
+              price: 10.99,
+            },
+            {
+              name: "Large",
+              id: "large",
+              img: fries,
+              price: 12.99,
+            },
+          ],
+        },
+        {
+          title: "Souce",
+          imgTitle: condiment,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Garlic Butter Drizzle",
               id: "garlic_butter_drizzle",
@@ -177,149 +196,160 @@ export const options = {
           ],
         },
       ],
-    }, // Condiments and Extrass
+    },
   ],
+  //  /* ------------------------- Burger ------------------------- */
 
   burger: [
     {
       categoryName: "Size",
-      choices: [
-        {
-          img: burger,
-          name: "Regular",
-          des: "14 cm",
-          id: "regular",
-          price: 5.99,
-        },
+      options: [
+        { img: burger, name: "Reg", des: "14 cm", id: "reg", price: 5.99 },
         { img: burger, name: "Large", des: "18 cm", id: "large", price: 7.99 },
         { img: burger, name: "XL", des: "20 cm", id: "xl", price: 9.99 },
         { img: burger, name: "XXL", des: "25 cm", id: "xxl", price: 12.99 },
       ],
-    }, // SIZE
+    },
     {
       categoryName: "Ingredients",
-      options: [
+      sub_categories: [
         {
-          heading: "Meat",
-          imgHeading: hamburger,
+          title: "Meat",
+          imgTitle: hamburger,
           type: "radio",
-          choices: [
+          options: [
             {
+              img: meat,
               name: "Beef",
               id: "beef",
-              img: meat,
+              price: 22.99,
             },
             {
               name: "Chicken",
               id: "chicken",
               img: chicken,
+              price: 22.99,
             },
             {
               name: "Tuna",
               id: "tuna",
               img: tuna,
+              price: 22.99,
             },
-            // {
-            //   name: "Goki",
-            //   id: "goki",
-            //   img: tuna,
-            // },
           ],
         },
         {
-          heading: "Cheese",
-          imgHeading: cheese,
+          title: "Cheese",
+          imgTitle: cheese,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Cheader",
               id: "cheader",
+              price: 1.5,
             },
             {
               name: "Mozarella",
               id: "mozarella",
+              price: 1.5,
             },
             {
               name: "American",
               id: "american",
+              price: 1.5,
             },
             {
               name: "Blue Cheese",
               id: "blue_cheese",
+              price: 1.5,
             },
             {
               name: "Pepper Jack",
               id: "pepper_jack",
+              price: 1.5,
             },
           ],
         },
         {
-          heading: "Vegitable",
+          title: "Vegetable",
+          imgTitle: salad,
           type: "checkbox",
-          choices: [
+          options: [
             {
               name: "Peppers",
               id: "peppers",
+              price: 1.5,
             },
             {
               name: "Mushrooms",
               id: "mushrooms",
+              price: 1.5,
             },
             {
               name: "Onions",
               id: "onions",
+              price: 1.5,
             },
             {
               name: "Tomato",
               id: "tomato",
+              price: 1.5,
             },
           ],
         },
       ],
-    }, // Ingredients
-    {
-      categoryName: "Condiments & Extras",
-      options: [
-        {
-          heading: "Condiments",
-          type: "checkbox",
-          choices: [
-            {
-              name: "Ketchup",
-              id: "ketchup",
-            },
-            {
-              name: "Mayonnaise",
-              id: "mayonnaise",
-            },
-            {
-              name: "Mustard",
-              id: "mustard",
-            },
-            {
-              name: "BBQ",
-              id: "bbq",
-            },
-            {
-              name: "Garlic",
-              id: "garlic",
-            },
-          ],
-        },
-        {
-          heading: "Extras",
-          type: "checkbox",
-          choices: [
-            {
-              name: "Garlic Butter Drizzle",
-              id: "garlic_butter_drizzle",
-              price: 1.0,
-            },
-            { name: "Red Pepper Flakes", id: "red_pepper_flakes", price: 0.25 },
-            { name: "Balsamic Glaze", id: "balsamic_glaze", price: 0.5 },
-          ],
-        },
-      ],
-    }, // Condiments and Extrass
+    },
+    //  /* ------------------------- Condiments and Extrass ------------------------- */
+    // {
+    //   categoryName: "Condiments & Extras",
+    //   sub_categories: [
+    //     {
+    //       title: "Condiments",
+    //       imgTitle: condiment,
+    //       type: "checkbox",
+    //       options: [
+    //         {
+    //           name: "Ketchup",
+    //           id: "ketchup",
+    //           price: 1.5,
+    //         },
+    //         {
+    //           name: "Mayonnaise",
+    //           id: "mayonnaise",
+    //           price: 1.5,
+    //         },
+    //         {
+    //           name: "Mustard",
+    //           id: "mustard",
+    //           price: 1.5,
+    //         },
+    //         {
+    //           name: "BBQ",
+    //           id: "bbq",
+    //           price: 1.5,
+    //         },
+    //         {
+    //           name: "Garlic",
+    //           id: "garlic",
+    //           price: 1.5,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       title: "Extras",
+    //       imgTitle: fries,
+    //       type: "checkbox",
+    //       options: [
+    //         {
+    //           name: "Garlic Butter Drizzle",
+    //           id: "garlic_butter_drizzle",
+    //           price: 1.0,
+    //         },
+    //         { name: "Red Pepper Flakes", id: "red_pepper_flakes", price: 0.25 },
+    //         { name: "Balsamic Glaze", id: "balsamic_glaze", price: 0.5 },
+    //       ],
+    //     },
+    //   ],
+    // },
   ],
 };

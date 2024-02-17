@@ -1,10 +1,11 @@
 import { MealType } from "@/constants/types/meal";
 import { useScrollDirection } from "@/hooks";
 import { getMenuItems } from "@/libs/menu";
-import { AddToOrderBtn, Options } from "@/sections/menu";
+
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import Militos from "./meals";
 
 function MealSkeleton({ index }: { index: number }) {
   return (
@@ -37,7 +38,7 @@ const Meals = () => {
   const [selected, setSelected] = useState(0);
   const { pathname, search } = useLocation();
 
-  const { category } = useParams();
+  const { category } = useParams() as { category: "fast-food" | "drinks" };
 
   const navigate = useNavigate();
 
@@ -71,36 +72,17 @@ const Meals = () => {
 
       <div className="flex items-center justify-between mb-6">
         <h4 className="text-3xl font-semibold">Pizzas</h4>
-        <button
-          onClick={() => {
-            console.log("sort");
-
-            // navigate(`${pathname + search}?sort=priceHigh`);
-          }}
-          className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10"
-        >
+        <button onClick={() => console.log("sort")} className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10">
           Sort by Price
         </button>
       </div>
 
       <ul className="flex flex-col gap-10">
-        {isPending
-          ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />)
-          : meals[category as string].map((meal: MealType) => (
-              <li key={meal.id} className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow">
-                <div className="grid grid-cols-[1fr_auto] gap-3 mb-5 items-start justify-between px-4">
-                  <h4 className="text-xl font-semibold text-text">{meal.title}</h4>
-                  <img src={meal.img} alt={meal.title} className="w-28 h-28 object-cover rounded-full row-span-2" />
-                  <p className="text-sm mb-5">{meal.description}</p>
-                </div>
-
-                {meal?.options?.length > 1 ? (
-                  <Options meal={meal} options={meal.options} />
-                ) : (
-                  <AddToOrderBtn meal={meal} selected={meal.options[0]} />
-                )}
-              </li>
-            ))}
+        {isPending ? (
+          [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />)
+        ) : (
+          <Militos meals={meals.menu} category={category} />
+        )}
       </ul>
     </div>
   );
