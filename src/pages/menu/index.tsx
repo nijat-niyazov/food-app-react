@@ -37,7 +37,7 @@ const Meals = () => {
   const [selected, setSelected] = useState(0);
   const { pathname, search } = useLocation();
 
-  const { category } = useParams() as { category: string };
+  const { category } = useParams() as { category: "fast-food" | "drinks" };
 
   const navigate = useNavigate();
 

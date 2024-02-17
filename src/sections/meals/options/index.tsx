@@ -14,7 +14,7 @@ const Options = ({ options, meal }: { meal: MealType; options: OptionType[] }) =
       {options.map((option) => (
         <Option key={option.id} option={option} onClick={handleSelect} selected={selected?.id} />
       ))}
-      {selected && <AddToOrderBtn meal={meal} selected={selected} handleSelect={handleSelect} />}
+      {selected && <AddToOrderBtn meal={meal} selected={selected} handleSelect={handleSelect.bind(null, null)} />}
     </div>
   );
 };

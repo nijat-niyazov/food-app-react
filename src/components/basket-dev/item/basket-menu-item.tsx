@@ -4,7 +4,7 @@ import { BasketItemType } from "@/constants/types/meal";
 import { removeBasketItem } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
-import { MotionDiv } from "../..";
+import { CustomButton, MotionDiv } from "../..";
 
 function BasketMenuItem({ item }: { item: BasketItemType }) {
   return (
@@ -35,14 +35,18 @@ function BasketMenuItem({ item }: { item: BasketItemType }) {
         </ul>
 
         <div className="grid place-self-center ml-auto w-auto">
-          <button className="" onClick={() => removeBasketItem(item.id)}>
+          <CustomButton className="md:p-0" variant="outlined" size="xs" onClick={() => removeBasketItem(item.id)}>
             <Remove />
-          </button>
-          {item.note && (
-            <button onClick={() => openModal(<MealNote note={item.note as string} />, 50)} className=" outline-none">
-              <NoteICon />
-            </button>
-          )}
+          </CustomButton>
+
+          <CustomButton
+            className="md:p-0"
+            variant="outlined"
+            size="xs"
+            onClick={() => openModal(<MealNote note={item.note as string} />, 50)}
+          >
+            <NoteICon />
+          </CustomButton>
         </div>
 
         {item.size && (

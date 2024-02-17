@@ -26,7 +26,7 @@ const CreateSpecialMealForm: FC<Props> = ({ meals }) => {
     control,
   } = useForm<Inputs>({
     defaultValues: {
-      options: [{ name: "", price: 0 }],
+      // options: [{ name: "", price: 0,id:1 }],
     },
   });
 

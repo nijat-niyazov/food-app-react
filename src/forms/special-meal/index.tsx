@@ -1,7 +1,7 @@
 import { meals } from "@/constants/data/special-meal";
 import { SpecialMealType } from "@/constants/types/spcieal-meal";
 import { delay } from "@/libs/delay";
-import { CustomOrderType, addToDraft } from "@/stores/custom-order";
+import { CustomOrderType, addCustomOrderToBasket } from "@/stores/custom-order";
 import { closeModal } from "@/stores/modal";
 import { useCallback, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -86,7 +86,7 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
         id: defaultValues?.id ?? id,
       };
 
-      addToDraft(data);
+      addCustomOrderToBasket(data);
       toast.success("Your order has been added to the draft");
       closeModal();
       reset();

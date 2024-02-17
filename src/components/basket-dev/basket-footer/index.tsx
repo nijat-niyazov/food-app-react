@@ -1,18 +1,32 @@
 import { ArrowDown } from "@/assets/icons";
 import { CustomButton } from "@/components";
 import { clearBasket } from "@/stores/basket";
+import { clearCustomOrder } from "@/stores/custom-order";
 import { cn } from "@/utils";
 
-const BasketFooter = ({ totalPay, basketItemsCount }: { totalPay: number; basketItemsCount: number }) => {
+type BasketFooterProps = {
+  totalPay: number;
+  basketItemsCount: number;
+  customOrdersCount: number;
+};
+
+const BasketFooter = ({ totalPay, basketItemsCount, customOrdersCount }: BasketFooterProps) => {
+  function handleClearAll() {
+    clearBasket();
+    clearCustomOrder();
+  }
+
+  const unableAction = basketItemsCount < 1 || customOrdersCount < 1;
+
   return (
     <footer className="px-3 pb-3">
       <CustomButton
-        onClick={clearBasket}
+        onClick={handleClearAll}
         variant="black"
         size="sm"
         borderRadius="md"
         className={cn("w-full mt-4", {
-          hidden: basketItemsCount < 1,
+          hidden: unableAction,
         })}
       >
         Remove All
@@ -24,9 +38,8 @@ const BasketFooter = ({ totalPay, basketItemsCount }: { totalPay: number; basket
       </p>
 
       <CustomButton
-        disabled={basketItemsCount < 1}
-        onClick={clearBasket}
-        variant={basketItemsCount < 1 ? "danger" : "secondary"}
+        disabled={unableAction}
+        variant={unableAction ? "danger" : "secondary"}
         size="xl2"
         borderRadius="md"
         className="flex items-center mt-4"

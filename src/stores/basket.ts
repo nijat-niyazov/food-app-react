@@ -81,12 +81,13 @@
 // export const clearBasket = useBasketStore.getState().clearBasket;
 
 import { OrderType as OrderWithoutQ } from "@/constants/types/meal";
+import { convertToTwoDecimalFloat } from "@/utils";
 import { create } from "zustand";
 
 type OrderType = OrderWithoutQ & { quantity: number } & { note?: string };
 
 interface BasketState {
-  elements: OrderType[];
+  orders: OrderType[];
   totalPrice: number;
   totalItems: number;
   addToBasket: (order: OrderWithoutQ) => void;
@@ -95,73 +96,52 @@ interface BasketState {
   clearBasket: () => void;
 }
 
-function getTotalPrice(elements: OrderType[]) {
-  return parseFloat(elements.reduce((acc, order) => acc + order.price * order.quantity, 0).toFixed(2));
+function getTotalPrice(orders: OrderType[]) {
+  const price = orders.reduce((acc, order) => acc + order.price * order.quantity, 0);
+  return convertToTwoDecimalFloat(price);
 }
 
 export const useBasketStore = create<BasketState>()((set, get) => ({
-  elements: [],
+  orders: [],
   totalPrice: 0,
   totalItems: 0,
-
-  // addToBasket: (order: OrderWithoutQ) => {
-  //   const newOrder = { ...order, quantity: 1 };
-  //   let elements = [...get().elements];
-
-  //   const doesExists = elements.find((meal) => meal.id === newOrder.id);
-  //   doesExists ? (doesExists.quantity += 1) : (elements = [...elements, newOrder]);
-
-  //   set({ elements, totalPrice, totalItems });
-  // },
 
   addToBasket: (order: OrderWithoutQ) =>
     set((state) => {
       const newOrder = { ...order, quantity: 1 };
-      let elements = [...state.elements];
+      let orders = [...state.orders];
 
-      const existed = elements.find((meal) => meal.id === newOrder.id);
+      const existed = orders.find((meal) => meal.id === newOrder.id);
 
       if (existed) existed.quantity += 1;
-      else elements = [...elements, newOrder];
+      else orders = [...orders, newOrder];
 
-      const totalPrice = getTotalPrice(elements);
-      const totalItems = get().elements.length;
+      const totalPrice = getTotalPrice(orders);
+      const totalItems = get().orders.length;
 
-      return { elements, totalPrice, totalItems };
+      return { orders, totalPrice, totalItems };
     }),
-
-  // totalPrice: () => {
-  //   // get()
-  //   //   .elements.reduce((acc, order) => acc + order.price * order.quantity, 0)
-  //   //   .toFixed(2)
-  //   const sound = get().totalItems;
-  // },
 
   updateBasketItem: (id: number, action: "inc" | "dec") =>
     set((state) => {
-      // const findedOrder = state.elements.find((meal) => meal.id === id) as OrderType;
+      // const findedOrder = state.orders.find((meal) => meal.id === id) as OrderType;
 
       // findedOrder.quantity += action === "inc" ? 1 : -1;
 
-      return {
-        elements: state.elements,
-      };
+      return { orders: state.orders };
     }),
 
   removeBasketItem: (id: number | string) =>
     set((state) => {
-      const elements = state.elements.filter((meal) => meal.id !== id);
+      const orders = state.orders.filter((meal) => meal.id !== id);
 
-      return {
-        elements,
-      };
+      return { orders };
     }),
 
-  clearBasket: () => set({ elements: [], totalPrice: 0 }),
+  clearBasket: () => set({ orders: [], totalPrice: 0 }),
 }));
 
 export const addToBasket = useBasketStore.getState().addToBasket;
 export const updateBasketItem = useBasketStore.getState().updateBasketItem;
 export const removeBasketItem = useBasketStore.getState().removeBasketItem;
 export const clearBasket = useBasketStore.getState().clearBasket;
-export const totalPrice = useBasketStore.getState().totalPrice;

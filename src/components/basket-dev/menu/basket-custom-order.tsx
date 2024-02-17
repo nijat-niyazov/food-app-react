@@ -1,6 +1,6 @@
 import { NoteICon, Remove } from "@/assets/icons";
 import { SpecialMealModal } from "@/components/modal-contents";
-import { CustomOrderType, removeFromDraft } from "@/stores/custom-order";
+import { CustomOrderType, removeCustomOrderFromBasket } from "@/stores/custom-order";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
 import { MotionDiv } from "../..";
@@ -37,7 +37,7 @@ function BasketCustomOrder({ item }: Props) {
         </ul>
 
         <div className="grid place-self-center ml-auto w-auto">
-          <button className="" onClick={() => removeFromDraft(item.id)}>
+          <button className="" onClick={() => removeCustomOrderFromBasket(item.id)}>
             <Remove />
           </button>
 

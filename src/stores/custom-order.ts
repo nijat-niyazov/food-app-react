@@ -1,4 +1,5 @@
 import { FormInputValues, Price } from "@/forms/special-meal/types";
+import { convertToTwoDecimalFloat } from "@/utils";
 import { create } from "zustand";
 
 export type CustomOrderType = {
@@ -12,30 +13,32 @@ export type CustomOrderType = {
 interface CustomOrderState {
   orders: CustomOrderType[];
   totalPriceOfCustomOrders: number;
-  addToDraft: (data: CustomOrderType) => void;
-  removeFromDraft: (id: string) => void;
+  addCustomOrderToBasket: (data: CustomOrderType) => void;
+  removeCustomOrderFromBasket: (id: string) => void;
+  clearCustomOrders: () => void;
 }
 
-// let orders: [];
-// let totalPriceOfCustomOrders: number = 0;
-
-const handlePrice = (orders: CustomOrderType[]) => orders.reduce((acc, order) => acc + order.price, 0);
+function getTotalPrice(orders: CustomOrderType[]) {
+  const price = orders.reduce((acc, order) => acc + order.price, 0);
+  return convertToTwoDecimalFloat(price);
+}
 
 export const useCustomOrderState = create<CustomOrderState>()((set) => ({
   orders: [],
   totalPriceOfCustomOrders: 0,
 
-  addToDraft: (data: CustomOrderType) =>
+  addCustomOrderToBasket: (data: CustomOrderType) =>
     set((state) => {
       const doesExists = state.orders.find((order) => order.id === data.id);
       const orders = doesExists ? state.orders.map((order) => (order.id === data.id ? data : order)) : [...state.orders, data];
-      const totalPriceOfCustomOrders = handlePrice(orders);
+      const totalPriceOfCustomOrders = getTotalPrice(orders);
       return { orders, totalPriceOfCustomOrders };
     }),
 
-  removeFromDraft: (id: string) => set((state) => ({ orders: state.orders.filter((order) => order.id !== id) })),
+  removeCustomOrderFromBasket: (id: string) => set((state) => ({ orders: state.orders.filter((order) => order.id !== id) })),
+  clearCustomOrders: () => set({ orders: [], totalPriceOfCustomOrders: 0 }),
 }));
 
-export const addToDraft = useCustomOrderState.getState().addToDraft;
-export const removeFromDraft = useCustomOrderState.getState().removeFromDraft;
-export const totalPriceOfCustomOrders = useCustomOrderState.getState().totalPriceOfCustomOrders;
+export const addCustomOrderToBasket = useCustomOrderState.getState().addCustomOrderToBasket;
+export const clearCustomOrder = useCustomOrderState.getState().clearCustomOrders;
+export const removeCustomOrderFromBasket = useCustomOrderState.getState().removeCustomOrderFromBasket;

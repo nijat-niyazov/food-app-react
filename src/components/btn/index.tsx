@@ -20,10 +20,8 @@ function createBtnClasses(
     primary: "bg-primary ",
     secondary: "bg-secondary ",
     black: "bg-text ",
-
     danger: "bg-red-500 ",
-    outlined: "bg-outlined text-black",
-
+    outlined: "bg-outlined text-black ",
     success: "bg-success ",
     warning: "bg-warning ",
   };
