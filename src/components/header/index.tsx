@@ -1,15 +1,23 @@
 import { Shopping } from "@/assets/icons";
 import { basket, girl, logo } from "@/assets/images";
 import { useBasketStore } from "@/stores/basket";
+import { useCustomOrderState } from "@/stores/custom-order";
 import { openModal } from "@/stores/modal";
+import { convertToTwoDecimalFloat } from "@/utils";
 import { Link } from "react-router-dom";
 import { Basket } from "..";
 import { Auth, HeaderSearch, MenuToggler, NavigationOfHeader, Theme } from "./components";
 
 const Header = () => {
-  const totalItemsOfBasket = useBasketStore((state) => state.totalItems);
-  const totalPrice = useBasketStore((state) => state.totalPrice);
+  const { totalPrice, totalItems: totalItemsOfBasket } = useBasketStore((state) => state);
 
+  const { totalItemsCustomOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
+
+  const totalItems = totalItemsOfBasket + totalItemsCustomOrders;
+
+  const price = totalPrice + totalPriceOfCustomOrders;
+  const discount = (price * 5) / 100;
+  const totalPay = convertToTwoDecimalFloat(price - discount);
   let authorized = null;
 
   return (
@@ -25,11 +33,11 @@ const Header = () => {
           <li className="border-r-1  border-white px-6   border-opacity-30 relative">
             <button onClick={() => openModal(<Basket />, 90)}>
               <Shopping />
-              <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">{totalItemsOfBasket}</span>
+              <span className="absolute px-2 text-center rounded-full bg-primary top-1 right-2">{totalItems}</span>
             </button>
           </li>
-          <li className="border-r-1  border-white px-6  border-opacity-30 ">{totalItemsOfBasket} Items</li>
-          <li className="border-r-1  border-white px-6  border-opacity-30 ">AZN {totalPrice}</li>
+          <li className="border-r-1  border-white px-6  border-opacity-30 ">{totalItems} Items</li>
+          <li className="border-r-1  border-white px-6  border-opacity-30 ">AZN {totalPay}</li>
         </ul>
       </div>
 

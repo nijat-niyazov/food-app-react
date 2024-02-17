@@ -13,6 +13,7 @@ export type CustomOrderType = {
 interface CustomOrderState {
   orders: CustomOrderType[];
   totalPriceOfCustomOrders: number;
+  totalItemsCustomOrders: number;
   addCustomOrderToBasket: (data: CustomOrderType) => void;
   removeCustomOrderFromBasket: (id: string) => void;
   clearCustomOrders: () => void;
@@ -23,19 +24,28 @@ function getTotalPrice(orders: CustomOrderType[]) {
   return convertToTwoDecimalFloat(price);
 }
 
-export const useCustomOrderState = create<CustomOrderState>()((set) => ({
+export const useCustomOrderState = create<CustomOrderState>()((set, get) => ({
   orders: [],
   totalPriceOfCustomOrders: 0,
+  totalItemsCustomOrders: 0,
 
   addCustomOrderToBasket: (data: CustomOrderType) =>
     set((state) => {
       const doesExists = state.orders.find((order) => order.id === data.id);
       const orders = doesExists ? state.orders.map((order) => (order.id === data.id ? data : order)) : [...state.orders, data];
       const totalPriceOfCustomOrders = getTotalPrice(orders);
-      return { orders, totalPriceOfCustomOrders };
+      const totalItemsCustomOrders = orders.length;
+      return { orders, totalPriceOfCustomOrders, totalItemsCustomOrders };
     }),
 
-  removeCustomOrderFromBasket: (id: string) => set((state) => ({ orders: state.orders.filter((order) => order.id !== id) })),
+  removeCustomOrderFromBasket: (id: string) =>
+    set((state) => {
+      const orders = state.orders.filter((order) => order.id !== id);
+      const totalPriceOfCustomOrders = getTotalPrice(orders);
+      const totalItemsCustomOrders = state.orders.length;
+
+      return { orders, totalItemsCustomOrders, totalPriceOfCustomOrders };
+    }),
   clearCustomOrders: () => set({ orders: [], totalPriceOfCustomOrders: 0 }),
 }));
 

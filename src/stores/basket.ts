@@ -101,6 +101,11 @@ function getTotalPrice(orders: OrderType[]) {
   return convertToTwoDecimalFloat(price);
 }
 
+function getTotalQuantity(orders: OrderType[]) {
+  const price = orders.reduce((acc, order) => acc + order.quantity, 0);
+  return convertToTwoDecimalFloat(price);
+}
+
 export const useBasketStore = create<BasketState>()((set, get) => ({
   orders: [],
   totalPrice: 0,
@@ -117,7 +122,7 @@ export const useBasketStore = create<BasketState>()((set, get) => ({
       else orders = [...orders, newOrder];
 
       const totalPrice = getTotalPrice(orders);
-      const totalItems = get().orders.length;
+      const totalItems = getTotalQuantity(orders);
 
       return { orders, totalPrice, totalItems };
     }),
