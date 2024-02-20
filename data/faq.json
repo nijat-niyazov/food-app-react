@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "question": "🌟 Purpose of the Project?",
+    "answers": [
+      {
+        "key": "Commercial Viability",
+        "answer": [
+          {
+            "title": "Market Potential",
+            "content": "Designed with the potential to be marketed as a comprehensive system for restaurants, cafes, or coffee shops, offering dynamic content management and tailored solutions for diverse business needs."
+          }
+        ]
+      },
+      {
+        "key": "Learning and Practice",
+        "answer": [
+          {
+            "title": "Skill Enhancement",
+            "content": "Created as a hands-on project to enhance skills and proficiency in React JS development, providing valuable experience and practical insights into building modern web applications."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "✨ Key Features?",
+    "answers": [
+      {
+        "key": "Custom Order",
+        "answer": [
+          {
+            "title": "Personalized Orders",
+            "content": "Empowering users to personalize their dining experience by creating customized orders with a variety of options including ingredients, size, and additional preferences."
+          }
+        ]
+      },
+      {
+        "key": "User Authentication",
+        "answer": [
+          {
+            "title": "Enhanced User Experience",
+            "content": "Facilitating a seamless user experience with individual profiles, allowing users to rate meals, track order history, and personalize preferences."
+          }
+        ]
+      },
+      {
+        "key": "Discounts & Rewards",
+        "answer": [
+          {
+            "title": "Customer Loyalty",
+            "content": "Rewarding customer loyalty with a points-based system where users earn discounts on future orders based on their purchase frequency and order value."
+          }
+        ]
+      },
+      {
+        "key": "Table-Side Ordering",
+        "answer": [
+          {
+            "title": "Convenient Dining Experience",
+            "content": "Enhancing dining convenience by enabling customers to place orders directly from their table without waiter assistance. Users can add meals to their virtual basket and place orders directly to their designated table."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "🛠️ Technology Stack?",
+    "answers": [
+      {
+        "key": "Styling",
+        "answer": [
+          {
+            "title": "Tailwind CSS",
+            "content": "Utilized for efficient and customizable styling, enabling rapid development and consistent design."
+          },
+          {
+            "title": "UI Library (Headless UI)",
+            "content": "Integrated for accessible and customizable user interface components, enhancing usability and ensuring compatibility across devices."
+          },
+          {
+            "title": "Framer Motion",
+            "content": "Incorporated for smooth and interactive animations, enhancing user engagement and visual appeal."
+          },
+          {
+            "title": "Tailwind CSS",
+            "content": "Utilized for efficient and customizable styling, enabling rapid development and consistent design."
+          },
+          {
+            "title": "UI Library (Headless UI)",
+            "content": "Integrated for accessible and customizable user interface components, enhancing usability and ensuring compatibility across devices."
+          },
+          {
+            "title": "Framer Motion",
+            "content": "Incorporated for smooth and interactive animations, enhancing user engagement and visual appeal."
+          }
+        ]
+      },
+      {
+        "key": "Form Handling",
+        "answer": [
+          {
+            "title": "React Hook Form",
+            "content": "Leveraged for efficient form management and validation, providing a seamless user experience."
+          }
+        ]
+      },
+      {
+        "key": "API Integration",
+        "answer": [
+          {
+            "title": "React Query",
+            "content": "Utilized for efficient data fetching and synchronization with backend APIs, optimizing performance and providing real-time updates."
+          }
+        ]
+      },
+      {
+        "key": "Routing",
+        "answer": [
+          {
+            "title": "React Router Dom",
+            "content": "Utilized for dynamic client-side routing, enabling smooth navigation and seamless user interaction within the application."
+          }
+        ]
+      },
+      {
+        "key": "State Management",
+        "answer": [
+          {
+            "title": "Zustand",
+            "content": "Implemented for lightweight and efficient state management, offering a simplified solution for managing application state."
+          }
+        ]
+      },
+
+      {
+        "key": "Utility Classes",
+        "answer": [
+          {
+            "title": "clsx",
+            "content": "Used for dynamic class composition, simplifying the management of complex class names and styles."
+          }
+        ]
+      }
+    ]
+  }
+]

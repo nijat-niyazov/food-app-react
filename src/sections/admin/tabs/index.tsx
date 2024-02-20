@@ -7,10 +7,11 @@ type Props = {
 };
 
 const MainTabs = ({ activeTab, handleActiveTab }: Props) => {
-  const tabs = ["Meals", "Create New Meal", "Set Special Meals"];
+  const tabs = ["Meals", "Create New Meal", "Set Special Meals", "FAQ"];
+
   return (
     <header className="bg-bej py-2">
-      <div className="flex w-[90%] md:w-1/2 mx-auto items-center gap-10">
+      <div className="flex w-[90%] md:w-[65%] mx-auto items-center gap-5">
         {tabs.map((tab, i) => (
           <CustomButton
             key={i}

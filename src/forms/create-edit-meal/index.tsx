@@ -1,7 +1,9 @@
 import { CustomButton } from "@/components";
+import { postNewMeal } from "@/services/post";
 import { cn } from "@/utils";
 import { FC, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { v4 } from "uuid";
 import { MealDescription, MealImage, MealOptions, MealTitle } from "./sections";
 
 type Option = {
@@ -45,8 +47,9 @@ const CreateMealForm: FC<Props> = ({ defaultValues }) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { category, ...rest } = data;
     const findedCategory = statCategories.find((cat) => cat.name === category)?.id;
-    const values = { ...rest, category: findedCategory };
+    const values = { ...rest, category: findedCategory, id: v4() };
 
+    postNewMeal(values);
     console.log(values);
   };
 

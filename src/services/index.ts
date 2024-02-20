@@ -34,4 +34,16 @@ export const fetchData2 = async (url: string, params?: ParamsType, delayed = fal
   }
 };
 
+type Answer = {
+  key: string;
+  answer: { title: string; content: string; image: any }[];
+};
+
+export type FaqData = {
+  id: number;
+  question: string;
+  answers: Answer[];
+};
+
 export const getSpecialMealData = () => fetchData2("../../data/special.json", undefined, true);
+export const getFaqData = (): Promise<FaqData[]> => fetchData2("../../data/faq.json", undefined, true);
