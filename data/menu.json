@@ -1,0 +1,96 @@
+{
+  "fast-food": [
+    {
+      "id": 1,
+      "title": "Farm House Xtreme Pizza",
+      "img": "../src/assets/images/offer.png",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "options": [
+        { "id": 11, "price": 21.9, "size": "Small" },
+        { "id": 12, "price": 25.9, "size": "Medium" },
+        { "id": 13, "price": 27.9, "size": "Large" },
+        { "id": 14, "price": 32.9, "size": "XL Large with Sauces" }
+      ]
+    },
+
+    {
+      "id": 3,
+      "title": "Fryday Burger",
+
+      "img": "../src/assets/images/offer.png",
+      "options": [{ "id": 31, "price": 21.9 }],
+      "description": "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce"
+    },
+
+    {
+      "id": 2,
+      "title": "Farm House Xtreme Pizza",
+      "img": "../src/assets/images/offer.png",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "options": [
+        { "id": 21, "price": 21.9, "size": "Small" },
+        { "id": 22, "price": 25.9, "size": "Medium" },
+        { "id": 23, "price": 27.9, "size": "Large" },
+        { "id": 24, "price": 32.9, "size": "XL Large with Sauces" }
+      ]
+    },
+    {
+      "id": 51,
+      "title": "Farm House Xtreme Pizza",
+      "img": "../src/assets/images/offer.png",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "options": [
+        { "id": 511, "price": 21.9, "size": "Small" },
+        { "id": 512, "price": 25.9, "size": "Medium" },
+        { "id": 513, "price": 27.9, "size": "Large" },
+        { "id": 514, "price": 32.9, "size": "XL Large with Sauces" }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Fryday Burger",
+
+      "img": "../src/assets/images/offer.png",
+      "options": [{ "id": 531, "price": 21.9 }],
+      "description": "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce"
+    },
+    {
+      "id": 54,
+      "title": "Coca Cola",
+
+      "img": "../src/assets/images/offer.png",
+      "options": [
+        { "id": 541, "price": 21.9, "size": "Small" },
+        { "id": 542, "price": 25.9, "size": "Medium" },
+        { "id": 543, "price": 27.9, "size": "Large" }
+      ],
+      "description": "Cold drink "
+    },
+    {
+      "id": 52,
+      "title": "Farm House Xtreme Pizza",
+      "img": "../src/assets/images/offer.png",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "options": [
+        { "id": 521, "price": 21.9, "size": "Small" },
+        { "id": 522, "price": 25.9, "size": "Medium" },
+        { "id": 523, "price": 27.9, "size": "Large" },
+        { "id": 524, "price": 32.9, "size": "XL Large with Sauces" }
+      ]
+    }
+  ],
+  "drinks": [
+    {
+      "id": 4,
+      "title": "Coca Cola",
+
+      "img": "../src/assets/images/offer.png",
+      "options": [
+        { "id": 41, "price": 21.9, "size": "Small" },
+        { "id": 42, "price": 25.9, "size": "Medium" },
+        { "id": 43, "price": 27.9, "size": "Large" }
+      ],
+      "description": "Cold drink "
+    }
+  ]
+}

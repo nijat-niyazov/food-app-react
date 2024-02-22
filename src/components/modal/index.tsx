@@ -1,4 +1,5 @@
 import { close } from "@/assets/images";
+import { useMediaMatch } from "@/hooks";
 import { useModalStore } from "@/stores/modal";
 import { cn } from "@/utils";
 import { Dialog, Transition } from "@headlessui/react";
@@ -7,7 +8,8 @@ import { Fragment } from "react";
 const CustomModal = () => {
   const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore((state) => state);
 
-  const width = (modalWidth ?? 30) + "%";
+  const sm = useMediaMatch();
+  const width = sm ? 90 : (modalWidth ?? 30) + "%";
 
   return (
     <Transition appear show={opened} as={Fragment}>
@@ -36,9 +38,7 @@ const CustomModal = () => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                style={{
-                  width,
-                }}
+                style={{ width }}
                 className={cn("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
               >
                 {closeBtn && (

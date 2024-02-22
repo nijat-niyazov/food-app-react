@@ -1,38 +1,32 @@
 import { CustomButton } from "@/components";
 import { cn, kebabToString } from "@/utils";
-import { FC, useState } from "react";
+import { Fragment } from "react";
+import { useSearchParams } from "react-router-dom";
 
 type Positions = {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
+  [key: string]: number;
 };
 
 type Props = {
-  activeTab: number;
-  handleActiveTab: (tab: number) => void;
+  activeCategory: string;
+
   data: string[];
 };
 
-const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
-  const [positions, setPositions] = useState<Positions>(
-    JSON.parse(sessionStorage.getItem("positions") as string) ?? { top: 0, left: 0, width: 0, height: 0 }
-  );
+// const sessionPositions = JSON.parse(sessionStorage.getItem("positions") as string);
+// const [positions, setPositions] = useState<Positions>(sessionPositions ?? { top: 0, left: 0, width: 0, height: 0 });
 
-  function getPositions(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, tab: number) {
-    const { top, left, width, height } = (e.target as HTMLButtonElement).getBoundingClientRect();
-    const positions = { top, left, width, height };
+// function getPositions(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, tab: string) {
+//   const { top, left, width, height } = (e.target as HTMLButtonElement).getBoundingClientRect();
+//   const positions = { top, left, width, height };
 
-    setPositions(positions);
-    sessionStorage.setItem("positions", JSON.stringify(positions));
+//   setPositions(positions);
+//   sessionStorage.setItem("positions", JSON.stringify(positions));
 
-    handleActiveTab(tab);
-  }
+// }
 
-  return (
-    <>
-      {positions && (
+{
+  /* {positions && (
         <div
           style={{
             left: positions.left + "px",
@@ -42,72 +36,39 @@ const CategoriesTabs: FC<Props> = ({ activeTab, handleActiveTab, data }) => {
           }}
           className="bg-primary absolute left-0 top-0 transition-all duration-300 ease-in-out z-0 rounded-full"
         ></div>
-      )}
+      )} */
+}
 
+const CategoriesTabs = ({ activeCategory, data }: Props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function getPositions(category: string) {
+    category ? searchParams.set("category", category) : searchParams.delete("category");
+    setSearchParams(searchParams, { replace: true });
+  }
+
+  return (
+    <Fragment>
       <CustomButton
-        className={cn(" z-10", {
-          "text-white": activeTab === 0,
-        })}
+        className={cn(" z-10", { "text-white": !activeCategory })}
         borderRadius="full"
-        onClick={(e) => getPositions(e, 0)}
-        variant="outlined"
+        onClick={() => getPositions("")}
+        variant={!activeCategory ? "primary" : "outlined"}
       >
         All
       </CustomButton>
       {data.map((category, i) => (
         <CustomButton
           key={i}
-          className={cn(" z-10", {
-            "text-white": activeTab === i + 1,
-          })}
+          className={cn(" z-10", { "text-white": activeCategory === category })}
           borderRadius="full"
-          onClick={(e) => getPositions(e, i + 1)}
-          variant="outlined"
+          onClick={() => getPositions(category)}
+          variant={activeCategory === category ? "primary" : "outlined"}
         >
           {kebabToString(category)}
         </CustomButton>
       ))}
-      {/* <CustomButton
-        className={cn(" z-10", {
-          "text-white": activeTab === 3,
-        })}
-        borderRadius="full"
-        onClick={(e) => getPositions(e, 3)}
-        variant="outlined"
-      >
-        Pasta
-      </CustomButton>
-      <CustomButton
-        className={cn(" z-10", {
-          "text-white": activeTab === 4,
-        })}
-        borderRadius="full"
-        onClick={(e) => getPositions(e, 4)}
-        variant="outlined"
-      >
-        Main
-      </CustomButton>
-      <CustomButton
-        className={cn(" z-10", {
-          "text-white": activeTab === 5,
-        })}
-        borderRadius="full"
-        onClick={(e) => getPositions(e, 5)}
-        variant="outlined"
-      >
-        Vegetarian
-      </CustomButton>
-      <CustomButton
-        className={cn(" z-10", {
-          "text-white": activeTab === 6,
-        })}
-        borderRadius="full"
-        onClick={(e) => getPositions(e, 6)}
-        variant="outlined"
-      >
-        Soup
-      </CustomButton> */}
-    </>
+    </Fragment>
   );
 };
 

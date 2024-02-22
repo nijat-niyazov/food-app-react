@@ -1,36 +1,29 @@
-import { AllMeals, CreateNewMeal, CreateSpecialMeal, MainTabs } from "@/sections/admin";
+import { AllMeals, CreateNewMeal, CreateSpecialMeal, FaqContent, MainTabs } from "@/sections/admin";
 
-import { useCallback, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Fragment, useCallback, useEffect, useState } from "react";
+
+const components = [AllMeals, CreateNewMeal, CreateSpecialMeal, FaqContent];
 
 const AdminPage = () => {
-  const { pathname } = useLocation();
+  const [activeTab, setActiveTab] = useState(parseInt(sessionStorage.getItem("activeTab") ?? "1"));
 
-  const [activeTab, setActiveTab] = useState<number>(
-    sessionStorage.getItem("activeTab") ? parseInt(sessionStorage.getItem("activeTab") as string) : 2
-  );
+  const handleActiveTab = useCallback((tab: number) => setActiveTab(tab), []);
 
-  const handleActiveTab = useCallback((tab: number) => {
-    setActiveTab(tab);
-    sessionStorage.setItem("activeTab", tab.toString());
-  }, []);
-
-  const components = [<AllMeals />, <CreateNewMeal />, <CreateSpecialMeal />];
+  useEffect(() => {
+    sessionStorage.setItem("activeTab", activeTab.toString());
+    return () => sessionStorage.removeItem("activeTab");
+  }, [activeTab]);
 
   return (
-    <div className="">
+    <Fragment>
       {/* ---------------------------------- Tabs ---------------------------------- */}
 
       <MainTabs activeTab={activeTab} handleActiveTab={handleActiveTab} />
 
       {/* ------------------------------- Components -------------------------------- */}
 
-      {components.map((component, i) => (
-        <div key={i} className={activeTab === i + 1 ? "block" : "hidden"}>
-          {component}
-        </div>
-      ))}
-    </div>
+      {components.map((Component, i) => i + 1 === activeTab && <Component key={i} />)}
+    </Fragment>
   );
 };
 

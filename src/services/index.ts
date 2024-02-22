@@ -22,8 +22,8 @@ const fetchData = async (endpoint: string, params?: ParamsType, delayed = false)
 
 export default fetchData;
 
-export const fetchData2 = async (url: string, params?: ParamsType, delayed = false) => {
-  if (delayed) await delay();
+export const fetchData2 = async (url: string, params?: ParamsType, delayed = false, time = 5000) => {
+  if (delayed) await delay(time);
 
   try {
     const res = await fetch(url);
@@ -46,4 +46,3 @@ export type FaqData = {
 };
 
 export const getSpecialMealData = () => fetchData2("../../data/special.json", undefined, true);
-export const getFaqData = (): Promise<FaqData[]> => fetchData2("../../data/faq.json", undefined, true);

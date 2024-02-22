@@ -1,7 +1,7 @@
 import { CustomButton } from "@/components";
 import { postNewMeal } from "@/services/post";
 import { cn } from "@/utils";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 } from "uuid";
 import { MealDescription, MealImage, MealOptions, MealTitle } from "./sections";
@@ -31,7 +31,9 @@ type Props = {
 };
 
 const defaultOptions = { options: [{ name: "", price: 0 }] };
-const CreateMealForm: FC<Props> = ({ defaultValues }) => {
+const CreateMealForm = ({ defaultValues }: Props) => {
+  console.log(defaultValues);
+
   /* ------------------------------ RH Form State ----------------------------- */
   const {
     register,
@@ -42,7 +44,7 @@ const CreateMealForm: FC<Props> = ({ defaultValues }) => {
     getValues,
     setValue,
     control,
-  } = useForm<Inputs>({ defaultValues: Object.assign(defaultOptions, defaultValues) });
+  } = useForm<Inputs>({ defaultValues: Object.assign({}, defaultOptions, defaultValues) });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { category, ...rest } = data;

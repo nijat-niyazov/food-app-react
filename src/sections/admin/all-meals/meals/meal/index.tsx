@@ -1,17 +1,14 @@
 import { CustomButton } from "@/components";
 import { MealType } from "@/constants/types/meal";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type Props = {
-  meals: MealType[];
+  meal: MealType;
 };
 
-const AdminMeals: FC<Props> = ({ meals }) => {
-  const navigate = useNavigate();
-
-  return meals.map((meal, i) => (
-    <li key={i} className="flex flex-col justify-between   gap-2 p-2 px-4 border-1 border-black/20 rounded-md ">
+const AdminMealCard = ({ meal }: Props) => {
+  return (
+    <li className="flex flex-col justify-between   gap-2 p-2 px-4 border-1 border-black/20 rounded-md ">
       {/* ---------------------------------- Image --------------------------------- */}
       <img src={meal.img} alt="img" className="object-cover rounded-full mx-auto w-28 h-28" />
 
@@ -48,11 +45,13 @@ const AdminMeals: FC<Props> = ({ meals }) => {
         )}
       </div>
 
-      <CustomButton onClick={() => navigate(`/editor/${meal.id}`)} variant="secondary" className="mt-3">
-        Edit
-      </CustomButton>
+      <Link to={`/editor/${meal.id}`}>
+        <CustomButton variant="secondary" className="mt-3">
+          Edit
+        </CustomButton>
+      </Link>
     </li>
-  ));
+  );
 };
 
-export default AdminMeals;
+export default AdminMealCard;

@@ -59,7 +59,7 @@ function createBtnClasses(
 }
 
 const defaultClasses =
-  "hover:bg-opacity-90 active:bg-opacity-100  transition-all duration-200  text-white rounded-md md:px-8 p-2 disabled:opacity-50 disabled:pointer-events-none outline-none ease-in-out w-full text-white disabled:select-none flex items-center gap-2 justify-center";
+  "hover:bg-opacity-90 active:bg-opacity-100  transition-all duration-200  text-white rounded-md md:px-8 py-2 px-6 disabled:opacity-50 disabled:pointer-events-none outline-none ease-in-out w-full text-white disabled:select-none flex items-center gap-2 justify-center";
 
 const CustomButton = ({ variant, type = "button", borderRadius, size, children, className = "", ...rest }: CustomButtonProps) => {
   const cls = createBtnClasses(variant, size, borderRadius);
