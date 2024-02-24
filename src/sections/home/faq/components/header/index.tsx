@@ -1,5 +1,5 @@
 import { CustomButton } from "@/components";
-import { FaqData } from "@/services";
+import { FaqData } from "@/services/api";
 import { cn } from "@/utils";
 
 type Props = {

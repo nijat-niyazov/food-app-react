@@ -1,4 +1,4 @@
-import { getMenuCategories, getMenuData } from "@/libs/admin";
+import { getMenuCategories, getMenuData } from "@/services/api/admin";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { delay } from "@/libs/delay";
+import { delay } from "./delay";
 
 const mainUrl = "http://localhost:3500";
 export type ParamsType = { [key: string]: string | undefined };

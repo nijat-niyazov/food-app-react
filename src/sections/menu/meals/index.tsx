@@ -1,6 +1,6 @@
 import { MealType } from "@/constants/types/meal";
 import { useScrollDirection } from "@/hooks";
-import { getMenuItems } from "@/libs/menu";
+import { getMenuItems } from "@/services/api/menu";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

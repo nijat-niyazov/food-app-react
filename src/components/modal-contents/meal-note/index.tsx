@@ -8,8 +8,7 @@ const MealNote = ({ note }: { note: string }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const delay = (ms: number = 3000): Promise<{ success: boolean }> =>
-      new Promise((res) => setTimeout(() => res({ success: true }), ms));
+    const delay = (ms: number = 3000): Promise<{ success: boolean }> => new Promise((res) => setTimeout(() => res({ success: true }), ms));
     setIsSubmitting(true);
 
     const { success } = await delay();
@@ -37,9 +36,7 @@ const MealNote = ({ note }: { note: string }) => {
         value={value}
         // maxLength={30}
         className="border-1 bg-faq border-black/30 rounded-s p-4 outline-none"
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setValue(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setValue(e.target.value)}
       />
       <button
         disabled={value.length === 0 || isSubmitting || value === note}

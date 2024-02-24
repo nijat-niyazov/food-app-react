@@ -1,4 +1,4 @@
-import fetchData from "@/services";
+import fetchData from "../";
 
 const menuEndpoint = "menu";
 

@@ -12,11 +12,7 @@ const BasketItem = ({ id, quantity }: { id: number; quantity: number }) => {
 
   return (
     <li className="flex items-center justify-between p-2 rounded-xl bg-[#d9d9d9] bg-opacity-60">
-      <img
-        src={lil_pizza}
-        alt="food"
-        className="!w-10 !h-10 object-cover pr-2 border-r-1 border-black/40"
-      />
+      <img src={lil_pizza} alt="food" className="!w-10 !h-10 object-cover pr-2 border-r-1 border-black/40" />
 
       <p className="font-bold text-[15px] grow pl-2">Margherita</p>
 
@@ -37,10 +33,7 @@ const BasketItem = ({ id, quantity }: { id: number; quantity: number }) => {
           +
         </button>
 
-        <button
-          onClick={() => removeBasketItem(id)}
-          className="bg-red-500 p-2 rounded-md"
-        >
+        <button onClick={() => removeBasketItem(id)} className="bg-red-500 p-2 rounded-md">
           X
         </button>
       </div>

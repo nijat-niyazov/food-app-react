@@ -1,5 +1,5 @@
 import { SpecialMealForm } from "@/forms";
-import { getSpecialMealData } from "@/services";
+import { getSpecialMealData } from "@/services/api";
 import { CustomOrderType } from "@/stores/custom-order";
 import { useQuery } from "@tanstack/react-query";
 

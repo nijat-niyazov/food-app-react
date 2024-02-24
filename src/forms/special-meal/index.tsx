@@ -1,6 +1,6 @@
 import { meals } from "@/constants/data/special-meal";
 import { SpecialMealType } from "@/constants/types/spcieal-meal";
-import { delay } from "@/libs/delay";
+import { delay } from "@/services/api/delay";
 import { CustomOrderType, addCustomOrderToBasket } from "@/stores/custom-order";
 import { closeModal } from "@/stores/modal";
 import { useCallback, useMemo, useState } from "react";

@@ -1,5 +1,5 @@
 import { CreateSpecialMealForm } from "@/forms";
-import { getSpecialMealData } from "@/services";
+import { getSpecialMealData } from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
 
 const CreateSpecialMeal = () => {

@@ -1,6 +1,6 @@
 import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components";
-import { delay } from "@/libs/delay";
+import { delay } from "@/services/api/delay";
 import { submitForm } from "@/stores/auth";
 import { closeModal, openModal } from "@/stores/modal";
 import { SubmitHandler, useForm } from "react-hook-form";

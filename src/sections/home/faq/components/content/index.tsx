@@ -1,4 +1,4 @@
-import { FaqData } from "@/services";
+import { FaqData } from "@/services/api";
 import { useCallback, useMemo, useState } from "react";
 import { CardsOfFaq, TabKeys } from "..";
 

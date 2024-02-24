@@ -1,4 +1,4 @@
-import { getFaqData } from "@/libs/admin";
+import { getFaqData } from "@/services/api/admin";
 import { useQuery } from "@tanstack/react-query";
 
 let tab: string = "canimsan";

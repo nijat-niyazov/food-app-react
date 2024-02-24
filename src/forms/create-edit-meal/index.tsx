@@ -1,5 +1,5 @@
 import { CustomButton } from "@/components";
-import { postNewMeal } from "@/services/post";
+import { postNewMeal } from "@/services/api/yes/post";
 import { cn } from "@/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

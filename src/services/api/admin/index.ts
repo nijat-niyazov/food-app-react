@@ -1,4 +1,4 @@
-import { fetchData2 } from "../../services";
+import { fetchData2 } from "..";
 
 const menuUrl = "../../data/menu.json";
 const menuCategoriesUrl = "../../data/menu-categories.json";

@@ -1,7 +1,7 @@
 import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components";
 import { MealType, OptionType } from "@/constants/types/meal";
-import { delay } from "@/libs/delay";
+import { delay } from "@/services/api/delay";
 import { addToBasket } from "@/stores/basket";
 import { closeModal } from "@/stores/modal";
 import { ChangeEvent, useState } from "react";

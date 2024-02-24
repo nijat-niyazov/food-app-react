@@ -1,4 +1,4 @@
-import { getFaqData } from "@/libs/admin";
+import { getFaqData } from "@/services/api/admin";
 import { useQuery } from "@tanstack/react-query";
 import { Fragment, useCallback, useState } from "react";
 import { ContentOfFaq, HeaderOfFaq } from "./components";
