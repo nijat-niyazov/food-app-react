@@ -7,6 +7,7 @@ function App() {
 
   cookies.set("user", "admin");
 
+  // return <Placing />;
   return <RouterProvider router={router} />;
 
   // const [count, setCount] = useState(0);

@@ -1,13 +1,11 @@
 import { getFaqData } from "@/services/api/admin";
-import { useQuery } from "@tanstack/react-query";
+
+import { useGetData } from "@/hooks";
 import { Fragment, useCallback, useState } from "react";
 import { ContentOfFaq, HeaderOfFaq } from "./components";
 
 const FAQ = () => {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ["faq"],
-    queryFn: getFaqData,
-  });
+  const { data, isPending, isError } = useGetData(["faq"], getFaqData);
 
   const [activeTab, setActiveTab] = useState(0);
   const handleTab = useCallback((i: number) => setActiveTab(i), []);

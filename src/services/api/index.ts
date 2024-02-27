@@ -4,8 +4,7 @@ const mainUrl = "http://localhost:3500";
 export type ParamsType = { [key: string]: string | undefined };
 
 const fetchData = async (endpoint: string, params?: ParamsType, delayed = false) => {
-  // const url = new URL(`${mainUrl}/${endpoint}`);
-  const url = `../../data/data.json`;
+  const url = `../data/${endpoint}.json`;
 
   url.toString();
 
@@ -27,6 +26,8 @@ export const fetchData2 = async (url: string, params?: ParamsType, delayed = fal
 
   try {
     const res = await fetch(url);
+
+    console.log(res);
 
     return await res.json();
   } catch (error) {

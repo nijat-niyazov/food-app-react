@@ -1,9 +1,9 @@
 import { CreateSpecialMealForm } from "@/forms";
+import { useGetData } from "@/hooks";
 import { getSpecialMealData } from "@/services/api";
-import { useQuery } from "@tanstack/react-query";
 
 const CreateSpecialMeal = () => {
-  const { isPending, data: meals, error } = useQuery({ queryKey: ["specialMeals"], queryFn: getSpecialMealData });
+  const { isPending, data: meals, error } = useGetData(["specialMeals"], getSpecialMealData);
 
   return (
     <div className="container border-1 border-black/50 my-10 rounded-md min-h-96 p-4">

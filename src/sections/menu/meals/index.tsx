@@ -1,20 +1,14 @@
 import { MealType } from "@/constants/types/meal";
-import { useScrollDirection } from "@/hooks";
+import { useGetData, useScrollDirection } from "@/hooks";
 import { getMenuItems } from "@/services/api/menu";
 
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Militos from "./meals";
 
 function MealSkeleton({ index }: { index: number }) {
   return (
-    <li
-      style={{
-        animationDelay: index * 5 + "s",
-      }}
-      className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow"
-    >
+    <li style={{ animationDelay: index * 5 + "s" }} className="rounded-xl bg-white border-1 border-black/10 px-4 py-8  offer-shadow">
       <div className="grid grid-cols-[1fr_auto] gap-3 mb-5 items-start justify-between px-4">
         <span className="text-xl font-semibold text-text bg-gray-200 rounded-full animate-pulse h-8"></span>
 
@@ -42,17 +36,8 @@ const Meals = () => {
 
   const navigate = useNavigate();
 
-  const queryClient = useQueryClient();
-
   // : { data: MealType[]; isPending: boolean; error?: string | null }
-  const {
-    isPending,
-    error,
-    data: meals,
-  } = useQuery({
-    queryKey: ["menuData", category],
-    queryFn: getMenuItems,
-  });
+  const { isPending, error, data: meals } = useGetData(["menuData", category], getMenuItems);
 
   return (
     <div className="container">
@@ -78,11 +63,7 @@ const Meals = () => {
       </div>
 
       <ul className="flex flex-col gap-10">
-        {isPending ? (
-          [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />)
-        ) : (
-          <Militos meals={meals.menu} category={category} />
-        )}
+        {isPending ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />) : <Militos meals={meals} category={category} />}
       </ul>
     </div>
   );

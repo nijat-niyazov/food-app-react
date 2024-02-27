@@ -1,5 +1,5 @@
+import { useGetData } from "@/hooks";
 import { getMenuCategories, getMenuData } from "@/services/api/admin";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import AdminMeals from "./meals";
@@ -8,14 +8,7 @@ import CategoriesTabs from "./tabs";
 type Props = {};
 
 const AllMeals = (props: Props) => {
-  const {
-    isPending: isLoading,
-    error: categoriesError,
-    data: categories,
-  } = useQuery({
-    queryKey: ["categories"],
-    queryFn: getMenuCategories,
-  });
+  const { isPending: isLoading, error: categoriesError, data: categories } = useGetData(["categories"], getMenuCategories);
 
   useEffect(() => {
     return () => {
@@ -27,10 +20,7 @@ const AllMeals = (props: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get("category") || "";
 
-  const { isPending, error, data } = useQuery({
-    queryKey: ["menuData", activeCategory],
-    queryFn: getMenuData,
-  });
+  const { isPending, error, data } = useGetData(["menuData", activeCategory], getMenuData);
 
   /* --------------------------- Contents of the file -------------------------- */
   let headerContent;

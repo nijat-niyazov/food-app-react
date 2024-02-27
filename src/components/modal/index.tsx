@@ -39,7 +39,9 @@ const CustomModal = () => {
             >
               <Dialog.Panel
                 style={{ width }}
-                className={cn("relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all")}
+                className={cn(
+                  "relative transform  rounded-xl bg-white  text-left align-middle shadow-xl transition-all overscroll-contain"
+                )}
               >
                 {closeBtn && (
                   <button

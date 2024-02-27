@@ -1,7 +1,7 @@
 import { SpecialMealForm } from "@/forms";
+import { useGetData } from "@/hooks";
 import { getSpecialMealData } from "@/services/api";
 import { CustomOrderType } from "@/stores/custom-order";
-import { useQuery } from "@tanstack/react-query";
 
 type Props = {
   mealId: "burger" | "pizza";
@@ -9,10 +9,7 @@ type Props = {
 };
 
 const SpecialMealModal = ({ mealId, defaultValues }: Props) => {
-  const { isPending, data: meals } = useQuery({
-    queryKey: ["specialMealData"],
-    queryFn: getSpecialMealData,
-  });
+  const { isPending, data: meals } = useGetData(["specialMealData"], getSpecialMealData);
 
   return isPending ? (
     <div className="p-10">Loadingoss...</div>

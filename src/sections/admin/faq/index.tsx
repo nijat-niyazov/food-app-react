@@ -1,5 +1,5 @@
+import { useGetData } from "@/hooks";
 import { getFaqData } from "@/services/api/admin";
-import { useQuery } from "@tanstack/react-query";
 
 let tab: string = "canimsan";
 
@@ -10,10 +10,7 @@ if (typeof window !== "undefined") {
 }
 
 const FaqContent = () => {
-  const { data, isPending, error } = useQuery({
-    queryKey: ["faqData"],
-    queryFn: getFaqData,
-  });
+  const { data, isPending, error } = useGetData(["faqData"], getFaqData);
 
   let content = null;
 
