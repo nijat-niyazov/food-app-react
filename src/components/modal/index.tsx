@@ -4,14 +4,26 @@ import { useModalStore } from "@/stores/modal";
 import { cn } from "@/utils";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const CustomModal = () => {
   const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore((state) => state);
 
   const sm = useMediaMatch();
-  const width = sm ? 90 : (modalWidth ?? 30) + "%";
+  const width = (sm ? 90 : modalWidth ?? 30) + "%";
+
+  /* -------------------------- Handle Modal With URL ------------------------- */
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isOpened = searchParams.get("openModal") === "true";
+  function handleClose() {
+    searchParams.delete("openModal");
+    setSearchParams(searchParams);
+  }
 
   return (
+    // <Transition appear show={isOpened} as={Fragment}>
+    //   <Dialog as="div" className="relative z-10" onClose={handleClose}>
+
     <Transition appear show={opened} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child

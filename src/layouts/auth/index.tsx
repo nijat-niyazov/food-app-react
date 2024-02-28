@@ -1,13 +1,14 @@
-import { useAuth } from "@/stores/auth";
+import { useLocalStorage } from "@/hooks";
 import { ReactNode } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const AuthLayout = () => {
   const { pathname } = useLocation();
-  const { email, password } = useAuth((state) => state);
+  const { getItem } = useLocalStorage("user");
 
-  let isAdmin = email === "admin@admin.com" && password === "admin";
-  let isEditor = email === "editor@editor.com" && password === "editor";
+  const userData = getItem();
+  const isAdmin = userData?.role === "admin" || true;
+  const isEditor = false;
 
   let content: ReactNode | JSX.Element = null;
 

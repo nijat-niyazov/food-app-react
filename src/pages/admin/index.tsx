@@ -1,4 +1,5 @@
-import { AllMeals, CreateNewMeal, CreateSpecialMeal, FaqContent, MainTabs } from "@/sections/admin";
+import { AllMeals, CreateSpecialMeal, FaqContent, MainTabs } from "@/sections/admin";
+import CreateNewMeal from "@/sections/admin/create-new-meal";
 
 import { Fragment, useCallback, useEffect, useState } from "react";
 

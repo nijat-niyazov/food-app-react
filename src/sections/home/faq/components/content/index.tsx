@@ -15,7 +15,6 @@ const ContentOfFaq = ({ data, isPending, activeTab }: Props) => {
   const memos = useMemo(() => {
     if (!isPending) {
       const activeData = data[activeTab].answers;
-      console.log(activeData);
 
       const keys = activeData.map(({ key }) => key);
       const answers = activeData[activeKey].answer;
@@ -23,8 +22,6 @@ const ContentOfFaq = ({ data, isPending, activeTab }: Props) => {
       return { keys, answers };
     }
   }, [activeTab, data, isPending, activeKey]);
-
-  console.log(memos?.answers);
 
   return (
     <div className="flex items-start flex-col md:flex-row bg-text rounded-xl min-h-80 p-10 gap-10 overflow-hidden">

@@ -1,5 +1,6 @@
 import { MainLayout, MenuLayout } from "@/layouts";
-import { AdminPage, Branches, EditorPage, HomePage, Meals, NotAdmin, NotFoundPage, SpecialMeal, UnAuthPage } from "@/pages";
+import AuthLayout from "@/layouts/auth";
+import { AdminPage, Branches, EditProfile, EditorPage, HomePage, Meals, NotAdmin, NotFoundPage, SpecialMeal, UnAuthPage } from "@/pages";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
 const routes = (
@@ -18,8 +19,11 @@ const routes = (
 
     {/* protected routes */}
 
-    <Route path="/admin" element={<AdminPage />} />
-    <Route path="/editor/:id" element={<EditorPage />} />
+    <Route element={<AuthLayout />}>
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/edit-profile" element={<EditProfile />} />
+      <Route path="/editor/:id" element={<EditorPage />} />
+    </Route>
     {/* <Route path="/customize/:id" element={<CustomizeSpecialMealPage />} /> */}
   </Route>
 );

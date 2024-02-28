@@ -1,5 +1,4 @@
 import { CustomButton } from "@/components";
-import { postNewMeal } from "@/services/api/yes/post";
 import { cn } from "@/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -32,8 +31,6 @@ type Props = {
 
 const defaultOptions = { options: [{ name: "", price: 0 }] };
 const CreateMealForm = ({ defaultValues }: Props) => {
-  console.log(defaultValues);
-
   /* ------------------------------ RH Form State ----------------------------- */
   const {
     register,
@@ -51,7 +48,7 @@ const CreateMealForm = ({ defaultValues }: Props) => {
     const findedCategory = statCategories.find((cat) => cat.name === category)?.id;
     const values = { ...rest, category: findedCategory, id: v4() };
 
-    postNewMeal(values);
+    // postNewMeal(values);
     console.log(values);
   };
 

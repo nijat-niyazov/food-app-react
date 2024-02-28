@@ -14,14 +14,22 @@ type Props = {
 
 const CustomInput = ({ placeholder, type = "text", className, register, field, error }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   return (
     <div>
-      <div className="flex items-center p-2 pl-4  rounded-full w-full border-2 border-black/30 text-text outline-none">
+      <div
+        className={cn("flex items-center p-2 pl-4  rounded-full w-full border-2 border-black/30 text-text outline-none outline-offset-0", {
+          "border-primary": focused,
+          "outline-primary/50": focused,
+        })}
+      >
         <input
+          // onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           placeholder={placeholder}
           type={type === "password" ? (showPassword ? "text" : type) : type}
-          className={cn("bg-outlined outline-none w-full", className)}
+          className={cn("bg-outlined outline-none w-full ", className)}
           {...register(field, { required: true })}
         />
 

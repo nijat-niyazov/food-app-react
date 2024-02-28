@@ -1,26 +1,37 @@
+import { CustomButton } from "@/components";
+import { supabase } from "@/constants/supabase";
 import { useGetData } from "@/hooks";
-import { getFaqData } from "@/services/api/admin";
 
-let tab: string = "canimsan";
-
-if (typeof window !== "undefined") {
-  // Check if we're running in the browser.
-  // ✅ Only runs once per app load
-  tab = localStorage.getItem("activeTab")!;
+async function getData() {
+  return await supabase.from("faqdata").select("*");
 }
 
 const FaqContent = () => {
-  const { data, isPending, error } = useGetData(["faqData"], getFaqData);
-
-  let content = null;
+  const { data, isPending, error } = useGetData(["faqData"], getData);
 
   if (isPending) {
-    content = <div>Loading...</div>;
-  } else {
-    content = JSON.stringify(data, null, 2);
+    return <div>Loading...</div>;
   }
 
-  return <div>{content}</div>;
+  return (
+    <div className="grid gap-3 grid-cols-3 container my-10">
+      {data?.data?.map((d, i) => (
+        <div key={i}>
+          <ul>
+            <li className="border-1  p-2 rounded-md" key={d.id}>
+              <h3>{d.question}</h3>
+              <ul className="grid gap-2 list-decimal pl-6">
+                {d.answers.map((answer, i) => (
+                  <li key={i}>{answer.key}</li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+          <CustomButton variant="primary">Edit</CustomButton>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default FaqContent;
