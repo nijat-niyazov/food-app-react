@@ -4,7 +4,7 @@ import { cn, removeCookie } from "@/utils";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, ReactNode } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const menuItems = [
   {
@@ -57,9 +57,10 @@ function DropdownMenu({ children }: { children: ReactNode }) {
       removeCookie("token");
       removeItem();
       toast.success("You logged out successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 250);
+      useNavigate()("/");
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 250);
     }
   }
 

@@ -1,39 +1,37 @@
 import { supabase } from "@/constants/supabase";
+import { UserInterface } from "@/constants/types/auth";
+import { EditProfileForm } from "@/forms";
+import { useGetData } from "@/hooks";
 import { useEffect } from "react";
-import { SubmitHandler } from "react-hook-form";
+
+async function fetchUser() {
+  return await supabase.auth.getUser();
+}
 
 const EditProfile = () => {
+  const { data, isPending } = useGetData<{ data: { user: UserInterface } }>(["user"], fetchUser);
+
   useEffect(() => {
-    async function fetchUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      console.log(user);
-    }
-    fetchUser();
+    const { data: imageData } = supabase.storage.from("images").getPublicUrl("avatars/girl.jpg");
+
+    console.log(imageData, data?.data.user.user_metadata.avatar);
   }, []);
 
-  const onSubmit: SubmitHandler<{ email: string }> = async (values) => {
-    console.log(values);
+  if (isPending) {
+    return <div>Loading...</div>;
+  } else if (!isPending && data?.data.user) {
+    const { user } = data.data;
 
-    // const { data, error } = await supabase.auth.resetPasswordForEmail(values);
+    const userData = {
+      // id: user.id,
+      name: user.user_metadata.name,
+      lastName: user.user_metadata.lastName,
+      email: user.email,
+      avatar: user.user_metadata.avatar,
+    };
 
-    // console.log({ data, error });
-
-    // if (!error && session && user) {
-    //   console.log({ session, user });
-
-    //   toast.success("Sent to you");
-
-    // } else if (error && error.status === 400) {
-    //   // setError("password", { message: error.message });
-    //   toast.error("Unmatched fields ☹ Please check your inputs.");
-    // } else {
-    //   toast.error("Something went wrong");
-    // }
-  };
-
-  return <div>EditProfile</div>;
+    return <EditProfileForm user={userData} />;
+  }
 };
 
 export default EditProfile;

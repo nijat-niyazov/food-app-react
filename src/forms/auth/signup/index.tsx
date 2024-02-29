@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import { supabase } from "@/constants/supabase";
+import { useLocalStorage } from "@/hooks";
 import { LoginForm } from "../..";
 import { CustomInput } from "../../custom-elements";
 import Oauth2 from "../oauth2";
@@ -19,6 +20,8 @@ export default function SignUpForm() {
     formState: { errors, isValid, isSubmitting },
     setError,
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
+
+  const { setItem } = useLocalStorage("user");
 
   const onSubmit: SubmitHandler<SignUpInputs> = async (values) => {
     // const { success } = await delay(3000);
@@ -39,14 +42,18 @@ export default function SignUpForm() {
       error,
     } = await supabase.auth.signUp(userData);
 
-    if (!error) {
+    if (!error && user && session) {
       console.log(session, user);
+
+      setItem({ user: user.user_metadata, access_token: session?.access_token, refresh_token: session?.refresh_token });
 
       toast.success("You successfully registered");
       closeModal();
 
+      // window.location.reload();
+
       // setCookie("token", session?.access_token);
-    } else if (error.status === 400) {
+    } else if (error && error.status === 400) {
       setError("email", { message: error.message });
       toast.error("Registration failed. Please check your inputs.");
     } else {

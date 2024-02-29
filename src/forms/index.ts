@@ -8,4 +8,6 @@ import ForgotPasswordForm from "./auth/forgot-password";
 import LoginForm from "./auth/login";
 import Oauth2 from "./auth/oauth2";
 import SignUpForm from "./auth/signup";
-export { ForgotPasswordForm, LoginForm, Oauth2, SignUpForm };
+import EditProfileForm from "./edit-profile";
+
+export { EditProfileForm, ForgotPasswordForm, LoginForm, Oauth2, SignUpForm };

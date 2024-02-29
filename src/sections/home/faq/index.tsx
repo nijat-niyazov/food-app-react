@@ -4,12 +4,7 @@ import { Fragment, useState } from "react";
 import { ContentOfFaq, HeaderOfFaq } from "./components";
 
 async function getData() {
-  try {
-    return await supabase.from("faqdata").select("*");
-  } catch (error) {
-    console.log("error", error);
-    return error;
-  }
+  return await supabase.from("faqdata").select("*");
 }
 
 const FAQ = () => {

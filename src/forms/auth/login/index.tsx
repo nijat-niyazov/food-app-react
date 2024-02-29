@@ -1,5 +1,6 @@
 import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components";
+import { useLocalStorage } from "@/hooks";
 import { loginUser } from "@/services/api/auth";
 import { closeModal, openModal } from "@/stores/modal";
 import { useState } from "react";
@@ -22,6 +23,7 @@ export default function LoginForm() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { setItem } = useLocalStorage("user");
 
   const onSubmit: SubmitHandler<LoginInputs> = async (values) => {
     // const {
@@ -34,13 +36,13 @@ export default function LoginForm() {
     } = await loginUser(values);
 
     if (!error && session && user) {
-      // console.log({ session, user });
+      console.log(session, user);
 
       toast.success("You logged in succesfully");
       const userData = { user: { ...user.user_metadata }, access_token: session.access_token, refresh_token: session.refresh_token };
-      localStorage.setItem("user", JSON.stringify(userData));
+      setItem(userData);
       closeModal();
-      window.location.reload();
+      // window.location.reload();
     } else if (error && error.status === 400) {
       setError("password", { message: error.message });
       toast.error("Unmatched fields ☹ Please check your inputs.");

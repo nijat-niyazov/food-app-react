@@ -5,10 +5,11 @@ import { Fragment } from "react";
 const Oauth2 = ({ ...providers }: { providers?: string[] }) => {
   async function handleOAuth() {
     let { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: "https://pcwpuipcmxaawwpivthd.supabase.co/auth/v1/authorize?provider=google",
-      },
+      // provider: "github",
+      provider: "google",
+      // options: {
+      //   redirectTo: "https://pcwpuipcmxaawwpivthd.supabase.co/auth/v1/authorize?provider=google",
+      // },
     });
 
     console.log(data, error);
