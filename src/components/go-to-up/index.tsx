@@ -1,5 +1,5 @@
+import { CustomButton } from "@/components/ui";
 import { useEffect, useState } from "react";
-import { CustomButton } from "..";
 
 const GoToUp = () => {
   const [visible, setVisible] = useState(false);

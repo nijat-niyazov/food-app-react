@@ -1,5 +1,5 @@
 import { MySpinner } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { closeModal, openModal } from "@/stores/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";

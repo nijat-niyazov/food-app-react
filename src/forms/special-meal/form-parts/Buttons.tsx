@@ -1,5 +1,5 @@
 import { MySpinner } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { memo } from "react";
 
 type FormButtonProps = {

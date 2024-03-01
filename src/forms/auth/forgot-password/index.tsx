@@ -1,8 +1,8 @@
 import { MySpinner } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { projectURL } from "@/constants/config";
 import { supabase } from "@/constants/supabase";
-import { useCountDown } from "@/hooks";
+import { useCountDown, useLocalStorage } from "@/hooks";
 import { openModal } from "@/stores/modal";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -19,11 +19,14 @@ export default function ForgotPasswordForm() {
     setError,
   } = useForm<{ email: string }>();
 
-  const { remainingTime, start } = useCountDown(10);
+  const { remainingTime, start, timeIsOver } = useCountDown(120, "clicked");
+  const { setItem } = useLocalStorage();
 
   const onSubmit: SubmitHandler<{ email: string }> = async (values) => {
+    const currentTime = new Date().getTime();
+    setItem("clicked", currentTime);
+
     start();
-    // const { success } = await delay(3000);
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(values.email, {
       redirectTo: projectURL,
@@ -69,12 +72,12 @@ export default function ForgotPasswordForm() {
         ))}
 
         <CustomButton
-          disabled={!isValid || isSubmitting || remainingTime > 0}
+          disabled={!isValid || isSubmitting || !timeIsOver}
           variant="primary"
           type="submit"
           className="disabled:opacity-50 text-md"
         >
-          {remainingTime > 0 ? remainingTime : !isSubmitting ? "Submit" : <MySpinner />}
+          {!timeIsOver ? remainingTime : !isSubmitting ? "Submit" : <MySpinner />}
         </CustomButton>
       </form>
     </div>

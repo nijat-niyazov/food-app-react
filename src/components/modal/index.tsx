@@ -6,7 +6,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const CustomModal = () => {
+const CustomModal = ({ isOpened, handleClose, children }: { isOpened?: boolean; handleClose?: () => void; children?: JSX.Element }) => {
   const { content, opened, modalWidth, closeBtn, closeModal } = useModalStore((state) => state);
 
   const sm = useMediaMatch();
@@ -14,16 +14,24 @@ const CustomModal = () => {
 
   /* -------------------------- Handle Modal With URL ------------------------- */
   const [searchParams, setSearchParams] = useSearchParams();
-  const isOpened = searchParams.get("openModal") === "true";
-  function handleClose() {
-    searchParams.delete("openModal");
-    setSearchParams(searchParams);
-  }
+  // const isOpened = searchParams.get("openModal") === "true";
+  // function handleClose() {
+  //   searchParams.delete("openModal");
+  //   setSearchParams(searchParams);
+  // }
 
+  // <Transition appear show={isOpened} as={Fragment}>
+  //   <Dialog
+  //     as="div"
+  //     className="relative z-10"
+  //     onClose={(e) => {
+  //       console.log("closed");
+
+  //       handleClose();
+  //       e.stopPropagation();
+  //     }}
+  //   >
   return (
-    // <Transition appear show={isOpened} as={Fragment}>
-    //   <Dialog as="div" className="relative z-10" onClose={handleClose}>
-
     <Transition appear show={opened} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child
@@ -58,6 +66,7 @@ const CustomModal = () => {
                 {closeBtn && (
                   <button
                     onClick={closeModal}
+                    // onClick={handleClose}
                     className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
                   >
                     <img src={close} alt="menu" className="w-8 h-8" />
@@ -65,6 +74,7 @@ const CustomModal = () => {
                 )}
 
                 {content}
+                {/* {children} */}
               </Dialog.Panel>
             </Transition.Child>
           </div>

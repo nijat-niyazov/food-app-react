@@ -1,12 +1,12 @@
 import { login, pp } from "@/assets/images";
-import { CustomButton } from "@/components";
+import { StorageImage } from "@/components";
 import DropdownMenu from "@/components/dropdown";
-import { AuthProps } from "@/constants/types/auth";
+import { CustomButton } from "@/components/ui";
+import { UserType } from "@/constants/types/auth";
 import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
-import { getImage } from "@/utils";
 
-const Auth = ({ userData }: AuthProps) => {
+const Auth = ({ userData }: { userData: UserType | null }) => {
   let content: JSX.Element;
 
   if (!userData) {
@@ -28,8 +28,9 @@ const Auth = ({ userData }: AuthProps) => {
     content = (
       <DropdownMenu>
         <div className="rounded-full flex items-center justify-between gap-3 bg-primary px-3 py-2 text-white group">
-          <img src={getImage(userData.user.avatar) ?? pp} alt="pp" className="w-11 h-11 object-cover rounded-full" />
-          <span className="text-lg font-medium  group-hover:underline">{`  ${userData.user.name} ${userData.user.lastName} `}</span>
+          <StorageImage src={userData.avatar} defaultImage={pp} alt="avatar" className="w-11 h-11 object-cover rounded-full" />
+
+          <span className="text-lg font-medium  group-hover:underline">{`  ${userData.name} ${userData.lastName} `}</span>
         </div>
       </DropdownMenu>
     );

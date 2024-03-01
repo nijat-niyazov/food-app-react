@@ -1,5 +1,5 @@
 import { ArrowDown } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { MealType } from "@/constants/types/meal";
 import { FC, useMemo } from "react";
 import { useNavigate } from "react-router-dom";

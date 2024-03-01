@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { cn, kebabToString } from "@/utils";
 import { Fragment } from "react";
 import { useSearchParams } from "react-router-dom";

@@ -1,5 +1,5 @@
 import { HeroPlus, Remove } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { cn } from "@/utils";
 import { FC } from "react";
 import { useFieldArray } from "react-hook-form";

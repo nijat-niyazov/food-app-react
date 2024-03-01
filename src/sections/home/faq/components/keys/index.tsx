@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { cn } from "@/utils";
 
 type Props = {

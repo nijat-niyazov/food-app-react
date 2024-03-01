@@ -1,9 +1,9 @@
-import { useLocalStorage } from "@/hooks";
+import useAuth from "@/hooks/auth/useAuth";
 import { signOut } from "@/services/api/auth";
-import { cn, removeCookie } from "@/utils";
+import { cn } from "@/utils";
+
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, ReactNode } from "react";
-import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const menuItems = [
@@ -48,19 +48,14 @@ const menuItems = [
 ];
 
 function DropdownMenu({ children }: { children: ReactNode }) {
-  const { removeItem } = useLocalStorage("user");
+  const navigate = useNavigate();
+  const { logOut } = useAuth();
 
   async function handleLogout() {
     const { error } = await signOut();
 
     if (!error) {
-      removeCookie("token");
-      removeItem();
-      toast.success("You logged out successfully");
-      useNavigate()("/");
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 250);
+      logOut();
     }
   }
 

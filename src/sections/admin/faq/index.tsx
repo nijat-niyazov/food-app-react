@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { supabase } from "@/constants/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";

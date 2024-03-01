@@ -1,5 +1,5 @@
+import { CustomButton } from "@/components/ui";
 import { cn } from "@/utils";
-import { CustomButton } from "..";
 
 type OptionComProps = {
   disabled?: boolean;

@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { cn } from "@/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";

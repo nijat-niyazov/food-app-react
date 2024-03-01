@@ -1,5 +1,5 @@
 import { HeroPlus, Remove } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { MealType } from "@/constants/types/meal";
 import { SpecialMealType } from "@/constants/types/spcieal-meal";
 import { cn } from "@/utils";

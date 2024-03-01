@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { CreateMealForm } from "@/forms";
 import { useNavigate, useParams } from "react-router-dom";
 

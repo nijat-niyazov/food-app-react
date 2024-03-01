@@ -1,5 +1,5 @@
-import { CustomButton } from "@/components";
 import { ConfirmationOrder } from "@/components/modal-contents";
+import { CustomButton } from "@/components/ui";
 import { MealType, OptionType } from "@/constants/types/meal";
 import { useMediaMatch } from "@/hooks";
 import { openModal } from "@/stores/modal";

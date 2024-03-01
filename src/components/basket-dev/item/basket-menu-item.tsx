@@ -1,10 +1,11 @@
 import { NoteICon, Remove } from "@/assets/icons";
+import { MotionDiv } from "@/components";
 import { MealNote } from "@/components/modal-contents";
+import { CustomButton } from "@/components/ui";
 import { BasketItemType } from "@/constants/types/meal";
 import { removeBasketItem } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
-import { CustomButton, MotionDiv } from "../..";
 
 function BasketMenuItem({ item }: { item: BasketItemType }) {
   return (

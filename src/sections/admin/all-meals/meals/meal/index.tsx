@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { MealType } from "@/constants/types/meal";
 import { Link } from "react-router-dom";
 

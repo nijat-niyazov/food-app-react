@@ -1,14 +1,12 @@
-import { girl } from "@/assets/images";
-import { CustomButton } from "@/components";
+import { StorageImage } from "@/components";
+import { CustomButton } from "@/components/ui";
+import { UserType } from "@/constants/types/auth";
 import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
 import { Fragment } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthProps } from "./type";
+import { Link } from "react-router-dom";
 
-const MobileAuth = ({ userData }: AuthProps) => {
-  const navigate = useNavigate();
-
+const MobileAuth = ({ userData }: { userData: UserType | null }) => {
   function handleClick() {
     if (!userData) openModal(<LoginForm />);
   }
@@ -17,10 +15,12 @@ const MobileAuth = ({ userData }: AuthProps) => {
 
   return userData ? (
     <Fragment>
-      <img src={girl} className="w-11 h-11 rounded-full object-cover" />
+      <StorageImage src={userData.avatar} className="w-11 h-11 rounded-full object-cover" alt="avatar" />
       <div>
-        <h3 className="text-primary text-sm font-semibold">Aycan</h3>
-        <Link className="text-text text-xs border-b-2 border-text font-normal" to={"/"}>
+        <h3 className="text-primary text-sm font-semibold">
+          {userData.name} {userData.lastName}
+        </h3>
+        <Link className="text-text text-xs border-b-2 border-text font-normal" to={"/edit-profile"}>
           My Account
         </Link>
       </div>

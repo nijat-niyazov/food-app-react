@@ -1,5 +1,5 @@
 import { ArrowDown } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { clearBasket } from "@/stores/basket";
 import { clearCustomOrder } from "@/stores/custom-order";
 import { cn } from "@/utils";

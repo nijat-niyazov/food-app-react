@@ -1,29 +1,28 @@
-import { AllMeals, CreateSpecialMeal, FaqContent, MainTabs } from "@/sections/admin";
+import Tabs from "@/components/ui/tabs";
+import { useTabs } from "@/hooks";
+import { AllMeals, CreateSpecialMeal, FaqContent } from "@/sections/admin";
 import CreateNewMeal from "@/sections/admin/create-new-meal";
 
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment } from "react";
 
-const components = [AllMeals, CreateNewMeal, CreateSpecialMeal, FaqContent];
+const components = [
+  { title: "Meals", component: AllMeals },
+  { title: "Create New Meal", component: CreateNewMeal },
+  { title: "Customize Special Meal", component: CreateSpecialMeal },
+  { title: "FAQ", component: FaqContent },
+];
 
 const AdminPage = () => {
-  const [activeTab, setActiveTab] = useState(parseInt(sessionStorage.getItem("activeTab") ?? "1"));
-
-  const handleActiveTab = useCallback((tab: number) => setActiveTab(tab), []);
-
-  useEffect(() => {
-    sessionStorage.setItem("activeTab", activeTab.toString());
-    return () => sessionStorage.removeItem("activeTab");
-  }, [activeTab]);
+  const { activeTab, handleActiveTab } = useTabs("activeTab");
 
   return (
     <Fragment>
       {/* ---------------------------------- Tabs ---------------------------------- */}
-
-      <MainTabs activeTab={activeTab} handleActiveTab={handleActiveTab} />
+      <Tabs tabs={components.map((tab) => tab.title)} activeTab={activeTab} handleActiveTab={handleActiveTab} />
 
       {/* ------------------------------- Components -------------------------------- */}
 
-      {components.map((Component, i) => i + 1 === activeTab && <Component key={i} />)}
+      {components.map(({ component: Component }, i) => i + 1 === activeTab && <Component key={i} />)}
     </Fragment>
   );
 };

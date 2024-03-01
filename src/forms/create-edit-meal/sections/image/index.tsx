@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { ChangeEvent, FC, useRef, useState } from "react";
 import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 

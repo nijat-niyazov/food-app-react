@@ -1,12 +1,14 @@
 import { MySpinner } from "@/assets/icons";
-import { CustomButton } from "@/components";
-import { useLocalStorage } from "@/hooks";
+import { CustomButton } from "@/components/ui";
+import { UserInterface } from "@/constants/types/auth";
+import { useLogOut } from "@/hooks";
 import { loginUser } from "@/services/api/auth";
-import { closeModal, openModal } from "@/stores/modal";
+import { openModal } from "@/stores/modal";
+
+import { parseUser } from "@/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
 import { ForgotPasswordForm, SignUpForm } from "../..";
 import { CustomInput } from "../../custom-elements";
 import Oauth2 from "../oauth2";
@@ -21,28 +23,19 @@ export default function LoginForm() {
     setError,
   } = useForm<LoginInputs>();
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { setItem } = useLocalStorage("user");
+  const { login } = useLogOut();
 
   const onSubmit: SubmitHandler<LoginInputs> = async (values) => {
-    // const {
-    //   data: { session, user },
-    //   error,
-    // } = await supabase.auth.signInWithPassword(values);
     const {
       data: { session, user },
       error,
     } = await loginUser(values);
 
     if (!error && session && user) {
-      console.log(session, user);
+      const { access_token: token, refresh_token } = session;
+      const loggedUser = parseUser(user as UserInterface);
 
-      toast.success("You logged in succesfully");
-      const userData = { user: { ...user.user_metadata }, access_token: session.access_token, refresh_token: session.refresh_token };
-      setItem(userData);
-      closeModal();
-      // window.location.reload();
+      login(token, refresh_token, loggedUser);
     } else if (error && error.status === 400) {
       setError("password", { message: error.message });
       toast.error("Unmatched fields ☹ Please check your inputs.");

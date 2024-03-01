@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { LoginForm } from "@/forms";
 import { openModal } from "@/stores/modal";
 

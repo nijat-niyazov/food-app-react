@@ -1,5 +1,5 @@
-import { CustomButton } from "@/components";
 import { SpecialMealModal } from "@/components/modal-contents";
+import { CustomButton } from "@/components/ui";
 import { openModal } from "@/stores/modal";
 
 const SpecialMeal = () => {
