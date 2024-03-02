@@ -82,7 +82,7 @@ const EditProfileDetailsForm = ({ defaultValues }: { defaultValues: User }) => {
               alt="avatar"
             />
 
-            <div className="flex md:flex-col flex-row items-center justify-center gap-2">
+            <div className="flex  flex-row items-center justify-center gap-2">
               <CustomButton onClick={openFileSelector} variant="secondary" className="bg-opacity-80">
                 Change Image
               </CustomButton>

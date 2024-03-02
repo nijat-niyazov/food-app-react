@@ -14,8 +14,8 @@ const MealDescription: FC<Props> = ({ register }) => {
         id="description"
         placeholder="Hot and spicy burger with extra cheese and fries."
         className="border-1 border-black/30 p-2 outline-none rounded-md w-full text-sm md:text-base"
-        cols={30}
-        rows={10}
+        cols={20}
+        rows={6}
         {...register("description", { required: true })}
       ></textarea>
     </div>

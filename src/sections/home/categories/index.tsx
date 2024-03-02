@@ -1,12 +1,12 @@
-import { lil_pizza } from "@/assets/images";
+import { alkaqolik, lil_pizza, meat, offer, salad, soup } from "@/assets/images";
 import { Link } from "react-router-dom";
 
 const meals = [
-  { id: 1, img: lil_pizza, url: "fast-food", category: "Fast Food", count: 20 },
-  { id: 2, img: lil_pizza, url: "drinks", category: "Drinks", count: 20 },
-  { id: 3, img: lil_pizza, url: "pasta", category: "Pasta", count: 20 },
-  { id: 4, img: lil_pizza, url: "main", category: "Main", count: 20 },
-  { id: 5, img: lil_pizza, url: "special-request", category: "Offer", count: 20 },
+  { id: 1, img: meat, url: "fast-food", category: "Fast Food", count: 20 },
+  { id: 2, img: alkaqolik, url: "drinks", category: "Drinks", count: 20 },
+  { id: 3, img: salad, url: "pasta", category: "Pasta", count: 20 },
+  { id: 4, img: soup, url: "main", category: "Main", count: 20 },
+  { id: 5, img: offer, url: "special-request", category: "Offer", count: 20 },
   { id: 6, img: lil_pizza, url: "fast_food", category: "Soups", count: 20 },
 ];
 

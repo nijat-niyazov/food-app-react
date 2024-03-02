@@ -78,7 +78,7 @@ export default function SignUpForm() {
         </CustomButton>
       </form>
 
-      <CustomButton variant="outlined" size="xs" onClick={() => openModal(<LoginForm />)} className="underline">
+      <CustomButton variant="transparent" size="xs" onClick={() => openModal(<LoginForm />)} className="underline">
         Have an account? Login
       </CustomButton>
     </div>

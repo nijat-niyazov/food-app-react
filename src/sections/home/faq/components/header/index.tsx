@@ -23,7 +23,7 @@ const HeaderOfFaq = ({ isPending, questions, activeTab, setActiveTab }: Props) =
               onClick={() => setActiveTab(i)}
               key={id}
               borderRadius="full"
-              variant="outlined"
+              variant="transparent"
               className={cn(" w-auto border-1 border-transparent", {
                 "border-primary": activeTab === i,
               })}

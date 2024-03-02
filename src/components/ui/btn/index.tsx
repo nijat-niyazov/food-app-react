@@ -2,7 +2,7 @@ import { cn } from "@/utils";
 import { ButtonHTMLAttributes } from "react";
 
 type CustomButtonProps = {
-  variant?: "success" | "danger" | "warning" | "primary" | "secondary" | "black" | "outlined";
+  variant?: "success" | "danger" | "warning" | "primary" | "secondary" | "black" | "outlined" | "transparent";
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xl2" | "xl3" | "xl4" | "xl5";
   borderRadius?: "sm" | "md" | "lg" | "xl" | "full";
   font?: "normal" | "medium" | "semibold" | "bold";
@@ -21,7 +21,8 @@ function createBtnClasses(
     secondary: "bg-secondary ",
     black: "bg-text ",
     danger: "bg-red-500 ",
-    outlined: "bg-outlined text-black ",
+    outlined: "bg-outlined text-black border-1 border-black/50 ",
+    transparent: "bg-outlined text-black ",
     success: "bg-success ",
     warning: "bg-warning ",
   };

@@ -26,7 +26,7 @@ const MobileAuth = ({ userData }: { userData: UserType | null }) => {
       </div>
     </Fragment>
   ) : (
-    <CustomButton variant="outlined" onClick={() => openModal(<LoginForm />)} className="w-auto">
+    <CustomButton variant="transparent" onClick={() => openModal(<LoginForm />)} className="w-auto">
       Login/Signup
     </CustomButton>
   );

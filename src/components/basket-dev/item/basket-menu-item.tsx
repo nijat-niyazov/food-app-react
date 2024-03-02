@@ -36,13 +36,13 @@ function BasketMenuItem({ item }: { item: BasketItemType }) {
         </ul>
 
         <div className="grid place-self-center ml-auto w-auto">
-          <CustomButton className="md:p-0" variant="outlined" size="xs" onClick={() => removeBasketItem(item.id)}>
+          <CustomButton className="md:p-0" variant="transparent" size="xs" onClick={() => removeBasketItem(item.id)}>
             <Remove />
           </CustomButton>
 
           <CustomButton
             className="md:p-0"
-            variant="outlined"
+            variant="transparent"
             size="xs"
             onClick={() => openModal(<MealNote note={item.note as string} />, 50)}
           >

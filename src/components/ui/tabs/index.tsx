@@ -41,7 +41,7 @@ const Tabs = ({ tabs, activeTab, handleActiveTab }: Props) => {
 
   return (
     <header className="bg-bej py-2 ">
-      <div ref={tabsRef} className="flex max-w-[90%] md:w-1/2 mx-auto items-center gap-5 overflow-x-auto whitespace-nowrap ">
+      <div ref={tabsRef} className="flex max-w-[90%] mx-auto items-center gap-5 overflow-x-auto whitespace-nowrap ">
         {indicatorVisible && <Indicator positions={positions} activeTab={activeTab} />}
         {tabs.map((tab, i) => (
           <CustomButton
@@ -49,7 +49,7 @@ const Tabs = ({ tabs, activeTab, handleActiveTab }: Props) => {
             className={cn("z-10", { "text-white": i + 1 === activeTab })}
             onClick={() => handleActiveTab(i + 1)}
             borderRadius="full"
-            variant="outlined"
+            variant="transparent"
           >
             {tab}
           </CustomButton>

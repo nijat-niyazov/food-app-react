@@ -1,4 +1,3 @@
-import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components/ui";
 import { projectURL } from "@/constants/config";
 import { supabase } from "@/constants/supabase";
@@ -7,6 +6,7 @@ import { openModal } from "@/stores/modal";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { CustomInput } from "@/forms/custom-elements";
+import { cn } from "@/utils";
 import LoginForm from "../login";
 import { fields } from "./fields-validation";
 
@@ -33,53 +33,47 @@ export default function ForgotPasswordForm() {
     });
 
     console.log(data, error);
-
-    // console.log({ data, error });
-
-    // if (!error && session && user) {
-    //   console.log({ session, user });
-
-    //   toast.success("Sent to you");
-
-    // } else if (error && error.status === 400) {
-    //   // setError("password", { message: error.message });
-    //   toast.error("Unmatched fields ☹ Please check your inputs.");
-    // } else {
-    //   toast.error("Something went wrong");
-    // }
   };
 
   return (
     <div className="p-4">
       <header className="grid gap-3 mb-5 ">
-        <h4 className="text-3xl font-semibold text-primary ">Login</h4>
-        <span className="flex gap-2 text-sm">
-          Back to
-          <button onClick={() => openModal(<LoginForm />)} className="underline">
-            Login
-          </button>
-        </span>
+        <h4 className="text-3xl font-semibold text-primary ">Send message to email</h4>
       </header>
 
       <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
         {fields.map(({ field, type, placeholder }, i) => (
           <div key={i}>
-            <label htmlFor={field} className="font-semibold pl-1">
+            <label htmlFor={field} className="font-semibold pl-1 flex items-center justify-between">
               Your email
             </label>
             <CustomInput id={field} error={undefined} placeholder={placeholder} type={type} field={field} register={register} />
           </div>
         ))}
 
-        <CustomButton
-          disabled={!isValid || isSubmitting || !timeIsOver}
-          variant="primary"
-          type="submit"
-          className="disabled:opacity-50 text-md"
-        >
-          {!timeIsOver ? remainingTime : !isSubmitting ? "Submit" : <MySpinner />}
-        </CustomButton>
+        <footer className="flex items-center justify-between gap-3">
+          <CustomButton
+            disabled={!isValid || isSubmitting || !timeIsOver}
+            variant="primary"
+            type="submit"
+            className="disabled:opacity-50 text-md flex-1"
+          >
+            Send Message
+          </CustomButton>
+          <CustomButton
+            size="md"
+            variant="secondary"
+            className={cn("w-auto !px-2 bg-opacity-80 min-w-16  pointer-events-none", {
+              "opacity-50": timeIsOver,
+            })}
+          >
+            {remainingTime}
+          </CustomButton>
+        </footer>
       </form>
+      <CustomButton variant="transparent" size="xs" onClick={() => openModal(<LoginForm />)} className="underline">
+        Back to Login
+      </CustomButton>
     </div>
   );
 }

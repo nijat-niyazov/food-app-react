@@ -34,7 +34,7 @@ const EditorPage = () => {
 
   return (
     <div className="container ">
-      <CustomButton variant="outlined" className="underline font-medium w-auto p-1" onClick={() => navigate(-1)}>
+      <CustomButton variant="transparent" className="underline font-medium w-auto p-1" onClick={() => navigate(-1)}>
         Go Back
       </CustomButton>
 
@@ -105,7 +105,7 @@ const EditorPage = () => {
                   <CustomButton
                     disabled={options.length === 1}
                     className="p-0"
-                    variant="outlined"
+                    variant="transparent"
                     onClick={() => setOptions(options.filter((opt) => opt !== i))}
                   >
                     <Remove />
@@ -117,7 +117,7 @@ const EditorPage = () => {
                 onClick={() => setOptions((p) => [...p, (options.at(-1) as number) + 1])}
                 disabled={options.length > 4}
                 className="text-black"
-                variant="outlined"
+                variant="transparent"
               >
                 Add another option ➕
               </CustomButton>

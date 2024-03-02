@@ -34,9 +34,9 @@ const MealImage: FC<MealImageProps> = ({ defImg, register, setValue }) => {
       {!image ? (
         <div
           onClick={() => fileRef.current?.click()}
-          className="w-full h-40 border-dashed border-2 rounded-md flex items-center justify-center border-black/20 hover:border-black/50 cursor-pointer group"
+          className="w-32 h-32 border-dashed border-2 rounded-full flex items-center justify-center border-black/20 hover:border-black/50 cursor-pointer group mx-auto"
         >
-          <span className="opacity-50  group-hover:opacity-100">Select meal image</span>
+          <span className="opacity-50  group-hover:opacity-100 text-sm">Select meal image</span>
         </div>
       ) : (
         <>
@@ -49,7 +49,7 @@ const MealImage: FC<MealImageProps> = ({ defImg, register, setValue }) => {
               Change Image
             </span>
           </div>
-          <CustomButton onClick={() => fileRef.current?.click()} variant="outlined" className="border-1 border-black/30 md:hidden">
+          <CustomButton onClick={() => fileRef.current?.click()} variant="transparent" className="border-1 border-black/30 md:hidden">
             Change Image
           </CustomButton>
         </>

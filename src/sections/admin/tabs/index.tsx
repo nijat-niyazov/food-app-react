@@ -54,7 +54,7 @@ const MainTabs = ({ activeTab, handleActiveTab }: Props) => {
             className="z-10"
             onClick={() => handleActiveTab(i + 1)}
             borderRadius="full"
-            variant={"outlined"}
+            variant="transparent"
             // variant={activeTab === i + 1 ? "secondary" : "outlined"}
           >
             {tab}

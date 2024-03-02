@@ -51,7 +51,7 @@ const MealOptions: FC<Props> = ({ register, control }) => {
                   tabIndex={-1}
                   {...register(`options.${i}.price`, { required: true })}
                 />
-                <CustomButton disabled={options.length === 1} variant="outlined" onClick={() => remove(i)} className="!p-0">
+                <CustomButton disabled={options.length === 1} variant="transparent" onClick={() => remove(i)} className="!p-0">
                   <Remove />
                 </CustomButton>
               </div>
