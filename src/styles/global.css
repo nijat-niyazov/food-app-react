@@ -17,8 +17,8 @@
 } */
 
 ::-webkit-scrollbar {
-  /* width: 6px;
-  height: 0px; */
+  width: 6px;
+  height: 0px;
 }
 
 /* Track */
@@ -62,13 +62,6 @@ label {
 
 @layer base {
   html {
-    /* --primary: #fc8a06;
-    --secondary: #028643;
-    --text: #03081f;
-    --bej: #e9e9e9;
-    --grey: #fafafa;
-    --faq: #fafafa; */
-
     --primary: 252, 138, 6;
     --secondary: 2, 134, 67;
     --text: 3, 8, 31;
@@ -107,27 +100,3 @@ label {
     background: linear-gradient(246deg, rgba(255, 255, 255, 0) 0.94%, rgba(3, 8, 31, 0.19) 51.68%, rgba(3, 8, 31, 0.89) 87.9%);
   }
 }
-
-/* @layer base {
-  html {
-    --primary: #fc8a06;
-    --secondary: #028643;
-    --text: #03081f;
-    --bej: #e9e9e9;
-  }
-
-  .very-slow {
-    animation-duration: 10s !important;
-  }
-
-  .discount-linear {
-    background: linear-gradient(
-      246deg,
-      rgba(255, 255, 255, 0) 0.94%,
-      rgba(3, 8, 31, 0.19) 51.68%,
-      rgba(3, 8, 31, 0.89) 87.9%
-    );
-  }
-
-  @import url("./dark.css");
-} */

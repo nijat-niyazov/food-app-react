@@ -57,18 +57,7 @@ const links = [
 ];
 const Categories = () => {
   return (
-    <MotionDiv
-      // initial={{
-      //   y: 50,
-      //   opacity: 0,
-      // }}
-      // animate={{ y: 0, opacity: 100 }}
-      // transition={{
-      //   duration: 0.3,
-      //   delay: 0.2,
-      // }}
-      className="hidden md:flex items-center justify-between  sticky top-5 z-10 mb-10 w-full "
-    >
+    <MotionDiv className="hidden md:flex items-center justify-between  sticky top-5 z-10 mb-10 w-full ">
       <div className="border-1 border-black/10 rounded-xl w-full">
         <div className="flex items-center gap-5 py-3 px-12 border-b-1 border-black/10">
           <img src={menu_book} alt="" />

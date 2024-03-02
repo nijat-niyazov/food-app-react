@@ -1,27 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import EmblaCarousel from './EmblaCarousel'
-import { EmblaOptionsType } from 'embla-carousel'
-import Header from './Header'
-import Footer from './Footer'
-import '../css/base.css'
-import '../css/sandbox.css'
-import '../css/embla.css'
+import { EmblaOptionsType } from "embla-carousel";
+import React, { Fragment } from "react";
+import "../css/base.css";
+import "../css/embla.css";
+import "../css/sandbox.css";
+import EmblaCarousel from "./EmblaCarousel";
+import Footer from "./Footer";
+import Header from "./Header";
 
-const OPTIONS: EmblaOptionsType = { dragFree: true }
-const SLIDE_COUNT = 16
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+const OPTIONS: EmblaOptionsType = { dragFree: true };
+const SLIDE_COUNT = 16;
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
-const App: React.FC = () => (
-  <>
+const Carousel: React.FC = () => (
+  <Fragment>
     <Header />
     <EmblaCarousel slides={SLIDES} options={OPTIONS} />
     <Footer />
-  </>
-)
+  </Fragment>
+);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+export default Carousel;

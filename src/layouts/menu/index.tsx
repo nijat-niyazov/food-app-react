@@ -10,9 +10,9 @@ const MenuLayout = () => {
       <div className="grid md:grid-cols-[1fr_2fr_1fr] items-start justify-start container gap-5">
         <Categories />
         <Outlet />
-        <div className="hidden md:block">
+        <aside className="hidden md:block">
           <BasketDev />
-        </div>
+        </aside>
       </div>
 
       {/* <Offers /> */}

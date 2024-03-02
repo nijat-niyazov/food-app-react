@@ -6,7 +6,6 @@ import Header from "./header";
 import MotionDiv from "./motion-div";
 import Option from "./option";
 import StorageImage from "./storage-image";
-import TimerExpirationManager from "./timerExpirationManager";
 import CustomModal from "./ui/modal";
 
-export { Basket, BasketDev, CustomModal, Footer, GoToUp, Header, MotionDiv, Option, StorageImage, TimerExpirationManager };
+export { Basket, BasketDev, CustomModal, Footer, GoToUp, Header, MotionDiv, Option, StorageImage };

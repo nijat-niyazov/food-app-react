@@ -7,13 +7,9 @@ import CustomItems from "./custom";
 import MenuItems from "./menu";
 
 const BasketDev = () => {
-  /* ------------------------------- Menu Orders ------------------------------ */
   const { orders: menuOrders, totalPrice } = useBasketStore((state) => state);
-
-  /* ------------------------------ Custom Orders ----------------------------- */
   const { orders: customOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
 
-  /* ------------------------------ Media Screen ------------------------------ */
   const sm = useMediaMatch();
 
   /* ------------------------------- Price State ------------------------------ */

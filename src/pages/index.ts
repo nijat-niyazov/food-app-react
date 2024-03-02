@@ -12,7 +12,7 @@ import CustomizeSpecialMealPage from "./customize";
 import HomePage from "./home";
 import SpecialMeal from "./menu/special";
 import NotAdmin from "./not-admin";
-import UnAuthPage from "./unauth";
+import UnAuthPage from "./not-auhorized";
 
 export {
   AdminPage,
