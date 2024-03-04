@@ -16,5 +16,3 @@ const StepInfo = ({ currentStep, maxSteps, name }: Props) => {
 };
 
 export default StepInfo;
-
-

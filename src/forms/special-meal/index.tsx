@@ -12,29 +12,6 @@ import { FormInputValues, InputValue, Price } from "./types";
 
 import { v4 as uuidv4 } from "uuid";
 
-// const steps = useMemo(
-//   () =>
-//     stepsOfSelectedMeal.map((step: any) => {
-//       const fieldName = step.categoryName.toLowerCase();
-
-//       switch (fieldName) {
-//         case "size":
-//           return {
-//             component: Size,
-//             options: step.options,
-//             fieldName,
-//           };
-//         default:
-//           return {
-//             component: MultipleChoices,
-//             options: step.sub_catagories,
-//             fieldName,
-//           };
-//       }
-//     }),
-//   [stepsOfSelectedMeal]
-// );
-
 type Props = {
   mealId: "burger" | "pizza";
   meals: { burger: SpecialMealType[]; pizza: SpecialMealType[] };
@@ -44,7 +21,7 @@ type Props = {
 const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
   /* ------------------------------- Form State ------------------------------- */
 
-  console.log(defaultValues?.totalPrice);
+  // console.log(defaultValues?.totalPrice);
 
   const {
     register,
@@ -78,13 +55,7 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
 
     const { success } = await delay(3000);
     if (success) {
-      const data = {
-        meal: mealId,
-        order,
-        totalPrice,
-        price,
-        id: defaultValues?.id ?? id,
-      };
+      const data = { meal: mealId, order, totalPrice, price, id: defaultValues?.id ?? id };
 
       addCustomOrderToBasket(data);
       toast.success("Your order has been added to the draft");
@@ -99,10 +70,11 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
 
   /* ------------------------------- Step State ------------------------------- */
   const [currentStep, setCurrentStep] = useState(0);
-  const maxSteps = stepsOfSelectedMeal.length + 2; // additionals for note and confirm list
-  const noteStep = currentStep === maxSteps - 2;
-  const lastStep = currentStep === maxSteps - 1;
   const handleStep = useCallback((route?: "next") => setCurrentStep((prev) => prev + (route === "next" ? 1 : -1)), []);
+
+  const maxSteps = stepsOfSelectedMeal.length + 2; // additionals for note and confirm list
+  const lastStep = currentStep === maxSteps - 1;
+  const noteStep = currentStep === maxSteps - 2;
 
   /* ------------------------------- Price State ------------------------------ */
   const [totalPrice, setTotalPrice] = useState<Price[]>(defaultValues?.totalPrice ?? []);
@@ -127,14 +99,14 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
   const price = parseFloat(useMemo(() => totalPrice.reduce((acc, { price }) => acc + price, 0), [totalPrice]).toFixed(2));
 
   return (
-    <div className="p-10">
+    <div className="p-10 relative">
       <StepInfo
         currentStep={currentStep}
         maxSteps={maxSteps}
         name={!noteStep && !lastStep ? stepsOfSelectedMeal[currentStep].categoryName : noteStep ? "Special Note" : "Confirm List"}
       />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2 ">
         {/* ---------------------------------- Size ---------------------------------- */}
 
         {stepsOfSelectedMeal.map((step, i) => {

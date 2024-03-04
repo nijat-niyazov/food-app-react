@@ -1,5 +1,5 @@
 import { Option } from "@/constants/types/spcieal-meal";
-import { InputHTMLAttributes, memo } from "react";
+import { InputHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 import { FormInputValues, InputValue } from "../../types";
 
@@ -23,7 +23,7 @@ const Size = ({ fieldName, options, register, required, handleChange, ...rest }:
               id={id}
               value={id}
               type="radio"
-              className="w-5 h-5"
+              className="w-5 h-5 accent-red-800"
               {...register(fieldName)}
               onChange={() => handleChange(fieldName, { id, price, name })}
             />
@@ -49,4 +49,4 @@ const Size = ({ fieldName, options, register, required, handleChange, ...rest }:
   );
 };
 
-export default memo(Size);
+export default Size;
