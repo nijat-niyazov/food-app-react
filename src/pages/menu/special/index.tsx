@@ -2,7 +2,7 @@ import { SpecialMealModal } from "@/components/modal-contents";
 import { CustomButton } from "@/components/ui";
 import { openModal } from "@/stores/modal";
 
-import CModal from "@/components/ui/modal/c-modal";
+import { CModal } from "@/components/ui/";
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import "./background.css";

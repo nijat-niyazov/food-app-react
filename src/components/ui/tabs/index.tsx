@@ -10,8 +10,8 @@ type Props = {
 };
 
 export type Positions = {
-  x: number;
-  y: number;
+  left: number;
+  top: number;
   height: number;
   width: number;
 };
@@ -27,14 +27,27 @@ const Tabs = ({ tabs, activeTab, handleActiveTab }: Props) => {
       const childs = Array.from(parentElement.children);
 
       childs.forEach((child, i) => {
-        const { x, y, height, width } = child.getBoundingClientRect();
+        const { left, top, height, width } = child.getBoundingClientRect();
 
-        positions[i + 1] = { x, y, height, width };
+        positions[i + 1] = { left, top, height, width };
       });
     }
 
     setPositions(positions);
     setIndicatorVisible(true);
+
+    function handleClick(e: MouseEvent) {
+      // console.log({
+      //   x: e.clientX,
+      //   y: e.clientY,
+      // });
+    }
+
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, []);
 
   const tabsRef = useRef<HTMLDivElement>(null);

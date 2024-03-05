@@ -4,6 +4,9 @@ type MealType = {
   img: string;
   description: string;
   options: OptionType[];
+  category_name: string;
+  category_id: string;
+
   // option?: OptionType;
 
   // price?: number;
@@ -12,7 +15,7 @@ type MealType = {
 type OptionType = {
   id: number;
   price: number;
-  size?: string;
+  name: string;
 };
 
 type OrderType = {

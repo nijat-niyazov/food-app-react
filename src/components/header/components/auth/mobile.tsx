@@ -15,7 +15,7 @@ const MobileAuth = ({ userData }: { userData: UserType | null }) => {
 
   return userData ? (
     <Fragment>
-      <StorageImage src={userData.avatar} className="w-11 h-11 rounded-full object-cover" alt="avatar" />
+      <StorageImage path="avatars" src={userData.avatar} className="w-11 h-11 rounded-full object-cover" alt="avatar" />
       <div>
         <h3 className="text-primary text-sm font-semibold">
           {userData.name} {userData.lastName}

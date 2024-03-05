@@ -1,36 +1,23 @@
 import { CustomButton } from "@/components/ui";
+import { supabase } from "@/constants/supabase";
 import { CreateMealForm } from "@/forms";
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 
-const meal = {
-  id: 3,
-  file: "../src/assets/images/offer.png",
-  category: "Fast Food",
-  title: "Fryday Burger",
-  description: "Hot, crispy, tender chicken breast in a soft bun with a spicy sauce and fresh lettuce",
-  options: [
-    {
-      name: "Small",
-      price: 10,
-    },
-
-    {
-      name: "Medium",
-      price: 15,
-    },
-    {
-      name: "Large",
-      price: 20,
-    },
-  ],
-};
+async function getMeal(id: string) {
+  return await supabase.from("menu").select("*").eq("id", id);
+}
 
 const EditorPage = () => {
-  const { id } = useParams();
-
-  // console.log(id);
-
   const navigate = useNavigate();
+  const { id } = useParams();
+  if (!id) return null;
+
+  const { data, isPending } = useQuery({ queryKey: ["meal", id], queryFn: () => getMeal(id) });
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container ">
@@ -38,96 +25,7 @@ const EditorPage = () => {
         Go Back
       </CustomButton>
 
-      <CreateMealForm defaultValues={meal} />
-
-      {/* <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3 w-full">
-          
-
-          <div
-            onClick={() => fileRef.current?.click()}
-            className="w-full h-20 border-dashed border-1 rounded-md flex items-center justify-center border-black/20"
-          >
-            <span>Select your Image</span>
-          </div>
-          <div>
-            <label htmlFor="title">Title :</label> <br />
-            <input
-              id="title"
-              placeholder="Burger"
-              type="text"
-              className="border-1 border-black/30 rounded-md p-2 outline-none w-full"
-              {...register("title", { required: true })}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description">Description :</label> <br />
-            <textarea
-              id="description"
-              placeholder="Hot and spicy burger with extra cheese and fries."
-              className="border-1 border-black/30 p-2 outline-none rounded-md w-full"
-              cols={30}
-              rows={10}
-              {...register("description", { required: true })}
-            ></textarea>
-          </div>
-
-          <CustomButton onClick={() => setHasOptions((p) => !p)} variant={!hasOptions ? "primary" : "secondary"}>
-            {hasOptions ? "Remove" : "Set"} options of meal
-          </CustomButton>
-
-
-
-          {hasOptions && (
-            <>
-              {options.map((option, i) => (
-                <div key={i} className="flex items-center justify-between gap-2">
-                  <div className="grid border-1 p-2 border-black/50 rounded-md">
-                    <label htmlFor="option">Option {i + 1}</label>
-                    <div className="flex gap-4 ">
-                      <input
-                        className="grow border-1 border-black/30 p-2 rounded-md"
-                        id="option"
-                        type="text"
-                        placeholder="Option name"
-                        {...register(`options.option1.name`, { required: true })}
-                      />
-
-                      <input
-                        className="border-1 border-black/30 p-2 rounded-md"
-                        type="number"
-                        placeholder="Price"
-                        {...register(`options.option1.price`, { required: true })}
-                      />
-                    </div>
-                  </div>
-
-                  <CustomButton
-                    disabled={options.length === 1}
-                    className="p-0"
-                    variant="transparent"
-                    onClick={() => setOptions(options.filter((opt) => opt !== i))}
-                  >
-                    <Remove />
-                  </CustomButton>
-                </div>
-              ))}
-
-              <CustomButton
-                onClick={() => setOptions((p) => [...p, (options.at(-1) as number) + 1])}
-                disabled={options.length > 4}
-                className="text-black"
-                variant="transparent"
-              >
-                Add another option ➕
-              </CustomButton>
-            </>
-          )}
-
-          <CustomButton disabled={!isValid} variant="secondary" type="submit">
-            Submit Edit
-          </CustomButton>
-        </form> */}
+      <CreateMealForm editMode defaultValues={data?.data?.at(0)} />
     </div>
   );
 };

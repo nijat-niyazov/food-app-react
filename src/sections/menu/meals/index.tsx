@@ -40,6 +40,8 @@ const Meals = () => {
   // : { data: MealType[]; isPending: boolean; error?: string | null }
   const { isPending, error, data: meals } = useGetData(["menuData", category], getMenuItems);
 
+  console.log(meals);
+
   return (
     <div className="container">
       {/* <div

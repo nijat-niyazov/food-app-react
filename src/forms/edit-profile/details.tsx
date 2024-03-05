@@ -25,9 +25,10 @@ const EditProfileDetailsForm = ({ defaultValues }: { defaultValues: User }) => {
   } = useForm<Inputs>({ defaultValues: defaultValues });
 
   const fileRef = useRef<HTMLInputElement>(null);
-  const [image, setImage] = useState<string | File | null>(getImage(defaultValues.avatar) ?? null);
+  const [image, setImage] = useState<string | File | null>(getImage("avatars", defaultValues.avatar) ?? null);
 
   const onSubmit: SubmitHandler<Inputs> = async (values) => {
+    // console.log(values);
     // if (image!==null&&typeof image !== "string") {
     //   const { data: storageData, error: storageError } = await supabase.storage
     //     .from("avatars")

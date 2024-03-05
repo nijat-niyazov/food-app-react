@@ -1,4 +1,5 @@
 import CustomButton from "./btn";
+import CModal from "./modal/c-modal";
 import Tabs from "./tabs";
 
-export { CustomButton, Tabs };
+export { CModal, CustomButton, Tabs };

@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Triggerer({ userData }: { userData: UserType }) {
   return (
     <div className="rounded-full flex items-center justify-between gap-3 bg-primary px-3 py-2 text-white group">
-      <StorageImage src={userData.avatar} defaultImage={pp} alt="avatar" className="w-11 h-11 object-cover rounded-full" />
+      <StorageImage path="avatars" src={userData.avatar} defaultImage={pp} alt="avatar" className="w-11 h-11 object-cover rounded-full" />
 
       <span className="text-lg font-medium  group-hover:underline">{`  ${userData.name} ${userData.lastName} `}</span>
     </div>
@@ -86,7 +86,8 @@ const Auth = ({ userData }: { userData: UserType | null }) => {
     <DropdownMenu triggerer={<Triggerer userData={userData} />}>
       <div className="px-1 py-1 ">
         {menuItems.map(({ url, name, activeIcon, inActiveIcon, privateRoute }) => {
-          const isAdmin = userData.role === "admin";
+          const isAdmin = userData.role;
+
           return isAdmin ? (
             <Menu.Item key={name}>
               {({ active }) => (
