@@ -42,7 +42,7 @@ const MealImage = ({ register, setValue, defaultImage }: MealImageProps) => {
       </div>
 
       {image && (
-        <footer className="flex items-center gap-3">
+        <footer className="flex items-center gap-3 mt-3">
           <CustomButton onClick={() => inputRef.current?.click()} variant="secondary">
             Change Image
           </CustomButton>

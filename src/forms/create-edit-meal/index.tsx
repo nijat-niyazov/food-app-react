@@ -29,7 +29,7 @@ type FinalData = {
   options: Array<Option & { id: string }>;
 };
 
-type FormProps = { editMode: undefined } | { editMode: true; defaultValues: FinalData & { id: number } };
+type FormProps = { editMode?: never } | { editMode: true; defaultValues: FinalData & { id: number } };
 
 const defaultOptions = { options: [{ name: "", price: 0 }] };
 
@@ -113,23 +113,21 @@ const CreateMealForm = (props: FormProps) => {
   };
 
   return (
-    <div className="container md:w-1/3 mx-auto mt-10">
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
-        <MealImage defaultImage={props.editMode ? props.defaultValues.img : ""} setValue={setValue} register={register} />
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
+      <MealImage defaultImage={props.editMode ? props.defaultValues.img : ""} setValue={setValue} register={register} />
 
-        <MealCategories statCategories={categories?.data ?? []} setValue={setValue} register={register} />
+      <MealCategories statCategories={categories?.data ?? []} setValue={setValue} register={register} />
 
-        <MealTitle register={register} />
+      <MealTitle register={register} />
 
-        <MealDescription register={register} />
+      <MealDescription register={register} />
 
-        <MealOptions register={register} control={control} />
+      <MealOptions register={register} control={control} />
 
-        <CustomButton disabled={!isValid || isSubmitting} variant="secondary" type="submit">
-          {!isSubmitting ? !props.editMode ? "Create New Meal" : "Save changes" : <MySpinner />}
-        </CustomButton>
-      </form>
-    </div>
+      <CustomButton disabled={!isValid || isSubmitting} variant="secondary" type="submit">
+        {!isSubmitting ? !props.editMode ? "Create new meal" : "Save changes" : <MySpinner />}
+      </CustomButton>
+    </form>
   );
 };
 

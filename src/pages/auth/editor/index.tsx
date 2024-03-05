@@ -25,7 +25,9 @@ const EditorPage = () => {
         Go Back
       </CustomButton>
 
-      <CreateMealForm editMode defaultValues={data?.data?.at(0)} />
+      <div className="container md:w-1/3 mx-auto md:mt-10">
+        <CreateMealForm editMode defaultValues={data?.data?.at(0)} />
+      </div>
     </div>
   );
 };
