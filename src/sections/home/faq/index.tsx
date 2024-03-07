@@ -8,7 +8,7 @@ async function getData() {
 }
 
 const FAQ = () => {
-  const { data, isPending, isError } = useGetData(["faq"], getData);
+  const { data, isPending, isError } = useGetData<{ data: any }>(["faq"], getData);
 
   if (isError) {
     console.log(isError);
@@ -21,7 +21,7 @@ const FAQ = () => {
 
   return (
     <Fragment>
-      <HeaderOfFaq isPending={isPending} questions={data?.data!} activeTab={activeTab} setActiveTab={handleTab} />
+      <HeaderOfFaq isPending={isPending} questions={data?.data} activeTab={activeTab} setActiveTab={handleTab} />
 
       <ContentOfFaq key={activeTab} activeTab={activeTab} isPending={isPending} data={data?.data} />
     </Fragment>

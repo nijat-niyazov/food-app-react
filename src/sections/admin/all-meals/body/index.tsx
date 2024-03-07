@@ -7,7 +7,6 @@ async function getMenu(category: string) {
   let query = supabase.from("menu").select("*");
 
   if (category) {
-    // query = query.contains("category", { id: category });
     query = query.eq("category_id", category);
   }
 
@@ -16,7 +15,6 @@ async function getMenu(category: string) {
 
 const Body = () => {
   const [searchParams] = useSearchParams();
-
   const activeCategory = searchParams.get("category") ?? "";
 
   const { isPending, data } = useQuery({ queryKey: ["menu", activeCategory], queryFn: () => getMenu(activeCategory) });
@@ -28,7 +26,7 @@ const Body = () => {
     bodyContent = <AdminMeals meals={data.data} />;
   }
 
-  return <ul className="grid gap-3 md:w-[78%] mx-auto mt-10 md:grid-cols-3">{bodyContent}</ul>;
+  return <ul className="grid gap-3 mx-auto mt-10 md:grid-cols-4">{bodyContent}</ul>;
 };
 
 export default Body;

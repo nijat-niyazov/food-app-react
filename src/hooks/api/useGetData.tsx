@@ -8,7 +8,7 @@ function useGetData<T>(cacheKeys: string[], fetcherFunction: (queries: string) =
   const queryKey = [...cacheKeys, queriesString];
   const queryFn = () => fetcherFunction(queriesString);
 
-  console.log(queryKey);
+  // console.log(queryKey);
 
   return useQuery({ queryKey, queryFn });
 }

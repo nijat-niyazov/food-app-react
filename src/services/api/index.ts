@@ -35,9 +35,9 @@ export const fetchData2 = async (url: string, params?: ParamsType, delayed = fal
   }
 };
 
-type Answer = {
+export type Answer = {
   key: string;
-  answer: { title: string; content: string; image: any }[];
+  answer: { title: string; content: string; image: string }[];
 };
 
 export type FaqData = {

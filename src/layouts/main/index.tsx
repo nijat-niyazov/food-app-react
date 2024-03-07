@@ -12,6 +12,8 @@ const MainLayout = () => {
       {/* <AlertDialogDemo /> */}
       <Outlet />
 
+      {/* <Carousel /> */}
+
       {/* <GoToUp /> */}
       <Footer />
       {/* <Console /> */}

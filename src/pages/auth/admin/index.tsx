@@ -1,6 +1,6 @@
 import Tabs from "@/components/ui/tabs";
 import { useTabs } from "@/hooks";
-import { AllMeals, CreateSpecialMeal, FaqContent } from "@/sections/admin";
+import { AllMeals } from "@/sections/admin";
 import CreateNewMeal from "@/sections/admin/create-new-meal";
 
 import { Fragment } from "react";
@@ -8,8 +8,8 @@ import { Fragment } from "react";
 const components = [
   { title: "Meals", component: AllMeals },
   { title: "Create New Meal", component: CreateNewMeal },
-  { title: "Customize Special Meal", component: CreateSpecialMeal },
-  { title: "FAQ", component: FaqContent },
+  // { title: "Customize Special Meal", component: CreateSpecialMeal },
+  // { title: "FAQ", component: FaqContent },
 ];
 
 const AdminPage = () => {

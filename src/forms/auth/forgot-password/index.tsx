@@ -58,7 +58,7 @@ export default function ForgotPasswordForm() {
             type="submit"
             className="disabled:opacity-50 text-md flex-1"
           >
-            Send Message
+            {remainingTime ? "Message is sent" : "Send Message"}
           </CustomButton>
           <CustomButton
             size="md"

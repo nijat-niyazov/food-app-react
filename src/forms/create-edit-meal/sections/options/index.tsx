@@ -1,9 +1,10 @@
 import { HeroPlus, Remove } from "@/assets/icons";
 import { CustomButton } from "@/components/ui";
 import { cn } from "@/utils";
-import { useFieldArray } from "react-hook-form";
+import { UseFormRegister, useFieldArray } from "react-hook-form";
+import { Option } from "../..";
 
-type Props = { register: any; control: any };
+type Props = { register: UseFormRegister<{ options: Option[] }>; control: any };
 
 const MealOptions = ({ register, control }: Props) => {
   const { fields: options, append, remove } = useFieldArray({ control, name: "options" });
@@ -15,12 +16,7 @@ const MealOptions = ({ register, control }: Props) => {
       <div className="border-1 border-black/30 rounded-t-md transition-all duration-200">
         <ul>
           {options.map(({ id }, i) => (
-            <li
-              key={id}
-              className={cn("w-full pt-2", {
-                "border-t-1 ": i !== 0,
-              })}
-            >
+            <li key={id} className={cn("w-full pt-2", { "border-t-1 ": i !== 0 })}>
               <label className="pl-3 font-semibold px-2" htmlFor={`option-${i}`}>
                 Option {i + 1}
               </label>

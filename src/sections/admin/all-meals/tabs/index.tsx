@@ -8,7 +8,7 @@ type Positions = {
 };
 
 type Props = {
-  data: { id: string; name: string }[];
+  data: { category_id: string; category_name: string }[];
 };
 
 const CategoriesTabs = ({ data }: Props) => {
@@ -30,7 +30,7 @@ const CategoriesTabs = ({ data }: Props) => {
       >
         All
       </CustomButton>
-      {data.map(({ name, id }) => (
+      {data.map(({ category_id: id, category_name: name }) => (
         <CustomButton
           key={id}
           className={cn(" z-10", { "text-white": activecategory === id })}

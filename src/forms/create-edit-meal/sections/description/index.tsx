@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { UseFormRegister } from "react-hook-form";
 
 type Props = {
-  register: any;
+  register: UseFormRegister<{ description: string }>;
 };
 
 const MealDescription: FC<Props> = ({ register }) => {
