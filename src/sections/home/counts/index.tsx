@@ -36,7 +36,7 @@ const Counts = (props: Props) => {
         <li
           key={i}
           className={cn("border-b-1 md:border-b-0 md:border-r-1  grow text-center border-faq grid", {
-            "border-none": i === items.length - 1,
+            "border-none": i === items.data.length - 1,
           })}
         >
           <CountUp start={start} end={end} duration={1.5} enableScrollSpy={true} scrollSpyOnce>

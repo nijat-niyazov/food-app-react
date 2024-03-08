@@ -1,6 +1,6 @@
 import { supabase } from "@/constants/supabase";
 import { useGetData } from "@/hooks";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { ContentOfFaq, HeaderOfFaq } from "./components";
 
 async function getData() {
@@ -20,11 +20,13 @@ const FAQ = () => {
   const handleTab = (i: number) => setActiveTab(i);
 
   return (
-    <Fragment>
-      <HeaderOfFaq isPending={isPending} questions={data?.data} activeTab={activeTab} setActiveTab={handleTab} />
+    <section className="bej rounded-xl">
+      <div className="container md:py-20 py-10">
+        <HeaderOfFaq isPending={isPending} questions={data?.data} activeTab={activeTab} setActiveTab={handleTab} />
 
-      <ContentOfFaq key={activeTab} activeTab={activeTab} isPending={isPending} data={data?.data} />
-    </Fragment>
+        <ContentOfFaq key={activeTab} activeTab={activeTab} isPending={isPending} data={data?.data} />
+      </div>
+    </section>
   );
 };
 

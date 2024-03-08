@@ -1,16 +1,16 @@
 import { MotionDiv } from "@/components";
-import { Counts, FAQ, Hire, MealCategories } from "@/sections/home";
+import { Counts, FAQ, HomeSlider, MealCategories, Order } from "@/sections/home";
 
 const HomePage = () => {
   return (
-    <MotionDiv
-      // initial={{ x: "100%" }}
-      // animate={{ x: 0, transitionDelay: "250ms" }}
+    <MotionDiv // initial={{ x: "100%" }}      // animate={{ x: 0, transitionDelay: "250ms" }}
       className="container mb-20 grid gap-10"
     >
+      <HomeSlider />
       {/* <DiscountMenu /> */}
       <MealCategories />
-      <Hire />
+      {/* <Hire /> */}
+      <Order />
       <FAQ />
       <Counts />
     </MotionDiv>

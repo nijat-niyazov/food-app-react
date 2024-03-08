@@ -1,3 +1,4 @@
+import { Moon, Sun } from "@/assets/icons";
 import { useEffect, useState } from "react";
 
 const Theme = () => {
@@ -41,7 +42,7 @@ const Theme = () => {
       }}
       onClick={toggleTheme}
     >
-      {theme === "dark" ? "Light Mode" : "Dark Mode"}
+      {theme === "dark" ? <Sun /> : <Moon />}
     </button>
     // <button
     //   style={{

@@ -10,7 +10,7 @@ type SearchHistoryType = {
   id: string;
 };
 
-const HeaderSearch = () => {
+const HeaderSearchCopy = () => {
   /* -------------------------- Search and Debounced -------------------------- */
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("query") ?? "");
@@ -70,7 +70,7 @@ const HeaderSearch = () => {
       <div
         ref={divRef}
         className={cn(
-          "p-2 rounded-full w-auto border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200",
+          "p-2 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200",
           {
             "border-primary/80 outline-primary/50": isFocused,
           }
@@ -100,4 +100,4 @@ const HeaderSearch = () => {
   );
 };
 
-export default HeaderSearch;
+export default HeaderSearchCopy;

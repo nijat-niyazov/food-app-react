@@ -60,6 +60,10 @@ label {
   user-select: none;
 }
 
+.bej {
+  background: linear-gradient(180deg, rgb(238, 238, 238), rgb(224, 225, 220) 100%);
+}
+
 @layer base {
   html {
     --primary: 252, 138, 6;

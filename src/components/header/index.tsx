@@ -7,7 +7,7 @@ import { useUserStore } from "@/stores/user";
 import { convertToTwoDecimalFloat } from "@/utils";
 import { Link } from "react-router-dom";
 import { Basket } from "..";
-import { Auth, HeaderSearch, MenuToggler, MobileAuth, NavigationOfHeader, Theme } from "./components";
+import { Auth, MenuToggler, MobileAuth, NavigationOfHeader, Theme } from "./components";
 
 const Header = () => {
   const { totalPrice, totalItems: totalItemsOfBasket } = useBasketStore((state) => state);
@@ -31,7 +31,7 @@ const Header = () => {
 
         <Theme />
 
-        <ul className="flex items-strech bg-secondary rounded-b-xl text-base font-semibold text-white ">
+        <ul className="grid grid-cols-[auto_auto_auto] bg-secondary rounded-b-xl text-base font-semibold text-white ">
           <li className="border-r-1  border-white px-6   border-opacity-30 relative">
             <button onClick={() => openModal(<Basket />, 90)}>
               <Shopping />
@@ -43,14 +43,17 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between gap-10">
         <Link to={"/"}>
-          <img src={logo} />
+          <img src={logo} className="w-52" />
         </Link>
 
-        <HeaderSearch />
+        {/* <HeaderSearch /> */}
 
-        <NavigationOfHeader />
+        <div className="grow">
+          {" "}
+          <NavigationOfHeader />
+        </div>
 
         <div className="md:hidden">
           <Theme />
