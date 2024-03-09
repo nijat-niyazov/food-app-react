@@ -11,7 +11,6 @@ import { Auth, MenuToggler, MobileAuth, NavigationOfHeader, Theme } from "./comp
 
 const Header = () => {
   const { totalPrice, totalItems: totalItemsOfBasket } = useBasketStore((state) => state);
-
   const { totalItemsCustomOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
 
   const totalItems = totalItemsOfBasket + totalItemsCustomOrders;
@@ -51,7 +50,6 @@ const Header = () => {
         {/* <HeaderSearch /> */}
 
         <div className="grow">
-          {" "}
           <NavigationOfHeader />
         </div>
 

@@ -3,18 +3,13 @@ import { useMediaMatch } from "@/hooks";
 import { FaqData } from "@/services/api";
 import { cn } from "@/utils";
 
-type Props = {
-  isPending: boolean;
-  questions: FaqData[];
-  setActiveTab: (i: number) => void;
-  activeTab: number;
-};
+type Props = { isPending: boolean; questions: FaqData[]; setActiveTab: (i: number) => void; activeTab: number };
 
 const HeaderOfFaq = ({ isPending, questions, activeTab, setActiveTab }: Props) => {
   const sm = useMediaMatch();
 
   return (
-    <header className="flex items-center mb-10 md:mb-6 gap-y-5 ">
+    <header className="flex flex-col md:flex-row items-center mb-10 md:mb-6 gap-y-5 justify-between">
       <h3 className="text-text text-center md:text-start  text-2xl md:text-[32px] font-bold [text-shadow:_0_4px_4px_rgb(0_0_0_/_30%)]">
         Know more about project!
       </h3>

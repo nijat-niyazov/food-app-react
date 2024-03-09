@@ -1,4 +1,5 @@
 import ArrowDown from "./ArrowDown";
+
 import Clock from "./Clock";
 import EyeSlash from "./EyeSlash";
 import GithubIcon from "./Github";
@@ -13,6 +14,7 @@ import Remove from "./Remove";
 import SearchIcon from "./Search";
 import Shopping from "./Shopping";
 import Sun from "./Sun";
+import Trash from "./Trash";
 import User from "./User";
 
 export {
@@ -31,5 +33,6 @@ export {
   SearchIcon,
   Shopping,
   Sun,
+  Trash,
   User,
 };

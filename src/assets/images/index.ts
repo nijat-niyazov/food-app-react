@@ -5,6 +5,7 @@ import download from "./download.png";
 import family from "./family.png";
 import fast_food from "./fast_food.png";
 import girl from "./girl.jpg";
+import happy_girl from "./happy_girl.png";
 import hire from "./hire.png";
 import lil_pizza from "./lil_pizza.png";
 import login from "./login.png";
@@ -60,6 +61,7 @@ export {
   georgian,
   girl,
   hamburger,
+  happy_girl,
   hire,
   lil_pizza,
   login,
