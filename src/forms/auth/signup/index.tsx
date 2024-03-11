@@ -21,7 +21,7 @@ export default function SignUpForm() {
     setError,
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
-  const { setItem } = useLocalStorage("user");
+  const { setItem } = useLocalStorage();
 
   const onSubmit: SubmitHandler<SignUpInputs> = async (values) => {
     // const { success } = await delay(3000);
@@ -45,7 +45,7 @@ export default function SignUpForm() {
     if (!error && user && session) {
       console.log(session, user);
 
-      setItem({ user: user.user_metadata, access_token: session?.access_token, refresh_token: session?.refresh_token });
+      setItem("user", { user: user.user_metadata, access_token: session?.access_token, refresh_token: session?.refresh_token });
 
       toast.success("You successfully registered");
       closeModal();

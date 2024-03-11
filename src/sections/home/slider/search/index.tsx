@@ -1,14 +1,15 @@
 import { SearchIcon } from "@/assets/icons";
-import { useDebounced } from "@/hooks";
+import { useClickOutside, useDebounced } from "@/hooks";
 import { cn } from "@/utils";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Input from "./Input";
 import Results from "./Results";
 import SearchHistory from "./SearchHistory";
 
-const HeaderSearchCopy = () => {
-  /* -------------------------- Search and Debounced -------------------------- */
+type HomeSearchProps = {} & React.HTMLAttributes<HTMLDivElement>;
+
+const HomeSearch = ({ className }: HomeSearchProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("query") ?? "");
   const debounced = useDebounced(search, 1000);
@@ -22,6 +23,8 @@ const HeaderSearchCopy = () => {
       setIsLoading(true);
 
       const timeId = setTimeout(() => {
+        // searchParams.set("query", debounced);
+        // setSearchParams(searchParams, { replace: true });
         setIsLoading(false);
       }, 1000);
 
@@ -30,6 +33,7 @@ const HeaderSearchCopy = () => {
         clearInterval(timeId);
       };
     } else {
+      setIsLoading(false);
       searchParams.delete("query");
       setSearchParams(searchParams, { replace: true });
     }
@@ -43,23 +47,21 @@ const HeaderSearchCopy = () => {
     setIsFocused(false);
   }
 
-  // const divRef = useRef<HTMLDivElement>(null);
-  // useClickOutside(divRef, removeFocus);
+  const divRef = useRef<HTMLDivElement>(null);
+  useClickOutside(divRef, removeFocus);
 
   let showHistory = !isTyping && isFocused;
 
-  console.log(showHistory);
-
   return (
     <div
-      // ref={divRef}
+      ref={divRef}
       onFocus={() => setIsFocused(true)}
       className={cn(
-        "p-3 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200",
+        `p-3 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200 ${className}`,
         { "border-primary/80 outline-primary/50": isFocused }
       )}
     >
-      {showHistory && <SearchHistory removeFocus={removeFocus} debounced={debounced} />}
+      {showHistory && <SearchHistory debounced={debounced} />}
 
       {isTyping && <Results isLoading={isLoading} />}
 
@@ -76,4 +78,4 @@ const HeaderSearchCopy = () => {
   );
 };
 
-export default HeaderSearchCopy;
+export default HomeSearch;

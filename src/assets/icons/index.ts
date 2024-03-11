@@ -1,4 +1,5 @@
 import ArrowDown from "./ArrowDown";
+import ChevronDown from "./ChevronDown";
 
 import Clock from "./Clock";
 import EyeSlash from "./EyeSlash";
@@ -19,6 +20,7 @@ import User from "./User";
 
 export {
   ArrowDown,
+  ChevronDown,
   Clock,
   EyeSlash,
   GithubIcon,

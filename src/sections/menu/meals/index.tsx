@@ -5,7 +5,6 @@ import { getMenuItems } from "@/services/api/menu";
 import { CustomButton } from "@/components/ui";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Militos from "./meals";
 
 function MealSkeleton({ index }: { index: number }) {
   return (
@@ -71,9 +70,9 @@ const Meals = () => {
         </CustomButton>
       </header>
 
-      <ul className="flex flex-col gap-10">
+      {/* <ul className="flex flex-col gap-10">
         {isPending ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />) : <Militos meals={meals} category={category} />}
-      </ul>
+      </ul> */}
     </div>
   );
 };

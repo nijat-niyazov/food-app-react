@@ -1,11 +1,18 @@
 import { madmazel, madmazel_pizza } from "@/assets/images";
 import Notifications from "./notifications";
-import Searching from "./searching";
+import HomeSearch from "./search";
 
 const HomeSlider = () => {
   return (
     <section className="min-h-[600px] bg-text rounded-xl w-full relative hidden md:block opacity-100">
-      <Searching />
+      <div className="w-auto absolute top-1/2 -translate-y-1/2 min-h-96 text-white left-10">
+        <p className="text-base mb-5">Order food without waiter to your table</p>
+        <p className="font-semibold text-5xl mb-5">
+          Feast Your Senses, <br /> <span className="text-primary">Fast and Fresh</span>
+        </p>
+
+        <HomeSearch className="w-[90%]" />
+      </div>
 
       {/* <div className="w-[420px] pointer-events-none h-[410px] absolute left-1/2 bottom-0 -translate-x-[60%] z-10 bg-[url('@/assets/images/madmazel_pizza.png')] bg-no-repeat bg-center  opacity-20 grayscale" /> */}
 

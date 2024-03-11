@@ -40,11 +40,11 @@ const EditProfile = () => {
       <Fragment>
         <Tabs tabs={tabs.map((component) => component.title)} activeTab={activeTab} handleActiveTab={handleActiveTab} />
 
-        <div className="min-h-[50vh]">
+        {/* <div className="min-h-[50vh]">
           {tabs.map(
             ({ component: Component }, index) => index + 1 === activeTab && <Component key={index} defaultValues={defaultValues} />
           )}
-        </div>
+        </div> */}
       </Fragment>
     );
   }

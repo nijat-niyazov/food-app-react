@@ -1,6 +1,5 @@
 import { CustomButton } from "@/components/ui";
 import { supabase } from "@/constants/supabase";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 async function getData() {
@@ -16,14 +15,14 @@ interface FaqInterface {
 const FaqContent = () => {
   const [data, setData] = useState<FaqInterface[] | null>(null);
 
-  const {
-    data: items,
-    isPending,
-    error,
-  } = useQuery<{ error: any; data: null; count: null; status: number; statusText: string }>({
-    queryKey: ["faqData"],
-    queryFn: getData,
-  });
+  // const {
+  //   data: items,
+  //   isPending,
+  //   error,
+  // } = useQuery<{ error: any; data: null; count: null; status: number; statusText: string }>({
+  //   queryKey: ["faqData"],
+  //   queryFn: getData,
+  // });
 
   return (
     <div className="grid gap-3 grid-cols-3 container my-10">

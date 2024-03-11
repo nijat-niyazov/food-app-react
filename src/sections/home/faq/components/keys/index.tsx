@@ -12,7 +12,7 @@ const TabKeys = ({ keys, activeKey, handleKey }: Props) => {
     <header className="flex flex-col gap-2 ">
       {keys.map((key, i) => (
         <CustomButton
-          variant={activeKey === i ? "primary" : "outlined"}
+          variant={activeKey === i ? "primary" : "transparent"}
           key={i}
           onClick={() => handleKey(i)}
           borderRadius="full"

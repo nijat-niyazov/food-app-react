@@ -38,7 +38,7 @@ export default function ForgotPasswordForm() {
   return (
     <div className="p-4">
       <header className="grid gap-3 mb-5 ">
-        <h4 className="text-3xl font-semibold text-primary ">Send message to email</h4>
+        <h4 className="text-3xl font-semibold text-primary text-balance">Send message to email</h4>
       </header>
 
       <form className="grid gap-3" onSubmit={handleSubmit(onSubmit)}>
