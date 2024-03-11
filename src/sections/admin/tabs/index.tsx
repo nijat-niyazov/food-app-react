@@ -44,13 +44,13 @@ const MainTabs = ({ activeTab, handleActiveTab }: Props) => {
               top: positions[activeTab].y + "px",
               height: positions[activeTab].height + "px",
             }}
-            className="bg-primary absolute top-0 transition-all duration-300 ease-in-out rounded-full h-5 w-20 z-0"
+            className="bg-oranged absolute top-0 transition-all duration-300 ease-in-out rounded-full h-5 w-20 z-0"
           ></div>
         )}
         {tabs.map((tab, i) => (
           <CustomButton
             key={i}
-            // className={cn({ "hover:bg-primary/50": activeTab !== i + 1 })}
+            // className={cn({ "hover:bg-oranged/50": activeTab !== i + 1 })}
             className="z-10"
             onClick={() => handleActiveTab(i + 1)}
             borderRadius="full"

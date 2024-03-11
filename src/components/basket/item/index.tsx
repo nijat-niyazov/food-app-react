@@ -24,7 +24,7 @@ const BasketItem = ({ id, quantity }: { id: number; quantity: number }) => {
         >
           -
         </button>
-        <span className="text-text rounded bg-white px-3 py-1">{basket}</span>
+        <span className="text-darkblue rounded bg-white px-3 py-1">{basket}</span>
         <button
           disabled={basket === 10}
           onClick={() => handleBasketItem("inc")}

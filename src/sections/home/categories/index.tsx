@@ -28,8 +28,8 @@ const MealCategories = () => {
               <div className="rounded-xl overflow-hidden ">
                 <img src={meal.img} alt="meal" className="h-40 md:h-48 object-cover w-full " />
                 <ul className="grid py-2 px-4  bg-text text-white text-sm">
-                  <li className="text-primary font-bold md:text-lg">{meal.category}</li>
-                  <li>{meal.count} Options</li>
+                  <li className="text-oranged font-bold md:text-lg">{meal.category}</li>
+                  <li className="text-main">{meal.count} Options</li>
                 </ul>
               </div>
             </li>

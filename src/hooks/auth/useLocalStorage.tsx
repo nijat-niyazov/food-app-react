@@ -2,7 +2,7 @@ function action(action: "set" | "remove" | "get", key: string, value?: unknown) 
   try {
     switch (action) {
       case "set":
-        window.localStorage.setItem(key, JSON.stringify(value));
+        window.localStorage.setItem(key, typeof value === "string" ? value : JSON.stringify(value));
         break;
       case "get":
         const item = window.localStorage.getItem(key);

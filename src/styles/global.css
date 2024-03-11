@@ -66,20 +66,21 @@ label {
 
 @layer base {
   html {
-    --primary: 252, 138, 6;
-    --secondary: 2, 134, 67;
+    --main: 255, 255, 255;
     --text: 3, 8, 31;
+    --oranged: 252, 138, 6;
+    --greeny: 2, 134, 67;
+    --darkblue: 3, 8, 31;
     --bej: 233, 233, 233;
     --grey: 250, 250, 250;
     --faq: 250, 250, 250;
   }
 
   html[data-theme="dark"] {
-    --header: #03081f;
-    --primary: #03081f;
-    --secondary: #fc8a06;
-    --text: #e9e9e9;
-    /* --text: #e9e9e9; */
+    --main: 3, 8, 31;
+    --text: 255, 255, 255;
+
+    /* --darkblue: 238, 238, 238; */
   }
 
   .slow-spin {

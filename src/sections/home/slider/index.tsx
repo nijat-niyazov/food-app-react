@@ -5,10 +5,10 @@ import HomeSearch from "./search";
 const HomeSlider = () => {
   return (
     <section className="min-h-[600px] bg-text rounded-xl w-full relative hidden md:block opacity-100">
-      <div className="w-auto absolute top-1/2 -translate-y-1/2 min-h-96 text-white left-10">
+      <div className="w-auto absolute top-1/2 -translate-y-1/2 min-h-96 text-main left-10">
         <p className="text-base mb-5">Order food without waiter to your table</p>
         <p className="font-semibold text-5xl mb-5">
-          Feast Your Senses, <br /> <span className="text-primary">Fast and Fresh</span>
+          Feast Your Senses, <br /> <span className="text-oranged">Fast and Fresh</span>
         </p>
 
         <HomeSearch className="w-[90%]" />

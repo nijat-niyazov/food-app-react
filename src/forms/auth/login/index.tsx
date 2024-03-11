@@ -63,7 +63,7 @@ export default function LoginForm() {
   return (
     <div className="p-4">
       <header className="grid gap-3 mb-5 ">
-        <h4 className="text-3xl font-semibold text-primary ">Login</h4>
+        <h4 className="text-3xl font-semibold text-oranged ">Login</h4>
         <Oauth2 />
       </header>
 
@@ -74,7 +74,7 @@ export default function LoginForm() {
 
         <div className="flex items-center justify-between ">
           <div className="flex items-center justify-center gap-1 px-1">
-            <input checked={check} onChange={() => setCheck(!check)} id="remember" type="checkbox" className="w-4 h-4 accent-primary" />
+            <input checked={check} onChange={() => setCheck(!check)} id="remember" type="checkbox" className="w-4 h-4 accent-oranged" />
             <label htmlFor="remember" className="text-sm font-medium">
               Remember me
             </label>

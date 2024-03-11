@@ -23,7 +23,7 @@ const Checkbox: FC<CheckboxInputProps> = ({
   // let registerName = `${fieldName}.${option.heading.toLowerCase()}`;
 
   return (
-    <li className="flex gap-2 items-center mt-1 font-bold text-text text-3xl">
+    <li className="flex gap-2 items-center mt-1 font-bold text-darkblue text-3xl">
       <input
         {...rest}
         id={option.id}

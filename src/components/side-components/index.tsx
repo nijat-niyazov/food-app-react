@@ -11,7 +11,7 @@ const SideComponents = () => {
         toastOptions={{
           success: {
             duration: 2000,
-            className: "text-white whitespace-nowrap bg-secondary max-w-[700px]",
+            className: "text-white whitespace-nowrap bg-greeny max-w-[700px]",
           },
         }}
       >

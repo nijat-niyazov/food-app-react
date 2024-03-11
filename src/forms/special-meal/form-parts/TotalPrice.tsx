@@ -45,7 +45,7 @@ const TotalPrice: FC<Props> = ({ price }) => {
   // );
 
   return (
-    <p className="bg-primary text-white rounded-lg font-medium px-5 py-2 mt-4 flex items-center gap-3">
+    <p className="bg-oranged text-white rounded-lg font-medium px-5 py-2 mt-4 flex items-center gap-3">
       Total to pay :<span className="text-xl font-semibold">${price || 0}</span>
     </p>
   );

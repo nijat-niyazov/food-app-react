@@ -71,8 +71,8 @@ const Categories = () => {
               to={`/menu/${path}`}
               className={({ isActive }) =>
                 [
-                  isActive ? "bg-text text-white cursor-default" : "text-text hover:text-white hover:bg-text/90",
-                  "  font-bold  text-text text-xl px-8 py-2 flex gap-3 items-center   ",
+                  isActive ? "bg-darkblue text-white cursor-default" : "text-darkblue hover:text-white hover:bg-darkblue/90",
+                  "  font-bold  text-darkblue text-xl px-8 py-2 flex gap-3 items-center   ",
                 ].join(" ")
               }
             >

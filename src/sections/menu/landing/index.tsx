@@ -13,7 +13,7 @@ const LandingMenu = () => {
       initial={{ x: "10%" }}
       animate={{ x: 0 }}
       transition={{ duration: 0.2 }}
-      className="hidden md:block  relative mb-20 container bg-text rounded-xl"
+      className="hidden md:block  relative mb-20 container bg-darkblue rounded-xl"
     >
       <img src={fast_food} alt="fast_food" className=" brightness-50 opacity-30 " />
 
@@ -37,7 +37,7 @@ const LandingMenu = () => {
         {/* <img src={fast_food} alt="fast_food" className="w-full h-full object-cover rounded-xl" /> */}
       </MotionDiv>
 
-      <p className="bg-primary flex-centered rounded-r-xl absolute bottom-0 left-0 translate-y-1/2 py-4 px-16 gap-4 ">
+      <p className="bg-oranged flex-centered rounded-r-xl absolute bottom-0 left-0 translate-y-1/2 py-4 px-16 gap-4 ">
         <Clock />
         <span className="text-white text-lg font-semibold">Open until 3:00 AM</span>
       </p>

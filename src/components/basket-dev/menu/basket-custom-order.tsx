@@ -30,10 +30,10 @@ function BasketCustomOrder({ item }: Props) {
       >
         <span className="text-xl font-semibold ">{item.meal}</span>
 
-        <span className="text-secondary text-xl font-semibold">$ {item.price}</span>
+        <span className="text-greeny text-xl font-semibold">$ {item.price}</span>
 
         <ul className="grid gap-1.5 grow">
-          <li className="text-text text-base font-semibold">{item.meal}</li>
+          <li className="text-darkblue text-base font-semibold">{item.meal}</li>
         </ul>
 
         <div className="grid place-self-center ml-auto w-auto">

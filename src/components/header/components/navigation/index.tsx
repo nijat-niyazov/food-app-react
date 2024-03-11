@@ -8,7 +8,7 @@ const NavigationOfHeader = () => {
         to="/"
         className={({ isActive }) =>
           [
-            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            isActive ? "bg-oranged text-main" : "hover:bg-oranged/50 text-text",
             " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
           ].join(" ")
         }
@@ -20,7 +20,7 @@ const NavigationOfHeader = () => {
         to="/menu/fast-food"
         className={({ isActive }) =>
           [
-            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            isActive ? "bg-oranged text-main" : "hover:bg-oranged/50 text-text",
             " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
           ].join(" ")
         }
@@ -32,7 +32,7 @@ const NavigationOfHeader = () => {
         to="/branches"
         className={({ isActive }) =>
           [
-            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            isActive ? "bg-oranged text-main" : "hover:bg-oranged/50 text-text",
             " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
           ].join(" ")
         }
@@ -44,7 +44,7 @@ const NavigationOfHeader = () => {
         to="/admin"
         className={({ isActive }) =>
           [
-            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            isActive ? "bg-oranged text-main" : "hover:bg-oranged/50 text-text",
             " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
           ].join(" ")
         }
@@ -55,7 +55,7 @@ const NavigationOfHeader = () => {
         to="/editor"
         className={({ isActive }) =>
           [
-            isActive ? "bg-primary text-white" : "hover:bg-primary/50 ",
+            isActive ? "bg-oranged text-main" : "hover:bg-oranged/50 text-text",
             " px-9 py-2  font-medium text-lg rounded-full transition-colors duration-200",
           ].join(" ")
         }

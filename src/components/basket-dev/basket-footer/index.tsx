@@ -32,7 +32,7 @@ const BasketFooter = ({ totalPay, basketItemsCount, customOrdersCount }: BasketF
         Remove All
       </CustomButton>
 
-      <p className="bg-primary rounded-lg border-1 border-black/10 flex items-center justify-between mt-4">
+      <p className="bg-oranged rounded-lg border-1 border-black/10 flex items-center justify-between mt-4">
         <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay:</span>
         <span className="text-white font-semibold text-4xl px-4 py-5">${totalPay}</span>
       </p>

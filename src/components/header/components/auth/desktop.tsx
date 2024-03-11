@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Triggerer({ userData }: { userData: UserType }) {
   return (
-    <div className="rounded-full flex items-center justify-between gap-3 bg-primary px-3 py-2 text-white group">
+    <div className="rounded-full flex items-center justify-between gap-3 bg-oranged px-3 py-2 text-white group">
       <StorageImage path="avatars" src={userData.avatar} defaultImage={pp} alt="avatar" className="w-11 h-11 object-cover rounded-full" />
 
       <span className="text-lg font-medium  group-hover:underline">{`  ${userData.name} ${userData.lastName} `}</span>
@@ -59,13 +59,13 @@ const Auth = ({ userData }: { userData: UserType | null }) => {
       // <Link onClick={() => openModal(<LoginForm />)} to={`?openModal=true`}>
       <CustomButton
         onClick={() => openModal(<LoginForm />)}
-        variant={"black"}
+        variant="black"
         borderRadius="full"
         className="!pr-4 !pl-2 group hidden !py-2 md:flex items-center gap-4 w-auto"
       >
         <img src={login} alt="pp" className="w-11 h-11 object-cover" />
 
-        <span className="text-lg font-medium  group-hover:underline">Login/Signup </span>
+        <span className="text-lg font-medium  group-hover:underline text-main">Login/Signup </span>
       </CustomButton>
       // </Link>
     );

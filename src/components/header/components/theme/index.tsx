@@ -16,24 +16,6 @@ const Theme = () => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  // const [isOpened, setIsOpened] = useState(false);
-
-  // function handleOpen() {
-  //   console.log("opened");
-
-  //   setIsOpened(true);
-  // }
-  // function handleClose() {
-  //   console.log("closed");
-
-  //   setIsOpened(false);
-  // }
-
-  // const [aciqdir, setAciqdir] = useState(false);
-  // function handleaciqdir() {
-  //   setAciqdir(false);
-  // }
-
   return (
     <button
       style={{

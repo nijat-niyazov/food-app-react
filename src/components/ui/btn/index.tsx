@@ -17,9 +17,9 @@ function createBtnClasses(
   let cls = "";
 
   const variants = {
-    primary: "bg-primary ",
-    secondary: "bg-secondary ",
-    black: "bg-text ",
+    primary: "bg-oranged ",
+    secondary: "bg-greeny ",
+    black: "bg-darkblue ",
     danger: "bg-red-500 ",
     outlined: "bg-outlined text-black border-1 border-black/50 ",
     transparent: "bg-outlined text-black ",

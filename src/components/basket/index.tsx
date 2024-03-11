@@ -4,7 +4,7 @@ const Basket = () => {
 
   return (
     <div className="bg-white rounded-xl  offer-shadow p-4">
-      <h3 className="text-text font-bold text-4xl mb-5">Basket</h3>
+      <h3 className="text-darkblue font-bold text-4xl mb-5">Basket</h3>
 
       {/* <ul className="grid gap-3">
         {basketItems?.map((item, i) => (
@@ -12,11 +12,11 @@ const Basket = () => {
         ))}
       </ul>
 
-      <p className="bg-primary rounded-lg border-1 border-black/10 mx-2 my-5 flex items-center justify-between ">
+      <p className="bg-oranged rounded-lg border-1 border-black/10 mx-2 my-5 flex items-center justify-between ">
         <span className="text-white font-semibold text-xl px-4 py-5 whitespace-nowrap">Total to pay</span>
         <span className="text-white font-semibold text-4xl px-4 py-5">${totalPrice.toFixed(2)}</span>
       </p>
-      <button onClick={clearBasket} className="bg-text text-white w-full rounded-lg border-1 border-black/10 p-2 ">
+      <button onClick={clearBasket} className="bg-darkblue text-white w-full rounded-lg border-1 border-black/10 p-2 ">
         Clear Basket
       </button> */}
     </div>

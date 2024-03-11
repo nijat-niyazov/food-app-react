@@ -10,11 +10,11 @@ const HeaderOfFaq = ({ isPending, questions, activeTab, setActiveTab }: Props) =
 
   return (
     <header className="flex flex-col md:flex-row items-center mb-10 md:mb-6 gap-y-5 justify-between">
-      <h3 className="text-text text-center md:text-start  text-2xl md:text-[32px] font-bold [text-shadow:_0_4px_4px_rgb(0_0_0_/_30%)]">
+      <h3 className="text-darkblue text-center md:text-start  text-2xl md:text-[32px] font-bold [text-shadow:_0_4px_4px_rgb(0_0_0_/_30%)]">
         Know more about project!
       </h3>
 
-      <div className="flex flex-col md:flex-row text-base text-text  md:items-start gap-2">
+      <div className="flex flex-col md:flex-row text-base text-darkblue  md:items-start gap-2">
         {isPending ? (
           <p className="grow">Loading...</p>
         ) : (
@@ -25,8 +25,8 @@ const HeaderOfFaq = ({ isPending, questions, activeTab, setActiveTab }: Props) =
               size="lg"
               borderRadius="full"
               variant={!sm ? (activeTab === i ? "primary" : "transparent") : "transparent"}
-              className={cn("w-auto border-1 border-transparent text-text !px-4", {
-                "border-1 border-primary": activeTab === i && sm,
+              className={cn("w-auto border-1 border-transparent text-darkblue !px-4", {
+                "border-1 border-oranged": activeTab === i && sm,
               })}
             >
               {question}

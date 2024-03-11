@@ -38,7 +38,7 @@ const ConfirmDelete = ({ mealId }: ConfirmDeleteProps) => {
   return (
     <div className="p-4">
       <form onSubmit={handleSubmit(onSubmit)} className=" p-4 grid gap-4">
-        <h3 className="text-primary text-2xl font-bold text-center mb-10">Are you sure you want to delete this meal?</h3>
+        <h3 className="text-oranged text-2xl font-bold text-center mb-10">Are you sure you want to delete this meal?</h3>
 
         <footer className="flex items-center justify-center gap-4">
           <CustomButton type="button" variant="secondary" font="bold" onClick={closeModal}>

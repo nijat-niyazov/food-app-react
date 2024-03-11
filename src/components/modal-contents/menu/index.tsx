@@ -6,7 +6,7 @@ const MenuModal = () => {
     <>
       <div className="  flex gap-2 items-center p-8">
         <img src={menu_book} alt="menu" />
-        <span className="font-semibold text-text text-[32px]">Menu</span>
+        <span className="font-semibold text-darkblue text-[32px]">Menu</span>
       </div>
 
       <h5 className="text-sm text-white bg-black py-8">

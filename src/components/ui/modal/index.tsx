@@ -67,7 +67,7 @@ const CustomModal = ({ isOpened, handleClose, children }: { isOpened?: boolean; 
                   <button
                     onClick={closeModal}
                     // onClick={handleClose}
-                    className="bg-primary p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
+                    className="bg-oranged p-4 absolute rounded-full -right-3 top-0 md:translate-x-1/2  -translate-y-1/3"
                   >
                     <img src={close} alt="menu" className="w-8 h-8" />
                   </button>

@@ -82,7 +82,7 @@ const LearnSupabase = () => {
   <div>
     <ol className="p-2 rounded-md container border-1 border-black grid gap-3 list-decimal">
       {data?.map((c: Country) => (
-        <li key={c.id} className="flex items-center justify-between bg-primary pl-4">
+        <li key={c.id} className="flex items-center justify-between bg-oranged pl-4">
           <span className="w-1/5">{c.country_name}</span>
           <span className="w-1/5">{c.city}</span>
           <span className="w-1/5">{c.population}</span>

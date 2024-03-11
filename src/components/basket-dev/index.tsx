@@ -19,20 +19,20 @@ const BasketDev = () => {
 
   return (
     <div className="bg-faq rounded-xl border-1 border-black/20 sticky top-5 ">
-      <h3 className="text-white rounded-t-xl bg-secondary font-semibold text-3xl py-5 px-12 w-full ">My Basket</h3>
+      <h3 className="text-white rounded-t-xl bg-greeny font-semibold text-3xl py-5 px-12 w-full ">My Basket</h3>
 
       <MenuItems items={menuOrders} />
       <CustomItems items={customOrders} />
 
       <div className="md:hover:overflow-y-auto overflow-x-hidden md:max-h-[84vh] transition-[height] duration-300">
         <ul className="grid gap-5 px-5 py-8 border-b-1 border-black/20">
-          <li className="text-text text-xl font-semibold flex items-center justify-between">
+          <li className="text-darkblue text-xl font-semibold flex items-center justify-between">
             Sub Total:
             <span className="text-2xl font-normal">${subTotal}</span>
           </li>
 
           {menuOrders.length !== 0 && (
-            <li className="text-text text-xl font-semibold flex items-center justify-between">
+            <li className="text-darkblue text-xl font-semibold flex items-center justify-between">
               Discounts:
               <span className="text-2xl font-normal">${discount}</span>
             </li>

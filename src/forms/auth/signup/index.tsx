@@ -64,7 +64,7 @@ export default function SignUpForm() {
   return (
     <div className="p-4">
       <header className="grid gap-3 mb-5">
-        <h4 className="text-3xl font-semibold text-primary">Sign up</h4>
+        <h4 className="text-3xl font-semibold text-oranged">Sign up</h4>
         <Oauth2 />
       </header>
 

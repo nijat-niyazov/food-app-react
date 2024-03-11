@@ -42,7 +42,7 @@ const ConfirmationOrder = ({ selected, meal }: ConfirmationOrderProps) => {
   return (
     <div className="p-4">
       <form onSubmit={handleSubmit} className=" p-4 grid gap-4">
-        <label className="text-primary text-4xl font-bold" htmlFor="note">
+        <label className="text-oranged text-4xl font-bold" htmlFor="note">
           You can add your special request
         </label>
 

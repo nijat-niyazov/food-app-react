@@ -23,7 +23,7 @@ const DiscountMenu = () => {
         >
           <li className="relative min-w-[150px] min-h-[150px]">
             <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-            <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
+            <span className="bg-darkblue text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
             {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
             <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex-centered">Burger</span>
@@ -31,7 +31,7 @@ const DiscountMenu = () => {
         </MotionDiv>
         <li className="relative min-w-[150px] min-h-[150px]">
           <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-          <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
+          <span className="bg-darkblue text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
           {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
           {/* <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex-centered">
@@ -49,7 +49,7 @@ const DiscountMenu = () => {
         </li>
         <li className="relative min-w-[150px] min-h-[150px]">
           <div className="absolute discount-linear w-full h-full z-10  rounded-xl"></div>
-          <span className="bg-text text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
+          <span className="bg-darkblue text-white absolute right-5 text-base font-bold rounded-b-[4px] py-2 px-1">-17%</span>
           {/* <img src={burger} alt="burger" className="object-cover" /> */}
 
           {/* <span className="text-white text-sm font-bold absolute bottom-0 left-0 w-full h-10 bg-black/50 flex-centered">

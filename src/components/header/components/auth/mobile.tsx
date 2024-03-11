@@ -17,10 +17,10 @@ const MobileAuth = ({ userData }: { userData: UserType | null }) => {
     <Fragment>
       <StorageImage path="avatars" src={userData.avatar} className="w-11 h-11 rounded-full object-cover" alt="avatar" />
       <div>
-        <h3 className="text-primary text-sm font-semibold">
+        <h3 className="text-oranged text-sm font-semibold">
           {userData.name} {userData.lastName}
         </h3>
-        <Link className="text-text text-xs border-b-2 border-text font-normal" to={"/edit-profile"}>
+        <Link className="text-darkblue text-xs border-b-2 border-darkblue font-normal" to={"/edit-profile"}>
           My Account
         </Link>
       </div>

@@ -17,24 +17,24 @@ const AdminMealCard = ({ meal }: { meal: MealType }) => {
 
       {/* --------------------------------- Title --------------------------------- */}
       <p className="font-semibold text-lg grid">
-        <span className=" select-none text-secondary text-base font-semibold">Title:</span>
+        <span className=" select-none text-greeny text-base font-semibold">Title:</span>
         <span className="font-medium text-base">{meal.title}</span>
       </p>
 
       {/* -------------------------------- Category -------------------------------- */}
       <p className="text-base font-medium  grid">
-        <span className=" select-none text-secondary text-base font-semibold"> Category:</span>
+        <span className=" select-none text-greeny text-base font-semibold"> Category:</span>
         {meal.category_name}
       </p>
       {/* ------------------------------- Description ------------------------------ */}
       <p className="text-sm font-medium grid ">
-        <span className=" select-none text-secondary text-base font-semibold"> Description:</span>
+        <span className=" select-none text-greeny text-base font-semibold"> Description:</span>
         {meal.description}
       </p>
 
       {/* --------------------------------- Options -------------------------------- */}
       <div className="grow">
-        <span className=" select-none text-secondary text-base">Options:</span>
+        <span className=" select-none text-greeny text-base">Options:</span>
         {meal.options.length === 1 ? (
           <h3 className="text-sm font-medium">Only one option</h3>
         ) : (

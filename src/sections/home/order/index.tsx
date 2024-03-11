@@ -2,7 +2,7 @@ import { download, family, logo } from "@/assets/images";
 
 const Order = () => {
   return (
-    <section className="min-h-[530px] md:min-h-[480px] rounded-xl relative text-text  py-10 md:pr-5 md:py-20  bej md:my-20 ">
+    <section className="min-h-[530px] md:min-h-[480px] rounded-xl relative text-darkblue  py-10 md:pr-5 md:py-20  bej md:my-20 ">
       <div className="md:ml-auto grid  gap-6 place-items-center md:w-[60%]  relative">
         <header className="flex items-center justify-center text-3xl md:text-6xl  font-bold ">
           <img src={logo} alt="family" className="w-28 h-7 object-cover md:w-64 md:h-16" />
@@ -13,7 +13,7 @@ const Order = () => {
         <aside className="rounded-full bg-black min-h-20 w-[150%]  absolute z-0 -translate-y-5 right-0 hidden md:block" />
 
         <p className="font-medium text-2xl md:text-[50px]  rounded-full text-center md:text-white w-full z-20 md:my-10">
-          <span className="text-primary underline">Personalised</span> & Instant
+          <span className="text-oranged underline">Personalised</span> & Instant
         </p>
 
         <p className="text-base md:text-2xl">Download the Order.uk app for faster ordering</p>

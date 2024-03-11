@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen">
-      {/* <div className="bg-text ">
+    <div className="min-h-screen bg-main transition-colors duration-500">
+      {/* <div className="bg-darkblue ">
         <div className="bg-white rounded-b-3xl pb-10 "> */}
 
       <Header />

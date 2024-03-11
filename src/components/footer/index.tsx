@@ -24,7 +24,7 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer className="bg-text sticky top-full">
+    <footer className="bg-darkblue sticky top-full">
       <div className="w-full bej ">
         <div className="container py-16 flex flex-col md:flex-row gap-12 items-start justify-between">
           <section>

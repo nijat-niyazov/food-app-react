@@ -11,7 +11,7 @@ const Indicator = ({ positions, activeTab }: IndicatorPrps) => {
         top: positions[activeTab].top + "px",
         height: positions[activeTab].height + "px",
       }}
-      className="bg-primary absolute top-0 transition-all duration-300 ease-in-out rounded-full h-5 w-20 z-0 pointer-events-none"
+      className="bg-oranged absolute top-0 transition-all duration-300 ease-in-out rounded-full h-5 w-20 z-0 pointer-events-none"
     />
   );
 };

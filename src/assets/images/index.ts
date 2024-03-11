@@ -10,6 +10,7 @@ import hire from "./hire.png";
 import lil_pizza from "./lil_pizza.png";
 import login from "./login.png";
 import logo from "./logo.png";
+import logow from "./logow.png";
 import madmazel from "./madmazel.png";
 import madmazel_pizza from "./madmazel_pizza.png";
 import me from "./me.png";
@@ -66,6 +67,7 @@ export {
   lil_pizza,
   login,
   logo,
+  logow,
   madmazel,
   madmazel_pizza,
   main,

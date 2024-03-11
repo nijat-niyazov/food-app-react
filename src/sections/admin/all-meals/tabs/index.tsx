@@ -68,7 +68,7 @@ export default CategoriesTabs;
             width: positions.width + "px",
             height: positions.height + "px",
           }}
-          className="bg-primary absolute left-0 top-0 transition-all duration-300 ease-in-out z-0 rounded-full"
+          className="bg-oranged absolute left-0 top-0 transition-all duration-300 ease-in-out z-0 rounded-full"
         ></div>
       )} */
 }

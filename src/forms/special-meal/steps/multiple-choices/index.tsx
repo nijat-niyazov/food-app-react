@@ -26,13 +26,13 @@ const MultipleChoices = ({ fieldName, options: categories, register, handleChang
                 const registerName = `${fieldName}.${category.title.toLowerCase()}` as keyof FormInputValues;
                 const { id, price, name } = values;
                 return (
-                  <li key={id} className="flex gap-2 items-center font-bold text-text text-xl">
+                  <li key={id} className="flex gap-2 items-center font-bold text-darkblue text-xl">
                     {category.type === "radio" ? (
                       <input
                         id={id}
                         value={id}
                         type={category.type === "radio" ? "radio" : "checkbox"}
-                        className="w-4 h-4 accent-primary"
+                        className="w-4 h-4 accent-oranged"
                         {...register(registerName)}
                         onChange={() => handleChange(registerName, values)}
                       />
@@ -41,7 +41,7 @@ const MultipleChoices = ({ fieldName, options: categories, register, handleChang
                         id={id}
                         value={id}
                         type="checkbox"
-                        className="w-4 h-4 accent-primary"
+                        className="w-4 h-4 accent-oranged"
                         {...register(registerName)}
                         onChange={({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) =>
                           handleChange(registerName, values, checked)

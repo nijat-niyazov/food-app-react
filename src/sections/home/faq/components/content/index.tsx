@@ -24,7 +24,7 @@ const ContentOfFaq = ({ data, isPending, activeTab }: FaqProps) => {
   if (isPending) return null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_4fr] bg-text rounded-xl min-h-80 p-10 gap-10 overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_4fr] bg-darkblue rounded-xl min-h-80 p-10 gap-10 overflow-hidden">
       <TabKeys activeKey={activeKey} handleKey={handleKey} keys={particularData.keys} />
 
       <CardsOfFaq answers={particularData.answers} />

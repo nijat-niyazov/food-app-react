@@ -17,8 +17,8 @@ const TabKeys = ({ keys, activeKey, handleKey }: Props) => {
           onClick={() => handleKey(i)}
           borderRadius="full"
           className={cn("w-auto text-white font-bold py-4", {
-            "text-text": activeKey === i,
-            "hover:bg-primary/50 ": activeKey !== i,
+            "text-darkblue": activeKey === i,
+            "hover:bg-oranged/50 ": activeKey !== i,
           })}
         >
           {key}

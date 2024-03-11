@@ -29,7 +29,7 @@ const Counts = (props: Props) => {
   }
 
   // return (
-  //   <ul className="rounded-xl flex flex-col md:flex-row items-center  text-white bg-primary px-10 md:py-7 py-10">
+  //   <ul className="rounded-xl flex flex-col md:flex-row items-center  text-white bg-oranged px-10 md:py-7 py-10">
   //     {items.data.map(({ start, end, title }, i) => (
   //       <li
   //         key={i}

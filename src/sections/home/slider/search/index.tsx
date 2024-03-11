@@ -58,7 +58,7 @@ const HomeSearch = ({ className }: HomeSearchProps) => {
       onFocus={() => setIsFocused(true)}
       className={cn(
         `p-3 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200 ${className}`,
-        { "border-primary/80 outline-primary/50": isFocused }
+        { "border-oranged/80 outline-oranged/50": isFocused }
       )}
     >
       {showHistory && <SearchHistory debounced={debounced} />}
@@ -68,8 +68,8 @@ const HomeSearch = ({ className }: HomeSearchProps) => {
       <Input value={search} onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
 
       <div
-        className={cn("p-3 absolute border-primary right-0 top-0 h-full rounded-full flex-centered transition-colors duration-200", {
-          "bg-primary": !isFocused,
+        className={cn("p-3 absolute border-oranged right-0 top-0 h-full rounded-full flex-centered transition-colors duration-200", {
+          "bg-oranged": !isFocused,
         })}
       >
         <SearchIcon />

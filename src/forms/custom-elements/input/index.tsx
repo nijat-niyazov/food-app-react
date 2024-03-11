@@ -23,9 +23,12 @@ const CustomInput = ({ placeholder, type = "text", className, register, field, e
       <div
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={cn("flex items-center p-2 pl-4  rounded-lg w-full border-2 border-black/30 text-text outline-none outline-offset-0", {
-          "border-primary/80 outline-primary/50": focused,
-        })}
+        className={cn(
+          "flex items-center p-2 pl-4  rounded-lg w-full border-2 border-black/30 text-darkblue outline-none outline-offset-0",
+          {
+            "border-oranged/80 outline-oranged/50": focused,
+          }
+        )}
       >
         <input
           placeholder={placeholder}

@@ -24,7 +24,7 @@ const MealNote = ({ note }: { note: string }) => {
 
   return (
     <form onSubmit={handleSubmit} className=" p-4 grid gap-4">
-      <label className="text-primary text-5xl font-bold" htmlFor="note">
+      <label className="text-oranged text-5xl font-bold" htmlFor="note">
         Add your special request
       </label>
       <textarea
@@ -40,7 +40,7 @@ const MealNote = ({ note }: { note: string }) => {
       />
       <button
         disabled={value.length === 0 || isSubmitting || value === note}
-        className="bg-secondary p-2 text-xl font-bold text-white rounded-s disabled:opacity-50 transition-opacity duration-200"
+        className="bg-greeny p-2 text-xl font-bold text-white rounded-s disabled:opacity-50 transition-opacity duration-200"
       >
         {!isSubmitting ? (
           <span> Edit</span>
