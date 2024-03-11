@@ -1,47 +1,50 @@
-import { CustomButton } from "@/components";
 import { SpecialMealModal } from "@/components/modal-contents";
+import { CustomButton } from "@/components/ui";
 import { openModal } from "@/stores/modal";
+
+import { CModal } from "@/components/ui/";
+import { useState } from "react";
+import { Fragment } from "react/jsx-runtime";
+import "./background.css";
 
 const SpecialMeal = () => {
   const handleFormOfMeal = (mealId: "pizza" | "burger") => openModal(<SpecialMealModal mealId={mealId} />, 70);
 
-  return (
-    <div className="grid gap-4">
-      <div className="flex flex-wrap gap-4">
-        {["pizza", "burger"].map((key, i) => (
-          <CustomButton
-            variant="secondary"
-            key={i + 1}
-            onClick={() => handleFormOfMeal(key.toLowerCase() as "pizza" | "burger")}
-            className="w-auto"
-          >
-            {key.charAt(0).toUpperCase() + key.slice(1)}
-          </CustomButton>
-        ))}
-      </div>
+  const [isOpened, setIsOpened] = useState(false);
+  const [mealId, setMealId] = useState<string>("");
 
-      {/* <div className="mt-10">
-        <h5
-          className={cn("mb-5 text-2xl border-b-1 border-black/50", {
-            "opacity-50": !customOrders.length,
-          })}
-        >
-          Drafts :
-        </h5>
-        <div className="flex flex-wrap gap-4 ">
-          {customOrders.map(({ meal, order }, i) => (
+  const handleClose = () => {
+    setIsOpened(false);
+    setMealId("");
+  };
+
+  const handleClick = (id: string) => {
+    setIsOpened(true);
+    setMealId(id);
+  };
+
+  return (
+    <Fragment>
+      <div className="grid gap-4">
+        <div className="flex flex-wrap gap-4">
+          {["pizza", "burger"].map((key, i) => (
             <CustomButton
-              variant="primary"
+              variant="secondary"
               key={i + 1}
-              onClick={() => handleFormOfMeal(meal.toLowerCase() as "pizza" | "burger", order)}
+              // onClick={() => handleFormOfMeal(key.toLowerCase() as "pizza" | "burger")}
+              onClick={() => handleClick(key)}
               className="w-auto"
             >
-              {meal.charAt(0).toUpperCase() + meal.slice(1)}
+              {key.charAt(0).toUpperCase() + key.slice(1)}
             </CustomButton>
           ))}
         </div>
-      </div> */}
-    </div>
+      </div>
+
+      <CModal isOpened={isOpened} handleClose={handleClose} className={"pizza"}>
+        <SpecialMealModal mealId={"pizza"} />
+      </CModal>
+    </Fragment>
   );
 };
 

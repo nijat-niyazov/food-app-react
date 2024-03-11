@@ -1,12 +1,19 @@
 import basket from "./basket.png";
 import close from "./close.png";
 import delivery from "./delivery.gif";
+import download from "./download.png";
+import family from "./family.png";
 import fast_food from "./fast_food.png";
 import girl from "./girl.jpg";
+import happy_girl from "./happy_girl.png";
 import hire from "./hire.png";
 import lil_pizza from "./lil_pizza.png";
 import login from "./login.png";
 import logo from "./logo.png";
+import madmazel from "./madmazel.png";
+import madmazel_pizza from "./madmazel_pizza.png";
+import me from "./me.png";
+
 import menu_book from "./menu-book.png";
 import alkaqolik from "./menu/alkaqolik.png";
 import alkoqolsuz from "./menu/alkoqolsuz.png";
@@ -45,18 +52,24 @@ export {
   condiment,
   delivery,
   desert,
+  download,
   energetic,
+  family,
   fast_food,
   fish,
   fries,
   georgian,
   girl,
   hamburger,
+  happy_girl,
   hire,
   lil_pizza,
   login,
   logo,
+  madmazel,
+  madmazel_pizza,
   main,
+  me,
   meat,
   menu_book,
   offer,

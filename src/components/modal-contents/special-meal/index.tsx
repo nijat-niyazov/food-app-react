@@ -1,4 +1,3 @@
-import { SpecialMealForm } from "@/forms";
 import { useGetData } from "@/hooks";
 import { getSpecialMealData } from "@/services/api";
 import { CustomOrderType } from "@/stores/custom-order";
@@ -13,15 +12,14 @@ const SpecialMealModal = ({ mealId, defaultValues }: Props) => {
 
   return isPending ? (
     <div className="p-10">Loadingoss...</div>
-  ) : (
-    <SpecialMealForm
-      {...{
-        mealId,
-        meals,
-        defaultValues,
-      }}
-    />
-  );
+  ) : null;
+  // <SpecialMealForm
+  //   {...{
+  //     mealId,
+  //     meals,
+  //     defaultValues,
+  //   }}
+  // />
 };
 
 export default SpecialMealModal;

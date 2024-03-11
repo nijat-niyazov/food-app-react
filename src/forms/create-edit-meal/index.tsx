@@ -1,38 +1,37 @@
-import { CustomButton } from "@/components";
-import { postNewMeal } from "@/services/api/yes/post";
-import { cn } from "@/utils";
-import { useState } from "react";
+import { MySpinner } from "@/assets/icons";
+import { CustomButton } from "@/components/ui";
+import { supabase } from "@/constants/supabase";
+import { snakeCase } from "@/utils";
+import { useQuery } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { v4 } from "uuid";
-import { MealDescription, MealImage, MealOptions, MealTitle } from "./sections";
+import toast from "react-hot-toast";
+import { MealDescription, MealOptions, MealTitle } from "./sections";
+import MealImageSecond from "./sections/image/second";
 
-type Option = {
-  name: string;
-  price: number;
-};
+export type Option = { name: string; price: number };
 
-type Inputs = {
-  category: string;
-  file: any;
+type Inputs = { category_name: string; img: File; title: string; description: string; options: Option[] };
+
+type FinalData = {
+  category_name: string;
+  category_id: string;
+  img: string;
   title: string;
   description: string;
-  options: Option[];
+  options: Array<Option & { id: string }>;
 };
 
-const statCategories = [
-  { id: "fast-food", name: "Fast Food" },
-  { id: "drinks", name: "Drinks" },
-  { id: "main", name: "Main" },
-  { id: "snacks", name: "Snacks" },
-];
-
-type Props = {
-  defaultValues?: Inputs;
-};
+type FormProps = { editMode?: undefined } | { editMode: true; defaultValues: FinalData & { id: number } };
 
 const defaultOptions = { options: [{ name: "", price: 0 }] };
-const CreateMealForm = ({ defaultValues }: Props) => {
-  console.log(defaultValues);
+// const defaultOptions = { category_name: "", img: "", options: [{ name: "", price: 0 }] };
+
+async function getCategories() {
+  return await supabase.from("menu_categories").select("*");
+}
+
+const CreateMealForm = (props: FormProps) => {
+  const { data: categories } = useQuery({ queryKey: ["categories"], queryFn: getCategories });
 
   /* ------------------------------ RH Form State ----------------------------- */
   const {
@@ -42,106 +41,174 @@ const CreateMealForm = ({ defaultValues }: Props) => {
     formState: { errors, isValid, isSubmitting },
     setError,
     getValues,
+    reset,
     setValue,
     control,
-  } = useForm<Inputs>({ defaultValues: Object.assign({}, defaultOptions, defaultValues) });
+    getFieldState,
+    trigger,
+  } = useForm<any>({ defaultValues: Object.assign({}, defaultOptions, props.editMode ? props.defaultValues : {}) });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const { category, ...rest } = data;
-    const findedCategory = statCategories.find((cat) => cat.name === category)?.id;
-    const values = { ...rest, category: findedCategory, id: v4() };
+  //   /* ------------------------------ Handling Data ----------------------------- */
+  //   const { img, category_name, options, ...rest } = data;
 
-    postNewMeal(values);
-    console.log(values);
+  //   console.log(data);
+
+  //   // const newCategory = { category_id: snakeCase(category_name), category_name };
+  //   const newCategory = { category_id: snakeCase("snacks"), category_name: "Snacks" };
+  //   const optionsWithId = options.map((option) => ({ id: snakeCase(option.name), ...option }));
+
+  //   const finalData: FinalData = { ...rest, ...newCategory, options: optionsWithId, img: props.editMode ? props.defaultValues.img : "" };
+
+  //   // /* ------------------ Upload new image if not defaultImage ------------------ */
+
+  //     if (typeof img !== "string") {
+  //       const { data, error } = await supabase.storage
+  //         .from("menu")
+  //         .upload(`${img.name}_${finalData.title.toLowerCase()}`, img, { upsert: true });
+  //       if (error) {
+  //         return toast.error("Couldn't upload image");
+  //       } else {
+  //         finalData.img = data?.path;
+  //       }
+  //     } else {
+  //       return Promise.resolve(null);
+  //     }
+
+  //   /* -------------------------------------------------------------------------- */
+  //   /*                             Adding new category                            */
+  //   /* -------------------------------------------------------------------------- */
+
+  //   /* ----------------------- Checking if category exists ---------------------- */
+  //   const { data: existingCategory, error: categoryError } = await supabase
+  //     .from("menu_categories")
+  //     .select("*")
+  //     .eq("name", newCategory.category_name);
+
+  //   /* -------------------------- Adding if not exists -------------------------- */
+  //   if (!categoryError && !existingCategory.length) {
+  //     const { error: categoryError } = await supabase.from("menu_categories").insert(newCategory);
+  //     if (categoryError) {
+  //       return toast.error("Couldn't create category");
+  //     }
+  //   }
+
+  //   /* ---------------------- Add or update meal in database --------------------- */
+  //   let actionError;
+  //   if (props.editMode) {
+  //     /* --------------------------- Edit existing item --------------------------- */
+
+  //     const { error } = await supabase.from("menu").update(finalData).eq("id", props.defaultValues.id);
+  //     console.log(error);
+  //     actionError = error;
+  //   } else {
+  //     /* ------------------------------ Add new item ------------------------------ */
+
+  //     const { error } = await supabase.from("menu").insert(finalData);
+  //     actionError = error;
+  //   }
+
+  //   if (actionError) {
+  //     const action = props.editMode ? "update" : "create";
+  //     return toast.error(`Couldn't ${action} meal`);
+  //   } else {
+  //     const message = props.editMode ? "Meal updated successfully" : "Meal created successfully";
+  //     toast.success(message);
+  //     window.location.reload();
+  //   }
+  // };
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    /* ------------------------------ Handling Data ----------------------------- */
+    const { img, category_name, options, ...rest } = data;
+
+    // const newCategory = { category_id: snakeCase(category_name), category_name };
+    const newCategory = { category_id: snakeCase("fast food"), category_name: "Fast food" };
+    const optionsWithId = options.map((option) => ({ id: snakeCase(option.name), ...option }));
+
+    const finalData: FinalData = { ...rest, ...newCategory, options: optionsWithId, img: props.editMode ? props.defaultValues.img : "" };
+
+    /* ------------------ Upload new image if not defaultImage ------------------ */
+    async function uploadPhoto() {
+      const { data, error } = await supabase.storage
+        .from("menu")
+        .upload(`${img.name}_${finalData.title.toLowerCase()}`, img, { upsert: true });
+
+      if (error) {
+        return toast.error("Couldn't upload image");
+      } else if (!error && data) {
+        finalData.img = data.path;
+      }
+    }
+
+    if (typeof img !== "string") {
+      await uploadPhoto();
+    }
+
+    const promises: Promise<any>[] = [];
+
+    /* ----------------------- Checking if category exists ---------------------- */
+    const { data: existingCategory, error: categoryError } = await supabase
+      .from("menu_categories")
+      .select("*")
+      .eq("category_name", newCategory.category_name);
+
+    /* -------------------------- Adding if not exists -------------------------- */
+    if (!categoryError && !existingCategory.length) {
+      async function insertCategory() {
+        return await supabase.from("menu_categories").insert(newCategory).select();
+      }
+
+      promises.push(insertCategory());
+    }
+
+    /* ---------------------- Add or update meal in database --------------------- */
+    if (props.editMode) {
+      const updateItem = async () => await supabase.from("menu").update(finalData).eq("id", props.defaultValues.id).select();
+      promises.push(updateItem());
+    } else {
+      const addItem = async () => await supabase.from("menu").insert(finalData).select();
+      promises.push(addItem());
+    }
+
+    const results = await Promise.all(promises);
+
+    let happenedError = false;
+
+    for (const result of results) {
+      if (result?.error) {
+        happenedError = true;
+        console.log(result.error);
+        const action = props.editMode ? "updated" : "created";
+        return toast.error(`Couldn't ${action} meal`);
+      }
+    }
+
+    if (!happenedError) {
+      const message = props.editMode ? "Meal updated successfully" : "Meal created successfully";
+      toast.success(message);
+      window.location.reload();
+    }
   };
 
-  /* ----------------------------- Category State ----------------------------- */
-  const [show, setShow] = useState<boolean>(false);
-  function handleSelectCategory(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
-    setValue("category", e.currentTarget.textContent as string);
-    setShow(false);
-  }
-
-  const [categories, setCategories] = useState<{ id: string; name: string }[]>(statCategories);
-  const categoryValue = watch("category");
-
-  // useEffect(() => {
-  //   if (categoryValue !== undefined) {
-  //     setCategories(categories.filter(({ name }) => name.toLowerCase().includes(categoryValue?.toLowerCase())));
-  //   }
-  // }, [categoryValue]);
+  const defaultImage = props.editMode ? props.defaultValues.img : "";
 
   return (
-    <div className="container md:w-1/3 mx-auto mt-10">
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
-        {/* -------------------------------- Image -------------------------------- */}
+    <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
+      <MealImageSecond control={control} defaultImage={defaultImage} />
 
-        <MealImage setValue={setValue} defImg={getValues("file")} register={register} />
+      {/* <MealCategories statCategories={categories?.data ?? []} setValue={setValue} register={register} />
+       <MealCategoriesSec control={control} statCategories={categories?.data ?? []} /> */}
 
-        {/* -------------------------------- Category -------------------------------- */}
-        <div>
-          <label className="pl-0.5 font-semibold" htmlFor="category">
-            Category :
-          </label>
+      <MealTitle register={register} />
 
-          <div
-            className={cn("rounded-md border-1  border-black/30 relative overflow-hidden", {
-              "min-h-52": show,
-            })}
-          >
-            <input
-              onFocus={() => setShow(true)}
-              type="text"
-              id="category"
-              className="bg-outlined w-full  p-2 outline-none text-sm md:text-base"
-              placeholder="Fast-Food"
-              {...register("category", { required: true })}
-            />
+      <MealDescription register={register} />
 
-            <ul
-              className={cn("z-20 rounded-b-md absolute w-full none", {
-                block: show,
-              })}
-            >
-              {categories.length > 0 ? (
-                categories.map(({ id, name }) => (
-                  <li key={id} id={id} className="hover:bg-gray-300 p-2 cursor-pointer " onClick={handleSelectCategory}>
-                    {name}
-                  </li>
-                ))
-              ) : (
-                <li
-                  className="w-[80%] h-full mx-auto text-xl text-gray-500 font-semibold bg-red-500"
-                  onClick={() => {
-                    statCategories.push({ id: "new", name: watch("category") });
+      <MealOptions register={register} control={control} />
 
-                    setCategories(statCategories);
-                    setShow(false);
-                  }}
-                >
-                  Click here to create new category
-                </li>
-              )}
-            </ul>
-          </div>
-        </div>
-
-        {/* -------------------------------- Title -------------------------------- */}
-        <MealTitle register={register} />
-
-        {/* -------------------------------- Description -------------------------------- */}
-        <MealDescription register={register} />
-
-        {/* --------------------------------- Options -------------------------------- */}
-
-        <MealOptions register={register} control={control} />
-
-        {/* -------------------------------- Submit Button -------------------------------- */}
-        <CustomButton disabled={!isValid} variant="secondary" type="submit">
-          Submit Form
-        </CustomButton>
-      </form>
-    </div>
+      <CustomButton disabled={!isValid || isSubmitting} variant="secondary" type="submit">
+        {!isSubmitting ? !props.editMode ? "Create new meal" : "Save changes" : <MySpinner />}
+      </CustomButton>
+    </form>
   );
 };
 

@@ -1,26 +1,78 @@
-import { useGetData } from "@/hooks";
-import { getFaqData } from "@/services/api/admin";
+import { CustomButton } from "@/components/ui";
+import { supabase } from "@/constants/supabase";
+import { useState } from "react";
 
-let tab: string = "canimsan";
+async function getData() {
+  return await supabase.from("faqdata").select("*");
+}
 
-if (typeof window !== "undefined") {
-  // Check if we're running in the browser.
-  // ✅ Only runs once per app load
-  tab = localStorage.getItem("activeTab")!;
+interface FaqInterface {
+  id: number;
+  question: string;
+  answers: { key: string; answer: { title: string; content: string }[] }[];
 }
 
 const FaqContent = () => {
-  const { data, isPending, error } = useGetData(["faqData"], getFaqData);
+  const [data, setData] = useState<FaqInterface[] | null>(null);
 
-  let content = null;
+  // const {
+  //   data: items,
+  //   isPending,
+  //   error,
+  // } = useQuery<{ error: any; data: null; count: null; status: number; statusText: string }>({
+  //   queryKey: ["faqData"],
+  //   queryFn: getData,
+  // });
 
-  if (isPending) {
-    content = <div>Loading...</div>;
-  } else {
-    content = JSON.stringify(data, null, 2);
-  }
-
-  return <div>{content}</div>;
+  return (
+    <div className="grid gap-3 grid-cols-3 container my-10">
+      {data?.map((d, i) => (
+        <div key={i}>
+          <ul>
+            <li className="border-1  p-2 rounded-md" key={d.id}>
+              <h3>{d.question}</h3>
+              <ul className="grid gap-2 list-decimal pl-6">
+                {d.answers.map((answer, i) => (
+                  <li key={i}>{answer.key}</li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+          <CustomButton variant="primary">Edit</CustomButton>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default FaqContent;
+
+// const FaqContent = () => {
+//   const { data, isPending, error } = useGetData<{ data: FaqInterface[] }>(["faqData"], getData);
+
+//   if (isPending) {
+//     return <div>Loading...</div>;
+//   }
+
+//   return (
+//     <div className="grid gap-3 grid-cols-3 container my-10">
+//       {data?.data?.map((d, i) => (
+//         <div key={i}>
+//           <ul>
+//             <li className="border-1  p-2 rounded-md" key={d.id}>
+//               <h3>{d.question}</h3>
+//               <ul className="grid gap-2 list-decimal pl-6">
+//                 {d.answers.map((answer, i) => (
+//                   <li key={i}>{answer.key}</li>
+//                 ))}
+//               </ul>
+//             </li>
+//           </ul>
+//           <CustomButton variant="primary">Edit</CustomButton>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default FaqContent;

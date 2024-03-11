@@ -1,5 +1,5 @@
 import { MotionDiv } from "@/components";
-import { Counts, FAQ, Hire, MealCategories } from "@/sections/home";
+import { Counts, FAQ, HomeSlider, MealCategories, Order } from "@/sections/home";
 
 const HomePage = () => {
   return (
@@ -8,9 +8,18 @@ const HomePage = () => {
       // animate={{ x: 0, transitionDelay: "250ms" }}
       className="container mb-20 grid gap-10"
     >
+      {/* <EmblaCarousel
+        slides={Array.from(Array(10).keys())}
+        options={{
+          axis: "x",
+        }}
+      /> */}
+      <HomeSlider />
       {/* <DiscountMenu /> */}
       <MealCategories />
-      <Hire />
+      {/* <Hire /> */}
+      <Order />
+
       <FAQ />
       <Counts />
     </MotionDiv>

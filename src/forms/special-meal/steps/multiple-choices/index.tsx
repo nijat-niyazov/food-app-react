@@ -1,6 +1,6 @@
 import { ChoicesType } from "@/constants/types/spcieal-meal";
 import { cn } from "@/utils";
-import { InputHTMLAttributes, memo } from "react";
+import { InputHTMLAttributes } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 import { FormInputValues, InputValue } from "../../types";
@@ -32,7 +32,7 @@ const MultipleChoices = ({ fieldName, options: categories, register, handleChang
                         id={id}
                         value={id}
                         type={category.type === "radio" ? "radio" : "checkbox"}
-                        className="w-4 h-4"
+                        className="w-4 h-4 accent-primary"
                         {...register(registerName)}
                         onChange={() => handleChange(registerName, values)}
                       />
@@ -41,7 +41,7 @@ const MultipleChoices = ({ fieldName, options: categories, register, handleChang
                         id={id}
                         value={id}
                         type="checkbox"
-                        className="w-4 h-4"
+                        className="w-4 h-4 accent-primary"
                         {...register(registerName)}
                         onChange={({ target: { checked } }: React.ChangeEvent<HTMLInputElement>) =>
                           handleChange(registerName, values, checked)
@@ -64,4 +64,4 @@ const MultipleChoices = ({ fieldName, options: categories, register, handleChang
   );
 };
 
-export default memo(MultipleChoices);
+export default MultipleChoices;

@@ -13,7 +13,8 @@ const fetchData = async (endpoint: string, params?: ParamsType, delayed = false)
   try {
     const res = await fetch(url);
 
-    return await res.json();
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -27,17 +28,16 @@ export const fetchData2 = async (url: string, params?: ParamsType, delayed = fal
   try {
     const res = await fetch(url);
 
-    console.log(res);
-
-    return await res.json();
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-type Answer = {
+export type Answer = {
   key: string;
-  answer: { title: string; content: string; image: any }[];
+  answer: { title: string; content: string; image: string }[];
 };
 
 export type FaqData = {

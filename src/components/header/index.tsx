@@ -1,16 +1,16 @@
 import { Shopping } from "@/assets/icons";
-import { basket, girl, logo } from "@/assets/images";
+import { basket, logo } from "@/assets/images";
 import { useBasketStore } from "@/stores/basket";
 import { useCustomOrderState } from "@/stores/custom-order";
 import { openModal } from "@/stores/modal";
+import { useUserStore } from "@/stores/user";
 import { convertToTwoDecimalFloat } from "@/utils";
 import { Link } from "react-router-dom";
 import { Basket } from "..";
-import { Auth, HeaderSearch, MenuToggler, NavigationOfHeader, Theme } from "./components";
+import { Auth, MenuToggler, MobileAuth, NavigationOfHeader, Theme } from "./components";
 
 const Header = () => {
   const { totalPrice, totalItems: totalItemsOfBasket } = useBasketStore((state) => state);
-
   const { totalItemsCustomOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
 
   const totalItems = totalItemsOfBasket + totalItemsCustomOrders;
@@ -18,7 +18,8 @@ const Header = () => {
   const price = totalPrice + totalPriceOfCustomOrders;
   const discount = (price * 5) / 100;
   const totalPay = convertToTwoDecimalFloat(price - discount);
-  let authorized = null;
+
+  const userData = useUserStore((state) => state.user);
 
   return (
     <header className=" mb-10">
@@ -29,7 +30,7 @@ const Header = () => {
 
         <Theme />
 
-        <ul className="flex items-strech bg-secondary rounded-b-xl text-base font-semibold text-white ">
+        <ul className="grid grid-cols-[auto_auto_auto] bg-secondary rounded-b-xl text-base font-semibold text-white ">
           <li className="border-r-1  border-white px-6   border-opacity-30 relative">
             <button onClick={() => openModal(<Basket />, 90)}>
               <Shopping />
@@ -41,48 +42,35 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className="container flex items-center justify-between">
+      <div className="container flex items-center justify-between gap-10">
         <Link to={"/"}>
-          <img src={logo} />
+          <img src={logo} className="w-52" />
         </Link>
 
-        <HeaderSearch />
+        {/* <HeaderSearch /> */}
 
-        <NavigationOfHeader />
+        <div className="grow">
+          <NavigationOfHeader />
+        </div>
 
         <div className="md:hidden">
           <Theme />
         </div>
 
         <MenuToggler />
-
-        <Auth authorized={authorized} />
+        <div className="hidden md:block">
+          <Auth userData={userData} />
+        </div>
       </div>
-
-      {/* <div className="w-1/3 mx-auto">
-        <LoginForm />
-      </div> */}
 
       <div className="border-t-2 flex  w-full md:hidden">
         <div className="w-1/2 p-4  bg-bej flex-centered gap-4">
-          {authorized ? (
-            <>
-              <img src={girl} className="w-11 h-11 rounded-full object-cover" />
-              <div>
-                <h3 className="text-primary text-sm font-semibold">Aycan</h3>
-                <Link className="text-text text-xs border-b-2 border-text font-normal" to={"/"}>
-                  My Account
-                </Link>
-              </div>
-            </>
-          ) : (
-            <button className="text-lg font-medium">Login/Signup</button>
-          )}
+          <MobileAuth userData={userData} />
         </div>
 
         <div className="w-1/2 p-4  bg-secondary flex-centered gap-4">
           <img src={basket} className="w-11 h-11 object-cover" />
-          <p className="text-white text-base  font-semibold font-poppins">GBP 79.89</p>
+          <p className="text-white text-base  font-semibold font-poppins">AZN {totalPay}</p>
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
 import { MySpinner } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { MealType, OptionType } from "@/constants/types/meal";
 import { delay } from "@/services/api/delay";
 import { addToBasket } from "@/stores/basket";

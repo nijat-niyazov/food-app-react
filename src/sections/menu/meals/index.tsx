@@ -2,9 +2,9 @@ import { MealType } from "@/constants/types/meal";
 import { useGetData, useScrollDirection } from "@/hooks";
 import { getMenuItems } from "@/services/api/menu";
 
+import { CustomButton } from "@/components/ui";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Militos from "./meals";
 
 function MealSkeleton({ index }: { index: number }) {
   return (
@@ -39,6 +39,8 @@ const Meals = () => {
   // : { data: MealType[]; isPending: boolean; error?: string | null }
   const { isPending, error, data: meals } = useGetData(["menuData", category], getMenuItems);
 
+  console.log(meals);
+
   return (
     <div className="container">
       {/* <div
@@ -55,16 +57,22 @@ const Meals = () => {
         <p>Pizzas</p>
       </div> */}
 
-      <div className="flex items-center justify-between mb-6">
+      <header className="flex items-center justify-between  sticky top-0 backdrop-blur-md	py-6 ">
         <h4 className="text-3xl font-semibold">Pizzas</h4>
-        <button onClick={() => console.log("sort")} className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10">
+        <CustomButton
+          variant="outlined"
+          onClick={() => console.log("sort")}
+          // className="px-6 py-4 bg-grey text-base rounded-full  border-1 border-black/10"
+          borderRadius="full"
+          className="w-auto"
+        >
           Sort by Price
-        </button>
-      </div>
+        </CustomButton>
+      </header>
 
-      <ul className="flex flex-col gap-10">
+      {/* <ul className="flex flex-col gap-10">
         {isPending ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />) : <Militos meals={meals} category={category} />}
-      </ul>
+      </ul> */}
     </div>
   );
 };

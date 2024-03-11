@@ -1,4 +1,4 @@
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { useEffect, useRef, useState } from "react";
 
 type Props = {
@@ -8,12 +8,7 @@ type Props = {
 
 const tabs = ["Meals", "Create New Meal", "Customize Special Meal", "FAQ"];
 
-type Positions = {
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
+type Positions = { x: number; y: number; height: number; width: number };
 
 const MainTabs = ({ activeTab, handleActiveTab }: Props) => {
   const [positions, setPositions] = useState<Positions[]>([]);
@@ -59,7 +54,7 @@ const MainTabs = ({ activeTab, handleActiveTab }: Props) => {
             className="z-10"
             onClick={() => handleActiveTab(i + 1)}
             borderRadius="full"
-            variant={"outlined"}
+            variant="transparent"
             // variant={activeTab === i + 1 ? "secondary" : "outlined"}
           >
             {tab}

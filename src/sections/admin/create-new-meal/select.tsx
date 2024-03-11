@@ -9,7 +9,7 @@ const stats = [
   { id: "snacks", name: "Snacks" },
 ];
 
-const CreateNewMeal = () => {
+const Selecting = () => {
   const [allCategories, setAllCategories] = useState<{ id: string | number; name: string }[]>(stats);
   const [value, setValue] = useState("");
   const [show, setShow] = useState(false);
@@ -162,4 +162,4 @@ const CreateNewMeal = () => {
   );
 };
 
-export default CreateNewMeal;
+export default Selecting;

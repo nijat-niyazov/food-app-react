@@ -1,59 +1,36 @@
-import { CustomButton } from "@/components";
-import { ChangeEvent, FC, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { UseFormRegister, UseFormSetValue } from "react-hook-form";
+import PreviewImage from "./previewImage";
 
 type MealImageProps = {
-  defImg: any;
-  register: UseFormRegister<any>;
-  setValue: UseFormSetValue<any>;
+  register: UseFormRegister<{ img: File }>;
+  setValue: UseFormSetValue<{ img: File | null }>;
+  defaultImage: string;
 };
 
-const MealImage: FC<MealImageProps> = ({ defImg, register, setValue }) => {
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [image, setImage] = useState<any>(defImg);
+const MealImage = ({ register, setValue, defaultImage }: MealImageProps) => {
+  const [previewImage, setPreviewImage] = useState<string>(defaultImage);
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const newImage = e.target.files as FileList;
+    if (newImage) {
+      const imageFile = newImage[0];
+      setPreviewImage(URL.createObjectURL(imageFile));
+      setValue("img", imageFile);
+    }
+  }
+
+  function handleRemove() {
+    setPreviewImage("");
+    setValue("img", null);
+  }
 
   return (
     <div>
-      <label className="pl-0.5 font-semibold" htmlFor="image">
-        Image :
-      </label>
-      <input
-        id="image"
-        type="file"
-        className="hidden"
-        {...register("file", { required: true })}
-        ref={fileRef}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const image = e.target.files as HTMLInputElement["files"];
-          if (image) {
-            setImage(image[0]);
-            setValue("file", URL.createObjectURL(image[0]));
-          }
-        }}
-      />
-      {!image ? (
-        <div
-          onClick={() => fileRef.current?.click()}
-          className="w-full h-40 border-dashed border-2 rounded-md flex items-center justify-center border-black/20 hover:border-black/50 cursor-pointer group"
-        >
-          <span className="opacity-50  group-hover:opacity-100">Select meal image</span>
-        </div>
-      ) : (
-        <>
-          <div className="relative group cursor-pointer transition-all duration-200">
-            <img className="md:group-hover:opacity-50 " src={typeof image === "string" ? image : URL.createObjectURL(image)} alt="avatar" />
-            <span
-              onClick={() => fileRef.current?.click()}
-              className="hidden absolute inset-0 w-full h-full md:flex items-center justify-center text-white opacity-0 group-hover:opacity-100"
-            >
-              Change Image
-            </span>
-          </div>
-          <CustomButton onClick={() => fileRef.current?.click()} variant="outlined" className="border-1 border-black/30 md:hidden">
-            Change Image
-          </CustomButton>
-        </>
-      )}
+      <label className="pl-0.5 font-semibold">Image :</label>
+      <input id="img" type="file" className="hidden" {...register("img", { required: true })} onChange={handleChange} />
+
+      <PreviewImage defaultImage={defaultImage} previewImage={previewImage}></PreviewImage>
     </div>
   );
 };

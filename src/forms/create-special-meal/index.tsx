@@ -1,5 +1,5 @@
 import { HeroPlus, Remove } from "@/assets/icons";
-import { CustomButton } from "@/components";
+import { CustomButton } from "@/components/ui";
 import { MealType } from "@/constants/types/meal";
 import { SpecialMealType } from "@/constants/types/spcieal-meal";
 import { cn } from "@/utils";
@@ -126,7 +126,7 @@ const CreateSpecialMealForm: FC<Props> = ({ meals }) => {
                 </div>
 
                 {/* ------------------------------- Remove BTN ------------------------------- */}
-                <CustomButton disabled={options.length === 1} variant="outlined" onClick={() => remove(i)} className="!p-0">
+                <CustomButton disabled={options.length === 1} variant="transparent" onClick={() => remove(i)} className="!p-0">
                   <Remove />
                 </CustomButton>
               </div>

@@ -1,10 +1,11 @@
 import { NoteICon, Remove } from "@/assets/icons";
+import { MotionDiv } from "@/components";
 import { MealNote } from "@/components/modal-contents";
+import { CustomButton } from "@/components/ui";
 import { BasketItemType } from "@/constants/types/meal";
 import { removeBasketItem } from "@/stores/basket";
 import { openModal } from "@/stores/modal";
 import { AnimatePresence } from "framer-motion";
-import { CustomButton, MotionDiv } from "../..";
 
 function BasketMenuItem({ item }: { item: BasketItemType }) {
   return (
@@ -35,13 +36,13 @@ function BasketMenuItem({ item }: { item: BasketItemType }) {
         </ul>
 
         <div className="grid place-self-center ml-auto w-auto">
-          <CustomButton className="md:p-0" variant="outlined" size="xs" onClick={() => removeBasketItem(item.id)}>
+          <CustomButton className="md:p-0" variant="transparent" size="xs" onClick={() => removeBasketItem(item.id)}>
             <Remove />
           </CustomButton>
 
           <CustomButton
             className="md:p-0"
-            variant="outlined"
+            variant="transparent"
             size="xs"
             onClick={() => openModal(<MealNote note={item.note as string} />, 50)}
           >
