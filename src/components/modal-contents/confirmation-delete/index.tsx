@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 
 type ConfirmDeleteProps = {
   mealId: number;
+  categoryId: string;
 };
 
-const ConfirmDelete = ({ mealId }: ConfirmDeleteProps) => {
+const ConfirmDelete = ({ mealId, categoryId }: ConfirmDeleteProps) => {
   const {
     register,
     handleSubmit,
@@ -25,9 +26,20 @@ const ConfirmDelete = ({ mealId }: ConfirmDeleteProps) => {
   } = useForm();
 
   const onSubmit = async () => {
-    const { error } = await supabase.from("menu").delete().eq("id", mealId);
+    let happenedError = false;
 
-    if (error) {
+    const { data } = await supabase.from("menu").select("*").eq("category_id", categoryId);
+
+    if (data && data?.length === 1) {
+      const { error: categoryError } = await supabase.from("menu_categories").delete().eq("category_id", categoryId);
+
+      if (categoryError) happenedError = true;
+    }
+
+    const { error: mealError } = await supabase.from("menu").delete().eq("id", mealId);
+    if (mealError) happenedError = true;
+
+    if (happenedError) {
       return toast.error("Something went wrong");
     } else {
       toast.success("Meal deleted successfully");

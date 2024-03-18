@@ -56,7 +56,11 @@ const AdminMealCard = ({ meal }: { meal: MealType }) => {
           Edit <FilterIcon />
         </CustomButton>
 
-        <CustomButton size="sm" onClick={() => openModal(<ConfirmDelete mealId={meal.id} />, 44)} variant="danger">
+        <CustomButton
+          size="sm"
+          onClick={() => openModal(<ConfirmDelete mealId={meal.id} categoryId={meal.category_id} />, 44)}
+          variant="danger"
+        >
           Delete <Remove />
         </CustomButton>
       </footer>
