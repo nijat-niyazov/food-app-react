@@ -10,9 +10,9 @@ const LandingMenu = () => {
 
   return (
     <MotionDiv
-      initial={{ x: "10%" }}
+      initial={{ x: "20%" }}
       animate={{ x: 0 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.2, type: "spring", stiffness: 120 }}
       className="hidden md:block  relative mb-20 container bg-text rounded-xl"
     >
       <img src={fast_food} alt="fast_food" className=" brightness-50 opacity-30 " />
@@ -20,7 +20,7 @@ const LandingMenu = () => {
       <MotionDiv
         initial={{ y: "0%", opacity: 0 }}
         animate={{ y: "-50%", opacity: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
         className="absolute top-1/2 right-20 -translate-y-1/2  w-[500px] h-[320px] object-cover"
       >
         {images.map((img, index) => (

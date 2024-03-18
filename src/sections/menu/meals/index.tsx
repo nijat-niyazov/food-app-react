@@ -1,10 +1,44 @@
 import { MealType } from "@/constants/types/meal";
-import { useGetData, useScrollDirection } from "@/hooks";
-import { getMenuItems } from "@/services/api/menu";
+import { useScrollDirection } from "@/hooks";
+import { getMenuData } from "@/services/api/menu";
 
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Militos from "./meals";
 import Sorting from "./sorting";
+
+type QueryType = { data: MealType[]; isPending: boolean; error?: string | null };
+
+const Meals = () => {
+  const scrollDirection = useScrollDirection();
+
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+
+  // const [searchParams] = useSearchParams();
+  const { category } = useParams() as { category: string };
+
+  const { isPending, data } = useQuery({
+    queryKey: ["menu-category", category, search],
+    queryFn: () => getMenuData(category),
+  });
+
+  return (
+    <div className="container">
+      <Sorting category={category} />
+
+      <ul className="flex flex-col gap-10">
+        {isPending ? (
+          [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />)
+        ) : !isPending && data?.data ? (
+          <Militos meals={data?.data} />
+        ) : null}
+      </ul>
+    </div>
+  );
+};
+
+export default Meals;
 
 function MealSkeleton({ index }: { index: number }) {
   return (
@@ -19,30 +53,3 @@ function MealSkeleton({ index }: { index: number }) {
     </li>
   );
 }
-
-type QueryType = { data: MealType[]; isPending: boolean; error?: string | null };
-
-const Meals = () => {
-  const scrollDirection = useScrollDirection();
-  const [selected, setSelected] = useState(0);
-  const { pathname, search } = useLocation();
-
-  const { category } = useParams() as { category: "fast-food" | "drinks" };
-
-  const navigate = useNavigate();
-
-  // : { data: MealType[]; isPending: boolean; error?: string | null }
-  const { isPending, error, data: meals } = useGetData(["menuData", category], getMenuItems);
-
-  return (
-    <div className="container">
-      <Sorting category={category} />
-
-      {/* <ul className="flex flex-col gap-10">
-        {isPending ? [...new Array(4)].map((_, i) => <MealSkeleton index={i} key={i} />) : <Militos meals={meals} category={category} />}
-      </ul> */}
-    </div>
-  );
-};
-
-export default Meals;
