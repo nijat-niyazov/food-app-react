@@ -11,18 +11,9 @@ function BasketMenuItem({ item }: { item: BasketItemType }) {
   return (
     <AnimatePresence>
       <MotionDiv
-        initial={{
-          x: "50%",
-          opacity: 0,
-        }}
-        animate={{
-          x: 0,
-          opacity: 100,
-        }}
-        exit={{
-          x: "50%",
-          opacity: 0,
-        }}
+        initial={{ x: "50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 100 }}
+        exit={{ x: "50%", opacity: 0 }}
         transition={{ ease: "easeOut", duration: 0.3 }}
         className="grid grid-cols-[1fr_auto] place-items-start px-3 items-center gap-3 py-2 border-b-1 border-black/10 "
       >

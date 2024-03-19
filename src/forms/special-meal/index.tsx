@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 
 type Props = {
   mealId: "burger" | "pizza";
-  meals: { burger: SpecialMealType[]; pizza: SpecialMealType[] };
+  meals?: { [key: string]: SpecialMealType[] };
   defaultValues?: CustomOrderType;
 };
 

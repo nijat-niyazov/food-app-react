@@ -13,7 +13,7 @@ const CardsOfFaq = ({ answers }: Props) => {
       <ul className="flex flex-col items-start max-h-[420px] md:max-h-80 ">
         {answers.map(({ title, content }, i) => {
           return (
-            <li key={i} className="grid place-items-center rounded-xl bg-faq p-6 my-5">
+            <li key={i} className="grid cursor-grab place-items-center rounded-xl bg-faq p-6 my-5">
               <h3 className="font-bold text-lg">{title}</h3>
               <img src={order_food} alt="" className="w-32 h-32 object-cover" />
               <span className="text-base font-medium text-justify">{content}</span>

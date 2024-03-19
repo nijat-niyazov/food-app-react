@@ -23,6 +23,8 @@ const ConfirmationOrder = ({ selected, meal }: ConfirmationOrderProps) => {
 
     let newOrder = { ...mymeal, ...selected, note };
 
+    console.log(newOrder);
+
     const { success } = await delay();
 
     if (success) {

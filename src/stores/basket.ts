@@ -1,7 +1,6 @@
 import { OrderType as OrderWithoutQ } from "@/constants/types/meal";
 import { convertToTwoDecimalFloat } from "@/utils";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
 type OrderType = OrderWithoutQ & { quantity: number } & { note?: string };
 
@@ -26,50 +25,50 @@ function getTotalQuantity(orders: OrderType[]) {
 }
 
 export const useBasketStore = create<BasketState>()(
-  persist(
-    (set, get) => ({
-      orders: [],
-      totalPrice: 0,
-      totalItems: 0,
+  // persist(
+  (set, get) => ({
+    orders: [],
+    totalPrice: 0,
+    totalItems: 0,
 
-      addToBasket: (order: OrderWithoutQ) =>
-        set((state) => {
-          const newOrder = { ...order, quantity: 1 };
-          let orders = [...state.orders];
+    addToBasket: (order: OrderWithoutQ) =>
+      set((state) => {
+        const newOrder = { ...order, quantity: 1 };
+        let orders = [...state.orders];
 
-          const existed = orders.find((meal) => meal.id === newOrder.id);
+        const existed = orders.find((meal) => meal.id === newOrder.id);
 
-          if (existed) existed.quantity += 1;
-          else orders = [...orders, newOrder];
+        if (existed) existed.quantity += 1;
+        else orders = [...orders, newOrder];
 
-          const totalPrice = getTotalPrice(orders);
-          const totalItems = getTotalQuantity(orders);
+        const totalPrice = getTotalPrice(orders);
+        const totalItems = getTotalQuantity(orders);
 
-          return { orders, totalPrice, totalItems };
-        }),
+        return { orders, totalPrice, totalItems };
+      }),
 
-      updateBasketItem: (id: number, action: "inc" | "dec") =>
-        set((state) => {
-          // const findedOrder = state.orders.find((meal) => meal.id === id) as OrderType;
+    updateBasketItem: (id: number, action: "inc" | "dec") =>
+      set((state) => {
+        // const findedOrder = state.orders.find((meal) => meal.id === id) as OrderType;
 
-          // findedOrder.quantity += action === "inc" ? 1 : -1;
+        // findedOrder.quantity += action === "inc" ? 1 : -1;
 
-          return { orders: state.orders };
-        }),
+        return { orders: state.orders };
+      }),
 
-      removeBasketItem: (id: number | string) =>
-        set((state) => {
-          const orders = state.orders.filter((meal) => meal.id !== id);
+    removeBasketItem: (id: number | string) =>
+      set((state) => {
+        const orders = state.orders.filter((meal) => meal.id !== id);
 
-          return { orders };
-        }),
+        return { orders };
+      }),
 
-      clearBasket: () => set({ orders: [], totalPrice: 0 }),
-    }),
-    {
-      name: "basket-storage",
-    }
-  )
+    clearBasket: () => set({ orders: [], totalPrice: 0 }),
+  })
+  //   {
+  //     name: "basket-storage",
+  //   }
+  // )
 );
 
 export const addToBasket = useBasketStore.getState().addToBasket;

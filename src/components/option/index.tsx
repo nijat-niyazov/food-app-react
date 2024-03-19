@@ -1,29 +1,31 @@
 import { CustomButton } from "@/components/ui";
+import { OptionType } from "@/constants/types/meal";
 import { cn } from "@/utils";
 
 type OptionComProps = {
   disabled?: boolean;
-  onClick: (id: number) => void;
-  option: { id: number; size?: string; price?: number };
-  selected: number | undefined;
+  onClick: (id: string) => void;
+  option: OptionType;
+  selected: string | undefined;
 };
 
 const Option = ({ disabled = false, onClick, option, selected }: OptionComProps) => {
-  const handeClick = () => onClick(option.id);
+  const active = selected === option.id;
 
   return (
     <CustomButton
-      onClick={handeClick}
+      onClick={() => onClick(option.id)}
       disabled={disabled}
       size="xs"
-      variant="transparent"
-      className={cn("border-1 border-white hover:border-black/90   w-auto py-2 px-3 flex items-center", {
-        "bg-text text-white": selected === option.id,
-        "hover:bg-text/50 hover:text-white": selected !== option.id,
+      variant="outlined"
+      className={cn("w-auto py-2 px-3 flex items-center justify-between", {
+        "bg-text text-white": active,
+        "hover:bg-text/50 hover:text-white": !active,
       })}
     >
-      <span className={`${option.id === selected ? "text-white" : "text-text"} mr-2`}>{option.size}</span>
-      {option.price && <span className="bg-secondary py-2 px-4 rounded-s text-white">£{option.price}</span>}
+      <span className={`${active ? "text-white" : "text-text"} mr-2`}>{option.name}</span>
+
+      <span className="bg-secondary py-2 px-4 rounded-s text-white">£{option.price}</span>
     </CustomButton>
   );
 };

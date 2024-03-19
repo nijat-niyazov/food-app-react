@@ -3,13 +3,8 @@ import { cn } from "@/utils";
 import { Fragment } from "react";
 import { useSearchParams } from "react-router-dom";
 
-type Positions = {
-  [key: string]: number;
-};
-
-type Props = {
-  data: { category_id: string; category_name: string }[];
-};
+type Positions = { [key: string]: number };
+type Props = { data: { category_id: string; category_name: string }[] };
 
 const CategoriesTabs = ({ data }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +18,7 @@ const CategoriesTabs = ({ data }: Props) => {
   return (
     <Fragment>
       <CustomButton
-        className={cn(" z-10", { "text-white": !activecategory })}
+        className={cn(" z-10 w-auto")}
         borderRadius="full"
         onClick={() => selectCategory("")}
         variant={!activecategory ? "primary" : "outlined"}
@@ -33,7 +28,7 @@ const CategoriesTabs = ({ data }: Props) => {
       {data.map(({ category_id: id, category_name: name }) => (
         <CustomButton
           key={id}
-          className={cn(" z-10", { "text-white": activecategory === id })}
+          className={cn(" z-10 w-auto", { "text-white": activecategory === id })}
           borderRadius="full"
           onClick={() => selectCategory(id)}
           variant={activecategory === id ? "primary" : "outlined"}

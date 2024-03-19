@@ -16,9 +16,18 @@ export type Positions = {
   width: number;
 };
 
+let tabbes = [
+  { id: "world", label: "World" },
+  { id: "ny", label: "N.Y." },
+  { id: "business", label: "Business" },
+  { id: "arts", label: "Arts" },
+  { id: "science", label: "Science" },
+];
+
 const Tabs = ({ tabs, activeTab, handleActiveTab }: Props) => {
   const [positions, setPositions] = useState<Positions[]>([]);
   const [indicatorVisible, setIndicatorVisible] = useState(false);
+  let [activeOne, setActiveOne] = useState(tabbes[0].id);
 
   useEffect(() => {
     const parentElement = tabsRef.current;
@@ -54,6 +63,28 @@ const Tabs = ({ tabs, activeTab, handleActiveTab }: Props) => {
 
   return (
     <header className="bg-bej py-2 ">
+      {/* <div className="flex space-x-1 bg-gray-400 p-2 items-center justify-between">
+        {tabbes.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveOne(tab.id)}
+            className={cn(
+              "relative rounded-full px-3 py-1.5 text-sm font-medium text-gray-800 outline-sky-400 transition focus-visible:outline-2 md:text-4xl z-50",
+              { "hover:text-white/60 z-50": activeOne === tab.id }
+            )}
+          >
+            {activeOne === tab.id && (
+              <motion.span
+                layoutId="bubble"
+                className="absolute inset-0 z-40 bg-yellow-800  rounded-full"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="z-50">{tab.label}</span>
+          </button>
+        ))}
+      </div> */}
+
       <div ref={tabsRef} className="flex max-w-[90%] mx-auto items-center gap-5 overflow-x-auto whitespace-nowrap ">
         {indicatorVisible && <Indicator positions={positions} activeTab={activeTab} />}
         {tabs.map((tab, i) => (

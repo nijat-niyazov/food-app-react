@@ -11,9 +11,14 @@ type Props = {
 
 const statCategories2 = [
   { category_id: "fast-food", category_name: "Fast Food" },
-  { category_id: "drinks", category_name: "Drinks" },
+  { category_id: "pasta", category_name: "Pasta" },
   { category_id: "main", category_name: "Main" },
-  { category_id: "snacks", category_name: "Snacks" },
+  { category_id: "soup", category_name: "Soup" },
+  { category_id: "vegetarian", category_name: "Vegetarian" },
+  { category_id: "drinks", category_name: "Drinks" },
+  { category_id: "salads", category_name: "Salads" },
+  { category_id: "desserts", category_name: "Desserts" },
+  { category_id: "breakfast", category_name: "Breakfast" },
 ];
 
 const MealCategories = ({ statCategories, setValue, register }: Props) => {
@@ -46,7 +51,7 @@ const MealCategories = ({ statCategories, setValue, register }: Props) => {
         Category :
       </label>
 
-      <div ref={divRef} className={cn("rounded-md border-1  border-black/30 relative overflow-hidden", { "min-h-52": show })}>
+      <div ref={divRef} className={cn("rounded-md border-1  border-black/30 relative overflow-hidden", { "min-h-[400px]": show })}>
         <input
           type="text"
           id="category_name"
@@ -59,7 +64,7 @@ const MealCategories = ({ statCategories, setValue, register }: Props) => {
         />
 
         <ul className={cn("z-20 rounded-b-md absolute w-full none", { block: show })}>
-          {categories.map(({ category_name: name, category_id: id }) => (
+          {statCategories2.map(({ category_name: name, category_id: id }) => (
             <li key={id} className="hover:bg-gray-300 p-2 cursor-pointer " onClick={() => handleOptionClick(name)}>
               {name}
             </li>

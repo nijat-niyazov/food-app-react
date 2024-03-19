@@ -1,11 +1,9 @@
 import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components/ui";
-import { closeModal, openModal } from "@/stores/modal";
+import { openModal } from "@/stores/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
-import { supabase } from "@/constants/supabase";
 import { useLocalStorage } from "@/hooks";
 import { LoginForm } from "../..";
 import { CustomInput } from "../../custom-elements";
@@ -24,41 +22,34 @@ export default function SignUpForm() {
   const { setItem } = useLocalStorage();
 
   const onSubmit: SubmitHandler<SignUpInputs> = async (values) => {
-    // const { success } = await delay(3000);
     const { email, password, ...rest } = values;
 
-    const userData = {
-      email,
-      password,
-      options: {
-        data: {
-          ...rest,
-        },
-      },
-    };
+    const userData = { email, password, options: { data: { ...rest } } };
 
-    const {
-      data: { session, user },
-      error,
-    } = await supabase.auth.signUp(userData);
+    console.log(userData);
 
-    if (!error && user && session) {
-      console.log(session, user);
+    // const {
+    //   data: { session, user },
+    //   error,
+    // } = await supabase.auth.signUp(userData);
 
-      setItem("user", { user: user.user_metadata, access_token: session?.access_token, refresh_token: session?.refresh_token });
+    // if (!error && user && session) {
+    //   console.log(session, user);
 
-      toast.success("You successfully registered");
-      closeModal();
+    //   setItem("user", { user: user.user_metadata, access_token: session?.access_token, refresh_token: session?.refresh_token });
 
-      // window.location.reload();
+    //   toast.success("You successfully registered");
+    //   closeModal();
 
-      // setCookie("token", session?.access_token);
-    } else if (error && error.status === 400) {
-      setError("email", { message: error.message });
-      toast.error("Registration failed. Please check your inputs.");
-    } else {
-      toast.error("Something went wrong. Please try again later.");
-    }
+    //   // window.location.reload();
+
+    //   // setCookie("token", session?.access_token);
+    // } else if (error && error.status === 400) {
+    //   setError("email", { message: error.message });
+    //   toast.error("Registration failed. Please check your inputs.");
+    // } else {
+    //   toast.error("Something went wrong. Please try again later.");
+    // }
   };
 
   return (

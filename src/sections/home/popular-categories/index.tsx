@@ -16,7 +16,7 @@ const meals = [
   { id: 66, img: offer, url: "deep", category: "sonuncu", count: 20 },
 ];
 
-const MealCategories = () => {
+const PopularCategories = () => {
   return (
     <section className="overflow-hidden">
       <h4 className="text-text text-base md:text-3xl font-bold mb-5 md:mb-10 ">Order.uk Popular Categories 🤩</h4>
@@ -40,4 +40,4 @@ const MealCategories = () => {
   );
 };
 
-export default MealCategories;
+export default PopularCategories;

@@ -13,13 +13,13 @@ type MealType = {
 };
 
 type OptionType = {
-  id: number;
+  id: string;
   price: number;
   name: string;
 };
 
 type OrderType = {
-  id: number;
+  id: string;
   title: string;
   img: string;
   description: string;

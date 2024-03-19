@@ -1,6 +1,5 @@
 import { SpecialMealModal } from "@/components/modal-contents";
 import { CustomButton } from "@/components/ui";
-import { openModal } from "@/stores/modal";
 
 import { CModal } from "@/components/ui/";
 import { useState } from "react";
@@ -8,7 +7,7 @@ import { Fragment } from "react/jsx-runtime";
 import "./background.css";
 
 const SpecialMeal = () => {
-  const handleFormOfMeal = (mealId: "pizza" | "burger") => openModal(<SpecialMealModal mealId={mealId} />, 70);
+  // const handleFormOfMeal = (mealId: "pizza" | "burger") => openModal(<SpecialMealModal mealId={mealId} />, 70);
 
   const [isOpened, setIsOpened] = useState(false);
   const [mealId, setMealId] = useState<string>("");

@@ -4,9 +4,7 @@ import { MealType } from "@/constants/types/meal";
 import { FC, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
-type Props = {
-  meals: { [key: string]: MealType[] };
-};
+type Props = { meals: { [key: string]: MealType[] } };
 
 const CustomizeSpecialMealPage: FC<Props> = ({ meals }) => {
   const alredyExist = useMemo(() => Object.keys(meals).map((label) => label), [meals]);
