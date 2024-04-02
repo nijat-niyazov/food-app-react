@@ -1,9 +1,10 @@
 import { MySpinner } from "@/assets/icons";
 import { CustomButton } from "@/components/ui";
+import { supabase } from "@/constants/supabase";
 import { MealType, OptionType } from "@/constants/types/meal";
-import { delay } from "@/services/api/delay";
 import { addToBasket } from "@/stores/basket";
 import { closeModal } from "@/stores/modal";
+import { useUserStore } from "@/stores/user";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -16,18 +17,17 @@ type ConfirmationOrderProps = {
 const ConfirmationOrder = ({ selected, meal }: ConfirmationOrderProps) => {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const user_id = useUserStore((state) => state.user?.id);
 
   async function handleAddBasket(note: string) {
     setIsSubmitting(true);
     let { options, ...mymeal } = meal;
 
-    let newOrder = { ...mymeal, ...selected, note };
+    let newOrder = { ...mymeal, ...selected, note, user_id };
 
-    console.log(newOrder);
+    const { error } = await supabase.from("basket_items").insert(newOrder);
 
-    const { success } = await delay();
-
-    if (success) {
+    if (!error) {
       toast.success(`Your order ${note && "and note"} has been sent successfully`);
       addToBasket(newOrder);
       closeModal();

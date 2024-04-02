@@ -23,7 +23,6 @@ const EditProfileDetailsForm = ({ defaultValues }: { defaultValues: User }) => {
     formState: { errors, isValid },
     setValue,
   } = useForm<Inputs>({ defaultValues: defaultValues });
-
   const fileRef = useRef<HTMLInputElement>(null);
   const [image, setImage] = useState<string | File | null>(getImage("avatars", defaultValues.avatar) ?? null);
 

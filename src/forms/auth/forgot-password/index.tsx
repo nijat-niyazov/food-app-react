@@ -28,12 +28,12 @@ export default function ForgotPasswordForm() {
 
     start();
 
-    const { data, error } = await supabase.auth.resetPasswordForEmail(values.email, {
-      redirectTo: projectURL,
-    });
+    const { data, error } = await supabase.auth.resetPasswordForEmail(values.email, { redirectTo: projectURL });
 
     console.log(data, error);
   };
+
+  console.log({ remainingTime, timeIsOver, isValid, isSubmitting });
 
   return (
     <div className="p-4">
@@ -58,14 +58,12 @@ export default function ForgotPasswordForm() {
             type="submit"
             className="disabled:opacity-50 text-md flex-1"
           >
-            {remainingTime ? "Message is sent" : "Send Message"}
+            {timeIsOver ? "Send a message" : "Message is sent"}
           </CustomButton>
           <CustomButton
             size="md"
             variant="secondary"
-            className={cn("w-auto !px-2 bg-opacity-80 min-w-16  pointer-events-none", {
-              "opacity-50": timeIsOver,
-            })}
+            className={cn("w-auto !px-2 bg-opacity-80 min-w-16  pointer-events-none", { "opacity-50": timeIsOver })}
           >
             {remainingTime}
           </CustomButton>

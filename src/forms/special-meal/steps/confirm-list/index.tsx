@@ -2,14 +2,10 @@ import { cn } from "@/utils";
 import { useMemo } from "react";
 import { Price } from "../../types";
 
-type Props = {
-  values: Price[];
-  note: string;
+type Props = {  values: Price[];  note: string;
 };
 
-type Groupped = {
-  [key: string]: Price[];
-};
+type Groupped = {  [key: string]: Price[];};
 
 const ConfirmList = ({ values, note }: Props) => {
   const byGroups = useMemo(() => {
