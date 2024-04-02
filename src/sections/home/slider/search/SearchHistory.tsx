@@ -34,10 +34,10 @@ const SearchHistory = ({ debounced }: SearchHistoryProps) => {
 
   return (
     searchHistory.length > 0 && (
-      <ul className="absolute w-full mt-2 left-0 z-10  rounded-md top-full bg-primary py-3  grid gap-4 text-white transition-opacity duration-200">
+      <ul className="absolute w-full mt-2 left-0 z-50  rounded-md top-full bg-primary py-3  grid gap-4 text-white transition-opacity duration-200">
         {searchHistory?.map(({ word, id }) => (
-          <li key={id} className="flex items-center justify-between border-b-2 border-black/30 px-2 bg-secondary gap-4">
-            <p className="bg-primary grow">{word}</p>
+          <li key={id} className="flex items-center justify-between border-b-2 border-black/30 px-2 bg-secondary gap-4 overflow-hidden">
+            <p className="bg-primary grow truncate text-start">{word}</p>
             <button
               onClick={(e) => {
                 e.stopPropagation();

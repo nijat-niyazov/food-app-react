@@ -20,7 +20,7 @@ const notifications = [
 
 const Notifications = () => {
   return (
-    <div className="w-[550px] z-0 ml-auto h-[90%] rounded-tl-[300px] absolute bottom-0 right-0  w-500 bg-primary ">
+    <div className="w-[550px] z-0 ml-auto h-[90%] rounded-tl-[300px] absolute bottom-0 right-0  w-500 bg-primary hidden md:block">
       <ul className="relative">
         {notifications.map(({ className, message, title }, i) => (
           <li key={i} className={`p-4 rounded-xl bg-white w-[300px] absolute ${className}`}>

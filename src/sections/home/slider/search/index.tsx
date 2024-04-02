@@ -23,8 +23,6 @@ const HomeSearch = ({ className }: HomeSearchProps) => {
       setIsLoading(true);
 
       const timeId = setTimeout(() => {
-        // searchParams.set("query", debounced);
-        // setSearchParams(searchParams, { replace: true });
         setIsLoading(false);
       }, 1000);
 
@@ -57,7 +55,7 @@ const HomeSearch = ({ className }: HomeSearchProps) => {
       ref={divRef}
       onFocus={() => setIsFocused(true)}
       className={cn(
-        `p-3 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative hidden md:block  outline-offset-0 transition-all duration-200 ${className}`,
+        `py-3 md:px-3 rounded-full w-auto bg-white border-1 border-black/40 outline-none relative outline-offset-0 transition-all duration-200 pr-6 ${className}`,
         { "border-primary/80 outline-primary/50": isFocused }
       )}
     >
