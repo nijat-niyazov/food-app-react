@@ -18,14 +18,14 @@ const Option = ({ disabled = false, onClick, option, selected }: OptionComProps)
       disabled={disabled}
       size="xs"
       variant="outlined"
-      className={cn("w-auto py-2 px-3 flex items-center justify-between", {
-        "bg-text text-white": active,
-        "hover:bg-text/50 hover:text-white": !active,
+      className={cn("w-auto !py-2 !px-3 flex items-center justify-between gap-2 hover:text-white", {
+        "bg-text text-white ": active,
+        "hover:bg-primary/90 ": !active,
       })}
     >
-      <span className={`${active ? "text-white" : "text-text"} mr-2`}>{option.name}</span>
+      <span className={cn("mr-2", { "text-white": active })}>{option.name}</span>
 
-      <span className="bg-secondary py-2 px-4 rounded-s text-white">£{option.price}</span>
+      <p className="bg-secondary min-w-20 py-2 px-4 rounded-s text-white">£{option.price}</p>
     </CustomButton>
   );
 };

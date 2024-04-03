@@ -25,6 +25,7 @@ const routes = (
       <Route path=":category" element={<Meals />} />
       <Route path="special" element={<SpecialMeal />} />
     </Route>
+
     <Route path="/branches" element={<Branches />} />
     <Route path="/unauth" element={<UnAuthPage />} />
     <Route path="/not-admin" element={<NotAdmin />} />

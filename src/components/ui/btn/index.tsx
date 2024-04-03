@@ -17,14 +17,14 @@ function createBtnClasses(
   let cls = "";
 
   const variants = {
-    primary: "bg-primary ",
-    secondary: "bg-secondary ",
-    black: "bg-text ",
-    danger: "bg-red-500 ",
+    primary: "bg-primary border-1 border-transparent",
+    secondary: "bg-secondary border-1 border-transparent",
+    black: "bg-text border-1 border-transparent",
+    danger: "bg-red-500 border-1 border-transparent",
     outlined: "bg-outlined text-black border-1 border-black/50 ",
-    transparent: "bg-outlined text-black ",
-    success: "bg-success ",
-    warning: "bg-warning ",
+    transparent: "bg-outlined text-black border-1 border-transparent",
+    success: "bg-success border-1 border-transparent",
+    warning: "bg-warning border-1 border-transparent",
   };
 
   const sizes = {

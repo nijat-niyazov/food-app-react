@@ -1,5 +1,5 @@
 import { BasketDev } from "@/components/";
-import { Categories, LandingMenu } from "@/sections/menu";
+import { Categories, LandingMenu, MenuSearch } from "@/sections/menu";
 import { Outlet } from "react-router-dom";
 
 // let tabs = [
@@ -17,35 +17,17 @@ const MenuLayout = () => {
     <div className=" mb-10">
       <LandingMenu />
 
-      {/* <div className="flex space-x-1">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={cn(
-              "relative rounded-full px-3 py-1.5 text-sm font-medium text-red-300 outline-sky-400 transition focus-visible:outline-2",
-              { "hover:text-white/60": activeTab === tab.id }
-            )}
-          >
-            {activeTab === tab.id && (
-              <motion.span
-                layoutId="bubble"
-                className="absolute inset-0 z-10 bg-gray-800 mix-blend-difference"
-                style={{ borderRadius: 9999 }}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            {tab.label}
-          </button>
-        ))}
-      </div> */}
+      <div className="hidden md:flex container items-center justify-between mb-10 ">
+        <h1 className="font-semibold text-3xl">Order without waiter</h1>
+        <MenuSearch className=" max-w-80 placeholder:px-16" />
+      </div>
 
-      <div className="grid md:grid-cols-[1fr_2fr_1fr] items-start justify-start container gap-5">
+      <div className="grid md:grid-cols-[1fr_2fr_1fr] items-start container gap-5">
         <Categories />
+        <MenuSearch className="md:hidden" />
         <Outlet />
-        <aside className="hidden md:block">
-          <BasketDev />
-        </aside>
+
+        <BasketDev className="hidden md:block" />
       </div>
 
       {/* <Offers /> */}

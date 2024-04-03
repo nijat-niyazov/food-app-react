@@ -7,11 +7,7 @@ import { useCoruselButtons } from "./useCarouselButtons";
 type PropType = { options?: EmblaOptionsType; children: ReactNode };
 
 const Swapper = ({ options, children }: PropType) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({
-      delay: 2000,
-    }),
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay({ delay: 2000 })]);
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = useCoruselButtons(emblaApi);
 

@@ -25,14 +25,18 @@ const Sorting = ({ category }: { category: string }) => {
   }
 
   const triggerer = (
-    <CustomButton variant="outlined" borderRadius="full" className="min-w-52 border-black/30 text-opacity-70">
+    <CustomButton
+      variant="outlined"
+      borderRadius="full"
+      className="min-w-40 border-black/30 text-opacity-70 text-sm font-normal bg-gray-100"
+    >
       Sort by {activeLabel}
     </CustomButton>
   );
 
   return (
-    <header className="flex items-center justify-between  sticky top-0 backdrop-blur-md	py-6 ">
-      <h4 className="text-3xl font-semibold">{kebabToString(category)}</h4>
+    <div className="flex items-center justify-between md:py-6 mb-5">
+      <h4 className="text-3xl font-semibold ml-3">{kebabToString(category)}</h4>
 
       <DropdownMenu triggerer={triggerer}>
         <ul className="px-1 py-1 ">
@@ -53,7 +57,7 @@ const Sorting = ({ category }: { category: string }) => {
           ))}
         </ul>
       </DropdownMenu>
-    </header>
+    </div>
   );
 };
 

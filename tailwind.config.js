@@ -45,7 +45,9 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "0px",
+      padding: {
+        DEFAULT: "1rem",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

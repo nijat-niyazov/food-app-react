@@ -13,7 +13,7 @@ const LandingMenu = () => {
       initial={{ x: "20%" }}
       animate={{ x: 0 }}
       transition={{ duration: 0.2, type: "spring", stiffness: 120 }}
-      className="hidden md:block  relative mb-20 container bg-text rounded-xl"
+      className=" relative mb-20 container bg-text rounded-xl hidden md:block"
     >
       <img src={fast_food} alt="fast_food" className=" brightness-50 opacity-30 " />
 

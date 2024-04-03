@@ -1,12 +1,15 @@
 import { useMediaMatch } from "@/hooks";
 import { useBasketStore } from "@/stores/basket";
 import { useCustomOrderState } from "@/stores/custom-order";
-import { convertToTwoDecimalFloat } from "@/utils";
+import { cn, convertToTwoDecimalFloat } from "@/utils";
+import { HTMLAttributes } from "react";
 import BasketFooter from "./basket-footer";
 import CustomItems from "./custom";
 import MenuItems from "./menu";
 
-const BasketDev = () => {
+type Props = {} & HTMLAttributes<HTMLDivElement>;
+
+const BasketDev = ({ className }: Props) => {
   const { orders: menuOrders, totalPrice } = useBasketStore((state) => state);
   const { orders: customOrders, totalPriceOfCustomOrders } = useCustomOrderState((state) => state);
 
@@ -18,7 +21,7 @@ const BasketDev = () => {
   const totalPay = convertToTwoDecimalFloat(subTotal - discount);
 
   return (
-    <div className="bg-faq rounded-xl border-1 border-black/20 sticky top-5 ">
+    <aside className={cn(`bg-faq rounded-xl border-1 border-black/20 sticky top-5 ${className}`)}>
       <h3 className="text-white rounded-t-xl bg-secondary font-semibold text-3xl py-5 px-12 w-full ">My Basket</h3>
 
       <MenuItems items={menuOrders} />
@@ -41,7 +44,7 @@ const BasketDev = () => {
 
         <BasketFooter customOrdersCount={customOrders.length} basketItemsCount={menuOrders.length} totalPay={totalPay} />
       </div>
-    </div>
+    </aside>
   );
 };
 

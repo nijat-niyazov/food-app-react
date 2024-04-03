@@ -1,5 +1,5 @@
 import { MotionDiv } from "@/components";
-import { Counts, FAQ, HomeSlider, Order, PopularCategories } from "@/sections/home";
+import { FAQ, HomeSlider, Order, PopularCategories } from "@/sections/home";
 
 const HomePage = () => {
   return (
@@ -21,7 +21,7 @@ const HomePage = () => {
       <Order />
 
       <FAQ />
-      <Counts />
+      {/* <Counts /> */}
     </MotionDiv>
   );
 };

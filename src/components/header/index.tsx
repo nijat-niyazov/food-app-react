@@ -22,7 +22,7 @@ const Header = () => {
   const userData = useUserStore((state) => state.user);
 
   return (
-    <header className=" mb-10">
+    <header className=" mb-6">
       <div className="hidden md:flex container justify-between mb-10 items-center rounded-b-xl pl-5 bg-grey border-1 border-black/10">
         <p className="text-[15px] font-medium text-text">
           🌟 Get 5% Off your first order, <span className="font-bold text-primary border-b-1 border-primary">Promo: ORDER5</span>

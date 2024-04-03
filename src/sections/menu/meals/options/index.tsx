@@ -11,7 +11,7 @@ const Options = ({ options, meal }: { meal: MealType; options: OptionType[] }) =
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-3">
       {options.map((option) => (
         <Option key={option.id} option={option} onClick={handleSelect} selected={selected?.id} />
       ))}

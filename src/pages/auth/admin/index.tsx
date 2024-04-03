@@ -8,9 +8,8 @@ import { Fragment } from "react";
 const components = [
   { title: "Meals", component: AllMeals },
   { title: "Create New Meal", component: CreateNewMeal },
-  { title: "Edit Categories", component: AllMeals },
-  // { title: "Customize Special Meal", component: CreateSpecialMeal },
-  // { title: "FAQ", component: FaqContent },
+  { title: "Popular Categories", component: AllMeals },
+  { title: "Menu Categories", component: AllMeals },
 ];
 
 const AdminPage = () => {
