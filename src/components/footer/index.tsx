@@ -1,5 +1,6 @@
 import { GithubIcon } from "@/assets/icons";
 import { download, logo, me } from "@/assets/images";
+import { BriefcaseBusiness } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const links = [
@@ -50,22 +51,30 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container py-6 text-white flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <p className="text-xl text-start text-balance">Order.uk &#169; Copyright 2024, All Rights Reserved.</p>
+      <ul className="flex flex-col md:flex-row gap-4 justify-between w-full md:w-auto text-lg container py-6 text-white items-center">
+        <li className="text-balance ">Order.uk &#169; Copyright 2024, All Rights Reserved.</li>
 
-        <ul className="flex  items-center gap-2 justify-between w-full md:w-auto text-lg">
-          <li className="hidden md:block">This project is created by :</li>
-          <li className="flex items-center md:mr-10">
+        <li className="md:flex items-center hidden ">
+          <span className="hidden md:block">This project is created by :</span>
+          <img src={me} alt="my_avatar" className="w-14 h-14 md:w-12 md:h-12 rounded-full object-cover" />
+          Nijat Niyazov
+        </li>
+
+        <li className="flex items-center justify-between gap-3 md:justify-center ">
+          <div className="flex items-center md:hidden">
+            <span className="hidden md:block">This project is created by :</span>
             <img src={me} alt="my_avatar" className="w-14 h-14 md:w-12 md:h-12 rounded-full object-cover" />
             Nijat Niyazov
-          </li>
-          <li>
-            <Link to={"https://github.com/nijat-niyazov"} target="_blank" className="underline flex gap-2 items-center">
-              <GithubIcon /> Github
-            </Link>
-          </li>
-        </ul>
-      </div>
+          </div>
+
+          <Link to={"https://github.com/nijat-niyazov"} target="_blank" className="flex gap-2 items-center">
+            <GithubIcon /> Github
+          </Link>
+          <Link to={"https://nijat-niyazov.vercel.app"} target="_blank" className="flex gap-2 items-center">
+            <BriefcaseBusiness /> Portfolio
+          </Link>
+        </li>
+      </ul>
     </footer>
   );
 };
