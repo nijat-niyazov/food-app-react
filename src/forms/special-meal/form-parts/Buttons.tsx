@@ -18,7 +18,7 @@ const Buttons = ({ currentStep, handleStep, lastStep, isSubmitting, isValid, dis
   }
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center justify-between ">
       <CustomButton
         disabled={currentStep === 0 || isSubmitting}
         onClick={onClick}
@@ -33,12 +33,12 @@ const Buttons = ({ currentStep, handleStep, lastStep, isSubmitting, isValid, dis
       <CustomButton
         variant="secondary"
         size="md"
-        className="w-auto"
+        className="w-[45%] md:w-auto"
         onClick={(e) => (!lastStep ? onClick(e, "next") : null)}
         type={lastStep ? "submit" : "button"}
         disabled={isSubmitting}
       >
-        {!lastStep ? "Next" : isSubmitting ? <MySpinner /> : "Finish"}
+        {!lastStep ? "Next" : isSubmitting ? <MySpinner /> : "Confirm"}
       </CustomButton>
     </div>
   );

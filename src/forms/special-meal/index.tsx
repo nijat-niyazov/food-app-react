@@ -21,8 +21,6 @@ type Props = {
 const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
   /* ------------------------------- Form State ------------------------------- */
 
-  // console.log(defaultValues?.totalPrice);
-
   const {
     register,
     handleSubmit,
@@ -99,14 +97,14 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
   const price = parseFloat(useMemo(() => totalPrice.reduce((acc, { price }) => acc + price, 0), [totalPrice]).toFixed(2));
 
   return (
-    <div className="p-10 relative">
+    <div className="flex flex-col px-5 py-10 md:p-10 relative min-h-[85vh] ">
       <StepInfo
         currentStep={currentStep}
         maxSteps={maxSteps}
         name={!noteStep && !lastStep ? stepsOfSelectedMeal[currentStep].categoryName : noteStep ? "Special Note" : "Confirm List"}
       />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2 ">
+      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-2 flex-1">
         {/* ---------------------------------- Size ---------------------------------- */}
 
         {stepsOfSelectedMeal.map((step, i) => {
@@ -126,7 +124,7 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
         {noteStep && <Note register={register} />}
         {lastStep && <ConfirmList note={watch("note")} values={totalPrice} />}
 
-        <footer className="flex items-center justify-between">
+        <footer className="flex flex-col gap-4 md:flex-row md:items-center justify-between mt-auto">
           <TotalPrice price={price} />
 
           <Buttons

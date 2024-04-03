@@ -13,6 +13,7 @@
 
 .pizza::before {
   background-image: url(../../../assets/custom/p2.jpg);
+  /* filter: brightness(0.5); */
 }
 
 .burger::before {
