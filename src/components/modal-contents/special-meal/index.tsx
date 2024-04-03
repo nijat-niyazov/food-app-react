@@ -7,7 +7,6 @@ import { CustomOrderType } from "@/stores/custom-order";
 type Props = { mealId: "burger" | "pizza"; defaultValues?: CustomOrderType };
 
 const SpecialMealModal = ({ mealId, defaultValues }: Props) => {
-  // const { isPending, data: meals } = useGetData<{ [key: string]: SpecialMealType[] }>(["specialMealData"], getSpecialMealData);
   const { isPending, data: meals } = useGetData<{ [key: string]: SpecialMealType[] }>(["specialMealData"], getSpecialMealData);
 
   return isPending ? (
