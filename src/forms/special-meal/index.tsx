@@ -97,7 +97,7 @@ const SpecialMealForm = ({ mealId, meals: milli, defaultValues }: Props) => {
   const price = parseFloat(useMemo(() => totalPrice.reduce((acc, { price }) => acc + price, 0), [totalPrice]).toFixed(2));
 
   return (
-    <div className="flex flex-col px-5 py-10 md:p-10 relative min-h-[85vh] ">
+    <div className="flex flex-col px-5 py-10 md:p-10 relative md:min-h-[85vh] ">
       <StepInfo
         currentStep={currentStep}
         maxSteps={maxSteps}
